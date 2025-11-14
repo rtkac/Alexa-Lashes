@@ -1,0 +1,12 @@
+[build]
+  command = "bun run build"
+  publish = "dist/client"
+[dev]
+  command = "bun run dev"
+  targetPort = 3000
+  port = 8888
+  framework = "vite"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
