@@ -1,34 +1,56 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { getIntlayer } from "intlayer";
+import { useIntlayer } from "react-intlayer";
 
-import { defaultLocale, type Locale, validateLocale } from "@/lib/i18n";
+import { LocaleSwitcher } from "@/components/locale-switcher";
+import { LocalizedLink } from "@/components/localized-link";
+import { useLocalizedNavigate } from "@/hooks/useLocalizedNavigate";
 
 export const Route = createFileRoute("/{-$locale}/")({
-  beforeLoad: async ({ params }) => {
+  component: RouteComponent,
+  head: ({ params }) => {
     const { locale } = params;
-
-    if (!locale || !validateLocale(locale)) {
-      throw redirect({ to: `/${defaultLocale}` as "/{-$locale}" });
-    }
+    const metaContent = getIntlayer("app", locale);
 
     return {
-      locale: (locale as Locale) || defaultLocale,
-      isDefaultLocale: !locale || locale === defaultLocale,
+      meta: [
+        { title: metaContent.title },
+        { content: metaContent.meta.description, name: "description" },
+      ],
     };
   },
-  head: ({ params }) => ({
-    meta: [
-      {
-        title:
-          params.locale === "en"
-            ? "Alexa Lashes | Lashes Bratislava"
-            : `Alexa Lashes | Mihalnice Bratislava`,
-      },
-    ],
-  }),
-  component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { locale } = Route.useParams();
-  return <div>Hello "/index"! -- {locale}</div>;
+  const content = useIntlayer("app");
+  const navigate = useLocalizedNavigate();
+
+  return (
+    <div>
+      <div>
+        {content.title}
+        <br />
+        <br />
+        <LocaleSwitcher />
+        <br />
+        <br />
+        <div>
+          <LocalizedLink to="/">{content.links.home}</LocalizedLink>
+          &nbsp;
+          <LocalizedLink to="/services">{content.links.services}</LocalizedLink>
+        </div>
+        <br />
+        <br />
+        <div>
+          <button type="button" onClick={() => navigate({ to: "/" })}>
+            {content.links.home}
+          </button>
+          &nbsp;
+          <button type="button" onClick={() => navigate({ to: "/services" })}>
+            {content.links.services}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }

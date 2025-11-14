@@ -19,6 +19,7 @@ export default function Header() {
     <>
       <header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
         <button
+          type="button"
           onClick={() => setIsOpen(true)}
           className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
           aria-label="Open menu"
@@ -32,6 +33,10 @@ export default function Header() {
         </h1>
       </header>
 
+      {/* <button onClick={() => {}} type="button">
+        change lang
+      </button> */}
+
       <aside
         className={`fixed top-0 left-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -40,6 +45,7 @@ export default function Header() {
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
           <h2 className="text-xl font-bold">Navigation</h2>
           <button
+            type="button"
             onClick={() => setIsOpen(false)}
             className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
             aria-label="Close menu"
@@ -104,6 +110,7 @@ export default function Header() {
               <span className="font-medium">Start - SSR Demos</span>
             </Link>
             <button
+              type="button"
               className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
               onClick={() =>
                 setGroupedExpanded((prev) => ({

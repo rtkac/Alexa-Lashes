@@ -1,16 +1,23 @@
-import { createRouter } from "@tanstack/react-router";
+import { createRouter as createTanstackRouter } from "@tanstack/react-router";
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
 
 // Create a new router instance
-export const getRouter = () => {
-  const router = createRouter({
+export const createRouter = () => {
+  return createTanstackRouter({
+    defaultPreloadStaleTime: 0,
     routeTree,
     scrollRestoration: true,
-    defaultPreloadStaleTime: 0,
-    defaultNotFoundComponent: () => <div>404: Page Not Found</div>,
   });
-
-  return router;
 };
+
+// Exported for TanStack Start SSR integration
+export const getRouter = () => createRouter();
+
+// Register the router instance for type safety
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: ReturnType<typeof createRouter>;
+  }
+}

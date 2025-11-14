@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
 import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
 import { Route as Char123LocaleChar125ServicesRouteImport } from './routes/{-$locale}/services'
 import { Route as Char123LocaleChar125GalleryRouteImport } from './routes/{-$locale}/gallery'
@@ -21,29 +22,35 @@ import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
+const Char123LocaleChar125RouteRoute =
+  Char123LocaleChar125RouteRouteImport.update({
+    id: '/{-$locale}',
+    path: '/{-$locale}',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const Char123LocaleChar125IndexRoute =
   Char123LocaleChar125IndexRouteImport.update({
-    id: '/{-$locale}/',
-    path: '/{-$locale}/',
-    getParentRoute: () => rootRouteImport,
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
 const Char123LocaleChar125ServicesRoute =
   Char123LocaleChar125ServicesRouteImport.update({
-    id: '/{-$locale}/services',
-    path: '/{-$locale}/services',
-    getParentRoute: () => rootRouteImport,
+    id: '/services',
+    path: '/services',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
 const Char123LocaleChar125GalleryRoute =
   Char123LocaleChar125GalleryRouteImport.update({
-    id: '/{-$locale}/gallery',
-    path: '/{-$locale}/gallery',
-    getParentRoute: () => rootRouteImport,
+    id: '/gallery',
+    path: '/gallery',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
 const Char123LocaleChar125ContactRoute =
   Char123LocaleChar125ContactRouteImport.update({
-    id: '/{-$locale}/contact',
-    path: '/{-$locale}/contact',
-    getParentRoute: () => rootRouteImport,
+    id: '/contact',
+    path: '/contact',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
   id: '/demo/start/server-funcs',
@@ -82,10 +89,11 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
   '/{-$locale}/gallery': typeof Char123LocaleChar125GalleryRoute
   '/{-$locale}/services': typeof Char123LocaleChar125ServicesRoute
-  '/{-$locale}': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -109,6 +117,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/{-$locale}/contact': typeof Char123LocaleChar125ContactRoute
   '/{-$locale}/gallery': typeof Char123LocaleChar125GalleryRoute
   '/{-$locale}/services': typeof Char123LocaleChar125ServicesRoute
@@ -124,10 +133,11 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/{-$locale}'
     | '/{-$locale}/contact'
     | '/{-$locale}/gallery'
     | '/{-$locale}/services'
-    | '/{-$locale}'
+    | '/{-$locale}/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/demo/start/ssr'
   id:
     | '__root__'
+    | '/{-$locale}'
     | '/{-$locale}/contact'
     | '/{-$locale}/gallery'
     | '/{-$locale}/services'
@@ -164,10 +175,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  Char123LocaleChar125ContactRoute: typeof Char123LocaleChar125ContactRoute
-  Char123LocaleChar125GalleryRoute: typeof Char123LocaleChar125GalleryRoute
-  Char123LocaleChar125ServicesRoute: typeof Char123LocaleChar125ServicesRoute
-  Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+  Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
@@ -179,33 +187,40 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/{-$locale}/': {
-      id: '/{-$locale}/'
+    '/{-$locale}': {
+      id: '/{-$locale}'
       path: '/{-$locale}'
       fullPath: '/{-$locale}'
-      preLoaderRoute: typeof Char123LocaleChar125IndexRouteImport
+      preLoaderRoute: typeof Char123LocaleChar125RouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/{-$locale}/': {
+      id: '/{-$locale}/'
+      path: '/'
+      fullPath: '/{-$locale}/'
+      preLoaderRoute: typeof Char123LocaleChar125IndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
     '/{-$locale}/services': {
       id: '/{-$locale}/services'
-      path: '/{-$locale}/services'
+      path: '/services'
       fullPath: '/{-$locale}/services'
       preLoaderRoute: typeof Char123LocaleChar125ServicesRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
     '/{-$locale}/gallery': {
       id: '/{-$locale}/gallery'
-      path: '/{-$locale}/gallery'
+      path: '/gallery'
       fullPath: '/{-$locale}/gallery'
       preLoaderRoute: typeof Char123LocaleChar125GalleryRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
     '/{-$locale}/contact': {
       id: '/{-$locale}/contact'
-      path: '/{-$locale}/contact'
+      path: '/contact'
       fullPath: '/{-$locale}/contact'
       preLoaderRoute: typeof Char123LocaleChar125ContactRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
     '/demo/start/server-funcs': {
       id: '/demo/start/server-funcs'
@@ -259,11 +274,28 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface Char123LocaleChar125RouteRouteChildren {
+  Char123LocaleChar125ContactRoute: typeof Char123LocaleChar125ContactRoute
+  Char123LocaleChar125GalleryRoute: typeof Char123LocaleChar125GalleryRoute
+  Char123LocaleChar125ServicesRoute: typeof Char123LocaleChar125ServicesRoute
+  Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+}
+
+const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
+  {
+    Char123LocaleChar125ContactRoute: Char123LocaleChar125ContactRoute,
+    Char123LocaleChar125GalleryRoute: Char123LocaleChar125GalleryRoute,
+    Char123LocaleChar125ServicesRoute: Char123LocaleChar125ServicesRoute,
+    Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+  }
+
+const Char123LocaleChar125RouteRouteWithChildren =
+  Char123LocaleChar125RouteRoute._addFileChildren(
+    Char123LocaleChar125RouteRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
-  Char123LocaleChar125ContactRoute: Char123LocaleChar125ContactRoute,
-  Char123LocaleChar125GalleryRoute: Char123LocaleChar125GalleryRoute,
-  Char123LocaleChar125ServicesRoute: Char123LocaleChar125ServicesRoute,
-  Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+  Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
