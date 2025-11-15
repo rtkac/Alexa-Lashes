@@ -19,13 +19,14 @@ code {
 }
 
 :root {
-  --background: oklch(1 0 0);
+  --background: #f8f6f6;
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
+  --primary: #ee2b6c;
+  --primary-light: #f6e1e8;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
@@ -97,6 +98,7 @@ code {
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -135,4 +137,11 @@ code {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white py-3 px-4 rounded-md hover:brightness-120 font-medium transition;
+  }
+
 }

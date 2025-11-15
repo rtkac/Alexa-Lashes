@@ -1,5 +1,11 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Hello, world!",
-  "greeting": "Hey {name}, how are you?"
+  "greeting": "Hey {name}, how are you?",
+  "notFound_title": "Oops! Page not found.",
+  "notFound_desc": "It seems the page you are looking for does not exist or has been moved. Try going back to the homepage or using the navigation menu.",
+  "notFound_link": "Go back to the homepage",
+  "menu_services": "Services",
+  "menu_gallery": "Gallery",
+  "menu_contact": "Contact"
 }

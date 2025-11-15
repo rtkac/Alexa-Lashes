@@ -1,11 +1,10 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import { createRootRoute, HeadContent, Link, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import appCss from "../styles.css?url";
 
 import Header from "@/components/Header";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { getLocale } from "@/paraglide/runtime";
 
 export const Route = createRootRoute({
@@ -27,6 +26,14 @@ export const Route = createRootRoute({
     ],
   }),
   shellComponent: RootDocument,
+  errorComponent: ({ error }) => {
+    return (
+      <div>
+        <h1>Root Error</h1>
+        <pre>{error.message}</pre>
+      </div>
+    );
+  },
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -37,74 +44,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Header />
-
-        <div className="p-4 border-b">
-          <LanguageSwitcher />
-        </div>
-
-        <div className="p-2 flex gap-2 text-lg">
-          <Link
-            to="/"
-            activeProps={{
-              className: "font-bold",
-            }}
-            activeOptions={{ exact: true }}
-          >
-            {/* <Trans>Home</Trans> */}
-            Home
-          </Link>{" "}
-          <Link
-            to="/gallery"
-            activeProps={{
-              className: "font-bold",
-            }}
-          >
-            Gallery
-            {/* <Trans>Gallery</Trans> */}
-          </Link>{" "}
-          {/* <Link
-            to="/services"
-            activeProps={{
-              className: "font-bold",
-            }}
-          >
-            <Trans>Services</Trans>
-          </Link>{" "}
-          <Link
-            to="/contact"
-            activeProps={{
-              className: "font-bold",
-            }}
-          >
-            <Trans>Contact</Trans>
-          </Link>{" "} */}
-          {/* <Link
-            to="/this-route-does-not-exist"
-            activeProps={{
-              className: "font-bold",
-            }}
-          >
-            <Trans>This Route Does Not Exist</Trans>
-          </Link> */}
-          |
-          {/* {Object.entries(locales).map(([locale, label]) => (
-            <button
-              type="button"
-              key={locale}
-              className={locale === i18n.locale ? "font-bold" : ""}
-              onClick={() => {
-                updateLanguage({ data: locale }).then(() => {
-                  location.reload();
-                });
-              }}
-            >
-              {label}
-            </button>
-          ))} */}
-        </div>
-        <hr />
-
-        {children}
+        <main>{children}</main>
         <TanStackDevtools
           config={{
             position: "bottom-right",
