@@ -1,5 +1,8 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Hello, world!",
-  "greeting": "Hey {name}, how are you?"
+  "greeting": "Hey {name}, how are you?",
+  "menu.services": "Services",
+  "menu.gallery": "Gallery",
+  "menu.contact": "Contact"
 }

@@ -2,19 +2,16 @@ import { getLocale, locales, setLocale } from "@/paraglide/runtime";
 
 export function LanguageSwitcher() {
   return (
-    <div className="flex gap-2">
-      {locales.map((locale) => (
+    <div className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-2 md:mt-0 md:border-0 md:bg-neutral-primary">
+      {locales.map((locale, index) => (
         <button
           key={locale}
           type="button"
           onClick={() => setLocale(locale)}
-          className={`px-3 py-1 rounded border ${
-            locale === getLocale()
-              ? "bg-blue-500 text-white border-blue-600"
-              : "bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200"
-          }`}
+          className={`px-1 cursor-pointer ${locale === getLocale() ? "text-primary" : "text-heading"}`}
         >
           {locale.toUpperCase()}
+          {index < locales.length - 1 && " | "}
         </button>
       ))}
     </div>
