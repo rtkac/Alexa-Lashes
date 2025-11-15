@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { m } from "@/paraglide/messages";
+
 export const Route = createFileRoute("/services")({
   component: RouteComponent,
 });
@@ -8,6 +10,8 @@ function RouteComponent() {
   return (
     <div>
       <h1>Services</h1>
+      <h2>Home {m.hello()}</h2>
+      <p>{m.greeting({ name: "Eugene" })}</p>
       <Link to="/contact" className="block py-1 text-blue-800 hover:text-blue-600">
         contact
       </Link>

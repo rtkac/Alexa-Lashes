@@ -5,6 +5,8 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import appCss from "../styles.css?url";
 
 import Header from "@/components/Header";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { getLocale } from "@/paraglide/runtime";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -29,12 +31,16 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sk">
+    <html lang={getLocale()} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body>
         <Header />
+
+        <div className="p-4 border-b">
+          <LanguageSwitcher />
+        </div>
 
         <div className="p-2 flex gap-2 text-lg">
           <Link
