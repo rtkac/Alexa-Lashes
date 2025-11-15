@@ -1,7 +1,6 @@
-// import { TanStackDevtools } from "@tanstack/react-devtools";
-import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-// import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { TanStackDevtools } from "@tanstack/react-devtools";
+import { createRootRoute, HeadContent, Link, Scripts } from "@tanstack/react-router";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import appCss from "../styles.css?url";
 
@@ -30,14 +29,77 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="sk">
       <head>
         <HeadContent />
       </head>
       <body>
         <Header />
+
+        <div className="p-2 flex gap-2 text-lg">
+          <Link
+            to="/"
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            {/* <Trans>Home</Trans> */}
+            Home
+          </Link>{" "}
+          <Link
+            to="/gallery"
+            activeProps={{
+              className: "font-bold",
+            }}
+          >
+            Gallery
+            {/* <Trans>Gallery</Trans> */}
+          </Link>{" "}
+          {/* <Link
+            to="/services"
+            activeProps={{
+              className: "font-bold",
+            }}
+          >
+            <Trans>Services</Trans>
+          </Link>{" "}
+          <Link
+            to="/contact"
+            activeProps={{
+              className: "font-bold",
+            }}
+          >
+            <Trans>Contact</Trans>
+          </Link>{" "} */}
+          {/* <Link
+            to="/this-route-does-not-exist"
+            activeProps={{
+              className: "font-bold",
+            }}
+          >
+            <Trans>This Route Does Not Exist</Trans>
+          </Link> */}
+          |
+          {/* {Object.entries(locales).map(([locale, label]) => (
+            <button
+              type="button"
+              key={locale}
+              className={locale === i18n.locale ? "font-bold" : ""}
+              onClick={() => {
+                updateLanguage({ data: locale }).then(() => {
+                  location.reload();
+                });
+              }}
+            >
+              {label}
+            </button>
+          ))} */}
+        </div>
+        <hr />
+
         {children}
-        {/* <TanStackDevtools
+        <TanStackDevtools
           config={{
             position: "bottom-right",
           }}
@@ -47,7 +109,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               render: <TanStackRouterDevtoolsPanel />,
             },
           ]}
-        /> */}
+        />
         <Scripts />
       </body>
     </html>
