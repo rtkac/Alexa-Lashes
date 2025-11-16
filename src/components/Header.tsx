@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="w-full border-b border-primary-light">
       <nav>
-        <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div className="max-w-6xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" className="flex items-center space-x-3">
             <img src={logo} alt="Alexa Lashes Logo" className="h-9" />
             <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">
@@ -55,6 +55,15 @@ const Header = () => {
                   aria-current="page"
                 >
                   {m.menu_services()}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/trainings"
+                  className="block py-2 px-3 text-heading md:p-0 [&.active]:text-primary hover:text-primary"
+                  aria-current="page"
+                >
+                  {m.menu_trainings()}
                 </Link>
               </li>
               <li>
