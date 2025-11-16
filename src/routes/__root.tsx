@@ -4,6 +4,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import appCss from "../styles.css?url";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getLocale } from "@/paraglide/runtime";
 
@@ -26,14 +27,6 @@ export const Route = createRootRoute({
     ],
   }),
   shellComponent: RootDocument,
-  errorComponent: ({ error }) => {
-    return (
-      <div>
-        <h1>Root Error</h1>
-        <pre>{error.message}</pre>
-      </div>
-    );
-  },
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -44,7 +37,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Header />
-        <main>{children}</main>
+        <main className="min-h-[calc(100vh-300px)]">{children}</main>
+        <Footer />
         <TanStackDevtools
           config={{
             position: "bottom-right",

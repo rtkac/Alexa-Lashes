@@ -2,21 +2,23 @@ import { Fragment } from "react/jsx-runtime";
 
 import { getLocale, locales, setLocale } from "@/paraglide/runtime";
 
-export function LanguageSwitcher() {
+const LanguageSwitcher = () => {
   return (
-    <div className="font-medium flex justify-center md:p-0 mt-4 bg-neutral-secondary-soft md:mt-0">
+    <div className="font-medium flex justify-center mt-4 md:mt-0 space-x-2">
       {locales.map((locale, index) => (
         <Fragment key={locale}>
           <button
             type="button"
             onClick={() => setLocale(locale)}
-            className={`px-3 cursor-pointer ${locale === getLocale() ? "text-primary" : "text-heading"}`}
+            className={`cursor-pointer hover:text-primary font-bold ${locale === getLocale() ? "text-primary" : "text-heading"}`}
           >
             {locale.toUpperCase()}
           </button>
-          {index < locales.length - 1 && " | "}
+          {index < locales.length - 1 && <span>|</span>}
         </Fragment>
       ))}
     </div>
   );
-}
+};
+
+export default LanguageSwitcher;

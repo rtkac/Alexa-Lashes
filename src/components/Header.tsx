@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { useId, useState } from "react";
 
-import { LanguageSwitcher } from "./LanguageSwitcher";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 import { m } from "@/paraglide/messages";
 import logo from "/logo.svg";
 
-export default function Header() {
+const Header = () => {
   const menuId = useId();
   const [open, setOpen] = useState(false);
 
@@ -51,7 +51,7 @@ export default function Header() {
               <li>
                 <Link
                   to="/services"
-                  className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent [&.active]:text-primary"
+                  className="block py-2 px-3 text-heading md:p-0 [&.active]:text-primary hover:text-primary"
                   aria-current="page"
                 >
                   {m.menu_services()}
@@ -60,7 +60,7 @@ export default function Header() {
               <li>
                 <Link
                   to="/gallery"
-                  className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent [&.active]:text-primary"
+                  className="block py-2 px-3 text-heading md:p-0 [&.active]:text-primary hover:text-primary"
                 >
                   {m.menu_gallery()}
                 </Link>
@@ -68,7 +68,7 @@ export default function Header() {
               <li>
                 <Link
                   to="/contact"
-                  className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent [&.active]:text-primary"
+                  className="block py-2 px-3 text-heading md:p-0 [&.active]:text-primary hover:text-primary"
                 >
                   {m.menu_contact()}
                 </Link>
@@ -80,4 +80,6 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};
+
+export default Header;

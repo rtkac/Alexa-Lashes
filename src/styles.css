@@ -1,14 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
+
 
 @custom-variant dark (&:is(.dark *));
 
 body {
   @apply m-0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Roboto Flex", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -28,7 +29,7 @@ code {
   --primary: #ee2b6c;
   --primary-light: #f6e1e8;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
+  --secondary: #f8f6f6;
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
   --muted-foreground: oklch(0.552 0.016 285.938);
@@ -141,7 +142,9 @@ code {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white py-3 px-4 rounded-md hover:brightness-120 font-medium transition;
+    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold;
   }
-
+  .btn-secondary {
+    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold;
+  }
 }

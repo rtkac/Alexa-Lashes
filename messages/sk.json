@@ -1,11 +1,17 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "hello": "Ahoj, Welt!",
-  "greeting": "Hej {name}, ako sa mas?",
+  "meta_title": "Mihalnice Bratislava | Alexa Lashes",
+  "meta_desc": "Profesionálne predlžovanie mihalníc a kozmetické služby v Bratislave. Zvýraznite svoju prirodzenú krásu s Alexa Lashes.",
   "notFound_title": "Oops! Stránka sa nenašla.",
   "notFound_desc": "Zdá sa, že stránka, ktorú hľadáte, neexistuje alebo bola presunutá.\n Skúste sa vrátiť na domovskú stránku alebo použiť navigačné menu.",
   "notFound_link": "Späť na domovskú stránku",
+  "menu_home": "Domov",
   "menu_services": "Služby",
   "menu_gallery": "Galéria",
-  "menu_contact": "Kontakt"
+  "menu_contact": "Kontakt",
+  "footer_rights": "© {date} Alexa Lashses s.r.o. Všetky práva vyhradené.",
+  "banner_title": "Objavte krásu vašich očí v Alexa Lashes",
+  "banner_desc": "Doprajte si profesionálnu starostlivosť o mihalnice, ktoré podčiarknu vašu jedinečnosť.",
+  "banner_link_services": "Zobraziť služby",
+  "banner_link_contact": "Kontakt"
 }

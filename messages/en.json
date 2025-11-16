@@ -1,11 +1,17 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "hello": "Hello, world!",
-  "greeting": "Hey {name}, how are you?",
+  "meta_title": "Eyelashes Bratislava | Alexa Lashes",
+  "meta_desc": "Professional eyelash extensions and beauty services in Bratislava. Enhance your natural beauty with Alexa Lashes.",
   "notFound_title": "Oops! Page not found.",
   "notFound_desc": "It seems the page you are looking for does not exist or has been moved. Try going back to the homepage or using the navigation menu.",
   "notFound_link": "Go back to the homepage",
+  "menu_home": "Home",
   "menu_services": "Services",
   "menu_gallery": "Gallery",
-  "menu_contact": "Contact"
+  "menu_contact": "Contact",
+  "footer_rights": "© {date} Alexa Lashses s.r.o. All rights reserved.",
+  "banner_title": "Discover the beauty of your eyes at Alexa Lashes",
+  "banner_desc": "Treat yourself to professional eyelash care that highlights your uniqueness.",
+  "banner_link_services": "View Services",
+  "banner_link_contact": "Contact"
 }
