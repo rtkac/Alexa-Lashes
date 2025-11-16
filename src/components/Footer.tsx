@@ -1,27 +1,12 @@
-import { Link } from "@tanstack/react-router";
-
 import { m } from "@/paraglide/messages";
+import { address, email, telephoneNumber, whatsAppNumber } from "@/types";
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-primary-light">
-      <div className="py-10">
-        <div className="max-w-7xl mx-auto px-4 text-center text-sm md:text-base text-neutral-700 space-y-10">
-          <ul className="flex justify-between max-w-100 mx-auto">
-            <li>
-              <Link to="/">{m.menu_home}</Link>
-            </li>
-            <li>
-              <Link to="/services">{m.menu_services}</Link>
-            </li>
-            <li>
-              <Link to="/gallery">{m.menu_gallery}</Link>
-            </li>
-            <li>
-              <Link to="/contact">{m.menu_contact}</Link>
-            </li>
-          </ul>
-          <ul className="flex justify-center space-x-5">
+    <footer className="w-full">
+      <div className="py-10 border-t border-primary-light">
+        <div className="max-w-6xl mx-auto px-4 text-center text-sm md:text-base text-neutral-700 space-y-10">
+          <ul className="flex justify-center space-x-10 md:space-x-5">
             <li>
               <a
                 href="https://instagram.com/alexa_lashes_bratislava"
@@ -55,7 +40,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="https://wa.me/421908123456" aria-label="Chat on WhatsApp">
+              <a href={`https://wa.me/${whatsAppNumber}`} aria-label="Chat on WhatsApp">
                 <svg
                   role="img"
                   viewBox="0 0 24 24"
@@ -69,7 +54,47 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-          <p>{m.footer_rights({ date: new Date().getFullYear() })}</p>
+        </div>
+      </div>
+      <div className="py-10 border-t border-primary-light">
+        <div className="max-w-6xl mx-auto px-4 text-sm md:text-base text-neutral-700 space-y-10">
+          <div className="grid md:grid-cols-3 md:space-x-10 space-y-10 text-center md:text-left md:space-y-0">
+            <div>
+              <p className="font-bold mb-2">{m.footer_alexa_lashes_title()}</p>
+              <p className="text-sm text-neutral-500">{m.footer_alexa_lashes_desc()}</p>
+            </div>
+            <div>
+              <p className="font-bold mb-2">{m.footer_contact_title()}</p>
+              <p className="text-sm text-neutral-500 mb-1">
+                <a href={`mailto:${email}`}>{email}</a>
+              </p>
+              <p className="text-sm text-neutral-500 mb-1">
+                <a href={`tel:${telephoneNumber}`}>{telephoneNumber}</a>
+              </p>
+              <p className="text-sm text-neutral-500 mb-1">
+                <a
+                  href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {address}
+                </a>
+              </p>
+            </div>
+            <div>
+              <p className="font-bold mb-2">{m.footer_opening_hours_title()}</p>
+              <p className="text-sm text-neutral-500 mb-1">{m.footer_opening_hours_weekdays()}</p>
+              <p className="text-sm text-neutral-500 mb-1">{m.footer_opening_hours_saturday()}</p>
+              <p className="text-sm text-neutral-500 mb-1">{m.footer_opening_hours_sunday()}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="py-10 border-t border-primary-light">
+        <div className="max-w-6xl mx-auto px-4 text-center text-sm md:text-base text-neutral-700 space-y-10">
+          <p className="text-neutral-400 text-sm">
+            {m.footer_rights({ date: new Date().getFullYear() })}
+          </p>
         </div>
       </div>
     </footer>

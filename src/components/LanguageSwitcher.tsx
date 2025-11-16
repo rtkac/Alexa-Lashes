@@ -10,7 +10,7 @@ const LanguageSwitcher = () => {
           <button
             type="button"
             onClick={() => setLocale(locale)}
-            className={`cursor-pointer hover:text-primary font-bold ${locale === getLocale() ? "text-primary" : "text-heading"}`}
+            className={`cursor-pointer hover:text-primary ${locale === getLocale() ? "text-primary" : "text-heading"}`}
           >
             {locale.toUpperCase()}
           </button>
