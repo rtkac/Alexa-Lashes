@@ -54,5 +54,7 @@
   "contact_opening_hours_saturday_hours": "Closed",
   "contact_opening_hours_sunday": "Sunday:",
   "contact_opening_hours_sunday_hours": "Closed",
-  "contact_socials": "Follow us"
+  "contact_socials": "Follow us",
+  "qr_code_title": "Save our contact",
+  "qr_code_desc": "Scan the QR code and easily save our contact details directly to your phone."
 }

@@ -54,5 +54,7 @@
   "contact_opening_hours_saturday_hours": "Zatvorené",
   "contact_opening_hours_sunday": "Nedeľa:",
   "contact_opening_hours_sunday_hours": "Zatvorené",
-  "contact_socials": "Sledujte nás"
+  "contact_socials": "Sledujte nás",
+  "qr_code_title": "Uložte si náš kontakt",
+  "qr_code_desc": "Naskenujte QR kód a jednoducho si uložte naše kontaktné údaje priamo do svojho telefónu."
 }

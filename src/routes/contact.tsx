@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
 import BusinessMap from "@/components/BusinessMap";
+import QrCode from "@/components/QrCode";
 import { m } from "@/paraglide/messages";
 import { address, email, telephoneNumber, whatsAppNumber } from "@/types";
 
@@ -16,7 +17,7 @@ function RouteComponent() {
         <h1 className="mb-2.5 font-bold text-xl md:text-4xl">{m.contact_title()}</h1>
         <p className="mb-10">{m.contact_desc()}</p>
       </div>
-      <div className="grid gap-10 md:grid-cols-5">
+      <div className="grid gap-15 md:grid-cols-5">
         <div className="md:col-span-3">
           <BusinessMap />
         </div>
@@ -114,6 +115,7 @@ function RouteComponent() {
           </div>
         </div>
       </div>
+      <QrCode />
     </div>
   );
 }
