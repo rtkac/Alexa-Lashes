@@ -62,7 +62,7 @@ const Header = () => {
           >
             <ul
               className={cn(
-                "border-primary-light border-t text-center font-medium md:mt-0 md:mr-8 md:flex md:flex-row md:space-x-8 md:border-0 md:bg-neutral-primary",
+                "border-primary-light border-t text-center font-medium md:mt-0 md:mr-20 md:flex md:flex-row md:space-x-8 md:border-0 md:bg-neutral-primary",
                 { "mb-10 space-y-5 pt-10 md:mb-0 md:space-y-0 md:pt-0": open },
               )}
             >

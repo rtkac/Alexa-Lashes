@@ -31,6 +31,7 @@
   "benefits_3_title": "Pleasant Environment",
   "benefits_3_desc": "With us, you not only beautify your eyelashes but also perfectly relax.",
   "home_gallery_title": "Get inspired by our work",
+  "home_gallery_link": "View the full gallery",
   "home_reviews_title": "What our satisfied customers say about us",
   "reviews_1_name": "Eva Nováková",
   "reviews_1_desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis.",
@@ -40,5 +41,18 @@
   "reviews_3_desc": "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis.",
   "cta_title": "Are you ready for a transformation at Alexa Lashes?",
   "cta_desc": "Don't wait and give yourself the look you've always wanted. Book your appointment today.",
-  "cta_link": "Book an appointment now"
+  "cta_link": "Book an appointment now",
+  "gallery_title": "Gallery of our work at Alexa Lashes",
+  "gallery_desc": "Take a look at the transformations we create in our salon. Get inspired by our successful work for your future perfect look.",
+  "contact_title":"Contact Us",
+  "contact_desc":"We look forward to seeing you in our salon. You can find us at the address below, or contact us by phone or email.",
+  "contact_info": "Contact Us",
+  "contact_opening_hours": "Opening Hours",
+  "contact_opening_hours_weekdays": "Monday - Friday:",
+  "contact_opening_hours_weekdays_hours": "9:00 - 17:00",
+  "contact_opening_hours_saturday": "Saturday:",
+  "contact_opening_hours_saturday_hours": "Closed",
+  "contact_opening_hours_sunday": "Sunday:",
+  "contact_opening_hours_sunday_hours": "Closed",
+  "contact_socials": "Follow us"
 }

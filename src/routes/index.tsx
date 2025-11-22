@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from "lucide-react";
 
 import Banner from "@/components/Banner";
@@ -66,9 +66,16 @@ function RouteComponent() {
         <p>{m.home_welcome_desc()}</p>
       </div>
       <Benefits data={benefits} />
-      <div>
-        <h2 className="mb-6 font-bold text-xl md:text-2xl">{m.home_gallery_title()}</h2>
-        <PreviewGallery />
+      <div className="mb-18">
+        <div className="mb-6">
+          <h2 className="mb-6 font-bold text-xl md:text-2xl">{m.home_gallery_title()}</h2>
+          <PreviewGallery />
+        </div>
+        <div className="flex justify-center">
+          <Link to="/gallery" className="btn-primary">
+            {m.home_gallery_link()}
+          </Link>
+        </div>
       </div>
       <div>
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">{m.home_reviews_title()}</h2>

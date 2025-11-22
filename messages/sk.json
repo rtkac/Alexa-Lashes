@@ -31,6 +31,7 @@
   "benefits_3_title": "Prijemné prostredie",
   "benefits_3_desc": "U nás si nielen skrášlite mihalnice, ale aj dokonale zrelaxujete.",
   "home_gallery_title": "Inšpirujte sa našou prácou ",
+  "home_gallery_link": "Zobraziť celú galériu",
   "home_reviews_title": "Čo o nás hovoria naše spokojné zákazníčky",
   "reviews_1_name": "Eva Nováková",
   "reviews_1_desc": "\"Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis.\"",
@@ -40,5 +41,18 @@
   "reviews_3_desc": "\"Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis.\"",
   "cta_title": "Ste pripravená na premenu v Alexa Lashes?",
   "cta_desc": "Nečakajte a doprajte si pohľad, po ktorom túžite. Rezervujte si svoj termín ešte dnes.",
-  "cta_link": "Rezervovať termín teraz"
+  "cta_link": "Rezervovať termín teraz",
+  "gallery_title": "Galéria našich prác v Alexa Lashes",
+  "gallery_desc": "Pozrite sa na premeny, ktoré v našom salóne vytvárame. Inšpirujte sa našimi úspechmi prácami pre váš budúci dokonalý vzhľad.",
+  "contact_title":"Kontaktujte nás",
+  "contact_desc":"Radi vás uvidíme v našom salóne. Nájdete nás na adrese nižšie, alebo nás kontaktujte telefonicky či e-mailom.",
+  "contact_info": "Kontaktujte nás",
+  "contact_opening_hours": "Otváracie hodiny",
+  "contact_opening_hours_weekdays": "Pondelok - Piatok:",
+  "contact_opening_hours_weekdays_hours": "9:00 - 17:00",
+  "contact_opening_hours_saturday": "Sobota:",
+  "contact_opening_hours_saturday_hours": "Zatvorené",
+  "contact_opening_hours_sunday": "Nedeľa:",
+  "contact_opening_hours_sunday_hours": "Zatvorené",
+  "contact_socials": "Sledujte nás"
 }
