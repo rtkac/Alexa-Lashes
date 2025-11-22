@@ -4,6 +4,7 @@ import { AwardIcon, HeartIcon, ShieldCheckIcon } from "lucide-react";
 import Banner from "@/components/Banner";
 import Benefits from "@/components/Benefits";
 import Cta from "@/components/Cta";
+import PreviewGallery from "@/components/PreviewGallery";
 import Reviews from "@/components/Reviews";
 import { m } from "@/paraglide/messages";
 import type { Benefit, Review } from "@/types";
@@ -66,7 +67,11 @@ function RouteComponent() {
       </div>
       <Benefits data={benefits} />
       <div>
-        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">{m.reviews_title()}</h2>
+        <h2 className="mb-6 font-bold text-xl md:text-2xl">{m.home_gallery_title()}</h2>
+        <PreviewGallery />
+      </div>
+      <div>
+        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">{m.home_reviews_title()}</h2>
         <Reviews data={reviews} />
       </div>
       <Cta />
