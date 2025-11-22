@@ -18,7 +18,9 @@ const Header = () => {
   };
 
   return (
-    <header className={cn("w-full border-primary-light border-b", { "fixed md:relative": open })}>
+    <header
+      className={cn("z-2 w-full border-primary-light border-b", { "fixed md:relative": open })}
+    >
       <nav>
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
           <Link to="/" className="z-10 flex items-center space-x-3" onClick={closeMenu}>
@@ -66,6 +68,15 @@ const Header = () => {
                 { "mb-10 space-y-5 pt-10 md:mb-0 md:space-y-0 md:pt-0": open },
               )}
             >
+              <li>
+                <Link
+                  to="/"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  onClick={closeMenu}
+                >
+                  {m.menu_home()}
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/services"
