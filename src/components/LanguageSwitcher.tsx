@@ -12,9 +12,9 @@ const LanguageSwitcher = () => {
             onClick={() => setLocale(locale)}
             className={`cursor-pointer text-xl hover:text-primary md:text-base ${locale === getLocale() ? "text-primary" : "text-heading"}`}
           >
-            {locale.toUpperCase()}
+            {locale.toLocaleLowerCase()}
           </button>
-          {index < locales.length - 1 && <span className="text-xl md:text-base">|</span>}
+          {index < locales.length - 1 && <span className="text-xl md:text-base">/</span>}
         </Fragment>
       ))}
     </div>
