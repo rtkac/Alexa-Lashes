@@ -4,9 +4,9 @@ import { m } from "@/paraglide/messages";
 
 const Banner = () => {
   return (
-    <div className="bg-[url(https://placehold.co/1500x800/656e6c/656e6c)] bg-cover bg-center rounded-md text-center text-white min-h-100 md:min-h-130 flex items-center justify-center p-6 mb-13">
+    <div className="mb-13 flex min-h-100 items-center justify-center rounded-md bg-[url(https://placehold.co/1500x800/656e6c/656e6c)] bg-center bg-cover p-6 text-center text-white md:min-h-130">
       <div className="h-full">
-        <h1 className="text-2xl md:text-4xl font-bold mb-3">{m.banner_title()}</h1>
+        <h1 className="mb-3 font-bold text-2xl md:text-4xl">{m.banner_title()}</h1>
         <p className="mb-6">{m.banner_desc()}</p>
         <div className="space-y-4">
           <Link to="/services" className="btn-primary mx-2">

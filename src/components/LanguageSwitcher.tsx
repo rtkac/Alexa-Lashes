@@ -4,17 +4,17 @@ import { getLocale, locales, setLocale } from "@/paraglide/runtime";
 
 const LanguageSwitcher = () => {
   return (
-    <div className="font-medium flex justify-center mt-4 md:mt-0 space-x-2">
+    <div className="flex justify-center space-x-2 font-medium">
       {locales.map((locale, index) => (
         <Fragment key={locale}>
           <button
             type="button"
             onClick={() => setLocale(locale)}
-            className={`cursor-pointer hover:text-primary ${locale === getLocale() ? "text-primary" : "text-heading"}`}
+            className={`cursor-pointer text-xl hover:text-primary md:text-base ${locale === getLocale() ? "text-primary" : "text-heading"}`}
           >
             {locale.toUpperCase()}
           </button>
-          {index < locales.length - 1 && <span>|</span>}
+          {index < locales.length - 1 && <span className="text-xl md:text-base">|</span>}
         </Fragment>
       ))}
     </div>

@@ -4,8 +4,8 @@ import { address, email, telephoneNumber, whatsAppNumber } from "@/types";
 const Footer = () => {
   return (
     <footer className="w-full">
-      <div className="py-10 border-t border-primary-light">
-        <div className="max-w-6xl mx-auto px-4 text-center text-sm md:text-base text-neutral-700 space-y-10">
+      <div className="border-primary-light border-t py-10">
+        <div className="mx-auto max-w-6xl space-y-10 px-4 text-center text-neutral-700 text-sm md:text-base">
           <ul className="flex justify-center space-x-10 md:space-x-5">
             <li>
               <a
@@ -40,7 +40,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href={`https://wa.me/${whatsAppNumber}`} aria-label="Chat on WhatsApp">
+              <a href={whatsAppNumber} aria-label="Chat on WhatsApp">
                 <svg
                   role="img"
                   viewBox="0 0 24 24"
@@ -56,22 +56,22 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="py-10 border-t border-primary-light">
-        <div className="max-w-6xl mx-auto px-4 text-sm md:text-base text-neutral-700 space-y-10">
-          <div className="grid md:grid-cols-3 md:space-x-10 space-y-10 text-center md:text-left md:space-y-0">
+      <div className="border-primary-light border-t py-10">
+        <div className="mx-auto max-w-6xl space-y-10 px-4 text-neutral-700 text-sm md:text-base">
+          <div className="grid space-y-10 text-center md:grid-cols-3 md:space-x-10 md:space-y-0 md:text-left">
             <div>
-              <p className="font-bold mb-2">{m.footer_alexa_lashes_title()}</p>
-              <p className="text-sm text-neutral-500">{m.footer_alexa_lashes_desc()}</p>
+              <p className="mb-2 font-bold">{m.footer_alexa_lashes_title()}</p>
+              <p className="text-neutral-500 text-sm">{m.footer_alexa_lashes_desc()}</p>
             </div>
             <div>
-              <p className="font-bold mb-2">{m.footer_contact_title()}</p>
-              <p className="text-sm text-neutral-500 mb-1">
+              <p className="mb-2 font-bold">{m.footer_contact_title()}</p>
+              <p className="mb-1 text-neutral-500 text-sm">
                 <a href={`mailto:${email}`}>{email}</a>
               </p>
-              <p className="text-sm text-neutral-500 mb-1">
+              <p className="mb-1 text-neutral-500 text-sm">
                 <a href={`tel:${telephoneNumber}`}>{telephoneNumber}</a>
               </p>
-              <p className="text-sm text-neutral-500 mb-1">
+              <p className="mb-1 text-neutral-500 text-sm">
                 <a
                   href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
                   target="_blank"
@@ -82,16 +82,16 @@ const Footer = () => {
               </p>
             </div>
             <div>
-              <p className="font-bold mb-2">{m.footer_opening_hours_title()}</p>
-              <p className="text-sm text-neutral-500 mb-1">{m.footer_opening_hours_weekdays()}</p>
-              <p className="text-sm text-neutral-500 mb-1">{m.footer_opening_hours_saturday()}</p>
-              <p className="text-sm text-neutral-500 mb-1">{m.footer_opening_hours_sunday()}</p>
+              <p className="mb-2 font-bold">{m.footer_opening_hours_title()}</p>
+              <p className="mb-1 text-neutral-500 text-sm">{m.footer_opening_hours_weekdays()}</p>
+              <p className="mb-1 text-neutral-500 text-sm">{m.footer_opening_hours_saturday()}</p>
+              <p className="mb-1 text-neutral-500 text-sm">{m.footer_opening_hours_sunday()}</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="py-10 border-t border-primary-light">
-        <div className="max-w-6xl mx-auto px-4 text-center text-sm md:text-base text-neutral-700 space-y-10">
+      <div className="border-primary-light border-t py-10">
+        <div className="mx-auto max-w-6xl space-y-10 px-4 text-center text-neutral-700 text-sm md:text-base">
           <p className="text-neutral-400 text-sm">
             {m.footer_rights({ date: new Date().getFullYear() })}
           </p>

@@ -11,15 +11,15 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
   console.error("DefaultCatchBoundary Error:", error);
 
   return (
-    <div className="min-w-0 flex-1 p-4 flex flex-col items-center justify-center gap-6">
+    <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-6 p-4">
       <ErrorComponent error={error} />
-      <div className="flex gap-2 items-center flex-wrap">
+      <div className="flex flex-wrap items-center gap-2">
         <button
           type="button"
           onClick={() => {
             router.invalidate();
           }}
-          className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded text-white uppercase font-extrabold`}
+          className={`rounded bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
         >
           error
           {/* <Trans>Try Again</Trans> */}
@@ -27,14 +27,14 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
         {isRoot ? (
           <Link
             to="/"
-            className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded text-white uppercase font-extrabold`}
+            className={`rounded bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
           >
             {/* <Trans>Home</Trans> */}
           </Link>
         ) : (
           <Link
             to="/"
-            className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded text-white uppercase font-extrabold`}
+            className={`rounded bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
             onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
               e.preventDefault();
               window.history.back();

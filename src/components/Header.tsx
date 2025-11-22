@@ -3,6 +3,7 @@ import { useId, useState } from "react";
 
 import LanguageSwitcher from "./LanguageSwitcher";
 
+import { cn } from "@/lib/utils";
 import { m } from "@/paraglide/messages";
 import logo from "/logo.svg";
 
@@ -10,49 +11,66 @@ const Header = () => {
   const menuId = useId();
   const [open, setOpen] = useState(false);
 
+  const closeMenu = () => {
+    if (open) {
+      setOpen(false);
+    }
+  };
+
   return (
-    <header className="w-full border-b border-primary-light">
+    <header className={cn("w-full border-primary-light border-b", { "fixed md:relative": open })}>
       <nav>
-        <div className="max-w-6xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link to="/" className="flex items-center space-x-3">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
+          <Link to="/" className="z-10 flex items-center space-x-3" onClick={closeMenu}>
             <img src={logo} alt="Alexa Lashes Logo" className="h-9" />
-            <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">
+            <span className="self-center whitespace-nowrap font-semibold text-heading text-xl">
               Alexa Lashes
             </span>
           </Link>
           <button
-            data-collapse-toggle={menuId}
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
-            aria-controls={menuId}
-            aria-expanded="false"
+            className="relative z-10 h-10 w-10 cursor-pointer rounded bg-primary focus:outline-none md:hidden"
             onClick={() => setOpen((prev) => !prev)}
           >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-6 h-6"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeWidth="2"
-                d="M5 7h14M5 12h14M5 17h14"
-              />
-            </svg>
+            <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-4.5 block w-5 transform">
+              <span
+                className={cn(
+                  "absolute block h-0.5 w-6 transform bg-current text-white transition duration-250 ease-in-out",
+                  { "rotate-45": open, "-translate-y-1.5": !open },
+                )}
+              ></span>
+              <span
+                className={cn(
+                  "absolute block h-0.5 w-6 transform bg-current text-white transition duration-250 ease-in-out",
+                  { "opacity-0": open },
+                )}
+              ></span>
+              <span
+                className={cn(
+                  "absolute block h-0.5 w-6 transform bg-current text-white transition duration-250 ease-in-out",
+                  { "-rotate-45": open, "translate-y-1.5": !open },
+                )}
+              ></span>
+            </div>
           </button>
-          <div className={`${open ? "block" : "hidden"} w-full md:flex md:w-auto`} id={menuId}>
-            <ul className="font-medium md:flex text-center mt-4 md:mt-0 mr-0 md:mr-8 md:flex-row md:space-x-8 md:bg-neutral-primary">
+          <div
+            className={cn("w-full md:flex md:w-auto md:pt-0", {
+              "fixed top-0 left-0 h-full bg-background pt-18 md:relative md:bg-transparent": open,
+              hidden: !open,
+            })}
+            id={menuId}
+          >
+            <ul
+              className={cn(
+                "border-primary-light border-t text-center font-medium md:mt-0 md:mr-8 md:flex md:flex-row md:space-x-8 md:border-0 md:bg-neutral-primary",
+                { "mb-10 space-y-5 pt-10 md:mb-0 md:space-y-0 md:pt-0": open },
+              )}
+            >
               <li>
                 <Link
                   to="/services"
-                  className="block py-2 px-3 text-heading md:p-0 [&.active]:text-primary hover:text-primary"
-                  aria-current="page"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  onClick={closeMenu}
                 >
                   {m.menu_services()}
                 </Link>
@@ -60,8 +78,8 @@ const Header = () => {
               <li>
                 <Link
                   to="/trainings"
-                  className="block py-2 px-3 text-heading md:p-0 [&.active]:text-primary hover:text-primary"
-                  aria-current="page"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  onClick={closeMenu}
                 >
                   {m.menu_trainings()}
                 </Link>
@@ -69,7 +87,8 @@ const Header = () => {
               <li>
                 <Link
                   to="/gallery"
-                  className="block py-2 px-3 text-heading md:p-0 [&.active]:text-primary hover:text-primary"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  onClick={closeMenu}
                 >
                   {m.menu_gallery()}
                 </Link>
@@ -77,7 +96,8 @@ const Header = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="block py-2 px-3 text-heading md:p-0 [&.active]:text-primary hover:text-primary"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  onClick={closeMenu}
                 >
                   {m.menu_contact()}
                 </Link>
