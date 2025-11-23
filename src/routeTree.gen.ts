@@ -9,11 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TrainingsRouteImport } from './routes/trainings'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TrainingIndexRouteImport } from './routes/training/index'
+import { Route as TrainingBasicRouteImport } from './routes/training/basic'
+import { Route as TrainingAdvancedRouteImport } from './routes/training/advanced'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
@@ -22,11 +24,6 @@ import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
-const TrainingsRoute = TrainingsRouteImport.update({
-  id: '/trainings',
-  path: '/trainings',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -45,6 +42,21 @@ const ContactRoute = ContactRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingIndexRoute = TrainingIndexRouteImport.update({
+  id: '/training/',
+  path: '/training/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingBasicRoute = TrainingBasicRouteImport.update({
+  id: '/training/basic',
+  path: '/training/basic',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingAdvancedRoute = TrainingAdvancedRouteImport.update({
+  id: '/training/advanced',
+  path: '/training/advanced',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
@@ -88,7 +100,9 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/services': typeof ServicesRoute
-  '/trainings': typeof TrainingsRoute
+  '/training/advanced': typeof TrainingAdvancedRoute
+  '/training/basic': typeof TrainingBasicRoute
+  '/training': typeof TrainingIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -102,7 +116,9 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/services': typeof ServicesRoute
-  '/trainings': typeof TrainingsRoute
+  '/training/advanced': typeof TrainingAdvancedRoute
+  '/training/basic': typeof TrainingBasicRoute
+  '/training': typeof TrainingIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -117,7 +133,9 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/services': typeof ServicesRoute
-  '/trainings': typeof TrainingsRoute
+  '/training/advanced': typeof TrainingAdvancedRoute
+  '/training/basic': typeof TrainingBasicRoute
+  '/training/': typeof TrainingIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -133,7 +151,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/services'
-    | '/trainings'
+    | '/training/advanced'
+    | '/training/basic'
+    | '/training'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -147,7 +167,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/services'
-    | '/trainings'
+    | '/training/advanced'
+    | '/training/basic'
+    | '/training'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -161,7 +183,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/services'
-    | '/trainings'
+    | '/training/advanced'
+    | '/training/basic'
+    | '/training/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -176,7 +200,9 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   ServicesRoute: typeof ServicesRoute
-  TrainingsRoute: typeof TrainingsRoute
+  TrainingAdvancedRoute: typeof TrainingAdvancedRoute
+  TrainingBasicRoute: typeof TrainingBasicRoute
+  TrainingIndexRoute: typeof TrainingIndexRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
@@ -188,13 +214,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/trainings': {
-      id: '/trainings'
-      path: '/trainings'
-      fullPath: '/trainings'
-      preLoaderRoute: typeof TrainingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -221,6 +240,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training/': {
+      id: '/training/'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training/basic': {
+      id: '/training/basic'
+      path: '/training/basic'
+      fullPath: '/training/basic'
+      preLoaderRoute: typeof TrainingBasicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training/advanced': {
+      id: '/training/advanced'
+      path: '/training/advanced'
+      fullPath: '/training/advanced'
+      preLoaderRoute: typeof TrainingAdvancedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/start/server-funcs': {
@@ -280,7 +320,9 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   ServicesRoute: ServicesRoute,
-  TrainingsRoute: TrainingsRoute,
+  TrainingAdvancedRoute: TrainingAdvancedRoute,
+  TrainingBasicRoute: TrainingBasicRoute,
+  TrainingIndexRoute: TrainingIndexRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,

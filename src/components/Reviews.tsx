@@ -1,4 +1,3 @@
-import * as Avatar from "@radix-ui/react-avatar";
 import { StarIcon } from "lucide-react";
 
 import type { Review } from "@/types";
@@ -9,7 +8,7 @@ type ReviewsProps = {
 
 const Reviews = ({ data }: ReviewsProps) => {
   return (
-    <div className="mb-18 grid gap-4 md:grid-cols-3">
+    <div className="grid gap-4 md:grid-cols-3">
       {data.map((review) => (
         <div
           key={review.name}
@@ -26,19 +25,9 @@ const Reviews = ({ data }: ReviewsProps) => {
             <p className="text-neutral-600 text-sm">{review.description}</p>
           </div>
           <div className="flex items-center space-x-2.5">
-            <Avatar.Root className="inline-flex size-[35px] select-none items-center justify-center overflow-hidden rounded-full bg-primary-light align-middle">
-              <Avatar.Image
-                className="size-full rounded-[inherit] object-cover"
-                src="/logo.svg"
-                alt={review.name}
-              />
-              <Avatar.Fallback
-                className="flex size-full items-center justify-center bg-white font-medium text-[15px] leading-1"
-                delayMs={600}
-              >
-                CT
-              </Avatar.Fallback>
-            </Avatar.Root>
+            <div className="size-[35px] overflow-hidden rounded-full">
+              <img src="/logo.svg" alt={review.name} className="h-full w-full object-cover" />
+            </div>
             <h3 className="font-bold text-sm">{review.name}</h3>
           </div>
         </div>

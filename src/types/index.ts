@@ -13,3 +13,10 @@ export type Review = {
   name: string;
   description: string;
 };
+
+export type Service = {
+  name: string;
+  description: string;
+  duration: string;
+  price: string;
+};

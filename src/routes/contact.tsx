@@ -7,6 +7,17 @@ import { m } from "@/paraglide/messages";
 import { address, email, telephoneNumber, whatsAppNumber } from "@/types";
 
 export const Route = createFileRoute("/contact")({
+  head: () => ({
+    meta: [
+      {
+        title: m.meta_contact_title(),
+      },
+      {
+        name: "description",
+        content: m.meta_contact_desc(),
+      },
+    ],
+  }),
   component: RouteComponent,
 });
 
@@ -14,7 +25,7 @@ function RouteComponent() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-8 max-w-180 text-center">
-        <h1 className="mb-2.5 font-bold text-xl md:text-4xl">{m.contact_title()}</h1>
+        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl">{m.contact_title()}</h1>
         <p className="mb-10">{m.contact_desc()}</p>
       </div>
       <div className="grid gap-15 md:grid-cols-5">
