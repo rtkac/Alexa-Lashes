@@ -60,15 +60,24 @@ export const Route = createFileRoute("/")({
 function RouteComponent() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <Banner />
-      <div className="mb-8 max-w-180">
+      <Banner
+        title={m.banner_title()}
+        description={m.banner_desc()}
+        primaryAction={{ link: "/services", label: m.banner_link_services() }}
+        secondaryAction={{ link: "/contact", label: m.banner_link_contact() }}
+      />
+      <div className="mx-auto mb-8 max-w-180 text-center">
         <h2 className="mb-2.5 font-bold text-xl md:text-3xl">{m.home_welcome_title()}</h2>
         <p>{m.home_welcome_desc()}</p>
       </div>
-      <Benefits data={benefits} />
+      <div className="mb-18">
+        <Benefits data={benefits} />
+      </div>
       <div className="mb-18">
         <div className="mb-6">
-          <h2 className="mb-6 font-bold text-xl md:text-2xl">{m.home_gallery_title()}</h2>
+          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
+            {m.home_gallery_title()}
+          </h2>
           <PreviewGallery />
         </div>
         <div className="flex justify-center">
@@ -77,7 +86,7 @@ function RouteComponent() {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="mb-18">
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">{m.home_reviews_title()}</h2>
         <Reviews data={reviews} />
       </div>

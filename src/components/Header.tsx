@@ -88,7 +88,7 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/trainings"
+                  to="/training"
                   className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
                   onClick={closeMenu}
                 >

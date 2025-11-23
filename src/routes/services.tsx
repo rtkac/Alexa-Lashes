@@ -1,9 +1,73 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import Cta from "@/components/Cta";
+import Services from "@/components/Services";
+import { m } from "@/paraglide/messages";
+import type { Service } from "@/types";
+
+const services: Service[] = [
+  {
+    name: "Classic Lash Extensions",
+    description:
+      "Enhance your natural beauty with our classic lash extensions, providing a timeless and elegant look.",
+    duration: "60-90",
+    price: "50",
+  },
+  {
+    name: "Lash 2D Volume",
+    description:
+      "Enhance your natural beauty with our classic lash extensions, providing a timeless and elegant look.",
+    duration: "90",
+    price: "60",
+  },
+  {
+    name: "Lash 3D Volume",
+    description:
+      "Enhance your natural beauty with our classic lash extensions, providing a timeless and elegant look.",
+    duration: "90",
+    price: "70",
+  },
+];
+
 export const Route = createFileRoute("/services")({
+  head: () => ({
+    meta: [
+      {
+        title: m.meta_services_title(),
+      },
+      {
+        name: "description",
+        content: m.meta_services_desc(),
+      },
+    ],
+  }),
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  return <div></div>;
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-10">
+      <div className="mx-auto mb-14 max-w-180 text-center">
+        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl">{m.services_title()}</h1>
+        <p>{m.services_desc()}</p>
+      </div>
+      <div className="mb-14">
+        <h2 className="mb-4 border-primary-light border-b pb-2 font-bold text-xl md:text-2xl">
+          Predlzovanie a zahustovanie mihalnic
+        </h2>
+        <Services data={services} />
+      </div>
+      <div className="mb-18">
+        <h2 className="mb-4 border-primary-light border-b pb-2 font-bold text-xl md:text-2xl">
+          Doplnkove sluzby
+        </h2>
+        <Services data={services} />
+      </div>
+      <Cta
+        title={m.cta_services_title()}
+        description={m.cta_services_desc()}
+        buttonLabel={m.cta_services_button()}
+      />
+    </div>
+  );
 }
