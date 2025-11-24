@@ -20,3 +20,8 @@ export type Service = {
   duration: string;
   price: string;
 };
+
+export type Faq = {
+  question: string;
+  answer: string;
+};
