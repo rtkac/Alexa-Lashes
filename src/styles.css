@@ -149,9 +149,9 @@ code {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold;
+    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center;
   }
   .btn-secondary {
-    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold;
+    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center
   }
 }

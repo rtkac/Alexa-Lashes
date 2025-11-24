@@ -3,27 +3,46 @@ import { ArchiveIcon, AwardIcon, EyeClosedIcon } from "lucide-react";
 
 import Banner from "@/components/Banner";
 import Benefits from "@/components/Benefits";
-import FaqTraining from "@/components/FaqTraining";
+import Faqs from "@/components/Faqs";
 import Teacher from "@/components/Teacher";
 import TrainingPrice from "@/components/TrainingPrice";
 import { m } from "@/paraglide/messages";
-import type { Benefit } from "@/types";
+import type { Benefit, Faq } from "@/types";
 
 const benefits: Benefit[] = [
   {
-    icon: <AwardIcon className="mb-4 text-primary" />,
+    icon: <ArchiveIcon className="mb-4 text-primary" />,
     title: m.training_basic_benefit_1_title(),
     description: m.training_basic_benefit_1_desc(),
   },
   {
-    icon: <ArchiveIcon className="mb-4 text-primary" />,
+    icon: <EyeClosedIcon className="mb-4 text-primary" />,
     title: m.training_basic_benefit_2_title(),
     description: m.training_basic_benefit_2_desc(),
   },
   {
-    icon: <EyeClosedIcon className="mb-4 text-primary" />,
+    icon: <AwardIcon className="mb-4 text-primary" />,
     title: m.training_basic_benefit_3_title(),
     description: m.training_basic_benefit_3_desc(),
+  },
+];
+
+const faqs: Faq[] = [
+  {
+    question: m.training_basic_faq_1_title(),
+    answer: m.training_basic_faq_1_desc(),
+  },
+  {
+    question: m.training_basic_faq_2_title(),
+    answer: m.training_basic_faq_2_desc(),
+  },
+  {
+    question: m.training_basic_faq_3_title(),
+    answer: m.training_basic_faq_3_desc(),
+  },
+  {
+    question: m.training_basic_faq_4_title(),
+    answer: m.training_basic_faq_4_desc(),
   },
 ];
 
@@ -61,13 +80,13 @@ function RouteComponent() {
         <h2 className="mb-2.5 text-center font-bold text-xl md:text-2xl">
           {m.training_basic_faq_title()}
         </h2>
-        <FaqTraining variant="basic" />
+        <Faqs data={faqs} />
       </div>
       <div className="mb-18">
         <Teacher />
       </div>
       <div className="mb-8">
-        <TrainingPrice />
+        <TrainingPrice duration={m.training_basic_duration()} price={750} />
       </div>
     </div>
   );
