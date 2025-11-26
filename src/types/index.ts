@@ -25,3 +25,9 @@ export type Faq = {
   question: string;
   answer: string;
 };
+
+export type User = {
+  name: string;
+  email: string;
+  message: string;
+};

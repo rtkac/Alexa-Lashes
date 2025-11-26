@@ -11,7 +11,7 @@ const BusinessMap = () => {
         gestureHandling="greedy"
         disableDefaultUI
         mapId="map-id"
-        className="h-80 w-full md:h-full"
+        className="h-90 w-full"
       >
         <AdvancedMarker position={position} />
       </GoogleMap>
