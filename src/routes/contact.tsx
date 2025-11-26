@@ -29,15 +29,12 @@ function RouteComponent() {
         <h1 className="mb-2.5 font-bold text-2xl md:text-4xl">{m.contact_title()}</h1>
         <p className="mb-10">{m.contact_desc()}</p>
       </div>
-      <div>
-        <ContactForm />
-      </div>
-      <div className="grid gap-15 md:grid-cols-5">
-        <div className="md:col-span-3">
-          <BusinessMap />
+      <div className="mb-18 grid gap-15 md:grid-cols-7">
+        <div className="md:col-span-4">
+          <ContactForm />
         </div>
-        <div className="space-y-10 md:col-span-2">
-          <div>
+        <div className="space-y-10 md:col-span-3">
+          <div className="space-y-10">
             <h2 className="mb-3 font-bold text-lg">{m.contact_info()}</h2>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -130,7 +127,14 @@ function RouteComponent() {
           </div>
         </div>
       </div>
-      <QrCode />
+      <div className="mb-10 grid gap-15 md:grid-cols-7">
+        <div className="overflow-hidden rounded-md md:col-span-4">
+          <BusinessMap />
+        </div>
+        <div className="md:col-span-3">
+          <QrCode />
+        </div>
+      </div>
     </div>
   );
 }

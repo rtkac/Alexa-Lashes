@@ -29,6 +29,7 @@ code {
   --popover-foreground: oklch(0.145 0 0);
   --primary: #c4ad72;
   --primary-light: #f7f3e9;
+  --primary-disabled: #e1d6b8;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: #f4f2ee;
   --secondary-foreground: oklch(0.205 0 0);
@@ -101,6 +102,7 @@ code {
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
+  --color-primary-disabled: var(--primary-disabled);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -149,7 +151,7 @@ code {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center;
+    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center disabled:bg-primary-disabled disabled:hover:brightness-100;
   }
   .btn-secondary {
     @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center
