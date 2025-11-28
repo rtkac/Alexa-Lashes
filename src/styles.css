@@ -151,9 +151,12 @@ code {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center disabled:bg-primary-disabled disabled:hover:brightness-100;
+    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center disabled:bg-primary-disabled disabled:hover:brightness-100 cursor-pointer;
   }
   .btn-secondary {
-    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center
+    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center cursor-pointer;
+  }
+  .btn-tertiary {
+    @apply bg-white text-black inline-block py-2.5 px-4 rounded-md hover:bg-neutral-100 transition font-bold text-center cursor-pointer;
   }
 }
