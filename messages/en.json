@@ -15,6 +15,8 @@
   "server_error_desc": "We apologize, but an unexpected error occurred while loading this page. Please try again in a moment. If the problem persists, contact us.",
   "server_error_button": "Refresh page",
   "disclaimer_text": "We use analytics cookies to understand how visitors interact with our website and to help us improve it. You can choose to accept or decline these cookies.",
+  "disclaimer_accept_button": "accept",
+  "disclaimer_decline_button": "decline",
   "menu_home": "Home",
   "menu_services": "Services",
   "menu_trainings": "Trainings",
