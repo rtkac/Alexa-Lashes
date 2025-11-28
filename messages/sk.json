@@ -20,6 +20,7 @@
   "server_error_title": "Niečo sa pokazilo",
   "server_error_desc": "Ospravedlňujeme sa, ale pri načítaní tejto stránky nastala neočakávaná chyba. Skúste to prosím znova o chvíľu. Ak problém pretrváva, kontaktujte nás.",
   "server_error_button": "Obnoviť stránku",
+  "disclaimer_text": "Používame analytické cookies, aby sme pochopili, ako návštevníci interagujú s našou webovou stránkou a pomohli nám ju zlepšiť. Môžete si vybrať, či tieto cookies prijmete alebo odmietnete.",
   "menu_home": "Domov",
   "menu_services": "Služby",
   "menu_trainings": "Školenia",
