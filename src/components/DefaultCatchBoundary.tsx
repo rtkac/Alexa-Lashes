@@ -1,48 +1,21 @@
-import type { ErrorComponentProps } from "@tanstack/react-router";
-import { ErrorComponent, Link, rootRouteId, useMatch, useRouter } from "@tanstack/react-router";
+import { RefreshCcwIcon } from "lucide-react";
 
-export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
-  const router = useRouter();
-  const isRoot = useMatch({
-    strict: false,
-    select: (state) => state.id === rootRouteId,
-  });
+import { m } from "@/paraglide/messages";
 
-  console.error("DefaultCatchBoundary Error:", error);
-
+export function DefaultCatchBoundary() {
   return (
-    <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-6 p-4">
-      <ErrorComponent error={error} />
-      <div className="flex flex-wrap items-center gap-2">
+    <div className="mx-auto max-w-180 p-10 text-center md:p-20">
+      <h1 className="mb-4 font-bold text-xl md:text-3xl">{m.server_error_title()}</h1>
+      <p className="mb-7 md:mb-9">{m.server_error_desc()}</p>
+      <div>
         <button
           type="button"
-          onClick={() => {
-            router.invalidate();
-          }}
-          className={`rounded bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
+          className="btn-primary mx-auto flex max-w-max items-center justify-center gap-2"
+          onClick={() => window.location.reload()}
         >
-          error
-          {/* <Trans>Try Again</Trans> */}
+          <RefreshCcwIcon />
+          {m.server_error_button()}
         </button>
-        {isRoot ? (
-          <Link
-            to="/"
-            className={`rounded bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
-          >
-            {/* <Trans>Home</Trans> */}
-          </Link>
-        ) : (
-          <Link
-            to="/"
-            className={`rounded bg-gray-600 px-2 py-1 font-extrabold text-white uppercase dark:bg-gray-700`}
-            onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-              e.preventDefault();
-              window.history.back();
-            }}
-          >
-            {/* <Trans>Go Back</Trans> */}
-          </Link>
-        )}
       </div>
     </div>
   );
