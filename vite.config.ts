@@ -21,6 +21,9 @@ const config = defineConfig({
     netlify(),
     viteReact(),
   ],
+  ssr: {
+    noExternal: ["react-cookie-consent"],
+  }
 });
 
 export default config;
