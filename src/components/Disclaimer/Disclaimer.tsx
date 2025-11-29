@@ -9,19 +9,18 @@ const Disclaimer = () => (
     disableStyles
     enableDeclineButton
     expires={150}
-    location="bottom"
     buttonText={m.disclaimer_accept_button()}
     declineButtonText={m.disclaimer_decline_button()}
-    buttonClasses="btn-primary"
-    declineButtonClasses="btn-tertiary mr-4"
-    contentClasses="mb-4 max-w-3xl mx-auto text-sm md:text-base"
-    containerClasses="bg-primary-light fixed bottom-0 z-50 w-full p-4 text-center md:p-6"
-    buttonStyle={{}}
+    buttonClasses="btn-primary py-2 text-sm"
+    declineButtonClasses="btn-secondary py-2 text-sm mr-4"
+    contentClasses="mb-4"
+    containerClasses="bg-white border border-primary-light fixed right-0 z-50 max-w-96 p-4 md:p-6 rounded rounded-md m-4"
     onAccept={() => {
       initializeAnalytics();
     }}
   >
-    {m.disclaimer_text()}
+    <p className="mb-2 font-bold">{m.disclaimer_title()}</p>
+    <p className="text-sm">{m.disclaimer_desc()}</p>
   </CookieConsent>
 );
 
