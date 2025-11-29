@@ -1,6 +1,4 @@
-import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { useEffect } from "react";
 import { Cookies } from "react-cookie-consent";
 
@@ -55,17 +53,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <main className="min-h-[calc(100vh-300px)]">{children}</main>
         <Footer />
         <Disclaimer />
-        <TanStackDevtools
-          config={{
-            position: "bottom-right",
-          }}
-          plugins={[
-            {
-              name: "Tanstack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
         <Scripts />
       </body>
     </html>
