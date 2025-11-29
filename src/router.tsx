@@ -9,6 +9,7 @@ export function getRouter() {
   const router = createRouter({
     routeTree,
     defaultPreload: "intent",
+    scrollRestorationBehavior: "instant",
     defaultErrorComponent: DefaultCatchBoundary,
     defaultNotFoundComponent: NotFound,
     scrollRestoration: true,
