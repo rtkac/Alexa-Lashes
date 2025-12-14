@@ -43,6 +43,8 @@ export const submitForm = createServerFn({ method: "POST" })
       throw new Error("Message is required");
     } else if (message.length < 10) {
       throw new Error("Message must be at least 10 characters");
+    } else if (message.length > 280) {
+      throw new Error("Message must be at most 280 characters");
     }
 
     return {
