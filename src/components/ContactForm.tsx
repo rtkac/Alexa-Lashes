@@ -127,8 +127,10 @@ const ContactForm = () => {
                     !value
                       ? m.contact_form_message_required()
                       : value.length < 10
-                        ? m.contact_form_message_invalid()
-                        : undefined,
+                        ? m.contact_form_message_too_short()
+                        : value.length > 280
+                          ? m.contact_form_message_too_long()
+                          : undefined,
                 }}
               >
                 {(field) => (

@@ -16,7 +16,7 @@ type BannerProps = {
 const Banner = ({ title, description, primaryAction, secondaryAction }: BannerProps) => {
   return (
     <div className="mb-13 flex min-h-100 items-center justify-center rounded-md bg-[url(https://placehold.co/1500x800/656e6c/656e6c)] bg-center bg-cover p-6 text-center text-white md:min-h-130">
-      <div className="h-full w-180">
+      <div className="h-full w-200">
         <h1 className="mb-3 font-bold text-2xl md:text-4xl">{title}</h1>
         <p className="mb-6">{description}</p>
         <div className="space-y-4">
