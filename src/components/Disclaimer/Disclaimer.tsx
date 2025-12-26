@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import CookieConsent from "react-cookie-consent";
 
 import { initializeAnalytics } from "./analytics";
@@ -20,7 +21,13 @@ const Disclaimer = () => (
     }}
   >
     <p className="mb-2 font-bold">{m.disclaimer_title()}</p>
-    <p className="text-sm">{m.disclaimer_desc()}</p>
+    <p className="mb-2 text-sm">{m.disclaimer_desc()}</p>
+    <p className="text-sm">
+      {m.disclaimer_link_1()}&nbsp;
+      <Link to="/privacy-policy" className="text-sm underline">
+        {m.disclaimer_link_2()}
+      </Link>
+    </p>
   </CookieConsent>
 );
 

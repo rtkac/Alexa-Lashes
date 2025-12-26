@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 import Socials from "./Socials";
 
 import { m } from "@/paraglide/messages";
@@ -46,7 +48,10 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-primary-light border-t py-10">
-        <div className="mx-auto max-w-6xl space-y-10 px-4 text-center text-neutral-700 text-sm md:text-base">
+        <div className="mx-auto max-w-6xl px-4 text-center text-neutral-700 text-sm md:text-base">
+          <p className="mb-2 text-neutral-400 text-sm">
+            <Link to="/privacy-policy">{m.footer_personal_data_link()}</Link>
+          </p>
           <p className="text-neutral-400 text-sm">
             {m.footer_rights({ date: new Date().getFullYear() })}
           </p>
