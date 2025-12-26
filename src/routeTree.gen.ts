@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,6 +21,11 @@ import { Route as TrainingAdvancedRouteImport } from './routes/training/advanced
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
   '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/gallery'
+    | '/privacy-policy'
     | '/services'
     | '/training/advanced'
     | '/training/basic'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/gallery'
+    | '/privacy-policy'
     | '/services'
     | '/training/advanced'
     | '/training/basic'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/gallery'
+    | '/privacy-policy'
     | '/services'
     | '/training/advanced'
     | '/training/basic'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ServicesRoute: typeof ServicesRoute
   TrainingAdvancedRoute: typeof TrainingAdvancedRoute
   TrainingBasicRoute: typeof TrainingBasicRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ServicesRoute: ServicesRoute,
   TrainingAdvancedRoute: TrainingAdvancedRoute,
   TrainingBasicRoute: TrainingBasicRoute,
