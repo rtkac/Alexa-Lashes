@@ -66,7 +66,9 @@ function RouteComponent() {
         secondaryAction={{ link: "/contact", label: m.banner_link_contact() }}
       />
       <div className="mx-auto mb-8 max-w-180 text-center">
-        <h2 className="mb-2.5 font-bold text-xl md:text-3xl">{m.home_welcome_title()}</h2>
+        <h2 className="mb-2.5 font-bold text-xl md:text-3xl dark:text-primary">
+          {m.home_welcome_title()}
+        </h2>
         <p>{m.home_welcome_desc()}</p>
       </div>
       <div className="mb-18">
@@ -74,7 +76,7 @@ function RouteComponent() {
       </div>
       <div className="mb-18">
         <div className="mb-6">
-          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
+          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
             {m.home_gallery_title()}
           </h2>
           <PreviewGallery />
@@ -86,7 +88,9 @@ function RouteComponent() {
         </div>
       </div>
       <div className="mb-18">
-        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">{m.home_reviews_title()}</h2>
+        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
+          {m.home_reviews_title()}
+        </h2>
         <Reviews data={reviews} />
       </div>
       <Cta />

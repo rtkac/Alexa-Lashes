@@ -15,7 +15,7 @@ const Disclaimer = () => (
     buttonClasses="btn-primary py-2 text-sm"
     declineButtonClasses="btn-secondary py-2 text-sm mr-4"
     contentClasses="mb-4"
-    containerClasses="bg-white border border-primary-light fixed right-0 z-50 max-w-96 p-4 md:p-6 rounded rounded-md m-4"
+    containerClasses="bg-white border border-primary-light fixed right-0 z-50 max-w-96 p-4 md:p-6 rounded rounded-md m-4 dark:bg-tertiary dark:border-tertiary-light "
     onAccept={() => {
       initializeAnalytics();
     }}

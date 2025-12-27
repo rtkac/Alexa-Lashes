@@ -26,7 +26,9 @@ function RouteComponent() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-8 max-w-180 text-center">
-        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl">{m.contact_title()}</h1>
+        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl dark:text-primary">
+          {m.contact_title()}
+        </h1>
         <p className="mb-10">{m.contact_desc()}</p>
       </div>
       <div className="mb-18 grid gap-15 md:grid-cols-7">

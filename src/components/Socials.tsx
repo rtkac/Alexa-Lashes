@@ -2,7 +2,7 @@ import { whatsAppNumber } from "@/types";
 
 const Socials = () => {
   return (
-    <ul className="flex space-x-10 text-neutral-700 text-sm md:space-x-5 md:text-base">
+    <ul className="flex space-x-10 text-neutral-700 text-sm md:space-x-5 md:text-base dark:text-primary">
       <li>
         <a
           href="https://instagram.com/alexa_lashes_bratislava"

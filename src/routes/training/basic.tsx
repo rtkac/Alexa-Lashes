@@ -69,7 +69,9 @@ function RouteComponent() {
         primaryAction={{ link: "/contact", label: m.training_basic_banner_link_contact() }}
       />
       <div className="mx-auto mb-8 max-w-180 text-center">
-        <h2 className="mb-2.5 font-bold text-xl md:text-3xl">{m.training_basic_welcome_title()}</h2>
+        <h2 className="mb-2.5 font-bold text-xl md:text-3xl dark:text-primary">
+          {m.training_basic_welcome_title()}
+        </h2>
         <p>{m.training_basic_welcome_desc()}</p>
       </div>
       <div className="mb-18">

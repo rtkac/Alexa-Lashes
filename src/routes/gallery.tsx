@@ -24,7 +24,9 @@ function RouteComponent() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-10 max-w-180 text-center">
-        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl">{m.gallery_title()}</h1>
+        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl dark:text-primary">
+          {m.gallery_title()}
+        </h1>
         <p>{m.gallery_desc()}</p>
       </div>
       <div className="mb-18">

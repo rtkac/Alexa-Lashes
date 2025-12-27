@@ -37,7 +37,7 @@ const ContactForm = () => {
   });
 
   return (
-    <div className="rounded-md border border-primary-light bg-white p-6">
+    <div className="rounded-md border border-primary-light bg-white p-6 dark:border-tertiary-light dark:bg-tertiary">
       <h2 className="mb-5 font-bold text-lg md:text-2xl">{m.contact_form_title()}</h2>
       <form
         method="post"

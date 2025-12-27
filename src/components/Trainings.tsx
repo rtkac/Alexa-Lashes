@@ -6,7 +6,7 @@ import { m } from "@/paraglide/messages";
 const Trainings = () => {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-md border border-primary-light bg-white p-7">
+      <div className="rounded-md border border-primary-light bg-white p-7 dark:border-tertiary-light dark:bg-tertiary">
         <div className="flex h-full flex-col justify-between">
           <div>
             <h2 className="mb-1.5 font-bold text-primary text-sm">{m.training_basic_title()}</h2>
@@ -50,7 +50,7 @@ const Trainings = () => {
           </div>
         </div>
       </div>
-      <div className="rounded-md border border-primary-light bg-white p-7">
+      <div className="rounded-md border border-primary-light bg-white p-7 dark:border-tertiary-light dark:bg-tertiary">
         <div className="flex h-full flex-col justify-between">
           <div>
             <h2 className="mb-1.5 font-bold text-primary text-sm">{m.training_advanced_title()}</h2>
