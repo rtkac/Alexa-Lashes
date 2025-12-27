@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import nodemailer from "nodemailer";
 
 import { emailRegex, nameRegex } from "@/helpers";
-import { htmlTemplate } from "@/lib/htmlTemplate";
+import { emailTemplate } from "@/lib/emailTemplate";
 import type { User } from "@/types";
 
 const transporter = nodemailer.createTransport({
@@ -21,7 +21,7 @@ const sendEmailMessage = async ({ name, email, message }: User) => {
     to: process.env.EMAIL_ADDRESS,
     subject: `Kontaktny formular - Alexa Lashes`,
     text: `Meno: ${name}\n\nE-mail: ${email}\n\nSprava: ${message}`,
-    html: htmlTemplate(name, email, message),
+    html: emailTemplate(name, email, message),
     replyTo: email,
     cc: email,
   });
