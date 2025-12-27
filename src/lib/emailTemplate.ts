@@ -1,4 +1,4 @@
-export const htmlTemplate = (name: string, email: string, message: string) => `<!doctypehtml>
+export const emailTemplate = (name: string, email: string, message: string) => `<!doctypehtml>
 <html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml xmlns:o=urn:schemas-microsoft-com:office:office xmlns:v=urn:schemas-microsoft-com:vml>
    <title>Kontaktny formular</title>
    <!--[if !mso]><!-->

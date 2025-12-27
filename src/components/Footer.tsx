@@ -50,7 +50,7 @@ const Footer = () => {
       <div className="border-primary-light border-t py-10">
         <div className="mx-auto max-w-6xl px-4 text-center text-neutral-700 text-sm md:text-base">
           <p className="mb-2 text-neutral-400 text-sm">
-            <Link to="/privacy-policy">{m.footer_personal_data_link()}</Link>
+            <Link to="/privacy-policy">{m.footer_privacy_policy_link()}</Link>
           </p>
           <p className="text-neutral-400 text-sm">
             {m.footer_rights({ date: new Date().getFullYear() })}
