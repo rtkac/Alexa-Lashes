@@ -1,0 +1,13 @@
+output: false
+
+pre-commit:
+  parallel: true
+  commands:
+    check:
+      run: bun biome check --staged --write --files-ignore-unknown=true --no-errors-on-unmatched
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    commitlint:
+      run: bun commitlint --edit
