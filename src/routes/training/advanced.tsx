@@ -49,13 +49,12 @@ const faqs: Faq[] = [
 export const Route = createFileRoute("/training/advanced")({
   head: () => ({
     meta: [
-      {
-        title: m.meta_training_advanced_title(),
-      },
-      {
-        name: "description",
-        content: m.meta_training_advanced_desc(),
-      },
+      { title: m.meta_training_advanced_title() },
+      { name: "description", content: m.meta_training_advanced_desc() },
+      { property: "og:type", content: "article" },
+      { property: "og:title", content: m.meta_training_advanced_title() },
+      { property: "og:description", content: m.meta_training_advanced_desc() },
+      { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
     ],
   }),
   component: RouteComponent,
@@ -70,7 +69,7 @@ function RouteComponent() {
         primaryAction={{ link: "/contact", label: m.training_advanced_banner_link_contact() }}
       />
       <div className="mx-auto mb-8 max-w-180 text-center">
-        <h2 className="mb-2.5 font-bold text-xl md:text-3xl">
+        <h2 className="mb-2.5 font-bold text-xl md:text-3xl dark:text-primary">
           {m.training_advanced_welcome_title()}
         </h2>
         <p>{m.training_advanced_welcome_desc()}</p>

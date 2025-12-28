@@ -5,7 +5,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 
 import { cn } from "@/lib/utils";
 import { m } from "@/paraglide/messages";
-import logo from "/logo.svg";
+import logo from "/logo_primary.svg";
 
 const Header = () => {
   const menuId = useId();
@@ -25,7 +25,7 @@ const Header = () => {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
           <Link to="/" className="z-10 flex items-center space-x-3" onClick={closeMenu}>
             <img src={logo} alt="Alexa Lashes Logo" className="h-9" />
-            <span className="self-center whitespace-nowrap font-semibold text-heading text-xl">
+            <span className="self-center whitespace-nowrap font-semibold text-heading text-xl dark:text-primary">
               Alexa Lashes
             </span>
           </Link>

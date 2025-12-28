@@ -45,13 +45,12 @@ const reviews: Review[] = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      {
-        title: m.meta_index_title(),
-      },
-      {
-        name: "description",
-        content: m.meta_index_desc(),
-      },
+      { title: m.meta_index_title() },
+      { name: "description", content: m.meta_index_desc() },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: m.meta_index_title() },
+      { property: "og:description", content: m.meta_index_desc() },
+      { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
     ],
   }),
   component: RouteComponent,
@@ -67,7 +66,9 @@ function RouteComponent() {
         secondaryAction={{ link: "/contact", label: m.banner_link_contact() }}
       />
       <div className="mx-auto mb-8 max-w-180 text-center">
-        <h2 className="mb-2.5 font-bold text-xl md:text-3xl">{m.home_welcome_title()}</h2>
+        <h2 className="mb-2.5 font-bold text-xl md:text-3xl dark:text-primary">
+          {m.home_welcome_title()}
+        </h2>
         <p>{m.home_welcome_desc()}</p>
       </div>
       <div className="mb-18">
@@ -75,7 +76,7 @@ function RouteComponent() {
       </div>
       <div className="mb-18">
         <div className="mb-6">
-          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
+          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
             {m.home_gallery_title()}
           </h2>
           <PreviewGallery />
@@ -87,7 +88,9 @@ function RouteComponent() {
         </div>
       </div>
       <div className="mb-18">
-        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">{m.home_reviews_title()}</h2>
+        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
+          {m.home_reviews_title()}
+        </h2>
         <Reviews data={reviews} />
       </div>
       <Cta />

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 type BannerProps = {
+  image?: string;
   title: string;
   description: string;
   primaryAction?: {
@@ -13,9 +14,17 @@ type BannerProps = {
   };
 };
 
-const Banner = ({ title, description, primaryAction, secondaryAction }: BannerProps) => {
+const Banner = ({
+  image = "bg-[url(https://placehold.co/1500x800/656e6c/656e6c)] dark:bg-[url(https://placehold.co/1500x800/4a413a/4a413a)]",
+  title,
+  description,
+  primaryAction,
+  secondaryAction,
+}: BannerProps) => {
   return (
-    <div className="mb-13 flex min-h-100 items-center justify-center rounded-md bg-[url(https://placehold.co/1500x800/656e6c/656e6c)] bg-center bg-cover p-6 text-center text-white md:min-h-130">
+    <div
+      className={`mb-13 flex min-h-100 items-center justify-center rounded-md ${image} bg-center bg-cover p-6 text-center text-white md:min-h-130 dark:text-amber-50`}
+    >
       <div className="h-full w-200">
         <h1 className="mb-3 font-bold text-2xl md:text-4xl">{title}</h1>
         <p className="mb-6">{description}</p>

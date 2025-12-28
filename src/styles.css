@@ -59,16 +59,19 @@ code {
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #362e24;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
+  --primary: #c4ad72;
+  --primary-light: #4f4432;
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  --secondary: #443b27;
   --secondary-foreground: oklch(0.985 0 0);
+  --tertiary: #4a413a;
+  --tertiary-light: #625745;
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
@@ -106,6 +109,8 @@ code {
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-light: var(--tertiary-light);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
@@ -139,10 +144,10 @@ code {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground dark:text-amber-50;
   }
   p {
-    @apply text-base leading-snug; /* Customize these */
+    @apply text-base leading-snug;
   }
   a:not([class^="btn-"]):not(header a) {
     @apply hover:text-primary underline-offset-2 hover:underline;
@@ -154,7 +159,7 @@ code {
     @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center disabled:bg-primary-disabled disabled:hover:brightness-100 cursor-pointer;
   }
   .btn-secondary {
-    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center cursor-pointer;
+    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center cursor-pointer dark:text-amber-50;
   }
   .btn-tertiary {
     @apply bg-white text-black inline-block py-2.5 px-4 rounded-md hover:bg-neutral-100 transition font-bold text-center cursor-pointer;

@@ -1,5 +1,5 @@
 import { type AnyFieldApi, useForm } from "@tanstack/react-form";
-import { CircleAlertIcon, CircleCheckIcon } from "lucide-react";
+import { CircleAlertIcon, CircleCheckIcon, LoaderIcon } from "lucide-react";
 import { useState } from "react";
 
 import { emailRegex, nameRegex } from "@/helpers";
@@ -29,7 +29,6 @@ const ContactForm = () => {
       try {
         await submitForm({ data: value });
         setIsSuccess(true);
-        // oxlint-disable-next-line no-unused-vars
       } catch (_) {
         setIsError(true);
       }
@@ -37,7 +36,7 @@ const ContactForm = () => {
   });
 
   return (
-    <div className="rounded-md border border-primary-light bg-white p-6">
+    <div className="rounded-md border border-primary-light bg-white p-6 dark:border-tertiary-light dark:bg-tertiary">
       <h2 className="mb-5 font-bold text-lg md:text-2xl">{m.contact_form_title()}</h2>
       <form
         method="post"
@@ -171,8 +170,19 @@ const ContactForm = () => {
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <>
-              <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
-                {isSubmitting ? m.contact_form_sending_button() : m.contact_form_submit_button()}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-primary flex w-full items-center justify-center"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <LoaderIcon className="h-5 w-5 animate-spin" />
+                    {m.contact_form_sending_button()}
+                  </span>
+                ) : (
+                  m.contact_form_submit_button()
+                )}
               </button>
             </>
           )}

@@ -12,7 +12,7 @@ const Reviews = ({ data }: ReviewsProps) => {
       {data.map((review) => (
         <div
           key={review.name}
-          className="flex flex-col justify-between rounded-md border border-primary-light bg-white p-5"
+          className="flex flex-col justify-between rounded-md border border-primary-light bg-white p-5 dark:border-tertiary-light dark:bg-tertiary"
         >
           <div className="mb-3">
             <div className="mb-3 flex space-x-1 text-primary">
@@ -22,7 +22,7 @@ const Reviews = ({ data }: ReviewsProps) => {
               <StarIcon size="17" />
               <StarIcon size="17" />
             </div>
-            <p className="text-neutral-600 text-sm">{review.description}</p>
+            <p className="text-neutral-600 text-sm dark:text-amber-50">{review.description}</p>
           </div>
           <div className="flex items-center space-x-2.5">
             <div className="size-[35px] overflow-hidden rounded-full">
