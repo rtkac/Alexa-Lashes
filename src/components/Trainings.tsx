@@ -81,7 +81,7 @@ const Trainings = () => {
               </ul>
             </div>
           </div>
-          <div className="space-y-5 sm:flex sm:justify-between sm:space-y-0">
+          <div className="h-full space-y-5 sm:flex sm:justify-between sm:space-y-0">
             <div className="flex items-center space-x-2">
               <ClockIcon size="20" />
               <p className="text-sm">
