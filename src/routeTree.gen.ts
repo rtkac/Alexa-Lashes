@@ -16,7 +16,6 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TrainingIndexRouteImport } from './routes/training/index'
 import { Route as TrainingBasicRouteImport } from './routes/training/basic'
-import { Route as TrainingAdvancedRouteImport } from './routes/training/advanced'
 
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
@@ -53,11 +52,6 @@ const TrainingBasicRoute = TrainingBasicRouteImport.update({
   path: '/training/basic',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TrainingAdvancedRoute = TrainingAdvancedRouteImport.update({
-  id: '/training/advanced',
-  path: '/training/advanced',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -65,7 +59,6 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
   '/training': typeof TrainingIndexRoute
 }
@@ -75,7 +68,6 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
   '/training': typeof TrainingIndexRoute
 }
@@ -86,7 +78,6 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
   '/training/': typeof TrainingIndexRoute
 }
@@ -98,7 +89,6 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/prices'
     | '/privacy-policy'
-    | '/training/advanced'
     | '/training/basic'
     | '/training'
   fileRoutesByTo: FileRoutesByTo
@@ -108,7 +98,6 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/prices'
     | '/privacy-policy'
-    | '/training/advanced'
     | '/training/basic'
     | '/training'
   id:
@@ -118,7 +107,6 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/prices'
     | '/privacy-policy'
-    | '/training/advanced'
     | '/training/basic'
     | '/training/'
   fileRoutesById: FileRoutesById
@@ -129,7 +117,6 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   PricesRoute: typeof PricesRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
-  TrainingAdvancedRoute: typeof TrainingAdvancedRoute
   TrainingBasicRoute: typeof TrainingBasicRoute
   TrainingIndexRoute: typeof TrainingIndexRoute
 }
@@ -185,13 +172,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainingBasicRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/training/advanced': {
-      id: '/training/advanced'
-      path: '/training/advanced'
-      fullPath: '/training/advanced'
-      preLoaderRoute: typeof TrainingAdvancedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -201,7 +181,6 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   PricesRoute: PricesRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
-  TrainingAdvancedRoute: TrainingAdvancedRoute,
   TrainingBasicRoute: TrainingBasicRoute,
   TrainingIndexRoute: TrainingIndexRoute,
 }
