@@ -27,7 +27,7 @@ const benefits: Benefit[] = [
   },
 ];
 
-const reviews: Review[] = [
+const staticReviews: Review[] = [
   {
     name: m.reviews_1_name(),
     description: m.reviews_1_desc(),
@@ -39,6 +39,58 @@ const reviews: Review[] = [
   {
     name: m.reviews_3_name(),
     description: m.reviews_3_desc(),
+  },
+  {
+    name: m.reviews_4_name(),
+    description: m.reviews_4_desc(),
+  },
+  {
+    name: m.reviews_5_name(),
+    description: m.reviews_5_desc(),
+  },
+  {
+    name: m.reviews_6_name(),
+    description: m.reviews_6_desc(),
+  },
+  {
+    name: m.reviews_7_name(),
+    description: m.reviews_7_desc(),
+  },
+  {
+    name: m.reviews_8_name(),
+    description: m.reviews_8_desc(),
+  },
+  {
+    name: m.reviews_9_name(),
+    description: m.reviews_9_desc(),
+  },
+  {
+    name: m.reviews_10_name(),
+    description: m.reviews_10_desc(),
+  },
+  {
+    name: m.reviews_11_name(),
+    description: m.reviews_11_desc(),
+  },
+  {
+    name: m.reviews_12_name(),
+    description: m.reviews_12_desc(),
+  },
+  {
+    name: m.reviews_13_name(),
+    description: m.reviews_13_desc(),
+  },
+  {
+    name: m.reviews_14_name(),
+    description: m.reviews_14_desc(),
+  },
+  {
+    name: m.reviews_15_name(),
+    description: m.reviews_15_desc(),
+  },
+  {
+    name: m.reviews_16_name(),
+    description: m.reviews_16_desc(),
   },
 ];
 
@@ -53,16 +105,28 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
     ],
   }),
+  loader: () => {
+    const copy = [...staticReviews];
+
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy.slice(0, 3);
+  },
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const reviews = Route.useLoaderData();
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <Banner
         title={m.banner_title()}
         description={m.banner_desc()}
-        primaryAction={{ link: "/services", label: m.banner_link_services() }}
+        primaryAction={{ link: "/prices", label: m.banner_link_services() }}
         secondaryAction={{ link: "/contact", label: m.banner_link_contact() }}
       />
       <div className="mx-auto mb-8 max-w-180 text-center">

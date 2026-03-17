@@ -22,7 +22,11 @@ const Socials = () => {
         </a>
       </li>
       <li>
-        <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://tiktok.com/@alexa_lashes_bratislava"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <svg
             role="img"
             viewBox="0 0 24 24"

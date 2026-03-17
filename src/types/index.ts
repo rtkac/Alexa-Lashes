@@ -14,11 +14,9 @@ export type Review = {
   description: string;
 };
 
-export type Service = {
+export type LashPrice = {
   name: string;
-  description: string;
-  duration: string;
-  price: string;
+  price: number;
 };
 
 export type Faq = {

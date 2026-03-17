@@ -79,11 +79,11 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/services"
+                  to="/prices"
                   className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
                   onClick={closeMenu}
                 >
-                  {m.menu_services()}
+                  {m.menu_prices()}
                 </Link>
               </li>
               <li>

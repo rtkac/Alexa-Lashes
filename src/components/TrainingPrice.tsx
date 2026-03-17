@@ -31,15 +31,22 @@ const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
             <MapPinIcon className="shrink-0 text-primary" size="18" />
             <p className="text-sm">
               <span className="font-bold">{m.training_location_label()}</span>&nbsp;
-              {m.training_location()}
+              <a
+                href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {m.training_location()}
+              </a>
             </p>
           </div>
+          <p className="text-neutral-500 text-xs italic">{m.training_agreement()}</p>
         </div>
       </div>
-      <div className="rounded-br-md rounded-bl-md bg-primary p-8 text-center text-white md:col-span-2 md:rounded-tr-md md:rounded-bl-none">
+      <div className="rounded-br-md rounded-bl-md bg-primary px-10 py-8 text-center text-white md:col-span-2 md:rounded-tr-md md:rounded-bl-none">
         <p className="mb-1 text-sm">{m.training_price()}</p>
         <p className="font-extrabold text-4xl">{price} €</p>
-        <p className="mb-4 text-xs">{m.training_addon()}</p>
+        <p className="mb-4 text-xs">{m.training_deposit()}</p>
         <Link to="/contact" className="btn-secondary">
           {m.training_link_interest()}
         </Link>
