@@ -1,6 +1,6 @@
 export const telephoneNumber = "+421 951 268 876";
 export const whatsAppNumber = "https://wa.me/421951268876";
-export const email = "info@alexalashes.sk";
+export const email = "alecsandraafanasyeva@gmail.com";
 export const address = "Pajštúnska 1, 851 01 Bratislava";
 
 export type Benefit = {
