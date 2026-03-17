@@ -87,7 +87,7 @@ function RouteComponent() {
         <Teacher />
       </div>
       <div className="mb-8">
-        <TrainingPrice duration={m.training_advanced_duration()} price={850} />
+        <TrainingPrice duration={m.training_advanced_duration()} price={0} />
       </div>
     </div>
   );

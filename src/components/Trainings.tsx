@@ -88,9 +88,9 @@ const Trainings = () => {
                 {m.training_advanced_duration_label()}&nbsp;{m.training_advanced_duration()}
               </p>
             </div>
-            <Link to="/training/advanced" className="btn-primary w-full sm:w-auto">
+            {/* <Link to="/training/advanced" className="btn-primary w-full sm:w-auto">
               {m.training_advanced_link_label()}
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

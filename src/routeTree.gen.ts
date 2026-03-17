@@ -9,8 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as PricesRouteImport } from './routes/prices'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
@@ -18,14 +18,14 @@ import { Route as TrainingIndexRouteImport } from './routes/training/index'
 import { Route as TrainingBasicRouteImport } from './routes/training/basic'
 import { Route as TrainingAdvancedRouteImport } from './routes/training/advanced'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricesRoute = PricesRouteImport.update({
+  id: '/prices',
+  path: '/prices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -63,8 +63,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/services': typeof ServicesRoute
   '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
   '/training': typeof TrainingIndexRoute
@@ -73,8 +73,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/services': typeof ServicesRoute
   '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
   '/training': typeof TrainingIndexRoute
@@ -84,8 +84,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/services': typeof ServicesRoute
   '/training/advanced': typeof TrainingAdvancedRoute
   '/training/basic': typeof TrainingBasicRoute
   '/training/': typeof TrainingIndexRoute
@@ -96,8 +96,8 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/gallery'
+    | '/prices'
     | '/privacy-policy'
-    | '/services'
     | '/training/advanced'
     | '/training/basic'
     | '/training'
@@ -106,8 +106,8 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/gallery'
+    | '/prices'
     | '/privacy-policy'
-    | '/services'
     | '/training/advanced'
     | '/training/basic'
     | '/training'
@@ -116,8 +116,8 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/gallery'
+    | '/prices'
     | '/privacy-policy'
-    | '/services'
     | '/training/advanced'
     | '/training/basic'
     | '/training/'
@@ -127,8 +127,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
+  PricesRoute: typeof PricesRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
-  ServicesRoute: typeof ServicesRoute
   TrainingAdvancedRoute: typeof TrainingAdvancedRoute
   TrainingBasicRoute: typeof TrainingBasicRoute
   TrainingIndexRoute: typeof TrainingIndexRoute
@@ -136,18 +136,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/privacy-policy': {
       id: '/privacy-policy'
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prices': {
+      id: '/prices'
+      path: '/prices'
+      fullPath: '/prices'
+      preLoaderRoute: typeof PricesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -199,8 +199,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
+  PricesRoute: PricesRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
-  ServicesRoute: ServicesRoute,
   TrainingAdvancedRoute: TrainingAdvancedRoute,
   TrainingBasicRoute: TrainingBasicRoute,
   TrainingIndexRoute: TrainingIndexRoute,
