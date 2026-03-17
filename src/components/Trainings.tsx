@@ -19,19 +19,19 @@ const Trainings = () => {
               <h4 className="mb-4 font-bold">{m.training_basic_skills_title()}</h4>
               <ul className="grid gap-2 text-primary text-sm sm:grid-cols-2">
                 <li className="flex items-center space-x-1.5">
-                  <CircleCheckIcon size="15" />
+                  <CircleCheckIcon size="15" className="shrink-0" />
                   <span>{m.training_basic_skills_1()}</span>
                 </li>
                 <li className="flex items-center space-x-1.5">
-                  <CircleCheckIcon size="15" />
+                  <CircleCheckIcon size="15" className="shrink-0" />
                   <span>{m.training_basic_skills_2()}</span>
                 </li>
                 <li className="flex items-center space-x-1.5">
-                  <CircleCheckIcon size="15" />
+                  <CircleCheckIcon size="15" className="shrink-0" />
                   <span>{m.training_basic_skills_3()}</span>
                 </li>
                 <li className="flex items-center space-x-1.5">
-                  <CircleCheckIcon size="15" />
+                  <CircleCheckIcon size="15" className="shrink-0" />
                   <span>{m.training_basic_skills_4()}</span>
                 </li>
               </ul>
@@ -67,15 +67,15 @@ const Trainings = () => {
                   <span>{m.training_advanced_skills_1()}</span>
                 </li>
                 <li className="flex items-center space-x-1.5">
-                  <CircleCheckIcon size="15" />
+                  <CircleCheckIcon size="15" className="shrink-0" />
                   <span>{m.training_advanced_skills_2()}</span>
                 </li>
                 <li className="flex items-center space-x-1.5">
-                  <CircleCheckIcon size="15" />
+                  <CircleCheckIcon size="15" className="shrink-0" />
                   <span>{m.training_advanced_skills_3()}</span>
                 </li>
                 <li className="flex items-center space-x-1.5">
-                  <CircleCheckIcon size="15" />
+                  <CircleCheckIcon size="15" className="shrink-0" />
                   <span>{m.training_advanced_skills_4()}</span>
                 </li>
               </ul>
