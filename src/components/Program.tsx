@@ -3,7 +3,7 @@ import { m } from "@/paraglide/messages";
 export const Program = () => {
   return (
     <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-      <div className="rounded-md border border-primary-light bg-white p-10 dark:border-tertiary-light dark:bg-tertiary">
+      <div className="rounded-md border border-primary-light bg-white p-8 md:p-10 dark:border-tertiary-light dark:bg-tertiary">
         <h3 className="mb-10 flex items-center font-bold text-lg uppercase">
           <span className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg border border-primary-light bg-primary p-1 text-white">
             01
@@ -56,7 +56,7 @@ export const Program = () => {
           </div>
         </div>
       </div>
-      <div className="rounded-md border border-primary-light bg-white p-10 dark:border-tertiary-light dark:bg-tertiary">
+      <div className="rounded-md border border-primary-light bg-white p-8 md:p-10 dark:border-tertiary-light dark:bg-tertiary">
         <h3 className="mb-10 flex items-center font-bold text-lg uppercase">
           <span className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg border border-primary-light bg-primary p-1 text-white">
             02
