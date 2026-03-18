@@ -30,6 +30,7 @@ export const Route = createRootRoute({
         rel: "manifest",
         href: "/manifest.json",
       },
+      { rel: "icon", href: "/favicon.ico" },
     ],
   }),
   shellComponent: RootDocument,
