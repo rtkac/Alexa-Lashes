@@ -15,7 +15,7 @@ type BannerProps = {
 };
 
 const Banner = ({
-  image = "bg-[url(https://placehold.co/1500x800/656e6c/656e6c)] dark:bg-[url(https://placehold.co/1500x800/4a413a/4a413a)]",
+  image = "bg-[url(/banner-main.jpg)]",
   title,
   description,
   primaryAction,
@@ -23,11 +23,11 @@ const Banner = ({
 }: BannerProps) => {
   return (
     <div
-      className={`mb-13 flex min-h-100 items-center justify-center rounded-md ${image} bg-center bg-cover p-6 text-center text-white md:min-h-130 dark:text-amber-50`}
+      className={`mb-13 flex min-h-100 items-center justify-center rounded-md ${image} bg-center bg-cover p-6 text-center text-white md:min-h-130 lg:bg-position-[center_top_-105rem] dark:text-amber-50`}
     >
-      <div className="h-full w-200">
-        <h1 className="mb-3 font-bold text-2xl md:text-4xl">{title}</h1>
-        <p className="mb-6">{description}</p>
+      <div className="flex w-250 flex-col justify-between">
+        <h1 className="mb-8 font-extrabold text-2xl md:mb-3 md:text-5xl">{title}</h1>
+        <p className="mb-6 hidden md:block md:font-bold">{description}</p>
         <div className="space-y-4">
           {primaryAction && (
             <Link to={primaryAction.link} className="btn-primary mx-2">
