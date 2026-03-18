@@ -13,7 +13,11 @@ const Trainings = () => {
             <h3 className="mb-2 font-bold text-xl md:text-2xl">{m.training_basic_subtitle()}</h3>
             <p className="mb-6 text-sm">{m.training_basic_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
-              <img src="/home/1.jpg" alt="1" className="h-full w-full object-cover" />
+              <img
+                src="https://placehold.co/490x280/4a413a/4a413a"
+                alt="1"
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="mb-4 border-primary-light border-b pb-4">
               <h4 className="mb-4 font-bold">{m.training_basic_skills_title()}</h4>
@@ -57,7 +61,11 @@ const Trainings = () => {
             <h3 className="mb-2 font-bold text-xl md:text-2xl">{m.training_advanced_subtitle()}</h3>
             <p className="mb-6 text-sm">{m.training_advanced_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
-              <img src="/home/1.jpg" alt="1" className="h-full w-full object-cover" />
+              <img
+                src="https://placehold.co/490x280/4a413a/4a413a"
+                alt="1"
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="mb-4 border-primary-light border-b pb-4">
               <h4 className="mb-4 font-bold">{m.training_advanced_skills_title()}</h4>

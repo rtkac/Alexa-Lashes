@@ -15,7 +15,7 @@ type BannerProps = {
 };
 
 const Banner = ({
-  image = "bg-[url(/banner-main.jpg)]",
+  image = "bg-[url(https://placehold.co/1120x520/4a413a/4a413a)]",
   title,
   description,
   primaryAction,

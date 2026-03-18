@@ -128,6 +128,7 @@ function RouteComponent() {
         description={m.banner_desc()}
         primaryAction={{ link: "/prices", label: m.banner_link_services() }}
         secondaryAction={{ link: "/contact", label: m.banner_link_contact() }}
+        image="bg-[url(/banner-main.jpg)]"
       />
       <div className="mx-auto mb-8 max-w-180 text-center">
         <h2 className="mb-2.5 font-bold text-xl md:text-3xl dark:text-primary">
