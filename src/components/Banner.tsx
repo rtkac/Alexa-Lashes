@@ -19,11 +19,11 @@ const Banner = ({
   description,
   primaryAction,
   secondaryAction,
-  image = "https://placehold.co/1120x520/4a413a/4a413a",
+  image = "bg-[url(https://placehold.co/1120x520/4a413a/4a413a)]",
 }: BannerProps) => {
   return (
     <div
-      className={`mb-13 flex min-h-100 items-center justify-center rounded-md bg-[url(${image})] bg-center bg-cover p-6 text-center text-white md:min-h-130 lg:bg-position-[center_top_-105rem] dark:text-amber-50`}
+      className={`mb-13 flex min-h-100 items-center justify-center rounded-md ${image} bg-center bg-cover p-6 text-center text-white md:min-h-130 lg:bg-position-[center_top_-105rem] dark:text-amber-50`}
     >
       <div className="flex w-250 flex-col justify-between">
         <h1 className="mb-8 font-extrabold text-2xl md:mb-3 md:text-5xl">{title}</h1>
