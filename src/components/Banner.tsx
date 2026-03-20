@@ -1,5 +1,7 @@
 import { Link, type LinkProps } from "@tanstack/react-router";
 
+import { cn } from "@/lib/utils";
+
 type BannerProps = {
   title: string;
   description: string;
@@ -23,7 +25,10 @@ const Banner = ({
 }: BannerProps) => {
   return (
     <div
-      className={`mb-13 flex min-h-100 items-center justify-center rounded-md ${image} bg-center bg-cover p-6 text-center text-white md:min-h-130 lg:bg-position-[center_top_-105rem] dark:text-amber-50`}
+      className={cn(
+        "mb-13 flex min-h-100 items-center justify-center rounded-md bg-center bg-cover p-6 text-center text-white md:min-h-130 lg:bg-position-[center_top_-105rem] dark:text-amber-50",
+        image,
+      )}
     >
       <div className="flex w-250 flex-col justify-between">
         <h1 className="mb-8 font-extrabold text-2xl md:mb-3 md:text-5xl">{title}</h1>

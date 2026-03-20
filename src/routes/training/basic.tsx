@@ -45,7 +45,8 @@ function RouteComponent() {
       <Banner
         title={m.training_basic_banner_title()}
         description={m.training_basic_banner_desc()}
-        primaryAction={{ link: "/contact", label: m.training_basic_banner_link_contact() }}
+        primaryAction={{ link: { to: "/contact" }, label: m.training_basic_banner_link_contact() }}
+        image="bg-[url(/basic-training-banner.jpg)]"
       />
       <div className="mx-auto mb-20 max-w-4xl text-center">
         <h2 className="mb-6 font-bold text-primary text-xl md:text-3xl">
