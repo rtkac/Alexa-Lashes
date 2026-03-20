@@ -30,12 +30,12 @@ const Banner = ({
         <p className="mb-6 hidden md:block md:font-bold">{description}</p>
         <div className="space-y-4">
           {primaryAction && (
-            <Link preload="intent" to={primaryAction.link.to} className="btn-primary mx-2">
+            <Link to={primaryAction.link.to} className="btn-primary mx-2">
               {primaryAction.label}
             </Link>
           )}
           {secondaryAction && (
-            <Link preload="intent" to={secondaryAction.link.to} className="btn-secondary mx-2">
+            <Link to={secondaryAction.link.to} className="btn-secondary mx-2">
               {secondaryAction.label}
             </Link>
           )}
