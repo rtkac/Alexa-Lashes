@@ -5,7 +5,7 @@ import Socials from "./Socials";
 import { m } from "@/paraglide/messages";
 import { address, email, telephoneNumber } from "@/types";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="w-full">
       <div className="border-primary-light border-t py-10">
@@ -68,4 +68,3 @@ const Footer = () => {
     </footer>
   );
 };
-export default Footer;

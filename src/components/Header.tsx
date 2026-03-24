@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { m } from "@/paraglide/messages";
 import logo from "/logo_primary.svg";
 
-const Header = () => {
+export const Header = () => {
   const menuId = useId();
   const [open, setOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const Header = () => {
       <nav>
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
           <Link to="/" className="z-10 flex items-center space-x-3" onClick={closeMenu}>
-            <img src={logo} alt="Alexa Lashes Logo" className="h-9" />
+            <img src={logo} alt="Alexa Lashes Logo" width={42} height={36} />
             <span className="self-center whitespace-nowrap font-semibold text-heading text-xl dark:text-primary">
               Alexa Lashes
             </span>
@@ -32,6 +32,9 @@ const Header = () => {
           <button
             type="button"
             className="relative z-10 h-10 w-10 cursor-pointer rounded bg-primary focus:outline-none md:hidden"
+            aria-label={open ? m.menu_close() : m.menu_open()}
+            aria-expanded={open}
+            aria-controls={menuId}
             onClick={() => setOpen((prev) => !prev)}
           >
             <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-4.5 block w-5 transform">
@@ -121,5 +124,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

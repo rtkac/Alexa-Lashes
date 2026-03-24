@@ -5,7 +5,7 @@ import { initializeAnalytics } from "./analytics";
 
 import { m } from "@/paraglide/messages";
 
-const Disclaimer = () => (
+export const Disclaimer = () => (
   <CookieConsent
     disableStyles
     enableDeclineButton
@@ -30,5 +30,3 @@ const Disclaimer = () => (
     </p>
   </CookieConsent>
 );
-
-export default Disclaimer;
