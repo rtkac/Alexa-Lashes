@@ -5,9 +5,9 @@ import { Cookies } from "react-cookie-consent";
 import appCss from "../styles.css?url";
 
 import { initializeAnalytics } from "@/components/Disclaimer/analytics";
-import Disclaimer from "@/components/Disclaimer/Disclaimer";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import { Disclaimer } from "@/components/Disclaimer/Disclaimer";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { getLocale } from "@/paraglide/runtime";
 
 export const Route = createRootRoute({

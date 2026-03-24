@@ -26,7 +26,13 @@ const Reviews = ({ data }: ReviewsProps) => {
           </div>
           <div className="flex items-center space-x-2.5">
             <div className="size-[35px] overflow-hidden rounded-full">
-              <img src="/logo.svg" alt={review.name} className="h-full w-full object-cover" />
+              <img
+                src="/logo.svg"
+                alt={review.name}
+                className="h-full w-full object-cover"
+                width={35}
+                height={35}
+              />
             </div>
             <h3 className="font-bold text-sm">{review.name}</h3>
           </div>
