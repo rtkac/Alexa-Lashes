@@ -60,7 +60,7 @@ export interface FileRoutesByFullPath {
   '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/training/basic': typeof TrainingBasicRoute
-  '/training': typeof TrainingIndexRoute
+  '/training/': typeof TrainingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -90,7 +90,7 @@ export interface FileRouteTypes {
     | '/prices'
     | '/privacy-policy'
     | '/training/basic'
-    | '/training'
+    | '/training/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -161,7 +161,7 @@ declare module '@tanstack/react-router' {
     '/training/': {
       id: '/training/'
       path: '/training'
-      fullPath: '/training'
+      fullPath: '/training/'
       preLoaderRoute: typeof TrainingIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

@@ -1,14 +1,14 @@
-@import 'react-photo-view/dist/react-photo-view.css';
+@import "react-photo-view/dist/react-photo-view.css";
 
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
   font-family: Manrope;
-  src: url('/fonts/Manrope-VariableFront_wght.ttf') format('truetype');
+  src: url("/fonts/Manrope-VariableFront_wght.ttf") format("truetype");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
@@ -16,14 +16,13 @@
 
 body {
   @apply m-0;
-   font-family: "Manrope", sans-serif;
+  font-family: "Manrope", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 :root {
