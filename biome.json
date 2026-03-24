@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.8/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -8,18 +8,27 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
-      "**/src/**/*",
-      "**/.vscode/**/*",
-      "**/index.html",
-      "**/vite.config.js",
+      "**",
+      "!dist",
       "!**/src/routeTree.gen.ts",
-      "!**/src/styles.css"
+      "!**/src/paraglide",
+      "!project.inlang",
+      "!.netlify",
+      "!.tanstack"
     ]
   },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 100
+  },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "assist": {
     "actions": {

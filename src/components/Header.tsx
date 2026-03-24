@@ -37,7 +37,7 @@ export const Header = () => {
             aria-controls={menuId}
             onClick={() => setOpen((prev) => !prev)}
           >
-            <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-4.5 block w-5 transform">
+            <div className="absolute top-1/2 left-4.5 block w-5 -translate-x-1/2 -translate-y-1/2 transform">
               <span
                 className={cn(
                   "absolute block h-0.5 w-6 transform bg-current text-white transition duration-250 ease-in-out",

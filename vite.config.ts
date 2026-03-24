@@ -24,7 +24,7 @@ const config = defineConfig({
       },
       sitemap: {
         enabled: true,
-        host: 'https://alexalashes.sk',
+        host: "https://alexalashes.sk",
       },
     }),
     netlify(),
@@ -32,7 +32,7 @@ const config = defineConfig({
   ],
   ssr: {
     noExternal: ["react-cookie-consent"],
-  }
+  },
 });
 
 export default config;
