@@ -33,7 +33,60 @@ export const Route = createFileRoute("/training/basic")({
       { property: "og:type", content: "article" },
       { property: "og:title", content: m.meta_training_basic_title() },
       { property: "og:description", content: m.meta_training_basic_desc() },
-      { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
+      { property: "og:image", content: "/basic-training-banner.jpg" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Course",
+          name: m.meta_schema_training_basic_title(),
+          description: m.meta_training_basic_desc(),
+          image: "https://alexalashes.sk/basic-training-banner.jpg",
+          instructor: {
+            "@type": "Person",
+            jobTitle: "Lash Stylist",
+            name: "Oleksandra Afanasieva",
+          },
+          hasCourseInstance: {
+            "@type": "CourseInstance",
+            courseMode: ["onsite"],
+            offers: {
+              "@type": "Offer",
+              price: "870",
+              priceCurrency: "EUR",
+            },
+          },
+          location: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Pajštúnska 1",
+              addressLocality: "Bratislava",
+              addressRegion: "Bratislava",
+              postalCode: "85101",
+              addressCountry: "SK",
+            },
+            url: "https://alexalashes.sk/contact",
+          },
+          duration: "PT16H",
+          availableLanguage: [
+            {
+              "@type": "Language",
+              name: "Slovak",
+            },
+            {
+              "@type": "Language",
+              name: "Russian",
+            },
+            {
+              "@type": "Language",
+              name: "Ukrainian",
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: RouteComponent,
