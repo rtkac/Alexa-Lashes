@@ -6,6 +6,7 @@ import { Program } from "@/components/Program";
 import Teacher from "@/components/Teacher";
 import TrainingPrice from "@/components/TrainingPrice";
 import { m } from "@/paraglide/messages";
+import { instagramUrl } from "@/types";
 
 const benefits: string[] = [
   m.training_basic_benefit_1_title(),
@@ -48,6 +49,7 @@ export const Route = createFileRoute("/training/basic")({
             "@type": "Person",
             jobTitle: "Lash Stylist",
             name: "Oleksandra Afanasieva",
+            sameAs: instagramUrl,
           },
           hasCourseInstance: {
             "@type": "CourseInstance",

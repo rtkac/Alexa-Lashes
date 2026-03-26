@@ -111,6 +111,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "BeautySalon",
           name: "Alexa Lashes",
+          description: m.meta_index_desc(),
           telephone: telephoneNumber,
           url: "https://alexalashes.sk/contact",
           address: {
