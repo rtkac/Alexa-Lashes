@@ -1,14 +1,10 @@
-import { whatsAppNumber } from "@/types";
+import { instagramUrl, tiktokUrl, whatsAppNumber } from "@/types";
 
 const Socials = () => {
   return (
     <ul className="flex space-x-10 text-neutral-700 text-sm md:space-x-5 md:text-base dark:text-primary">
       <li>
-        <a
-          href="https://instagram.com/alexa_lashes_bratislava"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
           <svg
             role="img"
             viewBox="0 0 24 24"
@@ -22,11 +18,7 @@ const Socials = () => {
         </a>
       </li>
       <li>
-        <a
-          href="https://tiktok.com/@alexa_lashes_bratislava"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={tiktokUrl} target="_blank" rel="noopener noreferrer">
           <svg
             role="img"
             viewBox="0 0 24 24"

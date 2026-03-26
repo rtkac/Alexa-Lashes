@@ -7,7 +7,7 @@ import Cta from "@/components/Cta";
 import PreviewGallery from "@/components/PreviewGallery";
 import Reviews from "@/components/Reviews";
 import { m } from "@/paraglide/messages";
-import type { Benefit, Review } from "@/types";
+import { type Benefit, type Review, telephoneNumber } from "@/types";
 
 const benefits: Benefit[] = [
   {
@@ -102,7 +102,39 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_index_title() },
       { property: "og:description", content: m.meta_index_desc() },
-      { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
+      { property: "og:image", content: "/banner-main.jpg" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BeautySalon",
+          name: "Alexa Lashes",
+          telephone: telephoneNumber,
+          url: "https://alexalashes.sk/contact",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Pajštúnska 1",
+            addressLocality: "Bratislava",
+            postalCode: "85101",
+            addressCountry: "SK",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "09:00",
+              closes: "17:00",
+            },
+          ],
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: 48.11161906921437,
+            longitude: 17.102062243103443,
+          },
+        }),
+      },
     ],
   }),
   loader: () => {
