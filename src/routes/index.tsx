@@ -7,7 +7,7 @@ import Cta from "@/components/Cta";
 import PreviewGallery from "@/components/PreviewGallery";
 import Reviews from "@/components/Reviews";
 import { m } from "@/paraglide/messages";
-import { type Benefit, type Review, telephoneNumber } from "@/types";
+import { type Benefit, instagramUrl, type Review, telephoneNumber, tiktokUrl } from "@/types";
 
 const benefits: Benefit[] = [
   {
@@ -113,7 +113,8 @@ export const Route = createFileRoute("/")({
           name: "Alexa Lashes",
           description: m.meta_index_desc(),
           telephone: telephoneNumber,
-          url: "https://alexalashes.sk/contact",
+          url: "https://alexalashes.sk",
+          image: "https://alexalashes.com/banner-main.jpg",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Pajštúnska 1",
@@ -134,6 +135,7 @@ export const Route = createFileRoute("/")({
             latitude: 48.11161906921437,
             longitude: 17.102062243103443,
           },
+          sameAs: [instagramUrl, tiktokUrl],
         }),
       },
     ],

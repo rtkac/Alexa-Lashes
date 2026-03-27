@@ -110,6 +110,92 @@ export const Route = createFileRoute("/prices")({
       { property: "og:description", content: m.meta_prices_desc() },
       { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: m.meta_schema_prices_title(),
+          provider: {
+            "@type": "BeautySalon",
+            name: "Alexa Lashes",
+            url: "https://alexalashes.sk",
+          },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: m.meta_schema_prices_offers_title(),
+            itemListElement: [
+              {
+                "@type": "OfferCatalog",
+                name: m.prices_classic_lashes_title(),
+                itemListElement: lashesClassic.map(({ name, price }) => ({
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name,
+                  },
+                  priceCurrency: "EUR",
+                  price,
+                })),
+              },
+              {
+                "@type": "OfferCatalog",
+                name: m.prices_2d_lashes_title(),
+                itemListElement: lashes2D.map(({ name, price }) => ({
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name,
+                  },
+                  priceCurrency: "EUR",
+                  price,
+                })),
+              },
+              {
+                "@type": "OfferCatalog",
+                name: m.prices_34d_lashes_title(),
+                itemListElement: lashes34D.map(({ name, price }) => ({
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name,
+                  },
+                  priceCurrency: "EUR",
+                  price,
+                })),
+              },
+              {
+                "@type": "OfferCatalog",
+                name: m.prices_56d_lashes_title(),
+                itemListElement: lashes56D.map(({ name, price }) => ({
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name,
+                  },
+                  priceCurrency: "EUR",
+                  price,
+                })),
+              },
+              {
+                "@type": "OfferCatalog",
+                name: m.prices_additional_lashes_title(),
+                itemListElement: lashesAdditional.map(({ name, price }) => ({
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name,
+                  },
+                  priceCurrency: "EUR",
+                  price,
+                })),
+              },
+            ],
+          },
+        }),
+      },
+    ],
   }),
   component: RouteComponent,
 });
