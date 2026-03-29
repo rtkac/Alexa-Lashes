@@ -37,8 +37,8 @@ const benefits: Benefit[] = [
 
 const gallery: Gallery[] = [
   {
-    thumbSrc: "/1-thumb.JPG",
-    src: "/1.JPG",
+    thumbSrc: "/1-thumb.jpg",
+    src: "/1.jpg",
     name: "Gallery Image 1",
   },
   {
