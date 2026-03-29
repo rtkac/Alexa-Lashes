@@ -1,54 +1,22 @@
 import { PhotoProvider, PhotoView } from "react-photo-view";
 
-const PreviewGallery = () => {
+import type { Gallery } from "@/types";
+
+type PreviewGalleryProps = {
+  gallery: Gallery[];
+};
+
+const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
       <PhotoProvider>
-        <PhotoView src="https://placehold.co/212x200/4a413a/4a413a">
-          <div className="h-40 overflow-hidden rounded-md md:h-50">
-            <img
-              src="https://placehold.co/212x200/4a413a/4a413a"
-              alt="1"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </PhotoView>
-        <PhotoView src="https://placehold.co/212x200/4a413a/4a413a">
-          <div className="h-40 overflow-hidden rounded-md md:h-50">
-            <img
-              src="https://placehold.co/212x200/4a413a/4a413a"
-              alt="2"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </PhotoView>
-        <PhotoView src="https://placehold.co/212x200/4a413a/4a413a">
-          <div className="h-40 overflow-hidden rounded-md md:h-50">
-            <img
-              src="https://placehold.co/212x200/4a413a/4a413a"
-              alt="3"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </PhotoView>
-        <PhotoView src="https://placehold.co/212x200/4a413a/4a413a">
-          <div className="h-40 overflow-hidden rounded-md md:h-50">
-            <img
-              src="https://placehold.co/212x200/4a413a/4a413a"
-              alt="4"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </PhotoView>
-        <PhotoView src="https://placehold.co/212x200/4a413a/4a413a">
-          <div className="h-40 overflow-hidden rounded-md md:h-50">
-            <img
-              src="https://placehold.co/212x200/4a413a/4a413a"
-              alt="5"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </PhotoView>
+        {gallery.map(({ src, name }) => (
+          <PhotoView key={name} src={src}>
+            <div className="h-40 overflow-hidden rounded-md md:h-50">
+              <img src={src} alt={name} className="h-full w-full object-cover" />
+            </div>
+          </PhotoView>
+        ))}
       </PhotoProvider>
     </div>
   );

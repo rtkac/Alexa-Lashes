@@ -19,7 +19,7 @@ const Cta = ({ variant = "wheat", title, description, buttonLabel }: CtaProps) =
       <h2 className="mb-4 font-bold text-xl md:text-3xl dark:text-primary">
         {title || m.cta_title()}
       </h2>
-      <p className="mx-auto mb-6 max-w-130">{description || m.cta_desc()}</p>
+      <p className="mx-auto mb-6 max-w-130 leading-6">{description || m.cta_desc()}</p>
       <a href={whatsAppNumber} aria-label="Chat on WhatsApp" className="btn-primary">
         {buttonLabel || m.cta_link()}
       </a>

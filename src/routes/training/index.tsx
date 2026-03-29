@@ -4,6 +4,35 @@ import Cta from "@/components/Cta";
 import PreviewGallery from "@/components/PreviewGallery";
 import Trainings from "@/components/Trainings";
 import { m } from "@/paraglide/messages";
+import type { Gallery } from "@/types";
+
+const gallery: Gallery[] = [
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 1",
+  },
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 2",
+  },
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 3",
+  },
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 4",
+  },
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 5",
+  },
+];
 
 export const Route = createFileRoute("/training/")({
   head: () => ({
@@ -23,13 +52,13 @@ function RouteComponent() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-14 max-w-180 text-center">
-        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl dark:text-primary">
+        <h1 className="mb-3 font-bold text-2xl md:text-4xl dark:text-primary">
           {m.training_title()}
         </h1>
-        <p>{m.training_desc()}</p>
+        <p className="leading-6">{m.training_desc()}</p>
       </div>
 
-      <div className="mb-14">
+      <div className="mb-18">
         <Trainings />
       </div>
 
@@ -37,7 +66,7 @@ function RouteComponent() {
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
           {m.training_gallery_title()}
         </h2>
-        <PreviewGallery />
+        <PreviewGallery gallery={gallery} />
       </div>
 
       <Cta

@@ -96,9 +96,9 @@ const Trainings = () => {
                 {m.training_advanced_duration_label()}&nbsp;{m.training_advanced_duration()}
               </p>
             </div>
-            {/* <Link to="/training/advanced" className="btn-primary w-full sm:w-auto">
-              {m.training_advanced_link_label()}
-            </Link> */}
+            <Link to="/contact" className="btn-secondary w-full sm:w-auto">
+              {m.cta_training_button()}
+            </Link>
           </div>
         </div>
       </div>

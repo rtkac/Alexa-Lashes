@@ -1,0 +1,98 @@
+import { createFileRoute } from "@tanstack/react-router";
+
+import Banner from "@/components/Banner";
+import Cta from "@/components/Cta";
+import { LashMaster } from "@/components/LashMaster";
+import PreviewGallery from "@/components/PreviewGallery";
+import { m } from "@/paraglide/messages";
+import type { Gallery } from "@/types";
+
+const gallery: Gallery[] = [
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 1",
+  },
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 2",
+  },
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 3",
+  },
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 4",
+  },
+  {
+    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
+    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    name: "Gallery Image 5",
+  },
+];
+
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: m.meta_about_title() },
+      { name: "description", content: m.meta_about_desc() },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: m.meta_about_title() },
+      { property: "og:description", content: m.meta_about_desc() },
+      { property: "og:image", content: "https://alexalashes.sk/salon.jpg" },
+    ],
+  }),
+  component: RouteComponent,
+});
+
+function RouteComponent() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-10">
+      <div className="md:mb-25">
+        <Banner
+          title={m.about_banner_title()}
+          description={m.about_banner_desc()}
+          image="bg-[url(/salon.jpg)]"
+          isDark
+        />
+      </div>
+      <div className="mb-18 grid gap-8 sm:grid-cols-2 md:mb-25 md:gap-12">
+        <div className="text-center sm:text-left">
+          <div className="space-y-5">
+            <h2 className="font-bold text-xl md:text-3xl dark:text-primary">{m.about_title()}</h2>
+            <p className="leading-6">{m.about_desc_1()}</p>
+            <p className="leading-6">{m.about_desc_2()}</p>
+            <p className="rounded-r-md border-primary border-l-4 bg-primary-light p-5 font-bold text-primary italic">
+              {m.about_desc_label()}
+            </p>
+          </div>
+        </div>
+        <div>
+          <img
+            src="https://placehold.co/540x350/c4ad72/c4ad72"
+            alt="Alexa Lashes salon"
+            className="w-full rounded-md"
+          />
+        </div>
+      </div>
+      <div className="mb-18 md:mb-25">
+        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
+          {m.about_gallery_title()}
+        </h2>
+        <PreviewGallery gallery={gallery} />
+      </div>
+      <div className="mb-18 md:mb-25">
+        <LashMaster
+          title={m.lash_master_title()}
+          desc_1={m.lash_master_desc_1()}
+          desc_2={m.lash_master_desc_2()}
+        />
+      </div>
+      <Cta />
+    </div>
+  );
+}

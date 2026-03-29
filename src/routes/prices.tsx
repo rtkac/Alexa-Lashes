@@ -100,6 +100,17 @@ const lashesAdditional: LashPrice[] = [
   },
 ];
 
+const itemListElement = (prices: LashPrice[]) =>
+  prices.map(({ name, price }) => ({
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name,
+    },
+    priceCurrency: "EUR",
+    price,
+  }));
+
 export const Route = createFileRoute("/prices")({
   head: () => ({
     meta: [
@@ -129,67 +140,27 @@ export const Route = createFileRoute("/prices")({
               {
                 "@type": "OfferCatalog",
                 name: m.prices_classic_lashes_title(),
-                itemListElement: lashesClassic.map(({ name, price }) => ({
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name,
-                  },
-                  priceCurrency: "EUR",
-                  price,
-                })),
+                itemListElement: itemListElement(lashesClassic),
               },
               {
                 "@type": "OfferCatalog",
                 name: m.prices_2d_lashes_title(),
-                itemListElement: lashes2D.map(({ name, price }) => ({
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name,
-                  },
-                  priceCurrency: "EUR",
-                  price,
-                })),
+                itemListElement: itemListElement(lashes2D),
               },
               {
                 "@type": "OfferCatalog",
                 name: m.prices_34d_lashes_title(),
-                itemListElement: lashes34D.map(({ name, price }) => ({
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name,
-                  },
-                  priceCurrency: "EUR",
-                  price,
-                })),
+                itemListElement: itemListElement(lashes34D),
               },
               {
                 "@type": "OfferCatalog",
                 name: m.prices_56d_lashes_title(),
-                itemListElement: lashes56D.map(({ name, price }) => ({
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name,
-                  },
-                  priceCurrency: "EUR",
-                  price,
-                })),
+                itemListElement: itemListElement(lashes56D),
               },
               {
                 "@type": "OfferCatalog",
                 name: m.prices_additional_lashes_title(),
-                itemListElement: lashesAdditional.map(({ name, price }) => ({
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name,
-                  },
-                  priceCurrency: "EUR",
-                  price,
-                })),
+                itemListElement: itemListElement(lashesAdditional),
               },
             ],
           },
@@ -204,10 +175,10 @@ function RouteComponent() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-14 max-w-180 text-center">
-        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl dark:text-primary">
+        <h1 className="mb-3 font-bold text-2xl md:text-4xl dark:text-primary">
           {m.prices_title()}
         </h1>
-        <p>{m.prices_desc()}</p>
+        <p className="leading-6">{m.prices_desc()}</p>
       </div>
       <div className="mb-14">
         <h2 className="mb-4 pb-2 font-bold text-xl md:text-2xl dark:text-primary">

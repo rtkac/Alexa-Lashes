@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import Banner from "@/components/Banner";
 import Includes from "@/components/Includes";
+import { LashMaster } from "@/components/LashMaster";
 import { Program } from "@/components/Program";
-import Teacher from "@/components/Teacher";
 import TrainingPrice from "@/components/TrainingPrice";
 import { m } from "@/paraglide/messages";
 import { instagramUrl } from "@/types";
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/training/basic")({
       { property: "og:type", content: "article" },
       { property: "og:title", content: m.meta_training_basic_title() },
       { property: "og:description", content: m.meta_training_basic_desc() },
-      { property: "og:image", content: "/basic-training-banner.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.jpg" },
     ],
     scripts: [
       {
@@ -138,7 +138,7 @@ function RouteComponent() {
         <TrainingPrice duration={m.training_basic_duration()} price={870} />
       </div>
       <div className="mb-8">
-        <Teacher />
+        <LashMaster title={m.teacher_title()} desc_1={m.teacher_desc()} />
       </div>
     </div>
   );
