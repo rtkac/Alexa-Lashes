@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import Cta from "@/components/Cta";
 import PreviewGallery from "@/components/PreviewGallery";
@@ -8,28 +8,28 @@ import type { Gallery } from "@/types";
 
 const gallery: Gallery[] = [
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/course-1.jpg",
+    src: "/course-1.jpg",
     name: "Gallery Image 1",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/course-2.jpg",
+    src: "/course-2.jpg",
     name: "Gallery Image 2",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/course-3.jpg",
+    src: "/course-3.jpg",
     name: "Gallery Image 3",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/course-4.jpg",
+    src: "/course-4.jpg",
     name: "Gallery Image 4",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/course-5.jpg",
+    src: "/course-5.jpg",
     name: "Gallery Image 5",
   },
 ];
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/training/")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_training_title() },
       { property: "og:description", content: m.meta_training_desc() },
-      { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
+      { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.jpg" },
     ],
   }),
   component: RouteComponent,
@@ -66,7 +66,14 @@ function RouteComponent() {
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
           {m.training_gallery_title()}
         </h2>
-        <PreviewGallery gallery={gallery} />
+        <div className="mb-6">
+          <PreviewGallery gallery={gallery} />
+        </div>
+        <div className="flex justify-center">
+          <Link to="/gallery" className="btn-outline-primary">
+            {m.training_gallery_link()}
+          </Link>
+        </div>
       </div>
 
       <Cta

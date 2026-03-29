@@ -28,7 +28,7 @@ const Banner = ({
   return (
     <div
       className={cn(
-        "mb-13 rounded-md bg-center bg-cover text-center text-white lg:bg-position-[center_top_-105rem] dark:text-amber-50",
+        "mb-13 rounded-md bg-center bg-cover text-center text-white dark:text-amber-50",
         image,
       )}
     >

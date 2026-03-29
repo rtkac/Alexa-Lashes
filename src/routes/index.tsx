@@ -37,28 +37,28 @@ const benefits: Benefit[] = [
 
 const gallery: Gallery[] = [
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/1-thumb.JPG",
+    src: "/1.JPG",
     name: "Gallery Image 1",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/2-thumb.jpg",
+    src: "/2.jpg",
     name: "Gallery Image 2",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/3-thumb.jpg",
+    src: "/3.jpg",
     name: "Gallery Image 3",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/4-thumb.jpg",
+    src: "/4.jpg",
     name: "Gallery Image 4",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/5-thumb.jpg",
+    src: "/5.jpg",
     name: "Gallery Image 5",
   },
 ];
@@ -138,7 +138,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_index_title() },
       { property: "og:description", content: m.meta_index_desc() },
-      { property: "og:image", content: "https://alexalashes.sk/banner-main.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.jpg" },
     ],
     scripts: [
       {
@@ -150,7 +150,7 @@ export const Route = createFileRoute("/")({
           description: m.meta_index_desc(),
           telephone: telephoneNumber,
           url: "https://alexalashes.sk",
-          image: "https://alexalashes.sk/banner-main.jpg",
+          image: "https://alexalashes.sk/banner-main-desktop.jpg",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Pajštúnska 1",
@@ -199,7 +199,7 @@ function RouteComponent() {
         description={m.banner_desc()}
         primaryAction={{ link: { to: "/prices" }, label: m.banner_link_services() }}
         secondaryAction={{ link: { to: "/contact" }, label: m.banner_link_contact() }}
-        image="bg-[url(/banner-main.jpg)]"
+        image="bg-[url(/banner-main-mobile.jpg)] md:bg-[url(/banner-main-desktop.jpg)]"
       />
       <div className="mx-auto mb-10 max-w-180 text-center">
         <h2 className="mb-3 font-bold text-xl md:text-3xl dark:text-primary">

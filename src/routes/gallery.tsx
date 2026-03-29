@@ -13,7 +13,7 @@ export const Route = createFileRoute("/gallery")({
         { property: "og:type", content: "website" },
         { property: "og:title", content: m.meta_gallery_title() },
         { property: "og:description", content: m.meta_gallery_desc() },
-        { property: "og:image", content: "https://alexalashes.sk/banner-main.jpg" },
+        { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
       ],
     };
   },

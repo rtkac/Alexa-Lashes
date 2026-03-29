@@ -9,12 +9,12 @@ interface LashMasterProps {
 export const LashMaster = ({ title, desc_1, desc_2 }: LashMasterProps) => {
   return (
     <div className="grid gap-10 md:grid-cols-5">
-      <div className="mx-auto max-h-65 max-w-65 overflow-hidden rounded-full border-2 border-primary p-2 sm:col-span-2">
-        <div className="overflow-hidden rounded-full">
+      <div className="flex items-center justify-center sm:col-span-2">
+        <div className="flex h-65 w-65 items-center justify-center rounded-full border-2 border-primary bg-white">
           <img
-            src="https://placehold.co/400x400/4a413a/4a413a"
+            src="/alexa-lashes-stylist.jpg"
             alt="Alexa Lashes master"
-            className="h-full w-full object-cover"
+            className="h-60 w-60 rounded-full object-cover"
           />
         </div>
       </div>

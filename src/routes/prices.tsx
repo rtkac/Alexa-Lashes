@@ -119,7 +119,7 @@ export const Route = createFileRoute("/prices")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_prices_title() },
       { property: "og:description", content: m.meta_prices_desc() },
-      { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
+      { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
     ],
     scripts: [
       {

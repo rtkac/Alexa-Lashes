@@ -9,28 +9,28 @@ import type { Gallery } from "@/types";
 
 const gallery: Gallery[] = [
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/reception.jpg",
+    src: "/reception.jpg",
     name: "Gallery Image 1",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
-    name: "Gallery Image 2",
-  },
-  {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
-    name: "Gallery Image 3",
-  },
-  {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/salon-4.jpg",
+    src: "/salon-4.jpg",
     name: "Gallery Image 4",
   },
   {
-    thumbSrc: "https://placehold.co/212x200/4a413a/4a413a",
-    src: "https://placehold.co/1000x1000/4a413a/4a413a",
+    thumbSrc: "/salon-2.jpg",
+    src: "/salon-2.jpg",
+    name: "Gallery Image 2",
+  },
+  {
+    thumbSrc: "/salon-3.jpg",
+    src: "/salon-3.jpg",
+    name: "Gallery Image 3",
+  },
+  {
+    thumbSrc: "/salon-5.jpg",
+    src: "/salon-5.jpg",
     name: "Gallery Image 5",
   },
 ];
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_about_title() },
       { property: "og:description", content: m.meta_about_desc() },
-      { property: "og:image", content: "https://alexalashes.sk/salon.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
     ],
   }),
   component: RouteComponent,
@@ -56,7 +56,7 @@ function RouteComponent() {
         <Banner
           title={m.about_banner_title()}
           description={m.about_banner_desc()}
-          image="bg-[url(/salon.jpg)]"
+          image="bg-[url(/salon-2.jpg)]"
           isDark
         />
       </div>
@@ -71,12 +71,8 @@ function RouteComponent() {
             </p>
           </div>
         </div>
-        <div>
-          <img
-            src="https://placehold.co/540x350/c4ad72/c4ad72"
-            alt="Alexa Lashes salon"
-            className="w-full rounded-md"
-          />
+        <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
+          <img src="/salon-alexa.jpg" alt="Alexa Lashes salon" className="w-full rounded-md" />
         </div>
       </div>
       <div className="mb-18 md:mb-25">

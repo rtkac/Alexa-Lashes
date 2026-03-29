@@ -14,8 +14,8 @@ const Trainings = () => {
             <p className="mb-6 text-sm">{m.training_basic_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
-                src="https://placehold.co/490x280/4a413a/4a413a"
-                alt="1"
+                src="/basic-training-banner.jpg"
+                alt="Basic training"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -62,8 +62,8 @@ const Trainings = () => {
             <p className="mb-6 text-sm">{m.training_advanced_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
-                src="https://placehold.co/490x280/4a413a/4a413a"
-                alt="1"
+                src="/advanced-training-banner.jpg"
+                alt="Advanced training"
                 className="h-full w-full object-cover"
               />
             </div>
