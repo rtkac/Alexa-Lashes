@@ -5,8 +5,8 @@ import type { Gallery as ImageGallery } from "@/types";
 
 const galleryWork: ImageGallery[] = [
   {
-    thumbSrc: "/1.JPG",
-    src: "/1.JPG",
+    thumbSrc: "/1.jpg",
+    src: "/1.jpg",
     name: "Gallery Image 1",
   },
   {
@@ -198,8 +198,8 @@ const galleryTraining: ImageGallery[] = [
     name: "Gallery Image 11",
   },
   {
-    thumbSrc: "/course-12.jpg",
-    src: "/course-12.jpg",
+    thumbSrc: "/advanced-training-banner.jpg",
+    src: "/advanced-training-banner.jpg",
     name: "Gallery Image 12",
   },
   {
