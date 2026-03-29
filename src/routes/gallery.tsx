@@ -13,7 +13,7 @@ export const Route = createFileRoute("/gallery")({
         { property: "og:type", content: "website" },
         { property: "og:title", content: m.meta_gallery_title() },
         { property: "og:description", content: m.meta_gallery_desc() },
-        { property: "og:image", content: "/home/1.jpg" },
+        { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
       ],
     };
   },
@@ -23,13 +23,13 @@ export const Route = createFileRoute("/gallery")({
 function RouteComponent() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <div className="mx-auto mb-10 max-w-180 text-center">
-        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl dark:text-primary">
+      <div className="mx-auto mb-14 max-w-180 text-center">
+        <h1 className="mb-3 font-bold text-2xl md:text-4xl dark:text-primary">
           {m.gallery_title()}
         </h1>
-        <p>{m.gallery_desc()}</p>
+        <p className="leading-6">{m.gallery_desc()}</p>
       </div>
-      <div className="mb-18">
+      <div className="mb-18 md:mb-25">
         <Gallery />
       </div>
       <Cta

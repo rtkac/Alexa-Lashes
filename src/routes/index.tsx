@@ -1,13 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from "lucide-react";
 
+import { AboutUs } from "@/components/AboutUs";
 import Banner from "@/components/Banner";
 import Benefits from "@/components/Benefits";
 import Cta from "@/components/Cta";
 import PreviewGallery from "@/components/PreviewGallery";
 import Reviews from "@/components/Reviews";
 import { m } from "@/paraglide/messages";
-import { type Benefit, instagramUrl, type Review, telephoneNumber, tiktokUrl } from "@/types";
+import {
+  type Benefit,
+  type Gallery,
+  instagramUrl,
+  type Review,
+  telephoneNumber,
+  tiktokUrl,
+} from "@/types";
 
 const benefits: Benefit[] = [
   {
@@ -24,6 +32,34 @@ const benefits: Benefit[] = [
     icon: <HeartIcon className="mb-4 text-primary" />,
     title: m.benefits_3_title(),
     description: m.benefits_3_desc(),
+  },
+];
+
+const gallery: Gallery[] = [
+  {
+    thumbSrc: "/1-thumb.JPG",
+    src: "/1.JPG",
+    name: "Gallery Image 1",
+  },
+  {
+    thumbSrc: "/2-thumb.jpg",
+    src: "/2.jpg",
+    name: "Gallery Image 2",
+  },
+  {
+    thumbSrc: "/3-thumb.jpg",
+    src: "/3.jpg",
+    name: "Gallery Image 3",
+  },
+  {
+    thumbSrc: "/4-thumb.jpg",
+    src: "/4.jpg",
+    name: "Gallery Image 4",
+  },
+  {
+    thumbSrc: "/5-thumb.jpg",
+    src: "/5.jpg",
+    name: "Gallery Image 5",
   },
 ];
 
@@ -102,7 +138,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_index_title() },
       { property: "og:description", content: m.meta_index_desc() },
-      { property: "og:image", content: "/banner-main.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.jpg" },
     ],
     scripts: [
       {
@@ -114,7 +150,7 @@ export const Route = createFileRoute("/")({
           description: m.meta_index_desc(),
           telephone: telephoneNumber,
           url: "https://alexalashes.sk",
-          image: "https://alexalashes.com/banner-main.jpg",
+          image: "https://alexalashes.sk/banner-main-desktop.jpg",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Pajštúnska 1",
@@ -163,23 +199,26 @@ function RouteComponent() {
         description={m.banner_desc()}
         primaryAction={{ link: { to: "/prices" }, label: m.banner_link_services() }}
         secondaryAction={{ link: { to: "/contact" }, label: m.banner_link_contact() }}
-        image="bg-[url(/banner-main.jpg)]"
+        image="bg-[url(/banner-main-mobile.jpg)] md:bg-[url(/banner-main-desktop.jpg)]"
       />
-      <div className="mx-auto mb-8 max-w-180 text-center">
-        <h2 className="mb-2.5 font-bold text-xl md:text-3xl dark:text-primary">
+      <div className="mx-auto mb-10 max-w-180 text-center">
+        <h2 className="mb-3 font-bold text-xl md:text-3xl dark:text-primary">
           {m.home_welcome_title()}
         </h2>
-        <p>{m.home_welcome_desc()}</p>
+        <p className="leading-6">{m.home_welcome_desc()}</p>
       </div>
-      <div className="mb-18">
+      <div className="mb-18 md:mb-25">
         <Benefits data={benefits} />
       </div>
-      <div className="mb-18">
+      <div className="mb-18 md:mb-25">
+        <AboutUs />
+      </div>
+      <div className="mb-18 md:mb-25">
         <div className="mb-6">
           <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
             {m.home_gallery_title()}
           </h2>
-          <PreviewGallery />
+          <PreviewGallery gallery={gallery} />
         </div>
         <div className="flex justify-center">
           <Link to="/gallery" className="btn-primary">
@@ -187,7 +226,7 @@ function RouteComponent() {
           </Link>
         </div>
       </div>
-      <div className="mb-18">
+      <div className="mb-18 md:mb-25">
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
           {m.home_reviews_title()}
         </h2>

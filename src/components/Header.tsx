@@ -82,6 +82,15 @@ export const Header = () => {
               </li>
               <li>
                 <Link
+                  to="/about"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  onClick={closeMenu}
+                >
+                  {m.menu_about()}
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/prices"
                   className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
                   onClick={closeMenu}

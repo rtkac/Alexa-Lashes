@@ -31,3 +31,9 @@ export type User = {
   email: string;
   message: string;
 };
+
+export type Gallery = {
+  thumbSrc: string;
+  src: string;
+  name: string;
+};

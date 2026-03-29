@@ -16,7 +16,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_contact_title() },
       { property: "og:description", content: m.meta_contact_desc() },
-      { property: "og:image", content: "https://placehold.co/1500x800/656e6c/656e6c" },
+      { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
     ],
   }),
   component: RouteComponent,
@@ -25,11 +25,11 @@ export const Route = createFileRoute("/contact")({
 function RouteComponent() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <div className="mx-auto mb-8 max-w-180 text-center">
-        <h1 className="mb-2.5 font-bold text-2xl md:text-4xl dark:text-primary">
+      <div className="mx-auto mb-14 max-w-180 text-center">
+        <h1 className="mb-3 font-bold text-2xl md:text-4xl dark:text-primary">
           {m.contact_title()}
         </h1>
-        <p className="mb-10">{m.contact_desc()}</p>
+        <p className="leading-6">{m.contact_desc()}</p>
       </div>
       <div className="mb-5 grid gap-5 md:mb-18 md:grid-cols-7 md:gap-15">
         <div className="md:col-span-4">
