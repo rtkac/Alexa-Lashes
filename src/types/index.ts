@@ -14,6 +14,7 @@ export type Benefit = {
 export type Review = {
   name: string;
   description: string;
+  url: string;
 };
 
 export type LashPrice = {

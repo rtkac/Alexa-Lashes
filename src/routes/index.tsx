@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { AboutUs } from "@/components/AboutUs";
 import Banner from "@/components/Banner";
@@ -67,66 +68,87 @@ const staticReviews: Review[] = [
   {
     name: m.reviews_1_name(),
     description: m.reviews_1_desc(),
+    url: "https://maps.app.goo.gl/9U6Q9Fw7bVGKxefV6",
   },
   {
     name: m.reviews_2_name(),
     description: m.reviews_2_desc(),
+    url: "https://maps.app.goo.gl/1ChGUGpWm3f2oPKV9",
   },
   {
     name: m.reviews_3_name(),
     description: m.reviews_3_desc(),
+    url: "https://maps.app.goo.gl/XvL2rC2Hbme8WoSVA",
   },
   {
     name: m.reviews_4_name(),
     description: m.reviews_4_desc(),
+    url: "https://maps.app.goo.gl/CJiMfJo38iBBn6gP9",
   },
   {
     name: m.reviews_5_name(),
     description: m.reviews_5_desc(),
+    url: "https://maps.app.goo.gl/PzXfC4WNqBCgfn9r9",
   },
   {
     name: m.reviews_6_name(),
     description: m.reviews_6_desc(),
+    url: "https://maps.app.goo.gl/zeNuoPXuUqx3cHm58",
   },
   {
     name: m.reviews_7_name(),
     description: m.reviews_7_desc(),
+    url: "https://maps.app.goo.gl/hWDEp5Pt6HqMaBrT9",
   },
   {
     name: m.reviews_8_name(),
     description: m.reviews_8_desc(),
+    url: "https://maps.app.goo.gl/hEJVQ3TfhVejWRaP8",
   },
   {
     name: m.reviews_9_name(),
     description: m.reviews_9_desc(),
+    url: "https://maps.app.goo.gl/96i4JNDxeSG5Cc3u5",
   },
   {
     name: m.reviews_10_name(),
     description: m.reviews_10_desc(),
+    url: "https://maps.app.goo.gl/qEgJ9S8Coxc4M2vK7",
   },
   {
     name: m.reviews_11_name(),
     description: m.reviews_11_desc(),
+    url: "https://maps.app.goo.gl/uoQgh5BpxLn5nJh27",
   },
   {
     name: m.reviews_12_name(),
     description: m.reviews_12_desc(),
+    url: "https://maps.app.goo.gl/aqFucHQW7k1EZbWc9",
   },
   {
     name: m.reviews_13_name(),
     description: m.reviews_13_desc(),
+    url: "https://maps.app.goo.gl/vFo2gkCTN1oz5pWk6",
   },
   {
     name: m.reviews_14_name(),
     description: m.reviews_14_desc(),
+    url: "https://maps.app.goo.gl/wC1sH7urBxwtb5cm6",
   },
   {
     name: m.reviews_15_name(),
     description: m.reviews_15_desc(),
+    url: "https://maps.app.goo.gl/AZojrnuhEGdrjw1J7",
   },
   {
     name: m.reviews_16_name(),
     description: m.reviews_16_desc(),
+    url: "https://maps.app.goo.gl/Vqxnw1UhbK29byDj6",
+  },
+  {
+    name: m.reviews_17_name(),
+    description: m.reviews_17_desc(),
+    url: "https://maps.app.goo.gl/9jb1H8f8TQSr3dxF8",
   },
 ];
 
@@ -176,21 +198,16 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  loader: () => {
-    const copy = [...staticReviews];
-
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-
-    return copy.slice(0, 3);
-  },
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const reviews = Route.useLoaderData();
+  const [randomReviews, setRandomReviews] = useState<typeof staticReviews>([]);
+
+  useEffect(() => {
+    const picked = [...staticReviews].sort(() => 0.5 - Math.random()).slice(0, 3);
+    setRandomReviews(picked);
+  }, []);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
@@ -230,7 +247,7 @@ function RouteComponent() {
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
           {m.home_reviews_title()}
         </h2>
-        <Reviews data={reviews} />
+        <Reviews data={randomReviews} />
       </div>
       <Cta />
     </div>
