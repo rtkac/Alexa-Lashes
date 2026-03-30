@@ -10,9 +10,12 @@ const Reviews = ({ data }: ReviewsProps) => {
   return (
     <div className="grid gap-4 md:grid-cols-3">
       {data.map((review) => (
-        <div
-          key={review.name}
-          className="flex flex-col justify-between rounded-md border border-primary-light bg-white p-5 dark:border-tertiary-light dark:bg-tertiary"
+        <a
+          key={review.url}
+          href={review.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col justify-between rounded-md border border-primary-light bg-white p-5 hover:cursor-pointer hover:no-underline dark:border-tertiary-light dark:bg-tertiary"
         >
           <div className="mb-3">
             <div className="mb-3 flex space-x-1 text-primary">
@@ -25,7 +28,7 @@ const Reviews = ({ data }: ReviewsProps) => {
             <p className="text-neutral-600 text-sm dark:text-amber-50">{review.description}</p>
           </div>
           <div className="flex items-center space-x-2.5">
-            <div className="size-[35px] overflow-hidden rounded-full">
+            <div className="size-8.75 overflow-hidden rounded-full">
               <img
                 src="/logo.svg"
                 alt={review.name}
@@ -34,9 +37,9 @@ const Reviews = ({ data }: ReviewsProps) => {
                 height={35}
               />
             </div>
-            <h3 className="font-bold text-sm">{review.name}</h3>
+            <h3 className="font-bold text-black text-sm">{review.name}</h3>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   );

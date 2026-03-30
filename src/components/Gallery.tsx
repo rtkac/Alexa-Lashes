@@ -276,7 +276,7 @@ const Gallery = () => {
       <div className="mb-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {galleryWork.map(({ src, name }) => (
           <PhotoView key={name} src={src}>
-            <div className="h-40 overflow-hidden rounded-md md:h-60">
+            <div className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60">
               <img src={src} alt={name} className="h-full w-full object-cover" />
             </div>
           </PhotoView>
@@ -286,7 +286,7 @@ const Gallery = () => {
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {galleryTraining.map(({ src, name }) => (
           <PhotoView key={name} src={src}>
-            <div className="h-40 overflow-hidden rounded-md md:h-60">
+            <div className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60">
               <img src={src} alt={name} className="h-full w-full object-cover" />
             </div>
           </PhotoView>
