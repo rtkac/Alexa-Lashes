@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from "lucide-react";
-import { useEffect, useState } from "react";
 
 import { AboutUs } from "@/components/AboutUs";
 import Banner from "@/components/Banner";
@@ -64,7 +63,7 @@ const gallery: Gallery[] = [
   },
 ];
 
-const staticReviews: Review[] = [
+const reviews: Review[] = [
   {
     name: m.reviews_1_name(),
     description: m.reviews_1_desc(),
@@ -202,13 +201,6 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
-  const [randomReviews, setRandomReviews] = useState<typeof staticReviews>([]);
-
-  useEffect(() => {
-    const picked = [...staticReviews].sort(() => 0.5 - Math.random()).slice(0, 3);
-    setRandomReviews(picked);
-  }, []);
-
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <Banner
@@ -247,7 +239,7 @@ function RouteComponent() {
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
           {m.home_reviews_title()}
         </h2>
-        <Reviews data={randomReviews} />
+        <Reviews reviews={reviews} />
       </div>
       <Cta />
     </div>
