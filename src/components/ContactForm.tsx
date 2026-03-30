@@ -5,6 +5,7 @@ import { useState } from "react";
 import { emailRegex, nameRegex } from "@/helpers";
 import { submitForm } from "@/lib/form";
 import { formOpts } from "@/lib/form-isomorphic";
+import { cn } from "@/lib/utils";
 import { m } from "@/paraglide/messages";
 
 function FieldInfo({ field }: { field: AnyFieldApi }) {
@@ -72,7 +73,12 @@ const ContactForm = () => {
                       disabled={isSubmitting}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
-                      className="rounded-md border border-primary-light bg-background px-4 py-3 focus:outline-primary"
+                      className={cn(
+                        "rounded-md border border-primary-light bg-background px-4 py-3 focus:outline-primary",
+                        field.state.meta.isValid
+                          ? "focus:outline-primary"
+                          : "border-red-300 focus:outline-red-400",
+                      )}
                       aria-invalid={!field.state.meta.isValid}
                     />
                     <FieldInfo field={field} />
@@ -107,7 +113,12 @@ const ContactForm = () => {
                       disabled={isSubmitting}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
-                      className="rounded-md border border-primary-light bg-background px-4 py-3 focus:outline-primary"
+                      className={cn(
+                        "rounded-md border border-primary-light bg-background px-4 py-3 focus:outline-primary",
+                        field.state.meta.isValid
+                          ? "focus:outline-primary"
+                          : "border-red-300 focus:outline-red-400",
+                      )}
                     />
                     <FieldInfo field={field} />
                   </div>
@@ -144,7 +155,12 @@ const ContactForm = () => {
                       disabled={isSubmitting}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
-                      className="rounded-md border border-primary-light bg-background px-4 py-3 focus:outline-primary"
+                      className={cn(
+                        "rounded-md border border-primary-light bg-background px-4 py-3 focus:outline-primary",
+                        field.state.meta.isValid
+                          ? "focus:outline-primary"
+                          : "border-red-300 focus:outline-red-400",
+                      )}
                     />
                     <FieldInfo field={field} />
                   </div>
