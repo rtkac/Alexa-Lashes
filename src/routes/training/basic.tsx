@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import Banner from "@/components/Banner";
 import Includes from "@/components/Includes";
@@ -100,9 +100,13 @@ function RouteComponent() {
       <Banner
         title={m.training_basic_banner_title()}
         description={m.training_basic_banner_desc()}
-        primaryAction={{ link: { to: "/contact" }, label: m.training_basic_banner_link_contact() }}
         image="bg-[url(/basic-training-banner.jpg)]"
         isDark
+        buttons={
+          <Link to="/contact/" className="btn-primary mx-2">
+            {m.training_basic_banner_link_contact()}
+          </Link>
+        }
       />
       <div className="mx-auto mb-20 max-w-4xl text-center">
         <h2 className="mb-6 font-bold text-primary text-xl md:text-3xl">

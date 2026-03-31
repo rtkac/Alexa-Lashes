@@ -24,7 +24,7 @@ export const Disclaimer = () => (
     <p className="mb-2 text-sm">{m.disclaimer_desc()}</p>
     <p className="text-sm">
       {m.disclaimer_link_1()}&nbsp;
-      <Link to="/privacy-policy" className="text-sm underline">
+      <Link to="/privacy-policy/" className="text-sm underline">
         {m.disclaimer_link_2()}
       </Link>
     </p>

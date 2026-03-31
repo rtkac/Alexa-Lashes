@@ -70,7 +70,7 @@ function RouteComponent() {
           <PreviewGallery gallery={gallery} />
         </div>
         <div className="flex justify-center">
-          <Link to="/gallery" className="btn-outline-primary">
+          <Link to="/gallery/" className="btn-outline-primary">
             {m.training_gallery_link()}
           </Link>
         </div>

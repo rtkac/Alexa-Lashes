@@ -13,6 +13,7 @@ export function getRouter() {
     defaultErrorComponent: DefaultCatchBoundary,
     defaultNotFoundComponent: NotFound,
     scrollRestoration: true,
+    trailingSlash: "always",
   });
   return router;
 }

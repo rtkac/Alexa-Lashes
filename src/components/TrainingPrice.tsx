@@ -47,7 +47,7 @@ const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
         <p className="mb-1 text-sm">{m.training_price()}</p>
         <p className="font-extrabold text-4xl">{price} €</p>
         <p className="mb-4 text-xs">{m.training_deposit()}</p>
-        <Link to="/contact" className="btn-secondary">
+        <Link to="/contact/" className="btn-secondary">
           {m.training_link_interest()}
         </Link>
       </div>
