@@ -113,6 +113,12 @@ const itemListElement = (prices: LashPrice[]) =>
 
 export const Route = createFileRoute("/prices")({
   head: () => ({
+    links: [
+      {
+        rel: "canonical",
+        href: "https://alexalashes.sk/prices/",
+      },
+    ],
     meta: [
       { title: m.meta_prices_title() },
       { name: "description", content: m.meta_prices_desc() },

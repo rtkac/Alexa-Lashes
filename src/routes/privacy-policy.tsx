@@ -3,6 +3,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { m } from "@/paraglide/messages";
 
 export const Route = createFileRoute("/privacy-policy")({
+  head: () => ({
+    links: [
+      {
+        rel: "canonical",
+        href: "https://alexalashes.sk/privacy-policy/",
+      },
+    ],
+  }),
   component: RouteComponent,
 });
 

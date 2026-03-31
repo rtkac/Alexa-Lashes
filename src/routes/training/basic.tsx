@@ -28,6 +28,12 @@ const includes: string[] = [
 
 export const Route = createFileRoute("/training/basic")({
   head: () => ({
+    links: [
+      {
+        rel: "canonical",
+        href: "https://alexalashes.sk/training/basic/",
+      },
+    ],
     meta: [
       { title: m.meta_training_basic_title() },
       { name: "description", content: m.meta_training_basic_desc() },

@@ -5,18 +5,22 @@ import Gallery from "@/components/Gallery";
 import { m } from "@/paraglide/messages";
 
 export const Route = createFileRoute("/gallery")({
-  head: () => {
-    return {
-      meta: [
-        { title: m.meta_gallery_title() },
-        { name: "description", content: m.meta_gallery_desc() },
-        { property: "og:type", content: "website" },
-        { property: "og:title", content: m.meta_gallery_title() },
-        { property: "og:description", content: m.meta_gallery_desc() },
-        { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
-      ],
-    };
-  },
+  head: () => ({
+    links: [
+      {
+        rel: "canonical",
+        href: "https://alexalashes.sk/gallery/",
+      },
+    ],
+    meta: [
+      { title: m.meta_gallery_title() },
+      { name: "description", content: m.meta_gallery_desc() },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: m.meta_gallery_title() },
+      { property: "og:description", content: m.meta_gallery_desc() },
+      { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
+    ],
+  }),
   component: RouteComponent,
 });
 
