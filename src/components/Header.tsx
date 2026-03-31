@@ -82,7 +82,7 @@ export const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/about/"
                   className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
                   onClick={closeMenu}
                 >
@@ -91,7 +91,7 @@ export const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/prices"
+                  to="/prices/"
                   className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
                   onClick={closeMenu}
                 >
@@ -100,7 +100,7 @@ export const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/training"
+                  to="/training/"
                   className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
                   onClick={closeMenu}
                 >
@@ -109,7 +109,7 @@ export const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/gallery"
+                  to="/gallery/"
                   className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
                   onClick={closeMenu}
                 >
@@ -118,7 +118,7 @@ export const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
                   onClick={closeMenu}
                 >

@@ -48,7 +48,7 @@ const Trainings = () => {
                 {m.training_basic_duration_label()}&nbsp;{m.training_basic_duration()}
               </p>
             </div>
-            <Link to="/training/basic" className="btn-primary w-full sm:w-auto">
+            <Link to="/training/basic/" className="btn-primary w-full sm:w-auto">
               {m.training_basic_link_label()}
             </Link>
           </div>
@@ -96,7 +96,7 @@ const Trainings = () => {
                 {m.training_advanced_duration_label()}&nbsp;{m.training_advanced_duration()}
               </p>
             </div>
-            <Link to="/contact" className="btn-secondary w-full sm:w-auto">
+            <Link to="/contact/" className="btn-secondary w-full sm:w-auto">
               {m.cta_training_button()}
             </Link>
           </div>

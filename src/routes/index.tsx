@@ -206,9 +206,17 @@ function RouteComponent() {
       <Banner
         title={m.banner_title()}
         description={m.banner_desc()}
-        primaryAction={{ link: { to: "/prices" }, label: m.banner_link_services() }}
-        secondaryAction={{ link: { to: "/contact" }, label: m.banner_link_contact() }}
         image="bg-[url(/banner-main-mobile.jpg)] md:bg-[url(/banner-main-desktop.jpg)]"
+        buttons={
+          <>
+            <Link to="/prices/" className="btn-primary mx-2">
+              {m.banner_link_services()}
+            </Link>
+            <Link to="/contact/" className="btn-secondary mx-2">
+              {m.banner_link_contact()}
+            </Link>
+          </>
+        }
       />
       <div className="mx-auto mb-10 max-w-180 text-center">
         <h2 className="mb-3 font-bold text-xl md:text-3xl dark:text-primary">
@@ -230,7 +238,7 @@ function RouteComponent() {
           <PreviewGallery gallery={gallery} />
         </div>
         <div className="flex justify-center">
-          <Link to="/gallery" className="btn-primary">
+          <Link to="/gallery/" className="btn-primary">
             {m.home_gallery_link()}
           </Link>
         </div>

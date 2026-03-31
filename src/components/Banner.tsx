@@ -1,29 +1,19 @@
-import { Link, type LinkProps } from "@tanstack/react-router";
-
 import { cn } from "@/lib/utils";
 
 type BannerProps = {
   title: string;
   description: string;
-  primaryAction?: {
-    link: LinkProps;
-    label: string;
-  };
-  secondaryAction?: {
-    link: LinkProps;
-    label: string;
-  };
   image?: string;
   isDark?: boolean;
+  buttons?: React.ReactNode;
 };
 
 const Banner = ({
   title,
   description,
-  primaryAction,
-  secondaryAction,
   image = "bg-[url(https://placehold.co/1120x520/4a413a/4a413a)]",
   isDark,
+  buttons,
 }: BannerProps) => {
   return (
     <div
@@ -43,18 +33,7 @@ const Banner = ({
           <p className="mb-6 hidden whitespace-pre-line leading-7 md:block md:font-bold lg:text-lg">
             {description}
           </p>
-          <div className="space-y-4">
-            {primaryAction && (
-              <Link to={primaryAction.link.to} className="btn-primary mx-2">
-                {primaryAction.label}
-              </Link>
-            )}
-            {secondaryAction && (
-              <Link to={secondaryAction.link.to} className="btn-secondary mx-2">
-                {secondaryAction.label}
-              </Link>
-            )}
-          </div>
+          <div className="space-y-4">{buttons}</div>
         </div>
       </div>
     </div>
