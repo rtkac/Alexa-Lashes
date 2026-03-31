@@ -11,32 +11,38 @@ const gallery: Gallery[] = [
   {
     thumbSrc: "/reception.jpg",
     src: "/reception.jpg",
-    name: "Gallery Image 1",
+    name: "Reception area",
   },
   {
     thumbSrc: "/salon-4.jpg",
     src: "/salon-4.jpg",
-    name: "Gallery Image 4",
+    name: "Gifts for clients",
   },
   {
     thumbSrc: "/salon-2.jpg",
     src: "/salon-2.jpg",
-    name: "Gallery Image 2",
+    name: "Waiting area",
   },
   {
     thumbSrc: "/salon-3.jpg",
     src: "/salon-3.jpg",
-    name: "Gallery Image 3",
+    name: "Cosmetic chair",
   },
   {
     thumbSrc: "/salon-5.jpg",
     src: "/salon-5.jpg",
-    name: "Gallery Image 5",
+    name: "Flowers",
   },
 ];
 
 export const Route = createFileRoute("/about")({
   head: () => ({
+    links: [
+      {
+        rel: "canonical",
+        href: "https://alexalashes.sk/about/",
+      },
+    ],
     meta: [
       { title: m.meta_about_title() },
       { name: "description", content: m.meta_about_desc() },
