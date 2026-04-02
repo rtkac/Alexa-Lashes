@@ -36,12 +36,6 @@ const gallery: Gallery[] = [
 
 export const Route = createFileRoute("/training/")({
   head: () => ({
-    links: [
-      {
-        rel: "canonical",
-        href: "https://alexalashes.sk/training/",
-      },
-    ],
     meta: [
       { title: m.meta_training_title() },
       { name: "description", content: m.meta_training_desc() },

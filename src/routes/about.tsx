@@ -37,12 +37,6 @@ const gallery: Gallery[] = [
 
 export const Route = createFileRoute("/about")({
   head: () => ({
-    links: [
-      {
-        rel: "canonical",
-        href: "https://alexalashes.sk/about/",
-      },
-    ],
     meta: [
       { title: m.meta_about_title() },
       { name: "description", content: m.meta_about_desc() },

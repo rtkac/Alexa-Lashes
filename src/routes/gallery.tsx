@@ -6,12 +6,6 @@ import { m } from "@/paraglide/messages";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
-    links: [
-      {
-        rel: "canonical",
-        href: "https://alexalashes.sk/gallery/",
-      },
-    ],
     meta: [
       { title: m.meta_gallery_title() },
       { name: "description", content: m.meta_gallery_desc() },

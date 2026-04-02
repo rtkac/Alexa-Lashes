@@ -10,12 +10,6 @@ import { address, email, telephoneNumber } from "@/types";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
-    links: [
-      {
-        rel: "canonical",
-        href: "https://alexalashes.sk/contact/",
-      },
-    ],
     meta: [
       { title: m.meta_contact_title() },
       { name: "description", content: m.meta_contact_desc() },

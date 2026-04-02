@@ -4,11 +4,13 @@ import { m } from "@/paraglide/messages";
 
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
-    links: [
-      {
-        rel: "canonical",
-        href: "https://alexalashes.sk/privacy-policy/",
-      },
+    meta: [
+      { title: m.meta_privacy_policy_title() },
+      { name: "description", content: m.meta_privacy_policy_desc() },
+      { property: "og:type", content: "article" },
+      { property: "og:title", content: m.meta_privacy_policy_title() },
+      { property: "og:description", content: m.meta_privacy_policy_desc() },
+      { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.jpg" },
     ],
   }),
   component: RouteComponent,
