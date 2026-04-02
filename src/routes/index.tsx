@@ -153,12 +153,6 @@ const reviews: Review[] = [
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    links: [
-      {
-        rel: "canonical",
-        href: "https://alexalashes.sk/",
-      },
-    ],
     meta: [
       { title: m.meta_index_title() },
       { name: "description", content: m.meta_index_desc() },
