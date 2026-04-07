@@ -10,8 +10,6 @@ type ReviewsProps = {
 const Reviews = ({ reviews }: ReviewsProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "center", loop: false });
 
-  const randomReviews = [...reviews].sort(() => 0.5 - Math.random());
-
   const goToPrev = () => emblaApi?.goToPrev();
   const goToNext = () => emblaApi?.goToNext();
 
@@ -19,7 +17,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
     <div className="relative">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex touch-pan-y touch-pinch-zoom gap-4">
-          {randomReviews.map((review) => (
+          {reviews.map((review) => (
             <a
               key={review.url}
               href={review.url}

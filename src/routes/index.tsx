@@ -149,6 +149,16 @@ const reviews: Review[] = [
     description: m.reviews_17_desc(),
     url: "https://maps.app.goo.gl/9jb1H8f8TQSr3dxF8",
   },
+  {
+    name: m.reviews_18_name(),
+    description: m.reviews_18_desc(),
+    url: "https://maps.app.goo.gl/sz1r3DqWFAgmaVK89",
+  },
+  {
+    name: m.reviews_19_name(),
+    description: m.reviews_19_desc(),
+    url: "https://maps.app.goo.gl/L5QS66EeYfRnRoiq8",
+  },
 ];
 
 export const Route = createFileRoute("/")({
@@ -201,6 +211,8 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
+  const randomReviews = [...reviews].sort(() => 0.5 - Math.random());
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <Banner
@@ -247,7 +259,7 @@ function RouteComponent() {
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
           {m.home_reviews_title()}
         </h2>
-        <Reviews reviews={reviews} />
+        <Reviews reviews={randomReviews} />
       </div>
       <Cta />
     </div>
