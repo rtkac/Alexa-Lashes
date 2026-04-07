@@ -39,27 +39,27 @@ const gallery: Gallery[] = [
   {
     thumbSrc: "/1-thumb.jpg",
     src: "/1.jpg",
-    name: "Gallery Image 1",
+    name: "2D mihalnice",
   },
   {
     thumbSrc: "/2-thumb.jpg",
     src: "/2.jpg",
-    name: "Gallery Image 2",
+    name: "1D mihalnice",
   },
   {
     thumbSrc: "/3-thumb.jpg",
     src: "/3.jpg",
-    name: "Gallery Image 3",
+    name: "3-4D mihalnice",
   },
   {
     thumbSrc: "/4-thumb.jpg",
     src: "/4.jpg",
-    name: "Gallery Image 4",
+    name: "2D mihalnice mokrý efekt",
   },
   {
     thumbSrc: "/5-thumb.jpg",
     src: "/5.jpg",
-    name: "Gallery Image 5",
+    name: "2D hnedé mihalnice mokrý efekt",
   },
 ];
 

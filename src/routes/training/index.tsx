@@ -10,27 +10,27 @@ const gallery: Gallery[] = [
   {
     thumbSrc: "/course-1.jpg",
     src: "/course-1.jpg",
-    name: "Gallery Image 1",
+    name: "Kurz predlžovania mihalníc",
   },
   {
     thumbSrc: "/course-2.jpg",
     src: "/course-2.jpg",
-    name: "Gallery Image 2",
+    name: "Hlava na tréning predlžovania mihalníc",
   },
   {
     thumbSrc: "/course-3.jpg",
     src: "/course-3.jpg",
-    name: "Gallery Image 3",
+    name: "Žiačka s certifikátom na kurze predlžovania mihalníc",
   },
   {
     thumbSrc: "/course-4.jpg",
     src: "/course-4.jpg",
-    name: "Gallery Image 4",
+    name: "Odstraňovanie umelých mihalníc",
   },
   {
     thumbSrc: "/course-5.jpg",
     src: "/course-5.jpg",
-    name: "Gallery Image 5",
+    name: "Prax žiačky",
   },
 ];
 
