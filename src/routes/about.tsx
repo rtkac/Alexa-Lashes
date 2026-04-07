@@ -11,27 +11,27 @@ const gallery: Gallery[] = [
   {
     thumbSrc: "/reception.jpg",
     src: "/reception.jpg",
-    name: "Reception area",
+    name: "Recepcia Alexa Lashes",
   },
   {
     thumbSrc: "/salon-4.jpg",
     src: "/salon-4.jpg",
-    name: "Gifts for clients",
+    name: "Darčeky pre klientov salónu",
   },
   {
     thumbSrc: "/salon-2.jpg",
     src: "/salon-2.jpg",
-    name: "Waiting area",
+    name: "Čakáreň Alexa Lashes",
   },
   {
     thumbSrc: "/salon-3.jpg",
     src: "/salon-3.jpg",
-    name: "Cosmetic chair",
+    name: "Kozmetické kreslo so svetlom",
   },
   {
     thumbSrc: "/salon-5.jpg",
     src: "/salon-5.jpg",
-    name: "Flowers",
+    name: "Kvety a darčeková poukážka",
   },
 ];
 
@@ -72,7 +72,7 @@ function RouteComponent() {
           </div>
         </div>
         <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
-          <img src="/salon-alexa.jpg" alt="Alexa Lashes salon" className="w-full rounded-md" />
+          <img src="/salon-alexa.jpg" alt="Salón Alexa Lashes" className="w-full rounded-md" />
         </div>
       </div>
       <div className="mb-18 md:mb-25">
