@@ -13,7 +13,7 @@ const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
         {gallery.map(({ src, name }) => (
           <PhotoView key={name} src={src}>
             <div className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-50">
-              <img src={src} alt={name} className="h-full w-full object-cover" />
+              <img src={src} alt={name} className="h-full w-full object-cover" loading="lazy" />
             </div>
           </PhotoView>
         ))}

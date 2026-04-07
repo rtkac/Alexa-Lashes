@@ -6,7 +6,7 @@ export const AboutUs = () => {
   return (
     <div className="grid gap-8 sm:grid-cols-2 md:gap-12">
       <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
-        <img src="/salon-alexa.jpg" alt="Alexa Lashes salon" className="w-full rounded-md" />
+        <img src="/salon-alexa.jpg" alt="Salón Alexa Lashes" className="w-full rounded-md" />
       </div>
       <div className="text-center sm:text-left">
         <div className="mb-8 space-y-5">
