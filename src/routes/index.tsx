@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useLoaderData } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from "lucide-react";
 
 import { AboutUs } from "@/components/AboutUs";
@@ -161,7 +162,15 @@ const reviews: Review[] = [
   },
 ];
 
+export const getServerRandomReviews = createServerFn().handler(async () => {
+  return [...reviews].sort(() => 0.5 - Math.random());
+});
+
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    const randomReviews = await getServerRandomReviews();
+    return { randomReviews };
+  },
   head: () => ({
     meta: [
       { title: m.meta_index_title() },
@@ -211,7 +220,7 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
-  const randomReviews = [...reviews].sort(() => 0.5 - Math.random());
+  const { randomReviews } = useLoaderData({ from: Route.id });
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
