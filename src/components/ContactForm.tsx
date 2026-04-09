@@ -1,22 +1,14 @@
-import { type AnyFieldApi, useForm } from "@tanstack/react-form";
+import { useForm } from "@tanstack/react-form";
 import { CircleAlertIcon, CircleCheckIcon, LoaderIcon } from "lucide-react";
 import { useState } from "react";
+
+import { FieldErrorMessage } from "./FieldErrorMessage";
 
 import { emailRegex, nameRegex } from "@/helpers";
 import { submitForm } from "@/lib/form";
 import { formOpts } from "@/lib/form-isomorphic";
 import { cn } from "@/lib/utils";
 import { m } from "@/paraglide/messages";
-
-function FieldInfo({ field }: { field: AnyFieldApi }) {
-  return (
-    <>
-      {field.state.meta.isTouched && !field.state.meta.isValid ? (
-        <em className="text-red-500 text-sm">{field.state.meta.errors.join(",")}</em>
-      ) : null}
-    </>
-  );
-}
 
 const ContactForm = () => {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -28,7 +20,7 @@ const ContactForm = () => {
       setIsSuccess(false);
       setIsError(false);
       try {
-        await submitForm({ data: value });
+        await submitForm({ data: { contactType: "contact", ...value } });
         setIsSuccess(true);
       } catch (_) {
         setIsError(true);
@@ -81,7 +73,7 @@ const ContactForm = () => {
                       )}
                       aria-invalid={!field.state.meta.isValid}
                     />
-                    <FieldInfo field={field} />
+                    <FieldErrorMessage field={field} />
                   </div>
                 )}
               </form.Field>
@@ -120,7 +112,7 @@ const ContactForm = () => {
                           : "border-red-300 focus:outline-red-400",
                       )}
                     />
-                    <FieldInfo field={field} />
+                    <FieldErrorMessage field={field} />
                   </div>
                 )}
               </form.Field>
@@ -162,7 +154,7 @@ const ContactForm = () => {
                           : "border-red-300 focus:outline-red-400",
                       )}
                     />
-                    <FieldInfo field={field} />
+                    <FieldErrorMessage field={field} />
                   </div>
                 )}
               </form.Field>

@@ -4,6 +4,7 @@ import Banner from "@/components/Banner";
 import Includes from "@/components/Includes";
 import { LashMaster } from "@/components/LashMaster";
 import { Program } from "@/components/Program";
+import { TrainingFormModal } from "@/components/TrainingFormModal";
 import TrainingPrice from "@/components/TrainingPrice";
 import { m } from "@/paraglide/messages";
 import { instagramUrl } from "@/types";
@@ -131,9 +132,13 @@ function RouteComponent() {
         image="bg-[url(/basic-training-banner.jpg)]"
         isDark
         buttons={
-          <Link to="/contact/" className="btn-primary mx-2">
-            {m.training_basic_banner_link_contact()}
-          </Link>
+          <TrainingFormModal
+            trigger={
+              <button type="button" className="btn-primary">
+                {m.training_basic_banner_link_contact()}
+              </button>
+            }
+          />
         }
       />
       <div className="mx-auto mb-20 max-w-4xl text-center">

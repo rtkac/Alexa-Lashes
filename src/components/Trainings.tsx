@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { CircleCheckIcon, ClockIcon } from "lucide-react";
 
+import { TrainingFormModal } from "./TrainingFormModal";
+
 import { m } from "@/paraglide/messages";
 
 const Trainings = () => {
@@ -96,9 +98,13 @@ const Trainings = () => {
                 {m.training_advanced_duration_label()}&nbsp;{m.training_advanced_duration()}
               </p>
             </div>
-            <Link to="/contact/" className="btn-secondary w-full sm:w-auto">
-              {m.cta_training_button()}
-            </Link>
+            <TrainingFormModal
+              trigger={
+                <button type="button" className="btn-secondary w-full sm:w-auto">
+                  {m.cta_training_button()}
+                </button>
+              }
+            />
           </div>
         </div>
       </div>

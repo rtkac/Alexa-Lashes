@@ -1,5 +1,6 @@
-import { Link } from "@tanstack/react-router";
 import { Clock4Icon, MapPinIcon, UsersIcon } from "lucide-react";
+
+import { TrainingFormModal } from "./TrainingFormModal";
 
 import { m } from "@/paraglide/messages";
 
@@ -47,9 +48,13 @@ const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
         <p className="mb-1 text-sm">{m.training_price()}</p>
         <p className="font-extrabold text-4xl">{price} €</p>
         <p className="mb-4 text-xs">{m.training_deposit()}</p>
-        <Link to="/contact/" className="btn-secondary">
-          {m.training_link_interest()}
-        </Link>
+        <TrainingFormModal
+          trigger={
+            <button type="button" className="btn-secondary">
+              {m.training_link_interest()}
+            </button>
+          }
+        />
       </div>
     </div>
   );
