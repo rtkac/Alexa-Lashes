@@ -202,6 +202,12 @@ export const Route = createFileRoute("/")({
             latitude: 48.11161906921437,
             longitude: 17.102062243103443,
           },
+          aggregateRating: {
+            "@type": "AggregateRating",
+            bestRating: "5",
+            reviewCount: "35",
+            ratingValue: "5",
+          },
           sameAs: [instagramUrl, tiktokUrl],
         }),
       },
