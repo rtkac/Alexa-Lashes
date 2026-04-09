@@ -177,11 +177,20 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BeautySalon",
+          "@id": "https://alexalashes.sk/#salon",
           name: "Alexa Lashes",
           description: m.meta_index_desc(),
           telephone: telephoneNumber,
           url: "https://alexalashes.sk",
           image: "https://alexalashes.sk/banner-main-desktop.jpg",
+          logo: "https://alexalashes.sk/logo.png",
+          owner: {
+            "@type": "Person",
+            jobTitle: "Lash Stylist",
+            name: "Oleksandra Afanasieva",
+            image: "https://alexalashes.sk/alexa-lashes-stylist.jpg",
+            sameAs: instagramUrl,
+          },
           address: {
             "@type": "PostalAddress",
             streetAddress: "Pajštúnska 1",
@@ -202,6 +211,7 @@ export const Route = createFileRoute("/")({
             latitude: 48.11161906921437,
             longitude: 17.102062243103443,
           },
+          priceRange: "€€",
           aggregateRating: {
             "@type": "AggregateRating",
             bestRating: "5",

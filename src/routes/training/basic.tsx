@@ -49,6 +49,7 @@ export const Route = createFileRoute("/training/basic")({
             "@type": "Person",
             jobTitle: "Lash Stylist",
             name: "Oleksandra Afanasieva",
+            image: "https://alexalashes.sk/alexa-lashes-stylist.jpg",
             sameAs: instagramUrl,
           },
           hasCourseInstance: {

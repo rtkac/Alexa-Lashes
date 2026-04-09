@@ -272,25 +272,51 @@ const galleryTraining: ImageGallery[] = [
 const Gallery = () => {
   return (
     <PhotoProvider>
-      <h2 className="mb-4 font-bold text-xl md:text-2xl">{m.gallery_work_title()}</h2>
-      <div className="mb-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {galleryWork.map(({ src, name }) => (
-          <PhotoView key={name} src={src}>
-            <div className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60">
-              <img src={src} alt={name} className="h-full w-full object-cover" />
-            </div>
-          </PhotoView>
-        ))}
+      <div itemScope itemType="http://schema.org/ImageGallery">
+        <h2 className="mb-4 font-bold text-xl md:text-2xl" itemProp="name">
+          {m.gallery_work_title()}
+        </h2>
+        <div className="mb-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {galleryWork.map(({ src, name }) => (
+            <PhotoView key={name} src={src}>
+              <div
+                className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60"
+                itemScope
+                itemType="http://schema.org/ImageObject"
+              >
+                <img
+                  src={src}
+                  alt={name}
+                  className="h-full w-full object-cover"
+                  itemProp="contentUrl"
+                />
+              </div>
+            </PhotoView>
+          ))}
+        </div>
       </div>
-      <h2 className="mb-4 font-bold text-xl md:text-2xl">{m.gallery_training_title()}</h2>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {galleryTraining.map(({ src, name }) => (
-          <PhotoView key={name} src={src}>
-            <div className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60">
-              <img src={src} alt={name} className="h-full w-full object-cover" />
-            </div>
-          </PhotoView>
-        ))}
+      <div itemScope itemType="http://schema.org/ImageGallery">
+        <h2 className="mb-4 font-bold text-xl md:text-2xl" itemProp="name">
+          {m.gallery_training_title()}
+        </h2>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {galleryTraining.map(({ src, name }) => (
+            <PhotoView key={name} src={src}>
+              <div
+                className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60"
+                itemScope
+                itemType="http://schema.org/ImageObject"
+              >
+                <img
+                  src={src}
+                  alt={name}
+                  className="h-full w-full object-cover"
+                  itemProp="contentUrl"
+                />
+              </div>
+            </PhotoView>
+          ))}
+        </div>
       </div>
     </PhotoProvider>
   );
