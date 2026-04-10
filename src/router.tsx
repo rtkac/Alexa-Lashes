@@ -2,6 +2,7 @@ import { createRouter } from "@tanstack/react-router";
 
 import { DefaultCatchBoundary } from "./components/DefaultCatchBoundary";
 import NotFound from "./components/NotFound";
+import { deLocalizeUrl, localizeUrl } from "./paraglide/runtime";
 import { routeTree } from "./routeTree.gen";
 
 // Create a new router instance
@@ -14,6 +15,10 @@ export function getRouter() {
     defaultNotFoundComponent: NotFound,
     scrollRestoration: true,
     trailingSlash: "always",
+    rewrite: {
+      input: ({ url }) => deLocalizeUrl(url),
+      output: ({ url }) => localizeUrl(url),
+    },
   });
   return router;
 }

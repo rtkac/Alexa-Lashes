@@ -4,12 +4,36 @@ import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import viteTsConfigPaths from "vite-tsconfig-paths";
 
 const config = defineConfig({
   plugins: [
     paraglideVitePlugin({
       project: "./project.inlang",
       outdir: "./src/paraglide",
+      outputStructure: "message-modules",
+      cookieName: "PARAGLIDE_LOCALE",
+      strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
+      urlPatterns: [
+        {
+          pattern: "/",
+          localized: [
+            ["sk", "/sk"],
+            ["en", "/en"],
+          ],
+        },
+        {
+          pattern: "/:path(.*)?",
+          localized: [
+            ["sk", "/sk/:path(.*)?"],
+            ["en", "/en/:path(.*)?"],
+          ],
+        },
+      ],
+    }),
+    // this is the plugin that enables path aliases
+    viteTsConfigPaths({
+      projects: ["./tsconfig.json"],
     }),
     tailwindcss(),
     tanstackStart({
@@ -25,9 +49,6 @@ const config = defineConfig({
     netlify(),
     viteReact(),
   ],
-  resolve: {
-    tsconfigPaths: true,
-  },
   ssr: {
     noExternal: ["react-cookie-consent"],
   },

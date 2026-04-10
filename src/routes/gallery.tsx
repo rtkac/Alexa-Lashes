@@ -14,6 +14,11 @@ export const Route = createFileRoute("/gallery")({
       { property: "og:description", content: m.meta_gallery_desc() },
       { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
     ],
+    links: [
+      { rel: "alternate", href: "https://alexalashes.sk/sk/gallery/", hrefLang: "sk" },
+      { rel: "alternate", href: "https://alexalashes.sk/en/gallery/", hrefLang: "en" },
+      { rel: "alternate", href: "https://alexalashes.sk/sk/gallery/", hrefLang: "x-default" },
+    ],
   }),
   component: RouteComponent,
 });
