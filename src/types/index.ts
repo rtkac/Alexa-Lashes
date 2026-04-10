@@ -38,3 +38,12 @@ export type Gallery = {
   src: string;
   name: string;
 };
+
+export const ContactType = {
+  Training: "training",
+  Contact: "contact",
+} as const;
+
+export type ContactFormBody = {
+  contactType: (typeof ContactType)[keyof typeof ContactType];
+} & User;

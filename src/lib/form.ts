@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 import { emailRegex, nameRegex } from "@/helpers";
 import { emailTemplate } from "@/lib/emailTemplate";
-import type { User } from "@/types";
+import type { ContactFormBody } from "@/types";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -15,22 +15,24 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmailMessage = async ({ name, email, message }: User) => {
+const sendEmailMessage = async (data: ContactFormBody) => {
   const res = await transporter.sendMail({
     from: process.env.EMAIL_ADDRESS,
     to: process.env.EMAIL_ADDRESS,
-    subject: `Kontaktny formular - Alexa Lashes`,
-    text: `Meno: ${name}\n\nE-mail: ${email}\n\nSprava: ${message}`,
-    html: emailTemplate(name, email, message),
-    replyTo: email,
-    cc: email,
+    subject:
+      data.contactType === "training"
+        ? "Záujem o kurz - Alexa Lashes"
+        : `Kontaktný formulár - Alexa Lashes`,
+    html: emailTemplate(data),
+    replyTo: data.email,
+    cc: data.email,
   });
   return res;
 };
 
 export const submitForm = createServerFn({ method: "POST" })
-  .inputValidator((data: User) => {
-    const { name, email, message } = data;
+  .inputValidator((data: ContactFormBody) => {
+    const { contactType, name, email, message } = data;
     if (!name) {
       throw new Error("Name is required");
     } else if (!nameRegex.test(name)) {
@@ -48,6 +50,7 @@ export const submitForm = createServerFn({ method: "POST" })
     }
 
     return {
+      contactType,
       name: name.toString(),
       email: email.toString(),
       message: message.toString(),
