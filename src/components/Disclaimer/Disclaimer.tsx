@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import CookieConsent from "react-cookie-consent";
 
-import { initializeAnalytics } from "@/lib/analytics";
+import { initializeAnalytics } from "./analytics";
+
 import { m } from "@/paraglide/messages";
 
 export const Disclaimer = () => (
