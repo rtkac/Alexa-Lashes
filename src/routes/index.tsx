@@ -17,7 +17,7 @@ import {
   tiktokUrl,
 } from "@/types";
 
-const benefits: Benefit[] = [
+const benefits = (): Benefit[] => [
   {
     icon: <AwardIcon className="mb-4 text-primary" />,
     title: m.benefits_1_title(),
@@ -35,7 +35,7 @@ const benefits: Benefit[] = [
   },
 ];
 
-const gallery: Gallery[] = [
+const gallery = (): Gallery[] => [
   {
     thumbSrc: "/1-thumb.jpg",
     src: "/1.jpg",
@@ -63,7 +63,7 @@ const gallery: Gallery[] = [
   },
 ];
 
-const reviews: Review[] = [
+const reviews = (): Review[] => [
   {
     name: m.reviews_19_name(),
     description: m.reviews_19_desc(),
@@ -171,6 +171,11 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: m.meta_index_desc() },
       { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.jpg" },
     ],
+    links: [
+      { rel: "alternate", href: "https://alexalashes.sk/sk/", hrefLang: "sk" },
+      { rel: "alternate", href: "https://alexalashes.sk/en/", hrefLang: "en" },
+      { rel: "alternate", href: "https://alexalashes.sk/sk/", hrefLang: "x-default" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -251,7 +256,7 @@ function RouteComponent() {
         <p className="leading-6">{m.home_welcome_desc()}</p>
       </div>
       <div className="mb-18 md:mb-25">
-        <Benefits data={benefits} />
+        <Benefits data={benefits()} />
       </div>
       <div className="mb-18 md:mb-25">
         <AboutUs />
@@ -261,7 +266,7 @@ function RouteComponent() {
           <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
             {m.home_gallery_title()}
           </h2>
-          <PreviewGallery gallery={gallery} />
+          <PreviewGallery gallery={gallery()} />
         </div>
         <div className="flex justify-center">
           <Link to="/gallery/" className="btn-primary">
@@ -273,7 +278,7 @@ function RouteComponent() {
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
           {m.home_reviews_title()}
         </h2>
-        <Reviews reviews={reviews} />
+        <Reviews reviews={reviews()} />
       </div>
       <Cta />
     </div>

@@ -18,6 +18,11 @@ export const Route = createFileRoute("/contact")({
       { property: "og:description", content: m.meta_contact_desc() },
       { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
     ],
+    links: [
+      { rel: "alternate", href: "https://alexalashes.sk/sk/contact/", hrefLang: "sk" },
+      { rel: "alternate", href: "https://alexalashes.sk/en/contact/", hrefLang: "en" },
+      { rel: "alternate", href: "https://alexalashes.sk/sk/contact/", hrefLang: "x-default" },
+    ],
   }),
   component: RouteComponent,
 });

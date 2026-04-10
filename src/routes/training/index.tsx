@@ -6,7 +6,7 @@ import Trainings from "@/components/Trainings";
 import { m } from "@/paraglide/messages";
 import type { Gallery } from "@/types";
 
-const gallery: Gallery[] = [
+const gallery = (): Gallery[] => [
   {
     thumbSrc: "/course-1.jpg",
     src: "/course-1.jpg",
@@ -44,6 +44,11 @@ export const Route = createFileRoute("/training/")({
       { property: "og:description", content: m.meta_training_desc() },
       { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.jpg" },
     ],
+    links: [
+      { rel: "alternate", href: "https://alexalashes.sk/sk/training/", hrefLang: "sk" },
+      { rel: "alternate", href: "https://alexalashes.sk/en/training/", hrefLang: "en" },
+      { rel: "alternate", href: "https://alexalashes.sk/sk/training/", hrefLang: "x-default" },
+    ],
   }),
   component: RouteComponent,
 });
@@ -67,7 +72,7 @@ function RouteComponent() {
           {m.training_gallery_title()}
         </h2>
         <div className="mb-6">
-          <PreviewGallery gallery={gallery} />
+          <PreviewGallery gallery={gallery()} />
         </div>
         <div className="flex justify-center">
           <Link to="/gallery/" className="btn-outline-primary">

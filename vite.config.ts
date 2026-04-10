@@ -11,6 +11,25 @@ const config = defineConfig({
     paraglideVitePlugin({
       project: "./project.inlang",
       outdir: "./src/paraglide",
+      outputStructure: "message-modules",
+      cookieName: "PARAGLIDE_LOCALE",
+      strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
+      urlPatterns: [
+        {
+          pattern: "/",
+          localized: [
+            ["sk", "/sk"],
+            ["en", "/en"],
+          ],
+        },
+        {
+          pattern: "/:path(.*)?",
+          localized: [
+            ["sk", "/sk/:path(.*)?"],
+            ["en", "/en/:path(.*)?"],
+          ],
+        },
+      ],
     }),
     // this is the plugin that enables path aliases
     viteTsConfigPaths({
