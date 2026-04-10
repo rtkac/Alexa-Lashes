@@ -20,12 +20,14 @@ const config = defineConfig({
           localized: [
             ["sk", "/"],
             ["en", "/en"],
+            ["ru", "/ru"],
           ],
         },
         {
           pattern: "/:path(.*)?",
           localized: [
             ["en", "/en/:path(.*)?"],
+            ["ru", "/ru/:path(.*)?"],
             // make sure to match the least specific path last
             ["sk", "/:path(.*)?"],
           ],
