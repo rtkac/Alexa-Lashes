@@ -5,8 +5,8 @@ import type { Gallery as ImageGallery } from "@/types";
 
 const galleryWork: ImageGallery[] = [
   {
-    thumbSrc: "/1.jpg",
-    src: "/1.jpg",
+    thumbSrc: "/1.JPG",
+    src: "/1.JPG",
     name: "Gallery Image 1",
   },
   {
@@ -45,8 +45,8 @@ const galleryWork: ImageGallery[] = [
     name: "Gallery Image 8",
   },
   {
-    thumbSrc: "/9.jpg",
-    src: "/9.jpg",
+    thumbSrc: "/9.JPG",
+    src: "/9.JPG",
     name: "Gallery Image 9",
   },
   {
@@ -65,8 +65,8 @@ const galleryWork: ImageGallery[] = [
     name: "Gallery Image 12",
   },
   {
-    thumbSrc: "/13.jpg",
-    src: "/13.jpg",
+    thumbSrc: "/13.JPG",
+    src: "/13.JPG",
     name: "Gallery Image 13",
   },
   {
@@ -85,13 +85,13 @@ const galleryWork: ImageGallery[] = [
     name: "Gallery Image 16",
   },
   {
-    thumbSrc: "/17.jpg",
-    src: "/17.jpg",
+    thumbSrc: "/17.JPG",
+    src: "/17.JPG",
     name: "Gallery Image 17",
   },
   {
-    thumbSrc: "/18.jpg",
-    src: "/18.jpg",
+    thumbSrc: "/18.JPG",
+    src: "/18.JPG",
     name: "Gallery Image 18",
   },
   {
@@ -100,8 +100,8 @@ const galleryWork: ImageGallery[] = [
     name: "Gallery Image 19",
   },
   {
-    thumbSrc: "/20.jpg",
-    src: "/20.jpg",
+    thumbSrc: "/20.JPG",
+    src: "/20.JPG",
     name: "Gallery Image 20",
   },
   {
@@ -110,8 +110,8 @@ const galleryWork: ImageGallery[] = [
     name: "Gallery Image 6",
   },
   {
-    thumbSrc: "/21.jpg",
-    src: "/21.jpg",
+    thumbSrc: "/21.JPG",
+    src: "/21.JPG",
     name: "Gallery Image 21",
   },
   {
@@ -120,8 +120,8 @@ const galleryWork: ImageGallery[] = [
     name: "Gallery Image 22",
   },
   {
-    thumbSrc: "/23.jpg",
-    src: "/23.jpg",
+    thumbSrc: "/23.JPG",
+    src: "/23.JPG",
     name: "Gallery Image 23",
   },
   {

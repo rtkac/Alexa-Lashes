@@ -38,7 +38,7 @@ const benefits = (): Benefit[] => [
 const gallery = (): Gallery[] => [
   {
     thumbSrc: "/1-thumb.jpg",
-    src: "/1.jpg",
+    src: "/1.JPG",
     name: "2D mihalnice",
   },
   {
