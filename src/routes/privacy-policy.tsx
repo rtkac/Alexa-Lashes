@@ -13,11 +13,11 @@ export const Route = createFileRoute("/privacy-policy")({
       { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.jpg" },
     ],
     links: [
-      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}`, hrefLang: "sk" },
-      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}`, hrefLang: "en" },
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: "en" },
       {
         rel: "alternate",
-        href: `https://alexalashes.sk${match.pathname}`,
+        href: `https://alexalashes.sk${match.pathname}/`,
         hrefLang: "x-default",
       },
     ],

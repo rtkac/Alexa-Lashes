@@ -38,11 +38,11 @@ export const Route = createFileRoute("/training/_trainings/basic")({
       { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.jpg" },
     ],
     links: [
-      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}`, hrefLang: "sk" },
-      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}`, hrefLang: "en" },
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: "en" },
       {
         rel: "alternate",
-        href: `https://alexalashes.sk${match.pathname}`,
+        href: `https://alexalashes.sk${match.pathname}/`,
         hrefLang: "x-default",
       },
     ],

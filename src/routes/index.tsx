@@ -173,7 +173,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "alternate", href: "https://alexalashes.sk/", hrefLang: "sk" },
-      { rel: "alternate", href: "https://alexalashes.sk/en/", hrefLang: "en" },
+      { rel: "alternate", href: "https://alexalashes.sk/en", hrefLang: "en" },
       { rel: "alternate", href: "https://alexalashes.sk/", hrefLang: "x-default" },
     ],
     scripts: [
