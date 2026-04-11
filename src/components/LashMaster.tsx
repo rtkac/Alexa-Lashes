@@ -2,7 +2,7 @@ import { m } from "@/paraglide/messages";
 
 interface LashMasterProps {
   title: string;
-  desc_1: string;
+  desc_1: string | React.ReactNode;
   desc_2?: string;
 }
 

@@ -102,7 +102,15 @@ function RouteComponent() {
       <div className="mb-18 md:mb-25">
         <LashMaster
           title={m.lash_master_title()}
-          desc_1={m.lash_master_desc_1()}
+          desc_1={
+            <ParaglideMessage
+              message={m.lash_master_desc_1}
+              inputs={{}}
+              markup={{
+                link: ({ children }) => <Link to="/">{children}</Link>,
+              }}
+            />
+          }
           desc_2={m.lash_master_desc_2()}
         />
       </div>
