@@ -59,6 +59,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
                     width={35}
                     height={35}
                     itemProp="image"
+                    loading="lazy"
                   />
                 </div>
                 <h3

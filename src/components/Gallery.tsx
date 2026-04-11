@@ -312,6 +312,7 @@ const Gallery = () => {
                   alt={name}
                   className="h-full w-full object-cover"
                   itemProp="contentUrl"
+                  loading="lazy"
                 />
               </div>
             </PhotoView>
