@@ -23,7 +23,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
               href={review.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex min-w-0 shrink-0 grow-0 basis-[75%] xs:basis-[45%] flex-col justify-between rounded-md border border-primary-light bg-white p-5 hover:cursor-pointer hover:no-underline md:basis-[40%] lg:basis-[calc(33.1%-8px)] dark:border-tertiary-light dark:bg-tertiary"
+              className="flex min-w-0 shrink-0 grow-0 basis-[75%] xs:basis-[45%] flex-col justify-between rounded-md border border-primary-light bg-white p-5 no-underline hover:cursor-pointer hover:no-underline md:basis-[40%] lg:basis-[calc(33.1%-8px)] dark:border-tertiary-light dark:bg-tertiary"
               itemScope
               itemType="https://schema.org/Review"
             >

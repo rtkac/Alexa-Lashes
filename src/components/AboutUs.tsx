@@ -1,3 +1,4 @@
+import { ParaglideMessage } from "@inlang/paraglide-js-react";
 import { Link } from "@tanstack/react-router";
 
 import { m } from "@/paraglide/messages";
@@ -18,7 +19,15 @@ export const AboutUs = () => {
           <h2 className="font-bold text-xl md:text-2xl dark:text-primary">
             {m.home_about_us_title()}
           </h2>
-          <p className="text-neutral-600 leading-6">{m.home_about_us_desc_1()}</p>
+          <p className="text-neutral-600 leading-6">
+            <ParaglideMessage
+              message={m.home_about_us_desc_1}
+              inputs={{}}
+              markup={{
+                link: ({ children }) => <Link to="/prices/">{children}</Link>,
+              }}
+            />
+          </p>
           <p className="text-neutral-600 leading-6">{m.home_about_us_desc_2()}</p>
         </div>
         <Link to="/about/" className="btn-outline-primary">

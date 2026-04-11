@@ -35,7 +35,7 @@ export const Route = createFileRoute("/training/_trainings/basic")({
       { property: "og:type", content: "article" },
       { property: "og:title", content: m.meta_training_basic_title() },
       { property: "og:description", content: m.meta_training_basic_desc() },
-      { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.webp" },
     ],
     links: [
       { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },

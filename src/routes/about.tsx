@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { ParaglideMessage } from "@inlang/paraglide-js-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import Banner from "@/components/Banner";
 import Cta from "@/components/Cta";
@@ -74,7 +75,15 @@ function RouteComponent() {
           <div className="space-y-5">
             <h2 className="font-bold text-xl md:text-3xl dark:text-primary">{m.about_title()}</h2>
             <p className="leading-6">{m.about_desc_1()}</p>
-            <p className="leading-6">{m.about_desc_2()}</p>
+            <p className="leading-6">
+              <ParaglideMessage
+                message={m.about_desc_2}
+                inputs={{}}
+                markup={{
+                  link: ({ children }) => <Link to="/training/">{children}</Link>,
+                }}
+              />
+            </p>
             <p className="rounded-r-md border-primary border-l-4 bg-primary-light p-5 font-bold text-primary italic">
               {m.about_desc_label()}
             </p>

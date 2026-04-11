@@ -155,7 +155,7 @@ code {
     @apply text-base leading-snug;
   }
   a:not([class^="btn-"]):not(header a) {
-    @apply hover:text-primary underline-offset-2 hover:underline;
+    @apply hover:text-primary underline-offset-2 underline;
   }
 }
 
