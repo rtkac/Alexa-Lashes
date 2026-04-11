@@ -16,7 +16,8 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TrainingIndexRouteImport } from './routes/training/index'
-import { Route as TrainingBasicRouteImport } from './routes/training/basic'
+import { Route as TrainingTrainingsRouteRouteImport } from './routes/training/_trainings/route'
+import { Route as TrainingTrainingsBasicRouteImport } from './routes/training/_trainings/basic'
 
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
@@ -53,10 +54,15 @@ const TrainingIndexRoute = TrainingIndexRouteImport.update({
   path: '/training/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TrainingBasicRoute = TrainingBasicRouteImport.update({
-  id: '/training/basic',
-  path: '/training/basic',
+const TrainingTrainingsRouteRoute = TrainingTrainingsRouteRouteImport.update({
+  id: '/training/_trainings',
+  path: '/training',
   getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingTrainingsBasicRoute = TrainingTrainingsBasicRouteImport.update({
+  id: '/basic',
+  path: '/basic',
+  getParentRoute: () => TrainingTrainingsRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -66,8 +72,9 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/training/basic': typeof TrainingBasicRoute
+  '/training': typeof TrainingTrainingsRouteRouteWithChildren
   '/training/': typeof TrainingIndexRoute
+  '/training/basic': typeof TrainingTrainingsBasicRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -76,8 +83,8 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/training/basic': typeof TrainingBasicRoute
   '/training': typeof TrainingIndexRoute
+  '/training/basic': typeof TrainingTrainingsBasicRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,8 +94,9 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/prices': typeof PricesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
-  '/training/basic': typeof TrainingBasicRoute
+  '/training/_trainings': typeof TrainingTrainingsRouteRouteWithChildren
   '/training/': typeof TrainingIndexRoute
+  '/training/_trainings/basic': typeof TrainingTrainingsBasicRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,8 +107,9 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/prices'
     | '/privacy-policy'
-    | '/training/basic'
+    | '/training'
     | '/training/'
+    | '/training/basic'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -109,8 +118,8 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/prices'
     | '/privacy-policy'
-    | '/training/basic'
     | '/training'
+    | '/training/basic'
   id:
     | '__root__'
     | '/'
@@ -119,8 +128,9 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/prices'
     | '/privacy-policy'
-    | '/training/basic'
+    | '/training/_trainings'
     | '/training/'
+    | '/training/_trainings/basic'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,7 +140,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   PricesRoute: typeof PricesRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
-  TrainingBasicRoute: typeof TrainingBasicRoute
+  TrainingTrainingsRouteRoute: typeof TrainingTrainingsRouteRouteWithChildren
   TrainingIndexRoute: typeof TrainingIndexRoute
 }
 
@@ -185,15 +195,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainingIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/training/basic': {
-      id: '/training/basic'
-      path: '/training/basic'
-      fullPath: '/training/basic'
-      preLoaderRoute: typeof TrainingBasicRouteImport
+    '/training/_trainings': {
+      id: '/training/_trainings'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingTrainingsRouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/training/_trainings/basic': {
+      id: '/training/_trainings/basic'
+      path: '/basic'
+      fullPath: '/training/basic'
+      preLoaderRoute: typeof TrainingTrainingsBasicRouteImport
+      parentRoute: typeof TrainingTrainingsRouteRoute
     }
   }
 }
+
+interface TrainingTrainingsRouteRouteChildren {
+  TrainingTrainingsBasicRoute: typeof TrainingTrainingsBasicRoute
+}
+
+const TrainingTrainingsRouteRouteChildren: TrainingTrainingsRouteRouteChildren =
+  {
+    TrainingTrainingsBasicRoute: TrainingTrainingsBasicRoute,
+  }
+
+const TrainingTrainingsRouteRouteWithChildren =
+  TrainingTrainingsRouteRoute._addFileChildren(
+    TrainingTrainingsRouteRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -202,7 +233,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   PricesRoute: PricesRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
-  TrainingBasicRoute: TrainingBasicRoute,
+  TrainingTrainingsRouteRoute: TrainingTrainingsRouteRouteWithChildren,
   TrainingIndexRoute: TrainingIndexRoute,
 }
 export const routeTree = rootRouteImport

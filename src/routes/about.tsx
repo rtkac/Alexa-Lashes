@@ -7,7 +7,7 @@ import PreviewGallery from "@/components/PreviewGallery";
 import { m } from "@/paraglide/messages";
 import type { Gallery } from "@/types";
 
-const gallery: Gallery[] = [
+const gallery = (): Gallery[] => [
   {
     thumbSrc: "/reception.jpg",
     src: "/reception.jpg",
@@ -36,7 +36,7 @@ const gallery: Gallery[] = [
 ];
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
+  head: ({ match }) => ({
     meta: [
       { title: m.meta_about_title() },
       { name: "description", content: m.meta_about_desc() },
@@ -44,6 +44,15 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: m.meta_about_title() },
       { property: "og:description", content: m.meta_about_desc() },
       { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
+    ],
+    links: [
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: "en" },
+      {
+        rel: "alternate",
+        href: `https://alexalashes.sk${match.pathname}/`,
+        hrefLang: "x-default",
+      },
     ],
   }),
   component: RouteComponent,
@@ -79,7 +88,7 @@ function RouteComponent() {
         <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
           {m.about_gallery_title()}
         </h2>
-        <PreviewGallery gallery={gallery} />
+        <PreviewGallery gallery={gallery()} />
       </div>
       <div className="mb-18 md:mb-25">
         <LashMaster

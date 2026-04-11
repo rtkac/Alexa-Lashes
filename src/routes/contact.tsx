@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { CatchBoundary, createFileRoute } from "@tanstack/react-router";
 import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
 import BusinessMap from "@/components/BusinessMap";
@@ -9,7 +9,7 @@ import { m } from "@/paraglide/messages";
 import { address, email, telephoneNumber } from "@/types";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
+  head: ({ match }) => ({
     meta: [
       { title: m.meta_contact_title() },
       { name: "description", content: m.meta_contact_desc() },
@@ -17,6 +17,15 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: m.meta_contact_title() },
       { property: "og:description", content: m.meta_contact_desc() },
       { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
+    ],
+    links: [
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: "en" },
+      {
+        rel: "alternate",
+        href: `https://alexalashes.sk${match.pathname}/`,
+        hrefLang: "x-default",
+      },
     ],
   }),
   component: RouteComponent,
@@ -84,7 +93,9 @@ function RouteComponent() {
       </div>
       <div className="mb-10 grid gap-5 md:grid-cols-7 md:gap-15">
         <div className="overflow-hidden rounded-md md:col-span-4">
-          <BusinessMap />
+          <CatchBoundary getResetKey={() => "reset"} errorComponent={() => null}>
+            <BusinessMap />
+          </CatchBoundary>
         </div>
         <div className="md:col-span-3">
           <QrCode />

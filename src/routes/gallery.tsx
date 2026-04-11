@@ -5,7 +5,7 @@ import Gallery from "@/components/Gallery";
 import { m } from "@/paraglide/messages";
 
 export const Route = createFileRoute("/gallery")({
-  head: () => ({
+  head: ({ match }) => ({
     meta: [
       { title: m.meta_gallery_title() },
       { name: "description", content: m.meta_gallery_desc() },
@@ -13,6 +13,15 @@ export const Route = createFileRoute("/gallery")({
       { property: "og:title", content: m.meta_gallery_title() },
       { property: "og:description", content: m.meta_gallery_desc() },
       { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
+    ],
+    links: [
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: "en" },
+      {
+        rel: "alternate",
+        href: `https://alexalashes.sk${match.pathname}/`,
+        hrefLang: "x-default",
+      },
     ],
   }),
   component: RouteComponent,

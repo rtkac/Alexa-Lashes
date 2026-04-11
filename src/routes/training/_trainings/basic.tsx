@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 import Banner from "@/components/Banner";
 import Includes from "@/components/Includes";
@@ -9,7 +9,7 @@ import TrainingPrice from "@/components/TrainingPrice";
 import { m } from "@/paraglide/messages";
 import { instagramUrl } from "@/types";
 
-const benefits: string[] = [
+const benefits = (): string[] => [
   m.training_basic_benefit_1_title(),
   m.training_basic_benefit_2_title(),
   m.training_basic_benefit_3_title(),
@@ -19,7 +19,7 @@ const benefits: string[] = [
   m.training_basic_benefit_7_title(),
 ];
 
-const includes: string[] = [
+const includes = (): string[] => [
   m.training_basic_includes_1_title(),
   m.training_basic_includes_2_title(),
   m.training_basic_includes_3_title(),
@@ -27,8 +27,8 @@ const includes: string[] = [
   m.training_basic_includes_5_title(),
 ];
 
-export const Route = createFileRoute("/training/basic")({
-  head: () => ({
+export const Route = createFileRoute("/training/_trainings/basic")({
+  head: ({ match }) => ({
     meta: [
       { title: m.meta_training_basic_title() },
       { name: "description", content: m.meta_training_basic_desc() },
@@ -36,6 +36,15 @@ export const Route = createFileRoute("/training/basic")({
       { property: "og:title", content: m.meta_training_basic_title() },
       { property: "og:description", content: m.meta_training_basic_desc() },
       { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.jpg" },
+    ],
+    links: [
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: "en" },
+      {
+        rel: "alternate",
+        href: `https://alexalashes.sk${match.pathname}/`,
+        hrefLang: "x-default",
+      },
     ],
     scripts: [
       {
@@ -98,34 +107,7 @@ export const Route = createFileRoute("/training/basic")({
 
 function RouteComponent() {
   return (
-    <div className="mx-auto max-w-6xl px-4 pt-5 pb-10">
-      <ol
-        className="mb-5 flex items-center gap-2 font-medium text-sm"
-        itemScope
-        itemType="https://schema.org/BreadcrumbList"
-      >
-        <li
-          className="text-primary"
-          itemProp="itemListElement"
-          itemScope
-          itemType="https://schema.org/ListItem"
-        >
-          <Link to="/training/" itemProp="item">
-            <span itemProp="name">{m.breadcrumbs_training()}</span>
-          </Link>
-          <meta itemProp="position" content="1" />
-        </li>
-        /
-        <li
-          className="text-primary brightness-50"
-          itemProp="itemListElement"
-          itemScope
-          itemType="https://schema.org/ListItem"
-        >
-          <span itemProp="name">{m.breadcrumbs_training_basic()}</span>
-          <meta itemProp="position" content="2" />
-        </li>
-      </ol>
+    <>
       <Banner
         title={m.training_basic_banner_title()}
         description={m.training_basic_banner_desc()}
@@ -156,7 +138,7 @@ function RouteComponent() {
         <h2 className="mb-10 text-center font-bold text-xl md:text-3xl dark:text-primary">
           {m.training_basic_why_title()}
         </h2>
-        <Includes data={benefits} />
+        <Includes data={benefits()} />
         <p className="text-center text-neutral-500 text-sm">{m.training_basic_why_desc()}</p>
       </div>
       <div className="mb-18">
@@ -170,7 +152,7 @@ function RouteComponent() {
           {m.training_basic_includes_title()}
         </h2>
         <p className="mb-5 text-center">{m.training_basic_includes_desc()}</p>
-        <Includes data={includes} />
+        <Includes data={includes()} />
       </div>
       <div className="mb-18">
         <TrainingPrice duration={m.training_basic_duration()} price={870} />
@@ -178,6 +160,6 @@ function RouteComponent() {
       <div className="mb-8">
         <LashMaster title={m.teacher_title()} desc_1={m.teacher_desc()} />
       </div>
-    </div>
+    </>
   );
 }
