@@ -6,67 +6,67 @@ import type { Gallery as ImageGallery } from "@/types";
 const galleryWork: ImageGallery[] = [
   {
     thumbSrc: "/1.JPG",
-    src: "/1.JPG",
+    src: "/1.webp",
     name: "Gallery Image 1",
   },
   {
     thumbSrc: "/3.jpg",
-    src: "/3.jpg",
+    src: "/3.webp",
     name: "Gallery Image 3",
   },
   {
     thumbSrc: "/2.jpg",
-    src: "/2.jpg",
+    src: "/2.webp",
     name: "Gallery Image 2",
   },
   {
     thumbSrc: "/4.jpg",
-    src: "/4.jpg",
+    src: "/4.webp",
     name: "Gallery Image 4",
   },
   {
     thumbSrc: "/0.jpg",
-    src: "/0.jpg",
+    src: "/0.webp",
     name: "Gallery Image",
   },
   {
     thumbSrc: "/5.jpg",
-    src: "/5.jpg",
+    src: "/5.webp",
     name: "Gallery Image 5",
   },
   {
     thumbSrc: "/7.jpg",
-    src: "/7.jpg",
+    src: "/7.webp",
     name: "Gallery Image 7",
   },
   {
     thumbSrc: "/8.jpg",
-    src: "/8.jpg",
+    src: "/8.webp",
     name: "Gallery Image 8",
   },
   {
     thumbSrc: "/9.JPG",
-    src: "/9.JPG",
+    src: "/9.webp",
     name: "Gallery Image 9",
   },
   {
     thumbSrc: "/10.jpg",
-    src: "/10.jpg",
+    src: "/10.webp",
     name: "Gallery Image 10",
   },
   {
     thumbSrc: "/11.jpg",
-    src: "/11.jpg",
+    src: "/11.webp",
     name: "Gallery Image 11",
   },
   {
     thumbSrc: "/12.jpg",
-    src: "/12.jpg",
+    src: "/12.webp",
     name: "Gallery Image 12",
   },
   {
     thumbSrc: "/13.JPG",
-    src: "/13.JPG",
+    src: "/13.webp",
     name: "Gallery Image 13",
   },
   {
@@ -144,27 +144,27 @@ const galleryWork: ImageGallery[] = [
 const galleryTraining: ImageGallery[] = [
   {
     thumbSrc: "/course-1.jpg",
-    src: "/course-1.jpg",
+    src: "/course-1.webp",
     name: "Gallery Image 1",
   },
   {
     thumbSrc: "/course-2.jpg",
-    src: "/course-2.jpg",
+    src: "/course-2.webp",
     name: "Gallery Image 2",
   },
   {
     thumbSrc: "/course-3.jpg",
-    src: "/course-3.jpg",
+    src: "/course-3.webp",
     name: "Gallery Image 3",
   },
   {
     thumbSrc: "/course-4.jpg",
-    src: "/course-4.jpg",
+    src: "/course-4.webp",
     name: "Gallery Image 4",
   },
   {
     thumbSrc: "/course-5.jpg",
-    src: "/course-5.jpg",
+    src: "/course-5.webp",
     name: "Gallery Image 5",
   },
   {
@@ -199,7 +199,7 @@ const galleryTraining: ImageGallery[] = [
   },
   {
     thumbSrc: "/advanced-training-banner.jpg",
-    src: "/advanced-training-banner.jpg",
+    src: "/advanced-training-banner.webp",
     name: "Gallery Image 12",
   },
   {

@@ -10,7 +10,7 @@ export const Route = createFileRoute("/privacy-policy")({
       { property: "og:type", content: "article" },
       { property: "og:title", content: m.meta_privacy_policy_title() },
       { property: "og:description", content: m.meta_privacy_policy_desc() },
-      { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.webp" },
     ],
     links: [
       { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },

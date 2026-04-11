@@ -10,27 +10,27 @@ import type { Gallery } from "@/types";
 const gallery = (): Gallery[] => [
   {
     thumbSrc: "/reception.jpg",
-    src: "/reception.jpg",
+    src: "/reception.webp",
     name: "Recepcia Alexa Lashes",
   },
   {
     thumbSrc: "/salon-4.jpg",
-    src: "/salon-4.jpg",
+    src: "/salon-4.webp",
     name: "Darčeky pre klientov salónu",
   },
   {
     thumbSrc: "/salon-2.jpg",
-    src: "/salon-2.jpg",
+    src: "/salon-2.webp",
     name: "Čakáreň Alexa Lashes",
   },
   {
     thumbSrc: "/salon-3.jpg",
-    src: "/salon-3.jpg",
+    src: "/salon-3.webp",
     name: "Kozmetické kreslo so svetlom",
   },
   {
     thumbSrc: "/salon-5.jpg",
-    src: "/salon-5.jpg",
+    src: "/salon-5.webp",
     name: "Kvety a darčeková poukážka",
   },
 ];
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_about_title() },
       { property: "og:description", content: m.meta_about_desc() },
-      { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/salon-2.webp" },
     ],
     links: [
       { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },
@@ -65,7 +65,7 @@ function RouteComponent() {
         <Banner
           title={m.about_banner_title()}
           description={m.about_banner_desc()}
-          image="bg-[url(/salon-2.jpg)]"
+          image="bg-[url(/salon-2.webp)]"
           isDark
         />
       </div>
@@ -81,7 +81,7 @@ function RouteComponent() {
           </div>
         </div>
         <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
-          <img src="/salon-alexa.jpg" alt="Salón Alexa Lashes" className="w-full rounded-md" />
+          <img src="/salon-alexa.webp" alt="Salón Alexa Lashes" className="w-full rounded-md" />
         </div>
       </div>
       <div className="mb-18 md:mb-25">

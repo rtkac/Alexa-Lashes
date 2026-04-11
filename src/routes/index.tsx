@@ -38,27 +38,27 @@ const benefits = (): Benefit[] => [
 const gallery = (): Gallery[] => [
   {
     thumbSrc: "/1-thumb.jpg",
-    src: "/1.JPG",
+    src: "/1.webp",
     name: "2D mihalnice",
   },
   {
     thumbSrc: "/2-thumb.jpg",
-    src: "/2.jpg",
+    src: "/2.webp",
     name: "1D mihalnice",
   },
   {
     thumbSrc: "/3-thumb.jpg",
-    src: "/3.jpg",
+    src: "/3.webp",
     name: "3-4D mihalnice",
   },
   {
     thumbSrc: "/4-thumb.jpg",
-    src: "/4.jpg",
+    src: "/4.webp",
     name: "2D mihalnice mokrý efekt",
   },
   {
     thumbSrc: "/5-thumb.jpg",
-    src: "/5.jpg",
+    src: "/5.webp",
     name: "2D hnedé mihalnice mokrý efekt",
   },
 ];
@@ -169,7 +169,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_index_title() },
       { property: "og:description", content: m.meta_index_desc() },
-      { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.webp" },
     ],
     links: [
       { rel: "alternate", href: "https://alexalashes.sk/", hrefLang: "sk" },
@@ -237,7 +237,7 @@ function RouteComponent() {
       <Banner
         title={m.banner_title()}
         description={m.banner_desc()}
-        image="bg-[url(/banner-main-mobile.jpg)] md:bg-[url(/banner-main-desktop.jpg)]"
+        image="bg-[url(/banner-main-mobile.webp)] md:bg-[url(/banner-main-desktop.webp)]"
         buttons={
           <>
             <Link to="/prices/" className="btn-primary mx-2">

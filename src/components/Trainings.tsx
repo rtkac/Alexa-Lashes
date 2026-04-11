@@ -16,7 +16,7 @@ const Trainings = () => {
             <p className="mb-6 text-sm">{m.training_basic_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
-                src="/basic-training-banner.jpg"
+                src="/basic-training-banner.webp"
                 alt="Základný kurz predlžovania mihalníc"
                 className="h-full w-full object-cover"
               />
@@ -64,7 +64,7 @@ const Trainings = () => {
             <p className="mb-6 text-sm">{m.training_advanced_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
-                src="/advanced-training-banner.jpg"
+                src="/advanced-training-banner.webp"
                 alt="Pokročilý kurz predlžovania mihalníc"
                 className="h-full w-full object-cover"
               />
