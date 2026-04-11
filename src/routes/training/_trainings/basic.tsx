@@ -54,12 +54,12 @@ export const Route = createFileRoute("/training/_trainings/basic")({
           "@type": "Course",
           name: m.meta_schema_training_basic_title(),
           description: m.meta_training_basic_desc(),
-          image: "https://alexalashes.sk/basic-training-banner.jpg",
+          image: "https://alexalashes.sk/basic-training-banner.webp",
           instructor: {
             "@type": "Person",
             jobTitle: "Lash Stylist",
             name: "Oleksandra Afanasieva",
-            image: "https://alexalashes.sk/alexa-lashes-stylist.jpg",
+            image: "https://alexalashes.sk/alexa-lashes-stylist.webp",
             sameAs: instagramUrl,
           },
           hasCourseInstance: {
@@ -111,7 +111,7 @@ function RouteComponent() {
       <Banner
         title={m.training_basic_banner_title()}
         description={m.training_basic_banner_desc()}
-        image="bg-[url(/basic-training-banner.jpg)]"
+        image="bg-[url(/basic-training-banner.webp)]"
         isDark
         buttons={
           <TrainingFormModal

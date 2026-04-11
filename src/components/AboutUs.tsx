@@ -7,7 +7,7 @@ export const AboutUs = () => {
     <div className="grid gap-8 sm:grid-cols-2 md:gap-12">
       <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
         <img
-          src="/salon-alexa.jpg"
+          src="/salon-alexa.webp"
           alt="Salón Alexa Lashes"
           className="w-full rounded-md"
           loading="lazy"

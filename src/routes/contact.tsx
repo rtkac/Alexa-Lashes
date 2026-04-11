@@ -16,7 +16,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_contact_title() },
       { property: "og:description", content: m.meta_contact_desc() },
-      { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/salon-2.webp" },
     ],
     links: [
       { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },

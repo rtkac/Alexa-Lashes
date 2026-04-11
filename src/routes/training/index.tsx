@@ -9,27 +9,27 @@ import type { Gallery } from "@/types";
 const gallery = (): Gallery[] => [
   {
     thumbSrc: "/course-1.jpg",
-    src: "/course-1.jpg",
+    src: "/course-1.webp",
     name: "Kurz predlžovania mihalníc",
   },
   {
     thumbSrc: "/course-2.jpg",
-    src: "/course-2.jpg",
+    src: "/course-2.webp",
     name: "Hlava na tréning predlžovania mihalníc",
   },
   {
     thumbSrc: "/course-3.jpg",
-    src: "/course-3.jpg",
+    src: "/course-3.webp",
     name: "Žiačka s certifikátom na kurze predlžovania mihalníc",
   },
   {
     thumbSrc: "/course-4.jpg",
-    src: "/course-4.jpg",
+    src: "/course-4.webp",
     name: "Odstraňovanie umelých mihalníc",
   },
   {
     thumbSrc: "/course-5.jpg",
-    src: "/course-5.jpg",
+    src: "/course-5.webp",
     name: "Prax žiačky",
   },
 ];
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/training/")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: m.meta_training_title() },
       { property: "og:description", content: m.meta_training_desc() },
-      { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.jpg" },
+      { property: "og:image", content: "https://alexalashes.sk/basic-training-banner.webp" },
     ],
     links: [
       { rel: "alternate", href: `https://alexalashes.sk${match.pathname}`, hrefLang: "sk" },
