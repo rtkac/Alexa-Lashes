@@ -187,13 +187,13 @@ export const Route = createFileRoute("/")({
           description: m.meta_index_desc(),
           telephone: telephoneNumber,
           url: "https://alexalashes.sk",
-          image: "https://alexalashes.sk/banner-main-desktop.jpg",
+          image: "https://alexalashes.sk/banner-main-desktop.webp",
           logo: "https://alexalashes.sk/logo.png",
           owner: {
             "@type": "Person",
             jobTitle: "Lash Stylist",
             name: "Oleksandra Afanasieva",
-            image: "https://alexalashes.sk/alexa-lashes-stylist.jpg",
+            image: "https://alexalashes.sk/alexa-lashes-stylist.webp",
             sameAs: instagramUrl,
           },
           address: {
