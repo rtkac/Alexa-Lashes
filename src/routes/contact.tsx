@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { CatchBoundary, createFileRoute } from "@tanstack/react-router";
 import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
 import BusinessMap from "@/components/BusinessMap";
@@ -93,7 +93,9 @@ function RouteComponent() {
       </div>
       <div className="mb-10 grid gap-5 md:grid-cols-7 md:gap-15">
         <div className="overflow-hidden rounded-md md:col-span-4">
-          <BusinessMap />
+          <CatchBoundary getResetKey={() => "reset"} errorComponent={() => null}>
+            <BusinessMap />
+          </CatchBoundary>
         </div>
         <div className="md:col-span-3">
           <QrCode />
