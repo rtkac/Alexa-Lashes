@@ -9,7 +9,7 @@ import { m } from "@/paraglide/messages";
 import { address, email, telephoneNumber } from "@/types";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
+  head: ({ match }) => ({
     meta: [
       { title: m.meta_contact_title() },
       { name: "description", content: m.meta_contact_desc() },
@@ -19,9 +19,13 @@ export const Route = createFileRoute("/contact")({
       { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
     ],
     links: [
-      { rel: "alternate", href: "https://alexalashes.sk/sk/contact/", hrefLang: "sk" },
-      { rel: "alternate", href: "https://alexalashes.sk/en/contact/", hrefLang: "en" },
-      { rel: "alternate", href: "https://alexalashes.sk/sk/contact/", hrefLang: "x-default" },
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}`, hrefLang: "en" },
+      {
+        rel: "alternate",
+        href: `https://alexalashes.sk${match.pathname}`,
+        hrefLang: "x-default",
+      },
     ],
   }),
   component: RouteComponent,

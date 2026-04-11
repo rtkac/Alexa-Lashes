@@ -172,9 +172,9 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: "https://alexalashes.sk/banner-main-desktop.jpg" },
     ],
     links: [
-      { rel: "alternate", href: "https://alexalashes.sk/sk/", hrefLang: "sk" },
+      { rel: "alternate", href: "https://alexalashes.sk/", hrefLang: "sk" },
       { rel: "alternate", href: "https://alexalashes.sk/en/", hrefLang: "en" },
-      { rel: "alternate", href: "https://alexalashes.sk/sk/", hrefLang: "x-default" },
+      { rel: "alternate", href: "https://alexalashes.sk/", hrefLang: "x-default" },
     ],
     scripts: [
       {

@@ -112,7 +112,7 @@ const itemListElement = (prices: LashPrice[]) =>
   }));
 
 export const Route = createFileRoute("/prices")({
-  head: () => ({
+  head: ({ match }) => ({
     meta: [
       { title: m.meta_prices_title() },
       { name: "description", content: m.meta_prices_desc() },
@@ -122,9 +122,13 @@ export const Route = createFileRoute("/prices")({
       { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
     ],
     links: [
-      { rel: "alternate", href: "https://alexalashes.sk/sk/prices/", hrefLang: "sk" },
-      { rel: "alternate", href: "https://alexalashes.sk/en/prices/", hrefLang: "en" },
-      { rel: "alternate", href: "https://alexalashes.sk/sk/prices/", hrefLang: "x-default" },
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}`, hrefLang: "en" },
+      {
+        rel: "alternate",
+        href: `https://alexalashes.sk${match.pathname}`,
+        hrefLang: "x-default",
+      },
     ],
     scripts: [
       {

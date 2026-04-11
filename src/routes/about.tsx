@@ -36,7 +36,7 @@ const gallery = (): Gallery[] => [
 ];
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
+  head: ({ match }) => ({
     meta: [
       { title: m.meta_about_title() },
       { name: "description", content: m.meta_about_desc() },
@@ -46,9 +46,13 @@ export const Route = createFileRoute("/about")({
       { property: "og:image", content: "https://alexalashes.sk/salon-2.jpg" },
     ],
     links: [
-      { rel: "alternate", href: "https://alexalashes.sk/sk/about/", hrefLang: "sk" },
-      { rel: "alternate", href: "https://alexalashes.sk/en/about/", hrefLang: "en" },
-      { rel: "alternate", href: "https://alexalashes.sk/sk/about/", hrefLang: "x-default" },
+      { rel: "alternate", href: `https://alexalashes.sk${match.pathname}`, hrefLang: "sk" },
+      { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}`, hrefLang: "en" },
+      {
+        rel: "alternate",
+        href: `https://alexalashes.sk${match.pathname}`,
+        hrefLang: "x-default",
+      },
     ],
   }),
   component: RouteComponent,
