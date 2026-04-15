@@ -65,6 +65,16 @@ const gallery = (): Gallery[] => [
 
 const reviews = (): Review[] => [
   {
+    name: m.reviews_21_name(),
+    description: m.reviews_21_desc(),
+    url: "https://maps.app.goo.gl/WBNHey2s4NVPoVoa8",
+  },
+  {
+    name: m.reviews_20_name(),
+    description: m.reviews_20_desc(),
+    url: "https://maps.app.goo.gl/NjpiUoqwPMhYTZpV9",
+  },
+  {
     name: m.reviews_19_name(),
     description: m.reviews_19_desc(),
     url: "https://maps.app.goo.gl/L5QS66EeYfRnRoiq8",
@@ -220,7 +230,7 @@ export const Route = createFileRoute("/")({
           aggregateRating: {
             "@type": "AggregateRating",
             bestRating: "5",
-            reviewCount: "35",
+            reviewCount: "37", // update with the actual number of reviews from Google Maps
             ratingValue: "5",
           },
           sameAs: [instagramUrl, tiktokUrl],
