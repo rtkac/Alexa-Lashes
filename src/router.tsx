@@ -14,6 +14,7 @@ export function getRouter() {
     defaultErrorComponent: DefaultCatchBoundary,
     defaultNotFoundComponent: NotFound,
     scrollRestoration: true,
+    defaultViewTransition: true,
     trailingSlash: "always",
     rewrite: {
       input: ({ url }) => deLocalizeUrl(url),
