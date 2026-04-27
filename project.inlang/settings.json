@@ -3,7 +3,8 @@
   "baseLocale": "sk",
   "locales": [
     "sk",
-    "en"
+    "en",
+    "ru"
   ],
   "modules": [
     "https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@4/dist/index.js",

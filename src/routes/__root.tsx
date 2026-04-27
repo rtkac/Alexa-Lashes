@@ -20,7 +20,10 @@ export const Route = createRootRoute({
         name: "viewport",
         content: "width=device-width, initial-scale=1",
       },
-      { property: "og:locale", content: getLocale() === "sk" ? "sk_SK" : "en_US" },
+      {
+        property: "og:locale",
+        content: getLocale() === "sk" ? "sk_SK" : getLocale() === "ru" ? "ru_RU" : "en_US",
+      },
     ],
     links: [
       {
