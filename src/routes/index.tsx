@@ -65,6 +65,26 @@ const gallery = (): Gallery[] => [
 
 const reviews = (): Review[] => [
   {
+    name: m.reviews_25_name(),
+    description: m.reviews_25_desc(),
+    url: "https://maps.app.goo.gl/JNiVP2LAWP3JdFzP6",
+  },
+  {
+    name: m.reviews_24_name(),
+    description: m.reviews_24_desc(),
+    url: "https://maps.app.goo.gl/i1xf7dU2AT6G2iaHA",
+  },
+  {
+    name: m.reviews_23_name(),
+    description: m.reviews_23_desc(),
+    url: "https://maps.app.goo.gl/a8GAEmZsQ4TqsU628",
+  },
+  {
+    name: m.reviews_22_name(),
+    description: m.reviews_22_desc(),
+    url: "https://maps.app.goo.gl/9yUDJnbx8Ew7KJt79",
+  },
+  {
     name: m.reviews_21_name(),
     description: m.reviews_21_desc(),
     url: "https://maps.app.goo.gl/WBNHey2s4NVPoVoa8",
@@ -230,7 +250,7 @@ export const Route = createFileRoute("/")({
           aggregateRating: {
             "@type": "AggregateRating",
             bestRating: "5",
-            reviewCount: "37", // update with the actual number of reviews from Google Maps
+            reviewCount: "42", // update with the actual number of reviews from Google Maps
             ratingValue: "5",
           },
           sameAs: [instagramUrl, tiktokUrl],
