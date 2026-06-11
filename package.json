@@ -2,9 +2,9 @@
   "name": "alexa-lashes",
   "private": true,
   "type": "module",
-  "packageManager": "bun@1.3.12",
+  "packageManager": "bun@1.3.14",
   "engines": {
-    "bun": "^1.3.12"
+    "bun": "^1.3.14"
   },
   "scripts": {
     "dev": "vite dev --port 3000",
@@ -51,7 +51,7 @@
     "@netlify/vite-plugin-tanstack-start": "^1.3.5",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.2",
-    "@types/bun": "1.3.12",
+    "@types/bun": "1.3.14",
     "@types/nodemailer": "^8.0.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
