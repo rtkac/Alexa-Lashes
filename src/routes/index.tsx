@@ -63,133 +63,47 @@ const gallery = (): Gallery[] => [
   },
 ];
 
-const reviews = (): Review[] => [
-  {
-    name: m.reviews_25_name(),
-    description: m.reviews_25_desc(),
-    url: "https://maps.app.goo.gl/JNiVP2LAWP3JdFzP6",
-  },
-  {
-    name: m.reviews_24_name(),
-    description: m.reviews_24_desc(),
-    url: "https://maps.app.goo.gl/i1xf7dU2AT6G2iaHA",
-  },
-  {
-    name: m.reviews_23_name(),
-    description: m.reviews_23_desc(),
-    url: "https://maps.app.goo.gl/a8GAEmZsQ4TqsU628",
-  },
-  {
-    name: m.reviews_22_name(),
-    description: m.reviews_22_desc(),
-    url: "https://maps.app.goo.gl/9yUDJnbx8Ew7KJt79",
-  },
-  {
-    name: m.reviews_21_name(),
-    description: m.reviews_21_desc(),
-    url: "https://maps.app.goo.gl/WBNHey2s4NVPoVoa8",
-  },
-  {
-    name: m.reviews_20_name(),
-    description: m.reviews_20_desc(),
-    url: "https://maps.app.goo.gl/NjpiUoqwPMhYTZpV9",
-  },
-  {
-    name: m.reviews_19_name(),
-    description: m.reviews_19_desc(),
-    url: "https://maps.app.goo.gl/L5QS66EeYfRnRoiq8",
-  },
-  {
-    name: m.reviews_18_name(),
-    description: m.reviews_18_desc(),
-    url: "https://maps.app.goo.gl/sz1r3DqWFAgmaVK89",
-  },
-  {
-    name: m.reviews_2_name(),
-    description: m.reviews_2_desc(),
-    url: "https://maps.app.goo.gl/1ChGUGpWm3f2oPKV9",
-  },
-  {
-    name: m.reviews_5_name(),
-    description: m.reviews_5_desc(),
-    url: "https://maps.app.goo.gl/PzXfC4WNqBCgfn9r9",
-  },
-  {
-    name: m.reviews_4_name(),
-    description: m.reviews_4_desc(),
-    url: "https://maps.app.goo.gl/CJiMfJo38iBBn6gP9",
-  },
-  {
-    name: m.reviews_1_name(),
-    description: m.reviews_1_desc(),
-    url: "https://maps.app.goo.gl/9U6Q9Fw7bVGKxefV6",
-  },
-  {
-    name: m.reviews_11_name(),
-    description: m.reviews_11_desc(),
-    url: "https://maps.app.goo.gl/uoQgh5BpxLn5nJh27",
-  },
-  {
-    name: m.reviews_14_name(),
-    description: m.reviews_14_desc(),
-    url: "https://maps.app.goo.gl/wC1sH7urBxwtb5cm6",
-  },
-  {
-    name: m.reviews_12_name(),
-    description: m.reviews_12_desc(),
-    url: "https://maps.app.goo.gl/aqFucHQW7k1EZbWc9",
-  },
-  {
-    name: m.reviews_7_name(),
-    description: m.reviews_7_desc(),
-    url: "https://maps.app.goo.gl/hWDEp5Pt6HqMaBrT9",
-  },
-  {
-    name: m.reviews_6_name(),
-    description: m.reviews_6_desc(),
-    url: "https://maps.app.goo.gl/zeNuoPXuUqx3cHm58",
-  },
-  {
-    name: m.reviews_10_name(),
-    description: m.reviews_10_desc(),
-    url: "https://maps.app.goo.gl/qEgJ9S8Coxc4M2vK7",
-  },
-  {
-    name: m.reviews_9_name(),
-    description: m.reviews_9_desc(),
-    url: "https://maps.app.goo.gl/96i4JNDxeSG5Cc3u5",
-  },
-  {
-    name: m.reviews_3_name(),
-    description: m.reviews_3_desc(),
-    url: "https://maps.app.goo.gl/XvL2rC2Hbme8WoSVA",
-  },
-  {
-    name: m.reviews_8_name(),
-    description: m.reviews_8_desc(),
-    url: "https://maps.app.goo.gl/hEJVQ3TfhVejWRaP8",
-  },
-  {
-    name: m.reviews_13_name(),
-    description: m.reviews_13_desc(),
-    url: "https://maps.app.goo.gl/vFo2gkCTN1oz5pWk6",
-  },
-  {
-    name: m.reviews_17_name(),
-    description: m.reviews_17_desc(),
-    url: "https://maps.app.goo.gl/9jb1H8f8TQSr3dxF8",
-  },
-  {
-    name: m.reviews_16_name(),
-    description: m.reviews_16_desc(),
-    url: "https://maps.app.goo.gl/Vqxnw1UhbK29byDj6",
-  },
-  {
-    name: m.reviews_15_name(),
-    description: m.reviews_15_desc(),
-    url: "https://maps.app.goo.gl/AZojrnuhEGdrjw1J7",
-  },
+const REVIEWS_COUNT = 27;
+
+const REVIEW_URLS = [
+  "https://maps.app.goo.gl/9U6Q9Fw7bVGKxefV6", // 1
+  "https://maps.app.goo.gl/1ChGUGpWm3f2oPKV9", // 2
+  "https://maps.app.goo.gl/XvL2rC2Hbme8WoSVA", // 3
+  "https://maps.app.goo.gl/CJiMfJo38iBBn6gP9", // 4
+  "https://maps.app.goo.gl/PzXfC4WNqBCgfn9r9", // 5
+  "https://maps.app.goo.gl/zeNuoPXuUqx3cHm58", // 6
+  "https://maps.app.goo.gl/hWDEp5Pt6HqMaBrT9", // 7
+  "https://maps.app.goo.gl/hEJVQ3TfhVejWRaP8", // 8
+  "https://maps.app.goo.gl/96i4JNDxeSG5Cc3u5", // 9
+  "https://maps.app.goo.gl/qEgJ9S8Coxc4M2vK7", // 10
+  "https://maps.app.goo.gl/uoQgh5BpxLn5nJh27", // 11
+  "https://maps.app.goo.gl/aqFucHQW7k1EZbWc9", // 12
+  "https://maps.app.goo.gl/vFo2gkCTN1oz5pWk6", // 13
+  "https://maps.app.goo.gl/wC1sH7urBxwtb5cm6", // 14
+  "https://maps.app.goo.gl/AZojrnuhEGdrjw1J7", // 15
+  "https://maps.app.goo.gl/Vqxnw1UhbK29byDj6", // 16
+  "https://maps.app.goo.gl/9jb1H8f8TQSr3dxF8", // 17
+  "https://maps.app.goo.gl/sz1r3DqWFAgmaVK89", // 18
+  "https://maps.app.goo.gl/L5QS66EeYfRnRoiq8", // 19
+  "https://maps.app.goo.gl/NjpiUoqwPMhYTZpV9", // 20
+  "https://maps.app.goo.gl/WBNHey2s4NVPoVoa8", // 21
+  "https://maps.app.goo.gl/9yUDJnbx8Ew7KJt79", // 22
+  "https://maps.app.goo.gl/a8GAEmZsQ4TqsU628", // 23
+  "https://maps.app.goo.gl/i1xf7dU2AT6G2iaHA", // 24
+  "https://maps.app.goo.gl/JNiVP2LAWP3JdFzP6", // 25
+  "https://maps.app.goo.gl/fkbCMPLwZ8cDSoyq5", // 26
+  "https://maps.app.goo.gl/WziBccAA99WhHhHx9", // 27
 ];
+
+const reviews = (): Review[] =>
+  Array.from({ length: REVIEWS_COUNT }, (_, i) => {
+    const n = REVIEWS_COUNT - i; // newest first
+    return {
+      name: (m[`reviews_${n}_name` as keyof typeof m] as () => string)(),
+      description: (m[`reviews_${n}_desc` as keyof typeof m] as () => string)(),
+      url: REVIEW_URLS[n - 1],
+    };
+  });
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -204,6 +118,7 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "alternate", href: "https://alexalashes.sk/", hrefLang: "sk" },
       { rel: "alternate", href: "https://alexalashes.sk/en", hrefLang: "en" },
+      { rel: "alternate", href: "https://alexalashes.sk/ru", hrefLang: "ru" },
       { rel: "alternate", href: "https://alexalashes.sk/", hrefLang: "x-default" },
     ],
     scripts: [
@@ -250,7 +165,7 @@ export const Route = createFileRoute("/")({
           aggregateRating: {
             "@type": "AggregateRating",
             bestRating: "5",
-            reviewCount: "42", // update with the actual number of reviews from Google Maps
+            reviewCount: "46", // update with the actual number of reviews from Google Maps
             ratingValue: "5",
           },
           sameAs: [instagramUrl, tiktokUrl],
