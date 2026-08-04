@@ -49,6 +49,7 @@ export const Route = createFileRoute("/about")({
     links: [
       { rel: "alternate", href: `https://alexalashes.sk${match.pathname}/`, hrefLang: "sk" },
       { rel: "alternate", href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: "en" },
+      { rel: "alternate", href: `https://alexalashes.sk/ru${match.pathname}/`, hrefLang: "ru" },
       {
         rel: "alternate",
         href: `https://alexalashes.sk${match.pathname}/`,
