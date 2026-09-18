@@ -1,11 +1,19 @@
 output: false
+no_tty: true
 
 pre-commit:
   parallel: true
-  commands:
-    check:
-      run: bun biome check --staged --write --files-ignore-unknown=true --no-errors-on-unmatched
-      stage_fixed: true
+  jobs:
+    - name: 'Check'
+      group:
+        pipped: true
+        jobs:
+          - name: Format
+            run: bun oxfmt --no-error-on-unmatched-pattern {staged_files}
+            stage_fixed: true
+          - name: Lint
+            run: bun oxlint --fix --no-error-on-unmatched-pattern {staged_files}
+            stage_fixed: true
 
 commit-msg:
   commands:

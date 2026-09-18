@@ -1,15 +1,17 @@
 node_modules
 .DS_Store
+build
 dist
 dist-ssr
 *.local
 count.txt
 .env
+.env.local
 .nitro
 .tanstack
 .wrangler
 .output
 .vinxi
-todos.json
+.turbo
 # Local Netlify folder
 .netlify
