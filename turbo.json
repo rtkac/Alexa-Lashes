@@ -3,7 +3,8 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".output/**", ".vercel/output/**"]
+      "outputs": ["dist/**", ".output/**", ".vercel/output/**"],
+      "env": ["VITE_GOOGLE_MAPS_API_KEY", "VITE_GOOGLE_ANALYTICS_API_KEY"]
     },
     "dev": {
       "dependsOn": ["^build"],
