@@ -8,18 +8,28 @@
       "types": "./src/components/index.ts",
       "default": "./dist/components/index.js"
     },
+    "./shadcn": {
+      "types": "./src/components/shadcn/index.ts",
+      "default": "./dist/components/shadcn/index.js"
+    },
+    "./icons": {
+      "types": "./src/icons/index.ts",
+      "default": "./dist/icons/index.js"
+    },
     "./lib/*": {
       "types": "./src/lib/*.ts",
       "default": "./dist/lib/*.js"
     },
-    "./styles.css": "./src/components/styles.css"
+    "./styles.css": "./src/components/styles.css",
+    "./shadcn/styles.css": "./src/components/shadcn/styles.css"
   },
   "scripts": {
     "watch": "tsc --watch",
     "build": "tsc"
   },
   "dependencies": {
-    "@radix-ui/react-accordion": "1.2.20",
+    "@base-ui/react": "1.8.0",
+    "@radix-ui/react-accordion": "1.2.6",
     "clsx": "2.1.1",
     "lucide-react": "^1.28.0",
     "react": "19.3.0",

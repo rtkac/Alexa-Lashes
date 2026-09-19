@@ -1,0 +1,9 @@
+[build]
+command = "bun run build --filter=alexa-lashes/admin"
+publish = "apps/admin/dist/client"
+
+[dev]
+command = "bun run dev --filter=alexa-lashes/admin"
+targetPort = 3000
+port = 8888
+framework = "vite"

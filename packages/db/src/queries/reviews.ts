@@ -1,7 +1,7 @@
 import { asc, and, eq } from 'drizzle-orm';
 
 import { db } from '../index';
-import { reviewTranslations, reviews } from '../schema';
+import { reviewTranslations, reviews } from '../schema/reviews-schema';
 
 export async function getReviews(locale: string) {
   return db
