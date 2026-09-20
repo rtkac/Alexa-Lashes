@@ -3,17 +3,6 @@ import { createFileRoute, Outlet } from '@tanstack/react-router';
 import { Header } from '@/components/Header';
 import { fetchSessionOptions } from '@/effects/session';
 
-export const Route = createFileRoute('/_protected/dashboard')({
-  context: () => ({
-    fetchSessionOptions: fetchSessionOptions(),
-  }),
-  beforeLoad: async ({ context }) => {
-    const session = await context.queryClient.query(context.fetchSessionOptions);
-    return { user: session?.user };
-  },
-  component: RouteComponent,
-});
-
 function RouteComponent() {
   const { user } = Route.useRouteContext();
 
@@ -26,3 +15,17 @@ function RouteComponent() {
     </>
   );
 }
+
+export const Route = createFileRoute('/_protected/dashboard')({
+  context: () => ({
+    fetchSessionOptions: fetchSessionOptions(),
+  }),
+  beforeLoad: async ({ context }) => {
+    const session = await context.queryClient.query(context.fetchSessionOptions);
+    if (!session) {
+      throw new Error('User not authenticated');
+    }
+    return { user: session.user };
+  },
+  component: RouteComponent,
+});
