@@ -1,6 +1,5 @@
-import { allowedEmail } from './schema/allowed-email-schema';
-
-import { db } from '.';
+import { db } from '..';
+import { allowedEmail } from '../schema/allowed-email-schema';
 
 const email = ''; // add your email here
 

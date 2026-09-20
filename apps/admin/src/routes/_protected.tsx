@@ -17,12 +17,12 @@ export const Route = createFileRoute('/_protected')({
             <div className="rounded-lg h-9">
               <Skeleton className="flex w-44.25 h-full" />
             </div>
-            <div className="flex gap-8">
-              <div className="rounded-lg h-9">
-                <Skeleton className="flex w-9 md:w-28 h-full" />
+            <div className="flex md:gap-7 gap-6">
+              <div className="rounded-full h-9">
+                <Skeleton className="flex w-9 md:w-28 h-full rounded-full md:rounded-lg " />
               </div>
               <div className="rounded-lg h-9">
-                <Skeleton className="flex w-9 h-full" />
+                <Skeleton className="w-10 md:w-9 h-full md:rounded-full" />
               </div>
             </div>
           </div>
