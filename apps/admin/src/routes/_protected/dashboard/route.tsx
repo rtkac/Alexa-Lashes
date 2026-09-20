@@ -9,7 +9,7 @@ function RouteComponent() {
   return (
     <>
       <Header user={user} />
-      <main className="min-h-[calc(100vh-300px)] mx-auto max-w-6xl p-4">
+      <main className="min-h-[calc(100vh-300px)] mx-auto max-w-6xl p-4 mt-6">
         <Outlet />
       </main>
     </>

@@ -27,7 +27,8 @@
     "db:generate": "bunx drizzle-kit generate",
     "db:push": "bunx drizzle-kit push",
     "db:studio": "bunx drizzle-kit studio",
-    "seed": "bun run src/seed.ts"
+    "seed:email": "bun run src/seed/allowed-email.ts",
+    "seed:review": "bun run src/seed/review.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
