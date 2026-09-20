@@ -3,12 +3,20 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".output/**", ".vercel/output/**"],
-      "env": ["VITE_GOOGLE_MAPS_API_KEY", "VITE_GOOGLE_ANALYTICS_API_KEY"]
+      "outputs": ["dist/**"],
+      "env": [
+        "VITE_GOOGLE_MAPS_API_KEY",
+        "VITE_GOOGLE_ANALYTICS_API_KEY",
+        "DATABASE_URL",
+        "BETTER_AUTH_URL",
+        "BETTER_AUTH_SECRET",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ]
     },
     "dev": {
       "dependsOn": ["^build"],
-      "with": ["@alexa-lashes/ui#watch", "@alexa-lashes/db#watch"],
+      "with": ["@alexa-lashes/ui#watch", "@alexa-lashes/db#watch", "@alexa-lashes/auth#watch"],
       "cache": false,
       "persistent": true
     },

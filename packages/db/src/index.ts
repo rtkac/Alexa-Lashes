@@ -1,7 +1,9 @@
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
 
-import * as schema from './schema';
+import * as allowedEmailSchema from './schema/allowed-email-schema';
+import * as authSchema from './schema/auth-schema';
+import * as reviewsSchema from './schema/reviews-schema';
 
 const databaseUrl = process.env.DATABASE_URL;
 
@@ -12,5 +14,5 @@ if (!databaseUrl) {
 const sql = neon(databaseUrl);
 
 export const db = drizzle(sql, {
-  schema,
+  schema: { ...authSchema, ...reviewsSchema, ...allowedEmailSchema },
 });
