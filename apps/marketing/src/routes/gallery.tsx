@@ -4,6 +4,27 @@ import Cta from '@/components/Cta';
 import Gallery from '@/components/Gallery';
 import { m } from '@/paraglide/messages';
 
+const RouteComponent = () => {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-10">
+      <div className="mx-auto mb-14 max-w-180 text-center">
+        <h1 className="mb-3 font-bold text-2xl md:text-4xl dark:text-primary">
+          {m.gallery_title()}
+        </h1>
+        <p className="leading-6">{m.gallery_desc()}</p>
+      </div>
+      <div className="mb-18 md:mb-25">
+        <Gallery />
+      </div>
+      <Cta
+        title={m.cta_gallery_title()}
+        description={m.cta_gallery_desc()}
+        buttonLabel={m.cta_gallery_button()}
+      />
+    </div>
+  );
+};
+
 export const Route = createFileRoute('/gallery')({
   head: ({ match }) => ({
     meta: [
@@ -27,24 +48,3 @@ export const Route = createFileRoute('/gallery')({
   }),
   component: RouteComponent,
 });
-
-function RouteComponent() {
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <div className="mx-auto mb-14 max-w-180 text-center">
-        <h1 className="mb-3 font-bold text-2xl md:text-4xl dark:text-primary">
-          {m.gallery_title()}
-        </h1>
-        <p className="leading-6">{m.gallery_desc()}</p>
-      </div>
-      <div className="mb-18 md:mb-25">
-        <Gallery />
-      </div>
-      <Cta
-        title={m.cta_gallery_title()}
-        description={m.cta_gallery_desc()}
-        buttonLabel={m.cta_gallery_button()}
-      />
-    </div>
-  );
-}

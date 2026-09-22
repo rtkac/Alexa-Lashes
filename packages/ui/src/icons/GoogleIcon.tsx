@@ -1,4 +1,6 @@
-export function GoogleIcon(props: React.ComponentProps<'svg'>): React.ReactElement {
+type GoogleIconProps = React.ComponentProps<'svg'>;
+
+export const GoogleIcon = (props: GoogleIconProps): React.ReactElement => {
   return (
     <svg
       version="1.1"
@@ -245,4 +247,4 @@ export function GoogleIcon(props: React.ComponentProps<'svg'>): React.ReactEleme
       </g>
     </svg>
   );
-}
+};

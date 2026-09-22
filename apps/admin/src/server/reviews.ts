@@ -1,10 +1,41 @@
-import { getReviews as getReviewsFromDb } from '@alexa-lashes/db/queries/reviews';
+import { ensureSession } from '@alexa-lashes/auth/server';
+import type { Locale } from '@alexa-lashes/db/locales';
+import {
+  getReviewById,
+  getReviewsWithMissingTranslations,
+  updateReview as updateReviewInDb,
+} from '@alexa-lashes/db/queries/reviews';
 import { createServerFn } from '@tanstack/react-start';
+
+import { updateReviewSchema } from '@/schemas/reviews';
 
 export const getReviews = createServerFn({
   method: 'GET',
 })
-  .validator((data: { locale: string }) => data)
+  .validator((data: { locale: Locale }) => data)
   .handler(async ({ data }) => {
-    return getReviewsFromDb(data.locale);
+    await ensureSession();
+    return getReviewsWithMissingTranslations(data.locale);
+  });
+
+export const getReview = createServerFn({
+  method: 'GET',
+})
+  .validator((data: { id: string }) => data)
+  .handler(async ({ data }) => {
+    await ensureSession();
+    const review = await getReviewById(data.id);
+    if (!review) {
+      throw new Error('Review not found');
+    }
+    return review;
+  });
+
+export const updateReview = createServerFn({
+  method: 'POST',
+})
+  .validator(updateReviewSchema)
+  .handler(async ({ data }) => {
+    await ensureSession();
+    await updateReviewInDb(data);
   });

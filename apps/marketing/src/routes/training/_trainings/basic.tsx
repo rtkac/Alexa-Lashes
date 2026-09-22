@@ -27,6 +27,65 @@ const includes = (): string[] => [
   m.training_basic_includes_5_title(),
 ];
 
+const RouteComponent = () => {
+  return (
+    <>
+      <Banner
+        title={m.training_basic_banner_title()}
+        description={m.training_basic_banner_desc()}
+        image="bg-[url(/basic-training-banner.webp)]"
+        isDark
+        buttons={
+          <TrainingFormModal
+            trigger={
+              <button type="button" className="btn-primary">
+                {m.training_basic_banner_link_contact()}
+              </button>
+            }
+          />
+        }
+      />
+      <div className="mx-auto mb-20 max-w-4xl text-center">
+        <h2 className="mb-6 font-bold text-primary text-xl md:text-3xl">
+          {m.training_basic_welcome_title()}
+        </h2>
+        <p className="mb-4">{m.training_basic_welcome_desc_1()}</p>
+        <p className="mb-4">{m.training_basic_welcome_desc_2()}</p>
+        <p className="mb-4">{m.training_basic_welcome_desc_3()}</p>
+        <p className="mb-4">{m.training_basic_welcome_desc_4()}</p>
+        <p className="mb-4">{m.training_basic_welcome_desc_5()}</p>
+        <p className="mb-4 font-bold">{m.training_basic_welcome_desc_6()}</p>
+      </div>
+      <div className="mb-18">
+        <h2 className="mb-10 text-center font-bold text-xl md:text-3xl dark:text-primary">
+          {m.training_basic_why_title()}
+        </h2>
+        <Includes data={benefits()} />
+        <p className="text-center text-neutral-500 text-sm">{m.training_basic_why_desc()}</p>
+      </div>
+      <div className="mb-18">
+        <h2 className="mb-10 text-center font-bold text-xl md:text-3xl dark:text-primary">
+          {m.training_basic_program_title()}
+        </h2>
+        <Program />
+      </div>
+      <div className="mb-18">
+        <h2 className="mb-5 text-center font-bold text-xl md:text-3xl dark:text-primary">
+          {m.training_basic_includes_title()}
+        </h2>
+        <p className="mb-5 text-center">{m.training_basic_includes_desc()}</p>
+        <Includes data={includes()} />
+      </div>
+      <div className="mb-18">
+        <TrainingPrice duration={m.training_basic_duration()} price={870} />
+      </div>
+      <div className="mb-8">
+        <LashMaster title={m.teacher_title()} desc_1={m.teacher_desc()} />
+      </div>
+    </>
+  );
+};
+
 export const Route = createFileRoute('/training/_trainings/basic')({
   head: ({ match }) => ({
     meta: [
@@ -105,62 +164,3 @@ export const Route = createFileRoute('/training/_trainings/basic')({
   }),
   component: RouteComponent,
 });
-
-function RouteComponent() {
-  return (
-    <>
-      <Banner
-        title={m.training_basic_banner_title()}
-        description={m.training_basic_banner_desc()}
-        image="bg-[url(/basic-training-banner.webp)]"
-        isDark
-        buttons={
-          <TrainingFormModal
-            trigger={
-              <button type="button" className="btn-primary">
-                {m.training_basic_banner_link_contact()}
-              </button>
-            }
-          />
-        }
-      />
-      <div className="mx-auto mb-20 max-w-4xl text-center">
-        <h2 className="mb-6 font-bold text-primary text-xl md:text-3xl">
-          {m.training_basic_welcome_title()}
-        </h2>
-        <p className="mb-4">{m.training_basic_welcome_desc_1()}</p>
-        <p className="mb-4">{m.training_basic_welcome_desc_2()}</p>
-        <p className="mb-4">{m.training_basic_welcome_desc_3()}</p>
-        <p className="mb-4">{m.training_basic_welcome_desc_4()}</p>
-        <p className="mb-4">{m.training_basic_welcome_desc_5()}</p>
-        <p className="mb-4 font-bold">{m.training_basic_welcome_desc_6()}</p>
-      </div>
-      <div className="mb-18">
-        <h2 className="mb-10 text-center font-bold text-xl md:text-3xl dark:text-primary">
-          {m.training_basic_why_title()}
-        </h2>
-        <Includes data={benefits()} />
-        <p className="text-center text-neutral-500 text-sm">{m.training_basic_why_desc()}</p>
-      </div>
-      <div className="mb-18">
-        <h2 className="mb-10 text-center font-bold text-xl md:text-3xl dark:text-primary">
-          {m.training_basic_program_title()}
-        </h2>
-        <Program />
-      </div>
-      <div className="mb-18">
-        <h2 className="mb-5 text-center font-bold text-xl md:text-3xl dark:text-primary">
-          {m.training_basic_includes_title()}
-        </h2>
-        <p className="mb-5 text-center">{m.training_basic_includes_desc()}</p>
-        <Includes data={includes()} />
-      </div>
-      <div className="mb-18">
-        <TrainingPrice duration={m.training_basic_duration()} price={870} />
-      </div>
-      <div className="mb-8">
-        <LashMaster title={m.teacher_title()} desc_1={m.teacher_desc()} />
-      </div>
-    </>
-  );
-}

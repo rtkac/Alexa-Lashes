@@ -5,26 +5,33 @@ import { XIcon } from 'lucide-react';
 import { Dialog as DialogPrimitive } from 'radix-ui';
 import type * as React from 'react';
 
-function Dialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
+type DialogProps = React.ComponentProps<typeof DialogPrimitive.Root>;
+
+const Dialog = ({ ...props }: DialogProps) => {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
-}
+};
 
-function DialogTrigger({ ...props }: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
+type DialogTriggerProps = React.ComponentProps<typeof DialogPrimitive.Trigger>;
+
+const DialogTrigger = ({ ...props }: DialogTriggerProps) => {
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
-}
+};
 
-function DialogPortal({ ...props }: React.ComponentProps<typeof DialogPrimitive.Portal>) {
+type DialogPortalProps = React.ComponentProps<typeof DialogPrimitive.Portal>;
+
+const DialogPortal = ({ ...props }: DialogPortalProps) => {
   return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
-}
+};
 
-function DialogClose({ ...props }: React.ComponentProps<typeof DialogPrimitive.Close>) {
+type DialogCloseProps = React.ComponentProps<typeof DialogPrimitive.Close>;
+
+const DialogClose = ({ ...props }: DialogCloseProps) => {
   return <DialogPrimitive.Close data-slot="dialog-close" {...props} />;
-}
+};
 
-function DialogOverlay({
-  className,
-  ...props
-}: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
+type DialogOverlayProps = React.ComponentProps<typeof DialogPrimitive.Overlay>;
+
+const DialogOverlay = ({ className, ...props }: DialogOverlayProps) => {
   return (
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
@@ -35,16 +42,18 @@ function DialogOverlay({
       {...props}
     />
   );
-}
+};
 
-function DialogContent({
+type DialogContentProps = React.ComponentProps<typeof DialogPrimitive.Content> & {
+  showCloseButton?: boolean;
+};
+
+const DialogContent = ({
   className,
   children,
   showCloseButton = true,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Content> & {
-  showCloseButton?: boolean;
-}) {
+}: DialogContentProps) => {
   return (
     <DialogPortal>
       <DialogOverlay />
@@ -68,9 +77,11 @@ function DialogContent({
       </DialogPrimitive.Content>
     </DialogPortal>
   );
-}
+};
 
-function DialogHeader({ className, ...props }: React.ComponentProps<'div'>) {
+type DialogHeaderProps = React.ComponentProps<'div'>;
+
+const DialogHeader = ({ className, ...props }: DialogHeaderProps) => {
   return (
     <div
       data-slot="dialog-header"
@@ -78,18 +89,20 @@ function DialogHeader({ className, ...props }: React.ComponentProps<'div'>) {
       {...props}
     />
   );
-}
+};
 
-function DialogFooter({
+type DialogFooterProps = React.ComponentProps<'div'> & {
+  showCloseButton?: boolean;
+  closeLabel: string;
+};
+
+const DialogFooter = ({
   className,
   showCloseButton = false,
   children,
   closeLabel,
   ...props
-}: React.ComponentProps<'div'> & {
-  showCloseButton?: boolean;
-  closeLabel: string;
-}) {
+}: DialogFooterProps) => {
   return (
     <div
       data-slot="dialog-footer"
@@ -109,9 +122,11 @@ function DialogFooter({
       )}
     </div>
   );
-}
+};
 
-function DialogTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>) {
+type DialogTitleProps = React.ComponentProps<typeof DialogPrimitive.Title>;
+
+const DialogTitle = ({ className, ...props }: DialogTitleProps) => {
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
@@ -119,12 +134,11 @@ function DialogTitle({ className, ...props }: React.ComponentProps<typeof Dialog
       {...props}
     />
   );
-}
+};
 
-function DialogDescription({
-  className,
-  ...props
-}: React.ComponentProps<typeof DialogPrimitive.Description>) {
+type DialogDescriptionProps = React.ComponentProps<typeof DialogPrimitive.Description>;
+
+const DialogDescription = ({ className, ...props }: DialogDescriptionProps) => {
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
@@ -135,7 +149,7 @@ function DialogDescription({
       {...props}
     />
   );
-}
+};
 
 export {
   Dialog,

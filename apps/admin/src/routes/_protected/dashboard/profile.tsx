@@ -1,11 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@alexa-lashes/ui/shadcn';
 import { createFileRoute } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/_protected/dashboard/profile')({
-  component: RouteComponent,
-});
-
-function RouteComponent() {
+const RouteComponent = () => {
   const { user } = Route.useRouteContext();
 
   return (
@@ -31,4 +27,8 @@ function RouteComponent() {
       </div>
     </div>
   );
-}
+};
+
+export const Route = createFileRoute('/_protected/dashboard/profile')({
+  component: RouteComponent,
+});

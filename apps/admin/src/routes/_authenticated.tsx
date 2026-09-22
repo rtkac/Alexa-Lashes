@@ -5,7 +5,7 @@ import { createFileRoute } from '@tanstack/react-router';
 
 import { Header } from '@/components/Header';
 
-function RouteComponent() {
+const RouteComponent = () => {
   const handleGoogleSignIn = async () => {
     await signIn.social({
       provider: 'google',
@@ -32,7 +32,7 @@ function RouteComponent() {
       </main>
     </>
   );
-}
+};
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: async () => {

@@ -57,7 +57,7 @@ const AvatarDropdown = ({ name, image }: AvatarDropdownProps) => {
   );
 };
 
-interface HeaderProps {
+type HeaderProps = {
   user?: {
     id: string;
     createdAt: Date;
@@ -67,7 +67,7 @@ interface HeaderProps {
     name: string;
     image?: string | null | undefined;
   };
-}
+};
 export const Header = ({ user }: HeaderProps) => {
   const menuId = useId();
   const [open, setOpen] = useState(false);

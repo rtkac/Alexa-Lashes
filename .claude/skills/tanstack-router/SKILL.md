@@ -70,6 +70,7 @@ Notes:
   there; don't bake them into the effect.
 - The loader starts the fetch (not awaited) and the component suspends on `useSuspenseQuery`.
 - Declare the component (`RouteComponent`) above `export const Route`, as in the existing routes.
+- Don't add mutationOptions to the context, only add queryOptions.
 
 ## Prefetching in the loader: `staleTime: 'static'` vs `.catch(noop)`
 

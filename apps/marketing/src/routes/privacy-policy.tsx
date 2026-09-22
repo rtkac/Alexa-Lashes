@@ -2,31 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 
 import { m } from '@/paraglide/messages';
 
-export const Route = createFileRoute('/privacy-policy')({
-  head: ({ match }) => ({
-    meta: [
-      { title: m.meta_privacy_policy_title() },
-      { name: 'description', content: m.meta_privacy_policy_desc() },
-      { property: 'og:type', content: 'article' },
-      { property: 'og:title', content: m.meta_privacy_policy_title() },
-      { property: 'og:description', content: m.meta_privacy_policy_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/banner-main-desktop.webp' },
-    ],
-    links: [
-      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}/`, hrefLang: 'sk' },
-      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: 'en' },
-      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}/`, hrefLang: 'ru' },
-      {
-        rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}/`,
-        hrefLang: 'x-default',
-      },
-    ],
-  }),
-  component: RouteComponent,
-});
-
-function RouteComponent() {
+const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="mb-2.5 font-bold text-2xl md:text-4xl">{m.privacy_policy_title()}</h1>
@@ -70,4 +46,28 @@ function RouteComponent() {
       <p>{m.privacy_policy_8_desc()}</p>
     </div>
   );
-}
+};
+
+export const Route = createFileRoute('/privacy-policy')({
+  head: ({ match }) => ({
+    meta: [
+      { title: m.meta_privacy_policy_title() },
+      { name: 'description', content: m.meta_privacy_policy_desc() },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:title', content: m.meta_privacy_policy_title() },
+      { property: 'og:description', content: m.meta_privacy_policy_desc() },
+      { property: 'og:image', content: 'https://alexalashes.sk/banner-main-desktop.webp' },
+    ],
+    links: [
+      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}/`, hrefLang: 'sk' },
+      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: 'en' },
+      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}/`, hrefLang: 'ru' },
+      {
+        rel: 'alternate',
+        href: `https://alexalashes.sk${match.pathname}/`,
+        hrefLang: 'x-default',
+      },
+    ],
+  }),
+  component: RouteComponent,
+});

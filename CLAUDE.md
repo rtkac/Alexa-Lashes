@@ -127,7 +127,9 @@ the TanStack Start server entry with `paraglideMiddleware`.
 
 **UI package (`packages/ui`)**: exports are split by subpath — `@alexa-lashes/ui/components` (custom
 components), `@alexa-lashes/ui/shadcn` (shadcn/ui-based components), `@alexa-lashes/ui/icons`,
-`@alexa-lashes/ui/lib/*`, plus `@alexa-lashes/ui/styles.css` and `@alexa-lashes/ui/shadcn/styles.css`.
+`@alexa-lashes/ui/lib/*`, plus `@alexa-lashes/ui/styles.css` — the single Tailwind entry for both
+custom and shadcn components (brand theme tokens, `shadcn/tailwind.css`, and `@source` over the whole
+ui package). Apps import only this stylesheet; don't add a second `@import 'tailwindcss'` file.
 shadcn config (`packages/ui/components.json`) targets `style: new-york`, base color `neutral`, no
 Tailwind config file (Tailwind v4 CSS-based config). Run `shadcn` CLI commands from `packages/ui` (or
 from `apps/admin`, which also depends on the `shadcn` CLI) when adding new shadcn components, then move
@@ -145,3 +147,18 @@ cross-package imports use the `@alexa-lashes/*` workspace package names, not rel
   where generated — treat `auth-schema.ts`, `routeTree.gen.ts`, and `src/paraglide/**` as generated output.
 - Commit messages must be Conventional Commits with one of the types listed above; this is enforced by
   the `commit-msg` git hook, not optional style guidance.
+- React components are always `const` arrow functions, never `function` declarations. Props are
+  always declared with `type` (never `interface`) and named `{ComponentName}Props`:
+
+  ```tsx
+  type ReviewListProps = {
+    locale: Locale;
+  };
+
+  const ReviewList = ({ locale }: ReviewListProps) => {
+    // ...
+  };
+  ```
+
+  In route files, declare the components above `export const Route` (a `const` can't be used before
+  its declaration).

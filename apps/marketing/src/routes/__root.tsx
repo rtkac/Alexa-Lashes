@@ -10,6 +10,32 @@ import { Header } from '@/components/Header';
 import { initializeAnalytics } from '@/lib/analytics';
 import { getLocale } from '@/paraglide/runtime';
 
+type RootDocumentProps = { children: React.ReactNode };
+
+const RootDocument = ({ children }: RootDocumentProps) => {
+  useEffect(() => {
+    const consent = Cookies.get('CookieConsent');
+    if (consent === 'true') {
+      initializeAnalytics();
+    }
+  }, []);
+
+  return (
+    <html lang={getLocale()} suppressHydrationWarning>
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        <Header />
+        <main className="min-h-[calc(100vh-300px)]">{children}</main>
+        <Footer />
+        <Disclaimer />
+        <Scripts />
+      </body>
+    </html>
+  );
+};
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -39,27 +65,3 @@ export const Route = createRootRoute({
   }),
   shellComponent: RootDocument,
 });
-
-function RootDocument({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    const consent = Cookies.get('CookieConsent');
-    if (consent === 'true') {
-      initializeAnalytics();
-    }
-  }, []);
-
-  return (
-    <html lang={getLocale()} suppressHydrationWarning>
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <Header />
-        <main className="min-h-[calc(100vh-300px)]">{children}</main>
-        <Footer />
-        <Disclaimer />
-        <Scripts />
-      </body>
-    </html>
-  );
-}

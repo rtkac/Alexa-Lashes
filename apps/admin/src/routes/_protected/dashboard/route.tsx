@@ -3,7 +3,7 @@ import { createFileRoute, Outlet } from '@tanstack/react-router';
 import { Header } from '@/components/Header';
 import { fetchSessionOptions } from '@/effects/session';
 
-function RouteComponent() {
+const RouteComponent = () => {
   const { user } = Route.useRouteContext();
 
   return (
@@ -14,7 +14,7 @@ function RouteComponent() {
       </main>
     </>
   );
-}
+};
 
 export const Route = createFileRoute('/_protected/dashboard')({
   context: () => ({

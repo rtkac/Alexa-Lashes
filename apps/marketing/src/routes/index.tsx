@@ -106,6 +106,64 @@ const reviews = (): Review[] =>
     };
   });
 
+const RouteComponent = () => {
+  // const reviews = Route.useLoaderData();
+
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-10">
+      <Banner
+        title={m.banner_title()}
+        description={m.banner_desc()}
+        image="bg-[url(/banner-main-mobile.webp)] md:bg-[url(/banner-main-desktop.webp)]"
+        buttons={
+          <>
+            <Link to="/prices/" className="btn-primary mx-2">
+              {m.banner_link_services()}
+            </Link>
+            <Link to="/contact/" className="btn-secondary mx-2">
+              {m.banner_link_contact()}
+            </Link>
+          </>
+        }
+      />
+      <div className="mx-auto mb-10 max-w-180 text-center">
+        <h2 className="mb-3 font-bold text-xl md:text-3xl dark:text-primary">
+          {m.home_welcome_title()}
+        </h2>
+        <p className="leading-6">{m.home_welcome_desc()}</p>
+      </div>
+      <div className="mb-18 md:mb-25">
+        <Benefits data={benefits()} />
+      </div>
+      <div className="mb-18 md:mb-25">
+        <AboutUs />
+      </div>
+      <div className="mb-18 md:mb-25">
+        <div className="mb-6">
+          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
+            {m.home_gallery_title()}
+          </h2>
+          <PreviewGallery gallery={gallery()} />
+        </div>
+        <div className="flex justify-center">
+          <Link to="/gallery/" className="btn-primary">
+            {m.home_gallery_link()}
+          </Link>
+        </div>
+      </div>
+      <div className="mb-18 md:mb-25">
+        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
+          {m.home_reviews_title()}
+        </h2>
+        <Reviews
+          reviews={reviews().map(({ name, description, url }) => ({ name, description, url }))}
+        />
+      </div>
+      <Cta />
+    </div>
+  );
+};
+
 export const Route = createFileRoute('/')({
   // loader: () => getReviews({data: {locale: 'sk'}}),
   head: () => ({
@@ -177,61 +235,3 @@ export const Route = createFileRoute('/')({
   }),
   component: RouteComponent,
 });
-
-function RouteComponent() {
-  // const reviews = Route.useLoaderData();
-
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <Banner
-        title={m.banner_title()}
-        description={m.banner_desc()}
-        image="bg-[url(/banner-main-mobile.webp)] md:bg-[url(/banner-main-desktop.webp)]"
-        buttons={
-          <>
-            <Link to="/prices/" className="btn-primary mx-2">
-              {m.banner_link_services()}
-            </Link>
-            <Link to="/contact/" className="btn-secondary mx-2">
-              {m.banner_link_contact()}
-            </Link>
-          </>
-        }
-      />
-      <div className="mx-auto mb-10 max-w-180 text-center">
-        <h2 className="mb-3 font-bold text-xl md:text-3xl dark:text-primary">
-          {m.home_welcome_title()}
-        </h2>
-        <p className="leading-6">{m.home_welcome_desc()}</p>
-      </div>
-      <div className="mb-18 md:mb-25">
-        <Benefits data={benefits()} />
-      </div>
-      <div className="mb-18 md:mb-25">
-        <AboutUs />
-      </div>
-      <div className="mb-18 md:mb-25">
-        <div className="mb-6">
-          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
-            {m.home_gallery_title()}
-          </h2>
-          <PreviewGallery gallery={gallery()} />
-        </div>
-        <div className="flex justify-center">
-          <Link to="/gallery/" className="btn-primary">
-            {m.home_gallery_link()}
-          </Link>
-        </div>
-      </div>
-      <div className="mb-18 md:mb-25">
-        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
-          {m.home_reviews_title()}
-        </h2>
-        <Reviews
-          reviews={reviews().map(({ name, description, url }) => ({ name, description, url }))}
-        />
-      </div>
-      <Cta />
-    </div>
-  );
-}
