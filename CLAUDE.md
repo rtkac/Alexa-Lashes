@@ -66,6 +66,14 @@ There is no test suite/framework configured in this repo (no vitest/jest/playwri
   - Opening a PR into `main` and merging it triggers a Netlify **production deploy**.
   - So merging to `main` ships to production immediately — treat PRs into `main` accordingly.
 
+## GitHub Actions
+
+Workflow files live in `.github/workflows`. Currently only one workflow exists:
+
+- `codeql.yml` — CodeQL security analysis (`javascript-typescript`) on push/PR to `main` and a weekly
+  schedule (Mondays 02:30 UTC). There is no CI workflow for build/lint/test — those only run locally
+  via the lefthook git hooks above.
+
 ## Environment variables
 
 Root `.env` (loaded by app dev/build scripts via `bun --env-file=../../.env`) and `packages/db/.env`
