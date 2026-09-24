@@ -88,7 +88,7 @@ export const Route = createFileRoute('/training/')({
       { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}`, hrefLang: 'ru' },
       {
         rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}`,
+        href: `https://alexalashes.sk${match.pathname}/`,
         hrefLang: 'x-default',
       },
     ],

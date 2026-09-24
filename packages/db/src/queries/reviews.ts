@@ -39,13 +39,11 @@ export async function createReview(input: CreateReviewBody) {
 
 export type UpdateReviewBody = {
   id: string;
-  // Only present when a locale-independent field changed
-  review?: {
+  review: {
     name: string;
     rating: number;
     url: string | null;
   };
-  // Only the translations that changed
   translations: { locale: Locale; description: string }[];
 };
 
@@ -57,7 +55,6 @@ export async function updateReview({ id, review, translations }: UpdateReviewBod
       .update(reviews)
       .set({ ...review, updatedAt })
       .where(eq(reviews.id, id)),
-    // Upsert, so a translation missing in the DB (e.g. for a newly added locale) gets created
     ...translations.map(({ locale, description }) =>
       db
         .insert(reviewTranslations)

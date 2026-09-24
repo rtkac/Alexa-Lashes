@@ -1,8 +1,3 @@
-import { MessageSquareCheckIcon, SquarePenIcon } from 'lucide-react';
-import { type ReactNode, useState } from 'react';
-
-import { TrainingForm } from './TrainingForm';
-
 import {
   Dialog,
   DialogContent,
@@ -11,11 +6,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/Dialog';
+} from '@alexa-lashes/ui/shadcn';
+import { MessageSquareCheckIcon, SquarePenIcon } from 'lucide-react';
+import { type ReactElement, useState } from 'react';
+
+import { TrainingForm } from './TrainingForm';
+
 import { m } from '@/paraglide/messages';
 
 type TrainingFormModalProps = {
-  trigger: ReactNode;
+  trigger: ReactElement;
 };
 
 export const TrainingFormModal = ({ trigger }: TrainingFormModalProps) => {
@@ -24,7 +24,7 @@ export const TrainingFormModal = ({ trigger }: TrainingFormModalProps) => {
   return (
     <Dialog onOpenChange={(val) => val && isSuccess && setIsSuccess(false)}>
       <form>
-        <DialogTrigger asChild>{trigger}</DialogTrigger>
+        <DialogTrigger render={trigger} />
         <DialogContent className="sm:max-w-lg">
           {isSuccess ? (
             <>
