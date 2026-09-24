@@ -34,31 +34,7 @@ const gallery = (): Gallery[] => [
   },
 ];
 
-export const Route = createFileRoute('/training/')({
-  head: ({ match }) => ({
-    meta: [
-      { title: m.meta_training_title() },
-      { name: 'description', content: m.meta_training_desc() },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:title', content: m.meta_training_title() },
-      { property: 'og:description', content: m.meta_training_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/basic-training-banner.webp' },
-    ],
-    links: [
-      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}`, hrefLang: 'sk' },
-      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}`, hrefLang: 'en' },
-      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}`, hrefLang: 'ru' },
-      {
-        rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}`,
-        hrefLang: 'x-default',
-      },
-    ],
-  }),
-  component: RouteComponent,
-});
-
-function RouteComponent() {
+const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-14 max-w-180 text-center">
@@ -94,4 +70,28 @@ function RouteComponent() {
       />
     </div>
   );
-}
+};
+
+export const Route = createFileRoute('/training/')({
+  head: ({ match }) => ({
+    meta: [
+      { title: m.meta_training_title() },
+      { name: 'description', content: m.meta_training_desc() },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:title', content: m.meta_training_title() },
+      { property: 'og:description', content: m.meta_training_desc() },
+      { property: 'og:image', content: 'https://alexalashes.sk/basic-training-banner.webp' },
+    ],
+    links: [
+      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}`, hrefLang: 'sk' },
+      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}`, hrefLang: 'en' },
+      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}`, hrefLang: 'ru' },
+      {
+        rel: 'alternate',
+        href: `https://alexalashes.sk${match.pathname}`,
+        hrefLang: 'x-default',
+      },
+    ],
+  }),
+  component: RouteComponent,
+});

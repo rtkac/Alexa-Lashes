@@ -1,5 +1,7 @@
 import { boolean, integer, pgTable, text, timestamp, unique } from 'drizzle-orm/pg-core';
 
+import { locales } from '../locales';
+
 export const reviews = pgTable('reviews', {
   id: text('id').primaryKey(),
 
@@ -35,7 +37,7 @@ export const reviewTranslations = pgTable(
       .notNull()
       .references(() => reviews.id, { onDelete: 'cascade' }),
 
-    locale: text('locale').notNull(),
+    locale: text('locale', { enum: locales }).notNull(),
 
     description: text('description').notNull(),
 

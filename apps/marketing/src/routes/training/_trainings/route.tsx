@@ -2,11 +2,7 @@ import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
 
 import { m } from '@/paraglide/messages';
 
-export const Route = createFileRoute('/training/_trainings')({
-  component: PathlessLayoutComponent,
-});
-
-function PathlessLayoutComponent() {
+const PathlessLayoutComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 pt-5 pb-10">
       <ol
@@ -39,4 +35,8 @@ function PathlessLayoutComponent() {
       <Outlet />
     </div>
   );
-}
+};
+
+export const Route = createFileRoute('/training/_trainings')({
+  component: PathlessLayoutComponent,
+});

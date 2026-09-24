@@ -1,73 +1,163 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { baseLocale, type Locale, locales } from '@alexa-lashes/db/locales';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  Skeleton,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@alexa-lashes/ui/shadcn';
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { StarIcon } from 'lucide-react';
+import { Suspense, useState } from 'react';
 
-import { fetchReviewsOptions } from '@/effects/reviews';
+import { Review } from '@/components/reviews/Review';
+import { ReviewForm } from '@/components/reviews/ReviewForm';
+import { fetchReviewOptions, fetchReviewsOptions, updateReviewOptions } from '@/effects/reviews';
+import type { ReviewFormOutput } from '@/schemas/reviews';
+import { EditReviewPayload } from '@/types/review';
+import { editReviewDialog, getReviewChanges } from '@/utils.ts/review';
 
-function RouteComponent() {
+type EditReviewFormProps = EditReviewPayload & {
+  onSaved: () => void;
+};
+
+const EditReviewForm = ({ reviewId, locale, onSaved }: EditReviewFormProps) => {
   const context = Route.useRouteContext();
 
-  const { data: reviews } = useSuspenseQuery({
-    ...context.fetchReviewsOptions,
-    select: (data) => data.toSorted((a, b) => b.displayOrder - a.displayOrder),
-  });
+  const { data } = useSuspenseQuery(context.fetchReviewOptions(reviewId));
+  const { mutateAsync, isError } = useMutation(updateReviewOptions());
+
+  const initialValues = {
+    name: data.name,
+    rating: data.rating,
+    url: data.url ?? '',
+    translations: Object.fromEntries(
+      locales.map((locale) => [
+        locale,
+        data.translations.find((translation) => translation.locale === locale)?.description ?? '',
+      ]),
+    ) as Record<Locale, string>,
+  };
+
+  const handleSubmit = async (values: ReviewFormOutput) => {
+    const changes = getReviewChanges(data.id, initialValues, values);
+    if (changes) {
+      await mutateAsync(changes);
+    }
+    onSaved();
+  };
+
+  return (
+    <ReviewForm
+      defaultValues={initialValues}
+      defaultLocale={locale}
+      onSubmit={handleSubmit}
+      submitError={isError ? 'The review could not be saved.' : undefined}
+    />
+  );
+};
+
+type ReviewListProps = {
+  locale: Locale;
+};
+
+const ReviewList = ({ locale }: ReviewListProps) => {
+  const context = Route.useRouteContext();
+
+  const { data } = useSuspenseQuery(context.fetchReviewsOptions(locale));
+
+  return data.length ? (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {data.map((review) => (
+        <Review
+          key={review.id}
+          review={review}
+          locale={locale}
+          editDialogHandle={editReviewDialog}
+        />
+      ))}
+    </div>
+  ) : (
+    <p>No reviews available.</p>
+  );
+};
+
+const RouteComponent = () => {
+  const [locale, setLocale] = useState<Locale>(baseLocale);
 
   return (
     <div>
       <h1 className="font-bold text-xl md:text-2xl">Reviews</h1>
-      <div className="mt-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {reviews.length ? (
-            reviews.map((review) => (
-              <a
-                key={review.url}
-                href={review.url || '#'} // !! TODO
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex min-w-0 shrink-0 grow-0 basis-[75%] xs:basis-[45%] flex-col justify-between rounded-md border border-primary-light bg-white p-5 no-underline hover:cursor-pointer hover:no-underline md:basis-[40%] lg:basis-[calc(33.1%-8px)] dark:border-tertiary-light dark:bg-tertiary"
-              >
-                <div className="mb-3">
-                  <div className="mb-3 flex space-x-1 text-primary">
-                    {Array.from({ length: review.rating }).map((_, index) => (
-                      <StarIcon key={index} size="17" />
+      <Tabs value={locale} onValueChange={setLocale} className="mt-4">
+        <TabsList>
+          {locales.map((tabLocale) => (
+            <TabsTrigger key={tabLocale} value={tabLocale}>
+              {tabLocale.toUpperCase()}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        {locales.map((tabLocale) => (
+          <TabsContent key={tabLocale} value={tabLocale}>
+            {tabLocale === locale && (
+              <Suspense
+                fallback={
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {Array.from({ length: 3 }).map((_, index) => (
+                      <Skeleton key={index} className="h-40 w-full" />
                     ))}
                   </div>
-                  <p className="text-neutral-600 text-sm dark:text-amber-50">
-                    {review.description}
-                  </p>
-                </div>
-                <div className="flex items-center space-x-2.5">
-                  <div className="size-8.75 overflow-hidden rounded-full">
-                    <img
-                      src="/logo.svg"
-                      alt={review.name}
-                      className="h-full w-full object-cover"
-                      width={35}
-                      height={35}
-                      loading="lazy"
-                    />
+                }
+              >
+                <ReviewList locale={locale} />
+              </Suspense>
+            )}
+          </TabsContent>
+        ))}
+      </Tabs>
+
+      <Dialog handle={editReviewDialog}>
+        {({ payload }) => (
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle>Edit review</DialogTitle>
+            </DialogHeader>
+            {payload && (
+              <Suspense
+                key={payload.reviewId}
+                fallback={
+                  <div className="space-y-4">
+                    <Skeleton className="h-12 w-full" />
+                    <Skeleton className="h-6 w-32" />
+                    <Skeleton className="h-12 w-full" />
+                    <Skeleton className="h-32 w-full" />
                   </div>
-                  <h3 className="font-bold text-black text-sm">
-                    <span>{review.name}</span>
-                  </h3>
-                </div>
-              </a>
-            ))
-          ) : (
-            <p>No reviews available.</p>
-          )}
-        </div>
-      </div>
+                }
+              >
+                <EditReviewForm
+                  reviewId={payload.reviewId}
+                  locale={payload.locale}
+                  onSaved={() => editReviewDialog.close()}
+                />
+              </Suspense>
+            )}
+          </DialogContent>
+        )}
+      </Dialog>
     </div>
   );
-}
+};
 
 export const Route = createFileRoute('/_protected/dashboard/')({
   context: () => ({
-    fetchReviewsOptions: fetchReviewsOptions(),
+    fetchReviewsOptions,
+    fetchReviewOptions,
   }),
   loader: ({ context }) => {
-    context.queryClient.query({ ...context.fetchReviewsOptions, staleTime: 'static' });
+    context.queryClient.query({ ...context.fetchReviewsOptions(baseLocale), staleTime: 'static' });
   },
   component: RouteComponent,
 });

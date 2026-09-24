@@ -11,6 +11,10 @@
       "types": "./src/index.ts",
       "default": "./dist/index.js"
     },
+    "./locales": {
+      "types": "./src/locales.ts",
+      "default": "./dist/locales.js"
+    },
     "./schema/*": {
       "types": "./src/schema/*.ts",
       "default": "./dist/schema/*.js"

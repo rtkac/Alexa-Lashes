@@ -1,10 +1,10 @@
 import { m } from '@/paraglide/messages';
 
-interface LashMasterProps {
+type LashMasterProps = {
   title: string;
   desc_1: string | React.ReactNode;
   desc_2?: string;
-}
+};
 
 export const LashMaster = ({ title, desc_1, desc_2 }: LashMasterProps) => {
   return (
