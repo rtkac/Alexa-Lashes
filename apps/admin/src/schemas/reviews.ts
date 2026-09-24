@@ -16,7 +16,6 @@ export const reviewFormSchema = z.object({
 export type ReviewFormValues = z.input<typeof reviewFormSchema>;
 export type ReviewFormOutput = z.output<typeof reviewFormSchema>;
 
-// Update payload: only the changed parts of the review are sent
 export const updateReviewSchema = z.object({
   id: z.string().min(1),
   review: z

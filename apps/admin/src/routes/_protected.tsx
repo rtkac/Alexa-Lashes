@@ -8,6 +8,7 @@ export const Route = createFileRoute('/_protected')({
     if (!session) {
       throw Route.redirect({ to: '/' });
     }
+    return { user: session.user };
   },
   pendingComponent: () => (
     <div>
