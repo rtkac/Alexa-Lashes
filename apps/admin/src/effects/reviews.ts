@@ -9,6 +9,7 @@ import { mutationOptions, queryOptions } from '@tanstack/react-query';
 
 import {
   createReview,
+  deleteReview,
   getReview,
   getReviews,
   renumberReviews,
@@ -74,6 +75,13 @@ export const reorderReviewOptions = (locale: Locale) =>
 export const renumberReviewsOptions = () =>
   mutationOptions({
     mutationFn: (data: RenumberReviewsInput) => renumberReviews({ data }),
+    onSuccess: (_data, _variables, _onMutateResult, context) =>
+      context.client.invalidateQueries({ queryKey: ['reviews'] }),
+  });
+
+export const deleteReviewOptions = () =>
+  mutationOptions({
+    mutationFn: (id: string) => deleteReview({ data: { id } }),
     onSuccess: (_data, _variables, _onMutateResult, context) =>
       context.client.invalidateQueries({ queryKey: ['reviews'] }),
   });
