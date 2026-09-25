@@ -1,8 +1,8 @@
-import type { UpdateReviewInput } from '@alexa-lashes/contracts/reviews';
+import type { CreateReviewInput, UpdateReviewInput } from '@alexa-lashes/contracts/reviews';
 import type { Locale } from '@alexa-lashes/types/locales';
 import { mutationOptions, queryOptions } from '@tanstack/react-query';
 
-import { getReview, getReviews, updateReview } from '@/server/reviews';
+import { createReview, getReview, getReviews, updateReview } from '@/server/reviews';
 
 export const fetchReviewsOptions = (locale: Locale) =>
   queryOptions({
@@ -19,6 +19,13 @@ export const fetchReviewOptions = (id: string) =>
 export const updateReviewOptions = () =>
   mutationOptions({
     mutationFn: (data: UpdateReviewInput) => updateReview({ data }),
+    onSuccess: (_data, _variables, _onMutateResult, context) =>
+      context.client.invalidateQueries({ queryKey: ['reviews'] }),
+  });
+
+export const createReviewOptions = () =>
+  mutationOptions({
+    mutationFn: (data: CreateReviewInput) => createReview({ data }),
     onSuccess: (_data, _variables, _onMutateResult, context) =>
       context.client.invalidateQueries({ queryKey: ['reviews'] }),
   });

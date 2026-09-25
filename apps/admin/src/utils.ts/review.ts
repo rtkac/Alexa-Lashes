@@ -5,6 +5,7 @@ import { createDialogHandle } from '@alexa-lashes/ui/shadcn';
 import type { EditReviewPayload, ReviewFormOutput, ReviewFormValues } from '@/types/review';
 
 export const editReviewDialog = createDialogHandle<EditReviewPayload>();
+export const createReviewDialog = createDialogHandle();
 
 export const getReviewChanges = (
   id: string,

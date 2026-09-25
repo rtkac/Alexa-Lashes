@@ -1,9 +1,11 @@
 import { baseLocale, type Locale, locales } from '@alexa-lashes/types/locales';
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
   Skeleton,
   Tabs,
   TabsContent,
@@ -12,13 +14,26 @@ import {
 } from '@alexa-lashes/ui/shadcn';
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
+import { PlusIcon } from 'lucide-react';
 import { Suspense, useState } from 'react';
 
 import { Review } from '@/components/reviews/Review';
 import { ReviewForm } from '@/components/reviews/ReviewForm';
-import { fetchReviewOptions, fetchReviewsOptions, updateReviewOptions } from '@/effects/reviews';
-import { EditReviewPayload, ReviewFormOutput } from '@/types/review';
-import { editReviewDialog, getReviewChanges } from '@/utils.ts/review';
+import {
+  createReviewOptions,
+  fetchReviewOptions,
+  fetchReviewsOptions,
+  updateReviewOptions,
+} from '@/effects/reviews';
+import { EditReviewPayload, ReviewFormOutput, ReviewFormValues } from '@/types/review';
+import { createReviewDialog, editReviewDialog, getReviewChanges } from '@/utils.ts/review';
+
+const emptyReviewValues: ReviewFormValues = {
+  name: '',
+  rating: 0,
+  url: '',
+  translations: Object.fromEntries(locales.map((locale) => [locale, ''])) as Record<Locale, string>,
+};
 
 type EditReviewFormProps = EditReviewPayload & {
   onSaved: () => void;
@@ -60,6 +75,34 @@ const EditReviewForm = ({ reviewId, locale, onSaved }: EditReviewFormProps) => {
   );
 };
 
+type CreateReviewFormProps = {
+  defaultLocale: Locale;
+  onSaved: () => void;
+};
+
+const CreateReviewForm = ({ defaultLocale, onSaved }: CreateReviewFormProps) => {
+  const { mutateAsync, isError } = useMutation(createReviewOptions());
+
+  const handleSubmit = async (values: ReviewFormOutput) => {
+    await mutateAsync({
+      name: values.name,
+      rating: values.rating,
+      url: values.url || null,
+      translations: values.translations,
+    });
+    onSaved();
+  };
+
+  return (
+    <ReviewForm
+      defaultValues={emptyReviewValues}
+      defaultLocale={defaultLocale}
+      onSubmit={handleSubmit}
+      submitError={isError ? 'The review could not be created.' : undefined}
+    />
+  );
+};
+
 type ReviewListProps = {
   locale: Locale;
 };
@@ -90,7 +133,13 @@ const RouteComponent = () => {
 
   return (
     <div>
-      <h1 className="font-bold text-xl md:text-2xl">Reviews</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="font-bold text-xl md:text-2xl">Reviews</h1>
+        <DialogTrigger handle={createReviewDialog} render={<Button size="sm" />}>
+          <PlusIcon />
+          Add review
+        </DialogTrigger>
+      </div>
       <Tabs value={locale} onValueChange={setLocale} className="mt-4">
         <TabsList>
           {locales.map((tabLocale) => (
@@ -145,6 +194,15 @@ const RouteComponent = () => {
             )}
           </DialogContent>
         )}
+      </Dialog>
+
+      <Dialog handle={createReviewDialog}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Create review</DialogTitle>
+          </DialogHeader>
+          <CreateReviewForm defaultLocale={locale} onSaved={() => createReviewDialog.close()} />
+        </DialogContent>
       </Dialog>
     </div>
   );
