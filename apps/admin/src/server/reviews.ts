@@ -1,6 +1,7 @@
 import { ensureSession } from '@alexa-lashes/auth/server';
-import { updateReviewSchema } from '@alexa-lashes/contracts/reviews';
+import { createReviewSchema, updateReviewSchema } from '@alexa-lashes/contracts/reviews';
 import {
+  createReview as createReviewInDb,
   getReviewById,
   getReviewsWithMissingTranslations,
   updateReview as updateReviewInDb,
@@ -37,4 +38,13 @@ export const updateReview = createServerFn({
   .handler(async ({ data }) => {
     await ensureSession();
     await updateReviewInDb(data);
+  });
+
+export const createReview = createServerFn({
+  method: 'POST',
+})
+  .validator(createReviewSchema)
+  .handler(async ({ data }) => {
+    await ensureSession();
+    return createReviewInDb(data);
   });
