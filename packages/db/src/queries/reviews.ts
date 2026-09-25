@@ -1,19 +1,16 @@
+import type {
+  CreateReviewInput,
+  UpdateReviewInput,
+  Review,
+  ReviewWithTranslation,
+} from '@alexa-lashes/contracts/reviews';
+import { locales, type Locale } from '@alexa-lashes/types/locales';
 import { asc, and, eq } from 'drizzle-orm';
 
 import { db } from '../index';
-import { locales, type Locale } from '../locales';
 import { reviewTranslations, reviews } from '../schema/reviews-schema';
 
-export type CreateReviewBody = {
-  name: string;
-  rating: number;
-  url?: string | null;
-  displayOrder?: number;
-  // Required for every locale so that no review is created with a missing translation
-  translations: Record<Locale, string>;
-};
-
-export async function createReview(input: CreateReviewBody) {
+export async function createReview(input: CreateReviewInput) {
   const reviewId = crypto.randomUUID();
 
   await db.batch([
@@ -37,28 +34,18 @@ export async function createReview(input: CreateReviewBody) {
   return reviewId;
 }
 
-export type UpdateReviewBody = {
-  id: string;
-  review: {
-    name: string;
-    rating: number;
-    url: string | null;
-  };
-  translations: { locale: Locale; description: string }[];
-};
-
-export async function updateReview({ id, review, translations }: UpdateReviewBody) {
+export async function updateReview(input: UpdateReviewInput) {
   const updatedAt = new Date();
 
   await db.batch([
     db
       .update(reviews)
-      .set({ ...review, updatedAt })
-      .where(eq(reviews.id, id)),
-    ...translations.map(({ locale, description }) =>
+      .set({ ...input.review, updatedAt })
+      .where(eq(reviews.id, input.id)),
+    ...input.translations.map(({ locale, description }) =>
       db
         .insert(reviewTranslations)
-        .values({ id: crypto.randomUUID(), reviewId: id, locale, description })
+        .values({ id: crypto.randomUUID(), reviewId: input.id, locale, description })
         .onConflictDoUpdate({
           target: [reviewTranslations.reviewId, reviewTranslations.locale],
           set: { description, updatedAt },
@@ -67,7 +54,7 @@ export async function updateReview({ id, review, translations }: UpdateReviewBod
   ]);
 }
 
-export async function getReviews(locale: Locale) {
+export async function getReviews(locale: Locale): Promise<Review[]> {
   return db
     .select({
       id: reviews.id,
@@ -83,11 +70,7 @@ export async function getReviews(locale: Locale) {
     .orderBy(asc(reviews.displayOrder), asc(reviews.createdAt));
 }
 
-/**
- * Like `getReviews`, but also returns reviews without a translation for `locale`
- * (`description` is `null`), so they can be spotted and fixed in the admin.
- */
-export async function getReviewsWithMissingTranslations(locale: Locale) {
+export async function getReviewsWithMissingTranslations(locale: Locale): Promise<Review[]> {
   return db
     .select({
       id: reviews.id,
@@ -106,7 +89,7 @@ export async function getReviewsWithMissingTranslations(locale: Locale) {
     .orderBy(asc(reviews.displayOrder), asc(reviews.createdAt));
 }
 
-export async function getReviewById(id: string) {
+export async function getReviewById(id: string): Promise<ReviewWithTranslation | null> {
   const [[review], translations] = await db.batch([
     db
       .select({

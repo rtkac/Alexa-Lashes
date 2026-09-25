@@ -1,0 +1,23 @@
+{
+  "name": "@alexa-lashes/types",
+  "version": "0.0.1",
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    "./*": {
+      "types": "./src/*.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "typescript": "7.0.2"
+  }
+}

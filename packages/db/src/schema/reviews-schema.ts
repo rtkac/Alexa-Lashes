@@ -1,6 +1,5 @@
+import { locales } from '@alexa-lashes/types/locales';
 import { boolean, integer, pgTable, text, timestamp, unique } from 'drizzle-orm/pg-core';
-
-import { locales } from '../locales';
 
 export const reviews = pgTable('reviews', {
   id: text('id').primaryKey(),

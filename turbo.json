@@ -16,7 +16,13 @@
     },
     "dev": {
       "dependsOn": ["^build"],
-      "with": ["@alexa-lashes/ui#watch", "@alexa-lashes/db#watch", "@alexa-lashes/auth#watch"],
+      "with": [
+        "@alexa-lashes/ui#watch",
+        "@alexa-lashes/db#watch",
+        "@alexa-lashes/auth#watch",
+        "@alexa-lashes/contracts#watch",
+        "@alexa-lashes/types#watch"
+      ],
       "cache": false,
       "persistent": true
     },
