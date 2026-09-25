@@ -98,6 +98,11 @@ under `src/routes`; `routeTree.gen.ts` is generated — don't hand-edit it, run 
   `createServerFn` wrapper in the app's `src/server`, `queryOptions`/`mutationOptions` wrapper in `src/effects` if
   used with TanStack Query.
 
+For wiring those `queryOptions`/`mutationOptions` into TanStack Router itself — route `context` shape
+(pre-invoked vs. factory-function query options), `Route.useRouteContext()` (never destructure it),
+`staleTime: 'static'` vs `.catch(noop)`, and when a loader should `await` — see the
+`tanstack-router-patterns` skill; don't duplicate those conventions here.
+
 **Auth (`packages/auth` + admin app)**: Better Auth instance is defined once in `packages/auth/src/index.ts`
 (Drizzle Postgres adapter, Google OAuth only, `tanstackStartCookies()` plugin). Sign-in is gated by an
 allow-list — `validateUserInfo` checks the Google account's email against `isEmailAllowed` (see
