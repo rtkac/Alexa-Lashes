@@ -1,8 +1,9 @@
-import type { Locale } from '@alexa-lashes/db/locales';
+import type { Review as ReviewItem } from '@alexa-lashes/contracts/reviews';
+import type { Locale } from '@alexa-lashes/types/locales';
 import { Button, DialogTrigger } from '@alexa-lashes/ui/shadcn';
 import { PencilIcon, StarIcon } from 'lucide-react';
 
-import type { ReviewItem, EditReviewDialogHandle } from '../../types/review';
+import type { EditReviewDialogHandle } from '../../types/review';
 
 type ReviewContentProps = {
   name: string;

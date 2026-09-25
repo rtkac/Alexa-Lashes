@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "allowUnreachableCode": false,
     "jsx": "react-jsx",
     "module": "esnext",
+    "noEmit": true,
     "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,

@@ -11,10 +11,6 @@
       "types": "./src/index.ts",
       "default": "./dist/index.js"
     },
-    "./locales": {
-      "types": "./src/locales.ts",
-      "default": "./dist/locales.js"
-    },
     "./schema/*": {
       "types": "./src/schema/*.ts",
       "default": "./dist/schema/*.js"
@@ -35,6 +31,8 @@
     "seed:review": "bun run src/seed/review.ts"
   },
   "dependencies": {
+    "@alexa-lashes/contracts": "workspace:*",
+    "@alexa-lashes/types": "workspace:*",
     "@neondatabase/serverless": "^1.1.0",
     "drizzle-orm": "^0.45.2"
   },

@@ -1,8 +1,8 @@
-import { locales } from '@alexa-lashes/db/locales';
+import type { UpdateReviewInput } from '@alexa-lashes/contracts/reviews';
+import { locales } from '@alexa-lashes/types/locales';
 import { createDialogHandle } from '@alexa-lashes/ui/shadcn';
 
-import { ReviewFormOutput, ReviewFormValues, UpdateReviewInput } from '@/schemas/reviews';
-import { EditReviewPayload } from '@/types/review';
+import type { EditReviewPayload, ReviewFormOutput, ReviewFormValues } from '@/types/review';
 
 export const editReviewDialog = createDialogHandle<EditReviewPayload>();
 

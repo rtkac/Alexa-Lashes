@@ -1,7 +1,7 @@
-import type { Locale } from '@alexa-lashes/db/locales';
+import type { UpdateReviewInput } from '@alexa-lashes/contracts/reviews';
+import type { Locale } from '@alexa-lashes/types/locales';
 import { mutationOptions, queryOptions } from '@tanstack/react-query';
 
-import type { UpdateReviewInput } from '@/schemas/reviews';
 import { getReview, getReviews, updateReview } from '@/server/reviews';
 
 export const fetchReviewsOptions = (locale: Locale) =>

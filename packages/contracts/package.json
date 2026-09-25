@@ -1,0 +1,27 @@
+{
+  "name": "@alexa-lashes/contracts",
+  "version": "0.0.1",
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    "./*": {
+      "types": "./src/*.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@alexa-lashes/types": "workspace:*",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "typescript": "7.0.2"
+  }
+}

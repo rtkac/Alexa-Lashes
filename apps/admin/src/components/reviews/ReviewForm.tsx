@@ -1,11 +1,12 @@
-import { type Locale, locales } from '@alexa-lashes/db/locales';
+import { type Locale, locales } from '@alexa-lashes/types/locales';
 import { Input, Label, Textarea } from '@alexa-lashes/ui/components';
 import { cn } from '@alexa-lashes/ui/lib/utils';
 import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from '@alexa-lashes/ui/shadcn';
 import { createErrorVisibility, formOptions, useForm } from '@tanstack/react-form';
 import { StarIcon } from 'lucide-react';
 
-import { type ReviewFormOutput, type ReviewFormValues, reviewFormSchema } from '@/schemas/reviews';
+import { reviewFormSchema } from '@/types/review';
+import type { ReviewFormOutput, ReviewFormValues } from '@/types/review';
 
 const ratings = [1, 2, 3, 4, 5];
 

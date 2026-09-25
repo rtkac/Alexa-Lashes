@@ -1,4 +1,4 @@
-import { baseLocale, type Locale, locales } from '@alexa-lashes/db/locales';
+import { baseLocale, type Locale, locales } from '@alexa-lashes/types/locales';
 import {
   Dialog,
   DialogContent,
@@ -17,8 +17,7 @@ import { Suspense, useState } from 'react';
 import { Review } from '@/components/reviews/Review';
 import { ReviewForm } from '@/components/reviews/ReviewForm';
 import { fetchReviewOptions, fetchReviewsOptions, updateReviewOptions } from '@/effects/reviews';
-import type { ReviewFormOutput } from '@/schemas/reviews';
-import { EditReviewPayload } from '@/types/review';
+import { EditReviewPayload, ReviewFormOutput } from '@/types/review';
 import { editReviewDialog, getReviewChanges } from '@/utils.ts/review';
 
 type EditReviewFormProps = EditReviewPayload & {

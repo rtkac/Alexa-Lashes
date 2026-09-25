@@ -1,13 +1,12 @@
 import { ensureSession } from '@alexa-lashes/auth/server';
-import type { Locale } from '@alexa-lashes/db/locales';
+import { updateReviewSchema } from '@alexa-lashes/contracts/reviews';
 import {
   getReviewById,
   getReviewsWithMissingTranslations,
   updateReview as updateReviewInDb,
 } from '@alexa-lashes/db/queries/reviews';
+import type { Locale } from '@alexa-lashes/types/locales';
 import { createServerFn } from '@tanstack/react-start';
-
-import { updateReviewSchema } from '@/schemas/reviews';
 
 export const getReviews = createServerFn({
   method: 'GET',
