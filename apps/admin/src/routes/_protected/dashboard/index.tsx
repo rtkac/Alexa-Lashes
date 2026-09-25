@@ -12,121 +12,15 @@ import {
   TabsList,
   TabsTrigger,
 } from '@alexa-lashes/ui/shadcn';
-import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { PlusIcon } from 'lucide-react';
 import { Suspense, useState } from 'react';
 
-import { Review } from '@/components/reviews/Review';
-import { ReviewForm } from '@/components/reviews/ReviewForm';
-import {
-  createReviewOptions,
-  fetchReviewOptions,
-  fetchReviewsOptions,
-  updateReviewOptions,
-} from '@/effects/reviews';
-import { EditReviewPayload, ReviewFormOutput, ReviewFormValues } from '@/types/review';
-import { createReviewDialog, editReviewDialog, getReviewChanges } from '@/utils.ts/review';
-
-const emptyReviewValues: ReviewFormValues = {
-  name: '',
-  rating: 0,
-  url: '',
-  translations: Object.fromEntries(locales.map((locale) => [locale, ''])) as Record<Locale, string>,
-};
-
-type EditReviewFormProps = EditReviewPayload & {
-  onSaved: () => void;
-};
-
-const EditReviewForm = ({ reviewId, locale, onSaved }: EditReviewFormProps) => {
-  const context = Route.useRouteContext();
-
-  const { data } = useSuspenseQuery(context.fetchReviewOptions(reviewId));
-  const { mutateAsync, isError } = useMutation(updateReviewOptions());
-
-  const initialValues = {
-    name: data.name,
-    rating: data.rating,
-    url: data.url ?? '',
-    translations: Object.fromEntries(
-      locales.map((locale) => [
-        locale,
-        data.translations.find((translation) => translation.locale === locale)?.description ?? '',
-      ]),
-    ) as Record<Locale, string>,
-  };
-
-  const handleSubmit = async (values: ReviewFormOutput) => {
-    const changes = getReviewChanges(data.id, initialValues, values);
-    if (changes) {
-      await mutateAsync(changes);
-    }
-    onSaved();
-  };
-
-  return (
-    <ReviewForm
-      defaultValues={initialValues}
-      defaultLocale={locale}
-      onSubmit={handleSubmit}
-      submitError={isError ? 'The review could not be saved.' : undefined}
-    />
-  );
-};
-
-type CreateReviewFormProps = {
-  defaultLocale: Locale;
-  onSaved: () => void;
-};
-
-const CreateReviewForm = ({ defaultLocale, onSaved }: CreateReviewFormProps) => {
-  const { mutateAsync, isError } = useMutation(createReviewOptions());
-
-  const handleSubmit = async (values: ReviewFormOutput) => {
-    await mutateAsync({
-      name: values.name,
-      rating: values.rating,
-      url: values.url || null,
-      translations: values.translations,
-    });
-    onSaved();
-  };
-
-  return (
-    <ReviewForm
-      defaultValues={emptyReviewValues}
-      defaultLocale={defaultLocale}
-      onSubmit={handleSubmit}
-      submitError={isError ? 'The review could not be created.' : undefined}
-    />
-  );
-};
-
-type ReviewListProps = {
-  locale: Locale;
-};
-
-const ReviewList = ({ locale }: ReviewListProps) => {
-  const context = Route.useRouteContext();
-
-  const { data } = useSuspenseQuery(context.fetchReviewsOptions(locale));
-
-  return data.length ? (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {data.map((review) => (
-        <Review
-          key={review.id}
-          review={review}
-          locale={locale}
-          editDialogHandle={editReviewDialog}
-        />
-      ))}
-    </div>
-  ) : (
-    <p>No reviews available.</p>
-  );
-};
+import { CreateReviewForm } from '@/components/reviews/CreateReviewForm';
+import { EditReviewForm } from '@/components/reviews/EditReviewForm';
+import { ReviewList } from '@/components/reviews/ReviewList';
+import { fetchReviewsOptions } from '@/effects/reviews';
+import { createReviewDialog, editReviewDialog } from '@/utils/review';
 
 const RouteComponent = () => {
   const [locale, setLocale] = useState<Locale>(baseLocale);
@@ -154,9 +48,9 @@ const RouteComponent = () => {
               <Suspense
                 fallback={
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {Array.from({ length: 3 }).map((_, index) => (
-                      <Skeleton key={index} className="h-40 w-full" />
-                    ))}
+                    <Skeleton className="h-40 w-full" />
+                    <Skeleton className="h-40 w-full" />
+                    <Skeleton className="h-40 w-full" />
                   </div>
                 }
               >
@@ -211,7 +105,6 @@ const RouteComponent = () => {
 export const Route = createFileRoute('/_protected/dashboard/')({
   context: () => ({
     fetchReviewsOptions,
-    fetchReviewOptions,
   }),
   loader: ({ context }) => {
     context.queryClient.query({ ...context.fetchReviewsOptions(baseLocale), staleTime: 'static' });

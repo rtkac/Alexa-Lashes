@@ -1,10 +1,17 @@
 import { ensureSession } from '@alexa-lashes/auth/server';
-import { createReviewSchema, updateReviewSchema } from '@alexa-lashes/contracts/reviews';
+import {
+  createReviewSchema,
+  renumberReviewsSchema,
+  reorderReviewSchema,
+  updateReviewSchema,
+} from '@alexa-lashes/contracts/reviews';
 import {
   createReview as createReviewInDb,
   getReviewById,
   getReviewsWithMissingTranslations,
+  renumberReviews as renumberReviewsInDb,
   updateReview as updateReviewInDb,
+  updateReviewOrder as updateReviewOrderInDb,
 } from '@alexa-lashes/db/queries/reviews';
 import type { Locale } from '@alexa-lashes/types/locales';
 import { createServerFn } from '@tanstack/react-start';
@@ -47,4 +54,22 @@ export const createReview = createServerFn({
   .handler(async ({ data }) => {
     await ensureSession();
     return createReviewInDb(data);
+  });
+
+export const reorderReview = createServerFn({
+  method: 'POST',
+})
+  .validator(reorderReviewSchema)
+  .handler(async ({ data }) => {
+    await ensureSession();
+    await updateReviewOrderInDb(data.id, data.displayOrder);
+  });
+
+export const renumberReviews = createServerFn({
+  method: 'POST',
+})
+  .validator(renumberReviewsSchema)
+  .handler(async ({ data }) => {
+    await ensureSession();
+    await renumberReviewsInDb(data.orderedIds);
   });

@@ -5,7 +5,7 @@ import type {
   ReviewWithTranslation,
 } from '@alexa-lashes/contracts/reviews';
 import { locales, type Locale } from '@alexa-lashes/types/locales';
-import { asc, and, eq } from 'drizzle-orm';
+import { asc, and, eq, sql } from 'drizzle-orm';
 
 import { db } from '../index';
 import { reviewTranslations, reviews } from '../schema/reviews-schema';
@@ -19,7 +19,11 @@ export async function createReview(input: CreateReviewInput) {
       name: input.name,
       rating: input.rating,
       url: input.url ?? null,
-      displayOrder: input.displayOrder ?? 0,
+      // Append to the end of the current order by default, rather than
+      // always inserting at the very front (0) — new reviews should land
+      // last, not silently jump ahead of everything else.
+      displayOrder:
+        input.displayOrder ?? sql`(SELECT COALESCE(MAX(display_order), 0) + 1000 FROM reviews)`,
     }),
     db.insert(reviewTranslations).values(
       locales.map((locale) => ({
@@ -50,6 +54,31 @@ export async function updateReview(input: UpdateReviewInput) {
           target: [reviewTranslations.reviewId, reviewTranslations.locale],
           set: { description, updatedAt },
         }),
+    ),
+  ]);
+}
+
+export async function updateReviewOrder(id: string, displayOrder: number) {
+  await db.update(reviews).set({ displayOrder, updatedAt: new Date() }).where(eq(reviews.id, id));
+}
+
+// Rare fallback — only called when a gap between two drag neighbors has
+// closed below 2 (no integer midpoint left). Renumbers the given ids 1000
+// apart, in the order provided.
+export async function renumberReviews([firstId, ...restIds]: string[]) {
+  if (!firstId) {
+    return;
+  }
+
+  const updatedAt = new Date();
+
+  await db.batch([
+    db.update(reviews).set({ displayOrder: 1000, updatedAt }).where(eq(reviews.id, firstId)),
+    ...restIds.map((id, index) =>
+      db
+        .update(reviews)
+        .set({ displayOrder: (index + 2) * 1000, updatedAt })
+        .where(eq(reviews.id, id)),
     ),
   ]);
 }

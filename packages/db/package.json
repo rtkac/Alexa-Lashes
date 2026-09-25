@@ -28,7 +28,8 @@
     "db:push": "bunx drizzle-kit push",
     "db:studio": "bunx drizzle-kit studio",
     "seed:email": "bun run src/seed/allowed-email.ts",
-    "seed:review": "bun run src/seed/review.ts"
+    "seed:review": "bun run src/seed/review.ts",
+    "backfill:review-order": "bun run src/seed/backfill-review-order.ts"
   },
   "dependencies": {
     "@alexa-lashes/contracts": "workspace:*",
