@@ -12,6 +12,8 @@
     "@alexa-lashes/auth": "workspace:*",
     "@alexa-lashes/db": "workspace:*",
     "@alexa-lashes/ui": "workspace:*",
+    "@dnd-kit/helpers": "0.5.0",
+    "@dnd-kit/react": "0.5.0",
     "@tailwindcss/vite": "4.3.3",
     "@tanstack/react-devtools": "0.10.12",
     "@tanstack/react-form": "2.0.0-alpha.2",

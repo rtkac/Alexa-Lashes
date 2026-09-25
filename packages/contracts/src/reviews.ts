@@ -25,12 +25,27 @@ export const updateReviewSchema = z.object({
 });
 export type UpdateReviewInput = z.infer<typeof updateReviewSchema>;
 
+export const reorderReviewSchema = z.object({
+  id: z.string().min(1),
+  displayOrder: z.number().int(),
+});
+export type ReorderReviewInput = z.infer<typeof reorderReviewSchema>;
+
+// Rare self-healing fallback for when two drag neighbors' displayOrder gap
+// has closed below 2 (no integer midpoint left) — renumbers a whole ordered
+// list 1000 apart in one go.
+export const renumberReviewsSchema = z.object({
+  orderedIds: z.array(z.string().min(1)).min(1),
+});
+export type RenumberReviewsInput = z.infer<typeof renumberReviewsSchema>;
+
 export type Review = {
   id: string;
   name: string;
   rating: number;
   url: string | null;
   description: string | null;
+  displayOrder: number;
 };
 
 export type ReviewWithTranslation = {
