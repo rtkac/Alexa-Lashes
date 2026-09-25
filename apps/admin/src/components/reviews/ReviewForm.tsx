@@ -1,7 +1,15 @@
 import { type Locale, locales } from '@alexa-lashes/types/locales';
-import { Input, Label, Textarea } from '@alexa-lashes/ui/components';
+import { FieldError, Label } from '@alexa-lashes/ui/components';
 import { cn } from '@alexa-lashes/ui/lib/utils';
-import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from '@alexa-lashes/ui/shadcn';
+import {
+  Button,
+  Input,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Textarea,
+} from '@alexa-lashes/ui/shadcn';
 import { createErrorVisibility, formOptions, useForm } from '@tanstack/react-form';
 import { StarIcon } from 'lucide-react';
 
@@ -9,15 +17,6 @@ import { reviewFormSchema } from '@/types/review';
 import type { ReviewFormOutput, ReviewFormValues } from '@/types/review';
 
 const ratings = [1, 2, 3, 4, 5];
-
-type FieldErrorProps = {
-  errors: { message: string }[];
-};
-
-const FieldError = ({ errors }: FieldErrorProps) =>
-  errors.length ? (
-    <p className="text-red-500 text-sm">{errors.map((error) => error.message).join(', ')}</p>
-  ) : null;
 
 type ReviewFormProps = {
   defaultValues: ReviewFormValues;
@@ -61,9 +60,10 @@ export const ReviewForm = ({
             <Input
               name={field.name}
               value={field.value}
-              onBlur={field.handleBlur}
               onChange={(event) => field.handleChange(event.target.value)}
-              invalid={field.errors.length > 0}
+              onBlur={field.handleBlur}
+              className="border-primary-disabled"
+              invalid={field.meta.isInvalid}
             />
             <FieldError errors={field.errors} />
           </div>
@@ -87,8 +87,8 @@ export const ReviewForm = ({
                     checked={field.value === rating}
                     onChange={() => field.handleChange(rating)}
                     onBlur={field.handleBlur}
-                    aria-label={`${rating} of 5`}
                     className="sr-only"
+                    aria-label={`${rating} of 5`}
                   />
                   <StarIcon size="20" className={cn({ 'fill-current': rating <= field.value })} />
                 </label>
@@ -106,9 +106,10 @@ export const ReviewForm = ({
             <Input
               name={field.name}
               value={field.value}
-              onBlur={field.handleBlur}
               onChange={(event) => field.handleChange(event.target.value)}
-              invalid={field.errors.length > 0}
+              onBlur={field.handleBlur}
+              className="border-primary-disabled"
+              invalid={field.meta.isInvalid}
             />
             <FieldError errors={field.errors} />
           </div>
@@ -139,9 +140,10 @@ export const ReviewForm = ({
                   <Textarea
                     name={field.name}
                     value={field.value}
-                    onBlur={field.handleBlur}
                     onChange={(event) => field.handleChange(event.target.value)}
-                    invalid={field.errors.length > 0}
+                    onBlur={field.handleBlur}
+                    className="border-primary-disabled"
+                    invalid={field.meta.isInvalid}
                   />
                   <FieldError errors={field.errors} />
                 </div>

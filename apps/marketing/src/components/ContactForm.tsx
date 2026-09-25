@@ -1,9 +1,8 @@
-import { Input, Label, Textarea } from '@alexa-lashes/ui/components';
+import { FieldError, Label } from '@alexa-lashes/ui/components';
+import { Input, Textarea } from '@alexa-lashes/ui/shadcn';
 import { useForm } from '@tanstack/react-form';
 import { CircleAlertIcon, CircleCheckIcon, LoaderIcon } from 'lucide-react';
 import { useState } from 'react';
-
-import { FieldErrorMessage } from './FieldErrorMessage';
 
 import { submitForm } from '@/lib/form';
 import { formOpts } from '@/lib/form-isomorphic';
@@ -63,9 +62,12 @@ const ContactForm = () => {
                       value={field.state.value}
                       disabled={isSubmitting}
                       onChange={(e) => field.handleChange(e.target.value)}
+                      onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
                     />
-                    <FieldErrorMessage field={field} />
+                    <FieldError
+                      errors={field.state.meta.isTouched ? field.state.meta.errors : []}
+                    />
                   </div>
                 )}
               </form.Field>
@@ -95,9 +97,12 @@ const ContactForm = () => {
                       value={field.state.value}
                       disabled={isSubmitting}
                       onChange={(e) => field.handleChange(e.target.value)}
+                      onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
                     />
-                    <FieldErrorMessage field={field} />
+                    <FieldError
+                      errors={field.state.meta.isTouched ? field.state.meta.errors : []}
+                    />
                   </div>
                 )}
               </form.Field>
@@ -129,9 +134,12 @@ const ContactForm = () => {
                       value={field.state.value}
                       disabled={isSubmitting}
                       onChange={(e) => field.handleChange(e.target.value)}
+                      onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
                     />
-                    <FieldErrorMessage field={field} />
+                    <FieldError
+                      errors={field.state.meta.isTouched ? field.state.meta.errors : []}
+                    />
                   </div>
                 )}
               </form.Field>
