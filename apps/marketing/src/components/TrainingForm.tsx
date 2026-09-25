@@ -1,10 +1,8 @@
-import { Input, Label } from '@alexa-lashes/ui/components';
-import { cn } from '@alexa-lashes/ui/lib/utils';
+import { FieldError, Label } from '@alexa-lashes/ui/components';
+import { Input, Textarea } from '@alexa-lashes/ui/shadcn';
 import { useForm } from '@tanstack/react-form';
 import { CircleAlertIcon, LoaderIcon } from 'lucide-react';
 import { useState } from 'react';
-
-import { FieldErrorMessage } from './FieldErrorMessage';
 
 import { submitForm } from '@/lib/form';
 import { formOpts } from '@/lib/form-isomorphic';
@@ -67,15 +65,11 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                     value={field.state.value}
                     disabled={isSubmitting}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className={cn(
-                      'rounded-md border border-primary-disabled bg-background px-4 py-3 focus:outline-primary',
-                      field.state.meta.isValid
-                        ? 'focus:outline-primary'
-                        : 'border-red-300 focus:outline-red-400',
-                    )}
-                    aria-invalid={!field.state.meta.isValid}
+                    onBlur={field.handleBlur}
+                    className="border-primary-disabled"
+                    invalid={!field.state.meta.isValid}
                   />
-                  <FieldErrorMessage field={field} />
+                  <FieldError errors={field.state.meta.isTouched ? field.state.meta.errors : []} />
                 </div>
               )}
             </form.Field>
@@ -101,22 +95,17 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                   <Label className="font-bold text-primary brightness-50" name={field.name}>
                     {m.training_form_email_label()}
                   </Label>
-                  <input
-                    id={field.name}
+                  <Input
                     name={field.name}
                     placeholder={m.training_form_email_placeholder()}
                     value={field.state.value}
                     disabled={isSubmitting}
-                    onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className={cn(
-                      'rounded-md border border-primary-disabled bg-background px-4 py-3 focus:outline-primary',
-                      field.state.meta.isValid
-                        ? 'focus:outline-primary'
-                        : 'border-red-300 focus:outline-red-400',
-                    )}
+                    onBlur={field.handleBlur}
+                    className="border-primary-disabled"
+                    invalid={!field.state.meta.isValid}
                   />
-                  <FieldErrorMessage field={field} />
+                  <FieldError errors={field.state.meta.isTouched ? field.state.meta.errors : []} />
                 </div>
               )}
             </form.Field>
@@ -141,26 +130,20 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
             >
               {(field) => (
                 <div className="flex flex-col space-y-1.5">
-                  <label className="font-bold text-primary brightness-50" htmlFor={field.name}>
+                  <Label className="font-bold text-primary brightness-50" name={field.name}>
                     {m.training_form_message_label()}
-                  </label>
-                  <textarea
-                    id={field.name}
+                  </Label>
+                  <Textarea
                     name={field.name}
                     placeholder={m.training_form_message_placeholder()}
-                    rows={4}
                     value={field.state.value}
                     disabled={isSubmitting}
-                    onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className={cn(
-                      'rounded-md border border-primary-disabled bg-background px-4 py-3 focus:outline-primary',
-                      field.state.meta.isValid
-                        ? 'focus:outline-primary'
-                        : 'border-red-300 focus:outline-red-400',
-                    )}
+                    onBlur={field.handleBlur}
+                    className="border-primary-disabled"
+                    invalid={!field.state.meta.isValid}
                   />
-                  <FieldErrorMessage field={field} />
+                  <FieldError errors={field.state.meta.isTouched ? field.state.meta.errors : []} />
                 </div>
               )}
             </form.Field>
