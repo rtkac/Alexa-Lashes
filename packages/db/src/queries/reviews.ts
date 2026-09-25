@@ -62,6 +62,10 @@ export async function updateReviewOrder(id: string, displayOrder: number) {
   await db.update(reviews).set({ displayOrder, updatedAt: new Date() }).where(eq(reviews.id, id));
 }
 
+export async function deleteReview(id: string) {
+  await db.delete(reviews).where(eq(reviews.id, id));
+}
+
 // Rare fallback — only called when a gap between two drag neighbors has
 // closed below 2 (no integer midpoint left). Renumbers the given ids 1000
 // apart, in the order provided.

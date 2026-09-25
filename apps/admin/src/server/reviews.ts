@@ -7,6 +7,7 @@ import {
 } from '@alexa-lashes/contracts/reviews';
 import {
   createReview as createReviewInDb,
+  deleteReview as deleteReviewInDb,
   getReviewById,
   getReviewsWithMissingTranslations,
   renumberReviews as renumberReviewsInDb,
@@ -72,4 +73,13 @@ export const renumberReviews = createServerFn({
   .handler(async ({ data }) => {
     await ensureSession();
     await renumberReviewsInDb(data.orderedIds);
+  });
+
+export const deleteReview = createServerFn({
+  method: 'POST',
+})
+  .validator((data: { id: string }) => data)
+  .handler(async ({ data }) => {
+    await ensureSession();
+    await deleteReviewInDb(data.id);
   });
