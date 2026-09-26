@@ -280,14 +280,14 @@ const Gallery = () => {
           {galleryWork.map(({ src, name }) => (
             <PhotoView key={name} src={src}>
               <div
-                className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60"
+                className="group h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60"
                 itemScope
                 itemType="http://schema.org/ImageObject"
               >
                 <img
                   src={src}
                   alt={name}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                   itemProp="contentUrl"
                 />
               </div>
@@ -303,14 +303,14 @@ const Gallery = () => {
           {galleryTraining.map(({ src, name }) => (
             <PhotoView key={name} src={src}>
               <div
-                className="h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60"
+                className="group h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60"
                 itemScope
                 itemType="http://schema.org/ImageObject"
               >
                 <img
                   src={src}
                   alt={name}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                   itemProp="contentUrl"
                   loading="lazy"
                 />

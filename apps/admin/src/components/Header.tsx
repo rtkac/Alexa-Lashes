@@ -90,7 +90,7 @@ export const Header = ({ user }: HeaderProps) => {
             onClick={closeMenu}
           >
             <img src={logo} alt="Alexa Lashes Logo" width={42} height={36} />
-            <span className="self-center whitespace-nowrap font-semibold text-heading text-xl dark:text-primary">
+            <span className="self-center whitespace-nowrap font-semibold text-foreground text-xl dark:text-primary">
               Alexa Lashes
             </span>
           </a>
@@ -140,14 +140,14 @@ export const Header = ({ user }: HeaderProps) => {
             {user && (
               <ul
                 className={cn(
-                  'border-primary-light border-t text-center font-medium md:mt-0 md:flex md:flex-row md:space-x-8 md:border-0 md:bg-neutral-primary',
+                  'border-primary-light border-t text-center font-medium md:mt-0 md:flex md:flex-row md:space-x-8 md:border-0',
                   { 'mb-10 space-y-5 pt-10 md:mb-0 md:space-y-0 md:pt-0': open },
                 )}
               >
                 <li className="flex items-center">
                   <Link
                     to="/dashboard"
-                    className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                    className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
                     activeOptions={{ exact: true }}
                     onClick={closeMenu}
                   >

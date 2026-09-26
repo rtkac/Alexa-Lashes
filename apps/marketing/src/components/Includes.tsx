@@ -8,7 +8,7 @@ type IncludesProps = {
 const Includes = ({ data }: IncludesProps) => {
   return (
     <div className="mx-auto mb-4 max-w-3xl">
-      <div className="rounded-md border border-primary-light bg-white p-8 md:p-10 dark:border-tertiary-light dark:bg-tertiary">
+      <div className="card p-8 md:p-10">
         {data.map((include, index) => (
           <div
             key={include}

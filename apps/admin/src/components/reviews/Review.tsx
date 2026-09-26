@@ -41,7 +41,7 @@ export const Review = ({ review, index, locale, editDialogHandle }: ReviewProps)
       )}
       title={review.url || ''}
     >
-      <div className="flex h-full min-w-0 shrink-0 grow-0 basis-[75%] xs:basis-[45%] flex-col justify-between rounded-md border border-primary-light bg-white p-5 no-underline hover:no-underline md:basis-[40%] lg:basis-[calc(33.1%-8px)] dark:border-tertiary-light dark:bg-tertiary">
+      <div className="card flex h-full min-w-0 shrink-0 grow-0 basis-[75%] xs:basis-[45%] flex-col justify-between p-5 no-underline hover:no-underline md:basis-[40%] lg:basis-[calc(33.1%-8px)]">
         <div className="mb-3">
           <div className="mb-3 flex space-x-1 text-primary">
             {Array.from({ length: review.rating }).map((_, index) => (

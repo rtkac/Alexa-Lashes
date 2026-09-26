@@ -22,7 +22,7 @@ const RouteComponent = () => {
           <ContactForm />
         </div>
         <div className="space-y-5 md:col-span-3">
-          <div className="rounded-md border border-primary-light bg-white p-6 dark:border-tertiary-light dark:bg-tertiary">
+          <div className="card p-6">
             <h2 className="mb-3 font-bold text-lg">{m.contact_info()}</h2>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -45,7 +45,7 @@ const RouteComponent = () => {
               </div>
             </div>
           </div>
-          <div className="rounded-md border border-primary-light bg-white p-6 dark:border-tertiary-light dark:bg-tertiary">
+          <div className="card p-6">
             <h2 className="mb-3 font-bold text-lg">{m.contact_opening_hours()}</h2>
             <div className="space-y-3">
               <div className="flex justify-between">
@@ -62,7 +62,7 @@ const RouteComponent = () => {
               </div>
             </div>
           </div>
-          <div className="rounded-md border border-primary-light bg-white p-6 dark:border-tertiary-light dark:bg-tertiary">
+          <div className="card p-6">
             <h2 className="mb-3 font-bold text-lg">{m.contact_socials()}</h2>
             <Socials />
           </div>

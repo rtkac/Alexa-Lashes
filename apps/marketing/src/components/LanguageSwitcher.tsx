@@ -10,7 +10,7 @@ const LanguageSwitcher = () => {
           <button
             type="button"
             onClick={() => setLocale(locale)}
-            className={`cursor-pointer text-xl hover:text-primary md:text-base ${locale === getLocale() ? 'text-primary' : 'text-heading'}`}
+            className={`cursor-pointer text-xl transition-colors hover:text-primary md:text-base ${locale === getLocale() ? 'text-primary' : 'text-foreground'}`}
           >
             {locale.toLocaleLowerCase()}
           </button>
