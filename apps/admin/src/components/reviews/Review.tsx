@@ -4,9 +4,9 @@ import { cn } from '@alexa-lashes/ui/lib/utils';
 import { Button, DialogTrigger } from '@alexa-lashes/ui/shadcn';
 import { useSortable } from '@dnd-kit/react/sortable';
 import { useMutation } from '@tanstack/react-query';
-import { PencilIcon, StarIcon, Trash2Icon } from 'lucide-react';
+import { EyeIcon, EyeOffIcon, PencilIcon, StarIcon, Trash2Icon } from 'lucide-react';
 
-import { deleteReviewOptions } from '@/effects/reviews';
+import { deleteReviewOptions, setReviewEnabledOptions } from '@/effects/reviews';
 import type { EditReviewDialogHandle } from '@/types/review';
 
 type ReviewProps = {
@@ -19,6 +19,7 @@ type ReviewProps = {
 export const Review = ({ review, index, locale, editDialogHandle }: ReviewProps) => {
   const { ref, isDragging } = useSortable({ id: review.id, index });
   const { mutate } = useMutation(deleteReviewOptions());
+  const { mutate: mutateEnabled } = useMutation(setReviewEnabledOptions());
 
   const handleDelete = () => {
     if (confirm(`Delete the review from ${review.name}?`)) {
@@ -26,10 +27,18 @@ export const Review = ({ review, index, locale, editDialogHandle }: ReviewProps)
     }
   };
 
+  const handleToggleEnabled = () => {
+    mutateEnabled({ id: review.id, enabled: !review.enabled });
+  };
+
   return (
     <div
       ref={ref}
-      className={cn('group relative touch-none', isDragging && 'opacity-50')}
+      className={cn(
+        'group relative touch-none',
+        isDragging && 'opacity-50',
+        !review.enabled && 'opacity-60',
+      )}
       title={review.url || ''}
     >
       <div className="flex h-full min-w-0 shrink-0 grow-0 basis-[75%] xs:basis-[45%] flex-col justify-between rounded-md border border-primary-light bg-white p-5 no-underline hover:no-underline md:basis-[40%] lg:basis-[calc(33.1%-8px)] dark:border-tertiary-light dark:bg-tertiary">
@@ -69,6 +78,14 @@ export const Review = ({ review, index, locale, editDialogHandle }: ReviewProps)
         >
           <PencilIcon />
         </DialogTrigger>
+        <Button
+          variant="outline"
+          size="icon-sm"
+          aria-label={review.enabled ? 'Disable review' : 'Enable review'}
+          onClick={handleToggleEnabled}
+        >
+          {review.enabled ? <EyeIcon /> : <EyeOffIcon />}
+        </Button>
         <Button
           variant="outline"
           size="icon-sm"
