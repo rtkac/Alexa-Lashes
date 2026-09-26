@@ -13,10 +13,13 @@ database via [Drizzle ORM](https://orm.drizzle.team) and [Better Auth](https://w
 
 - **`apps/marketing`** — public site. React 19 + TanStack Start (file-based routing, SSR) + Vite +
   Tailwind CSS v4, i18n via [Paraglide JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs)
-  (`sk` base locale, `en`/`ru` prefixed), deployed to Netlify.
+  (`sk` base locale, `en`/`ru` prefixed), deployed to Netlify. Reviews are fetched from the DB at
+  build time (`bun run generate-reviews`) and baked into a static JSON file — not fetched per request.
 - **`apps/admin`** — internal admin dashboard (SPA). Same stack, Google OAuth via Better Auth,
-  gated by an allow-list (`allowed_email` table) — no self-service signup. Currently manages
-  customer reviews (list per locale, edit name/rating/url/translations). Deployed to Netlify.
+  gated by an allow-list (`allowed_email` table) — no self-service signup. Currently manages customer
+  reviews (list per locale, create/edit/delete, enable/disable, drag-and-drop reordering) and has a
+  "Deploy marketing site" button to trigger a Netlify rebuild, since marketing's reviews are static
+  at build time (see above). Deployed to Netlify.
 
 ### Packages
 
@@ -111,6 +114,11 @@ commands run from that package):
 - `EMAIL_PASSWORD`
 - `VITE_GOOGLE_MAPS_API_KEY`
 - `VITE_GOOGLE_ANALYTICS_API_KEY`
+- `NETLIFY_MARKETING_BUILD_HOOK_URL` — a Netlify build hook URL for the `apps/marketing` site (site
+  settings → Build hooks there). `apps/marketing` fetches its reviews from the DB at build time, not
+  at request time, so adding/editing a review in the admin app doesn't go live until this is
+  triggered. The admin dashboard has a "Deploy marketing site" button that posts to it. For
+  production, set this var on the **admin** Netlify site (not the marketing one).
 
 ## Branching & deployment
 

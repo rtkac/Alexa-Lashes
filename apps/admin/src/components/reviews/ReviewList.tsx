@@ -37,11 +37,12 @@ export const ReviewList = ({ locale }: ReviewListProps) => {
     const next = reordered[newIndex + 1];
 
     if (!prev && next) {
-      reorderMutate({ id: sourceId, displayOrder: next.displayOrder - 1000 });
+      // Moved to the very front — reviews are listed highest-displayOrder-first.
+      reorderMutate({ id: sourceId, displayOrder: next.displayOrder + 1000 });
     } else if (prev && !next) {
-      reorderMutate({ id: sourceId, displayOrder: prev.displayOrder + 1000 });
+      reorderMutate({ id: sourceId, displayOrder: prev.displayOrder - 1000 });
     } else if (prev && next) {
-      const gap = next.displayOrder - prev.displayOrder;
+      const gap = prev.displayOrder - next.displayOrder;
       if (gap < 2) {
         renumberMutate({ orderedIds: reordered.map((review) => review.id) });
       } else {

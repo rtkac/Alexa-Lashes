@@ -60,7 +60,7 @@ export const reorderReviewOptions = (locale: Locale) =>
               ? { ...review, displayOrder: variables.displayOrder }
               : review,
           )
-          .toSorted((a, b) => a.displayOrder - b.displayOrder),
+          .toSorted((a, b) => b.displayOrder - a.displayOrder),
       );
 
       return { previous, queryKey };

@@ -12,27 +12,43 @@ import {
   TabsList,
   TabsTrigger,
 } from '@alexa-lashes/ui/shadcn';
+import { useMutation } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { PlusIcon } from 'lucide-react';
+import { PlusIcon, RocketIcon } from 'lucide-react';
 import { Suspense, useState } from 'react';
 
 import { CreateReviewForm } from '@/components/reviews/CreateReviewForm';
 import { EditReviewForm } from '@/components/reviews/EditReviewForm';
 import { ReviewList } from '@/components/reviews/ReviewList';
+import { triggerMarketingBuildOptions } from '@/effects/deploy';
 import { fetchReviewsOptions } from '@/effects/reviews';
 import { createReviewDialog, editReviewDialog } from '@/utils/review';
 
 const RouteComponent = () => {
   const [locale, setLocale] = useState<Locale>(baseLocale);
+  const { mutate, isPending } = useMutation(triggerMarketingBuildOptions());
+
+  const handleTriggerBuild = () => {
+    mutate(undefined, {
+      onSuccess: () => alert('Build triggered — the marketing site will redeploy shortly.'),
+      onError: () => alert('Failed to trigger the build. Please try again.'),
+    });
+  };
 
   return (
     <div>
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-xl md:text-2xl">Reviews</h1>
-        <DialogTrigger handle={createReviewDialog} render={<Button size="sm" />}>
-          <PlusIcon />
-          Add review
-        </DialogTrigger>
+        <div className="flex gap-2">
+          <Button size="sm" variant="outline" onClick={handleTriggerBuild} disabled={isPending}>
+            <RocketIcon />
+            {isPending ? 'Triggering build…' : 'Deploy marketing site'}
+          </Button>
+          <DialogTrigger handle={createReviewDialog} render={<Button size="sm" />}>
+            <PlusIcon />
+            Add review
+          </DialogTrigger>
+        </div>
       </div>
       <Tabs value={locale} onValueChange={setLocale} className="mt-4">
         <TabsList>
