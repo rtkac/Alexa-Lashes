@@ -1,0 +1,4 @@
+# ignore everything except this file — the directory is regenerated at build/dev
+# start by `bun run generate-reviews` (see src/scripts/generate-reviews.ts)
+*
+!.gitignore

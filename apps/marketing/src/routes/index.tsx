@@ -1,3 +1,5 @@
+import { Review } from '@alexa-lashes/contracts/reviews';
+import { baseLocale, type Locale } from '@alexa-lashes/types/locales';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from 'lucide-react';
 
@@ -7,16 +9,16 @@ import Benefits from '@/components/Benefits';
 import Cta from '@/components/Cta';
 import PreviewGallery from '@/components/PreviewGallery';
 import Reviews from '@/components/Reviews';
+import reviewsJson from '@/data/reviews.json';
 import { m } from '@/paraglide/messages';
-import {
-  type Benefit,
-  type Gallery,
-  instagramUrl,
-  type Review,
-  telephoneNumber,
-  tiktokUrl,
-} from '@/types';
-// import { getReviews } from "@/server/reviews";
+import { getLocale } from '@/paraglide/runtime';
+import { type Benefit, type Gallery, instagramUrl, telephoneNumber, tiktokUrl } from '@/types';
+
+const reviewsByLocale = reviewsJson as Record<Locale, Review[]>;
+const canonicalReviews = reviewsByLocale[baseLocale];
+const averageRating = canonicalReviews.length
+  ? canonicalReviews.reduce((sum, review) => sum + review.rating, 0) / canonicalReviews.length
+  : 5;
 
 const benefits = (): Benefit[] => [
   {
@@ -64,50 +66,10 @@ const gallery = (): Gallery[] => [
   },
 ];
 
-const REVIEWS_COUNT = 27;
-
-const REVIEW_URLS = [
-  'https://maps.app.goo.gl/9U6Q9Fw7bVGKxefV6', // 1
-  'https://maps.app.goo.gl/1ChGUGpWm3f2oPKV9', // 2
-  'https://maps.app.goo.gl/XvL2rC2Hbme8WoSVA', // 3
-  'https://maps.app.goo.gl/CJiMfJo38iBBn6gP9', // 4
-  'https://maps.app.goo.gl/PzXfC4WNqBCgfn9r9', // 5
-  'https://maps.app.goo.gl/zeNuoPXuUqx3cHm58', // 6
-  'https://maps.app.goo.gl/hWDEp5Pt6HqMaBrT9', // 7
-  'https://maps.app.goo.gl/hEJVQ3TfhVejWRaP8', // 8
-  'https://maps.app.goo.gl/96i4JNDxeSG5Cc3u5', // 9
-  'https://maps.app.goo.gl/qEgJ9S8Coxc4M2vK7', // 10
-  'https://maps.app.goo.gl/uoQgh5BpxLn5nJh27', // 11
-  'https://maps.app.goo.gl/aqFucHQW7k1EZbWc9', // 12
-  'https://maps.app.goo.gl/vFo2gkCTN1oz5pWk6', // 13
-  'https://maps.app.goo.gl/wC1sH7urBxwtb5cm6', // 14
-  'https://maps.app.goo.gl/AZojrnuhEGdrjw1J7', // 15
-  'https://maps.app.goo.gl/Vqxnw1UhbK29byDj6', // 16
-  'https://maps.app.goo.gl/9jb1H8f8TQSr3dxF8', // 17
-  'https://maps.app.goo.gl/sz1r3DqWFAgmaVK89', // 18
-  'https://maps.app.goo.gl/L5QS66EeYfRnRoiq8', // 19
-  'https://maps.app.goo.gl/NjpiUoqwPMhYTZpV9', // 20
-  'https://maps.app.goo.gl/WBNHey2s4NVPoVoa8', // 21
-  'https://maps.app.goo.gl/9yUDJnbx8Ew7KJt79', // 22
-  'https://maps.app.goo.gl/a8GAEmZsQ4TqsU628', // 23
-  'https://maps.app.goo.gl/i1xf7dU2AT6G2iaHA', // 24
-  'https://maps.app.goo.gl/JNiVP2LAWP3JdFzP6', // 25
-  'https://maps.app.goo.gl/fkbCMPLwZ8cDSoyq5', // 26
-  'https://maps.app.goo.gl/WziBccAA99WhHhHx9', // 27
-];
-
-const reviews = (): Review[] =>
-  Array.from({ length: REVIEWS_COUNT }, (_, i) => {
-    const n = REVIEWS_COUNT - i; // newest first
-    return {
-      name: (m[`reviews_${n}_name` as keyof typeof m] as () => string)(),
-      description: (m[`reviews_${n}_desc` as keyof typeof m] as () => string)(),
-      url: REVIEW_URLS[n - 1] as string,
-    };
-  });
-
 const RouteComponent = () => {
-  // const reviews = Route.useLoaderData();
+  const reviews = reviewsByLocale[getLocale()];
+
+  const filteredReviews = reviews.filter((review) => review.enabled);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
@@ -151,21 +113,20 @@ const RouteComponent = () => {
           </Link>
         </div>
       </div>
-      <div className="mb-18 md:mb-25">
-        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
-          {m.home_reviews_title()}
-        </h2>
-        <Reviews
-          reviews={reviews().map(({ name, description, url }) => ({ name, description, url }))}
-        />
-      </div>
+      {filteredReviews.length > 0 && (
+        <div className="mb-18 md:mb-25">
+          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
+            {m.home_reviews_title()}
+          </h2>
+          <Reviews reviews={filteredReviews} />
+        </div>
+      )}
       <Cta />
     </div>
   );
 };
 
 export const Route = createFileRoute('/')({
-  // loader: () => getReviews({data: {locale: 'sk'}}),
   head: () => ({
     meta: [
       { title: m.meta_index_title() },
@@ -225,8 +186,8 @@ export const Route = createFileRoute('/')({
           aggregateRating: {
             '@type': 'AggregateRating',
             bestRating: '5',
-            reviewCount: '46', // update with the actual number of reviews from Google Maps
-            ratingValue: '5',
+            reviewCount: 51,
+            ratingValue: averageRating.toFixed(1),
           },
           sameAs: [instagramUrl, tiktokUrl],
         }),

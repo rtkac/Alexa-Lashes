@@ -5,14 +5,14 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "bun --env-file=../../.env run vite dev --port 3000 && bun run watch-routes",
-    "build": "bun run generate-routes && bun --env-file=../../.env run vite build",
+    "dev": "bun run generate-reviews && bun --env-file=../../.env run vite dev --port 3000 && bun run watch-routes",
+    "build": "bun run generate-reviews && bun run generate-routes && bun --env-file=../../.env run vite build",
     "generate-routes": "tsr generate",
+    "generate-reviews": "bun --env-file=../../.env run src/scripts/generate-reviews.ts",
     "watch-routes": "tsr watch"
   },
   "dependencies": {
     "@alexa-lashes/db": "workspace:*",
-    "@alexa-lashes/types": "workspace:*",
     "@alexa-lashes/ui": "workspace:*",
     "@tailwindcss/vite": "4.3.3",
     "@tanstack/react-devtools": "0.10.12",
@@ -35,6 +35,8 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@alexa-lashes/contracts": "workspace:*",
+    "@alexa-lashes/types": "workspace:*",
     "@inlang/paraglide-js": "2.25.4",
     "@inlang/paraglide-js-react": "1.0.3",
     "@netlify/vite-plugin-tanstack-start": "1.3.19",

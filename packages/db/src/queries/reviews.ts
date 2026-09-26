@@ -5,7 +5,7 @@ import type {
   ReviewWithTranslation,
 } from '@alexa-lashes/contracts/reviews';
 import { locales, type Locale } from '@alexa-lashes/types/locales';
-import { asc, and, eq, sql } from 'drizzle-orm';
+import { and, desc, eq, sql } from 'drizzle-orm';
 
 import { db } from '../index';
 import { reviewTranslations, reviews } from '../schema/reviews-schema';
@@ -19,9 +19,8 @@ export async function createReview(input: CreateReviewInput) {
       name: input.name,
       rating: input.rating,
       url: input.url ?? null,
-      // Append to the end of the current order by default, rather than
-      // always inserting at the very front (0) — new reviews should land
-      // last, not silently jump ahead of everything else.
+      // Reviews are listed highest-displayOrder-first, so defaulting to the
+      // current max + 1000 puts a newly added review at the very front.
       displayOrder:
         input.displayOrder ?? sql`(SELECT COALESCE(MAX(display_order), 0) + 1000 FROM reviews)`,
     }),
@@ -72,20 +71,25 @@ export async function deleteReview(id: string) {
 
 // Rare fallback — only called when a gap between two drag neighbors has
 // closed below 2 (no integer midpoint left). Renumbers the given ids 1000
-// apart, in the order provided.
+// apart, in the order provided — the first id (front of the list) gets the
+// highest displayOrder, decreasing down the list, matching highest-first order.
 export async function renumberReviews([firstId, ...restIds]: string[]) {
   if (!firstId) {
     return;
   }
 
   const updatedAt = new Date();
+  const total = restIds.length + 1;
 
   await db.batch([
-    db.update(reviews).set({ displayOrder: 1000, updatedAt }).where(eq(reviews.id, firstId)),
+    db
+      .update(reviews)
+      .set({ displayOrder: total * 1000, updatedAt })
+      .where(eq(reviews.id, firstId)),
     ...restIds.map((id, index) =>
       db
         .update(reviews)
-        .set({ displayOrder: (index + 2) * 1000, updatedAt })
+        .set({ displayOrder: (total - index - 1) * 1000, updatedAt })
         .where(eq(reviews.id, id)),
     ),
   ]);
@@ -105,7 +109,7 @@ export async function getReviews(locale: Locale): Promise<Review[]> {
     .from(reviews)
     .innerJoin(reviewTranslations, eq(reviewTranslations.reviewId, reviews.id))
     .where(and(eq(reviews.enabled, true), eq(reviewTranslations.locale, locale)))
-    .orderBy(asc(reviews.displayOrder), asc(reviews.createdAt));
+    .orderBy(desc(reviews.displayOrder), desc(reviews.createdAt));
 }
 
 export async function getReviewsWithMissingTranslations(locale: Locale): Promise<Review[]> {
@@ -124,7 +128,7 @@ export async function getReviewsWithMissingTranslations(locale: Locale): Promise
       reviewTranslations,
       and(eq(reviewTranslations.reviewId, reviews.id), eq(reviewTranslations.locale, locale)),
     )
-    .orderBy(asc(reviews.displayOrder), asc(reviews.createdAt));
+    .orderBy(desc(reviews.displayOrder), desc(reviews.createdAt));
 }
 
 export async function getReviewById(id: string): Promise<ReviewWithTranslation | null> {

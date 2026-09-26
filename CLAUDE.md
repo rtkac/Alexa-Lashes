@@ -39,6 +39,9 @@ Per-package scripts (run inside `apps/<app>` or `packages/<pkg>`):
 - Apps (`apps/admin`, `apps/marketing`): `bun run dev` (Vite dev server on port 3000), `bun run build`
   (generates TanStack routes then builds), `bun run generate-routes` / `bun run watch-routes` (TanStack
   Router codegen for `routeTree.gen.ts` — regenerate after adding/renaming files under `src/routes`)
+- `apps/marketing` only: `bun run generate-reviews` (fetches reviews from the DB per locale and writes
+  `src/data/reviews.json`; chained automatically into both `dev` and `build`, needs
+  `DATABASE_URL` — see Architecture notes below)
 - `packages/db`: `bun run db:generate` (Drizzle migration from schema changes), `bun run db:push` (push
   schema directly to the DB), `bun run db:studio` (Drizzle Studio), `bun run better-auth:generate`
   (regenerate `src/schema/auth-schema.ts` from the Better Auth config in `packages/auth`), `bun run
@@ -82,6 +85,16 @@ Root `.env` (loaded by app dev/build scripts via `bun --env-file=../../.env`) an
 `VITE_GOOGLE_MAPS_API_KEY`, `VITE_GOOGLE_ANALYTICS_API_KEY`. These are also declared as `turbo.json`
 `build.env` passthrough vars.
 
+`NETLIFY_MARKETING_BUILD_HOOK_URL` (root `.env` only) is the admin app's exception: it's only read at
+request time by a server function (`apps/admin/src/server/deploy.ts`), never at build time, so it's
+not in the `turbo.json` passthrough list above. It holds a Netlify build hook URL (site settings →
+Build hooks, on the `apps/marketing` Netlify site) — posting to it triggers a production deploy of
+`apps/marketing` from `main`. The admin dashboard's "Deploy marketing site" button (next to "Add
+review") calls it, since `apps/marketing`'s reviews are baked in at build time (see the marketing
+app's `generate-reviews` script) — adding/editing/deleting a review in admin has no effect on the
+live site until this is triggered. For this to work in production (not just local dev), the same var
+must also be added to the **admin** Netlify site's environment variables (not the marketing site's).
+
 ## Architecture notes
 
 **Stack**: TanStack Start (file-based router + SSR) + React 19 + Vite + Tailwind CSS v4, deployed to
@@ -102,6 +115,12 @@ For wiring those `queryOptions`/`mutationOptions` into TanStack Router itself �
 (pre-invoked vs. factory-function query options), `Route.useRouteContext()` (never destructure it),
 `staleTime: 'static'` vs `.catch(noop)`, and when a loader should `await` — see the
 `tanstack-router-patterns` skill; don't duplicate those conventions here.
+
+**Exception — reviews on the marketing site are fetched at build time, not via `src/server`**:
+`apps/marketing/src/scripts/generate-reviews.ts` writes `apps/marketing/src/data/reviews.json` from
+the DB (run via the `generate-reviews` script, wired into both `dev` and `build`), and
+`routes/index.tsx` imports it directly — see `NETLIFY_MARKETING_BUILD_HOOK_URL` above for why a
+Netlify rebuild is needed after editing reviews in admin.
 
 **Auth (`packages/auth` + admin app)**: Better Auth instance is defined once in `packages/auth/src/index.ts`
 (Drizzle Postgres adapter, Google OAuth only, `tanstackStartCookies()` plugin). Sign-in is gated by an
@@ -149,7 +168,8 @@ cross-package imports use the `@alexa-lashes/*` workspace package names, not rel
   side-effect → builtin/external → sibling/parent → style); run `bun run format:write` rather than
   hand-formatting.
 - `packages/db/src/schema/*.ts` and `*.gen.ts` files are excluded from lint/format ignore patterns
-  where generated — treat `auth-schema.ts`, `routeTree.gen.ts`, and `src/paraglide/**` as generated output.
+  where generated — treat `auth-schema.ts`, `routeTree.gen.ts`, `src/paraglide/**`, and
+  `apps/marketing/src/data/reviews.json` as generated output.
 - Commit messages must be Conventional Commits with one of the types listed above; this is enforced by
   the `commit-msg` git hook, not optional style guidance.
 - React components are always `const` arrow functions, never `function` declarations. Props are
