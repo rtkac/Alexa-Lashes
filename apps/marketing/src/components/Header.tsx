@@ -25,7 +25,7 @@ export const Header = () => {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
           <Link to="/" className="z-10 flex items-center space-x-3" onClick={closeMenu}>
             <img src={logo} alt="Alexa Lashes Logo" width={42} height={36} />
-            <span className="self-center whitespace-nowrap font-semibold text-heading text-xl dark:text-primary">
+            <span className="self-center whitespace-nowrap font-semibold text-foreground text-xl dark:text-primary">
               Alexa Lashes
             </span>
           </Link>
@@ -67,14 +67,14 @@ export const Header = () => {
           >
             <ul
               className={cn(
-                'border-primary-light border-t text-center font-medium md:mt-0 md:mr-20 md:flex md:flex-row md:space-x-8 md:border-0 md:bg-neutral-primary',
+                'border-primary-light border-t text-center font-medium md:mt-0 md:mr-20 md:flex md:flex-row md:space-x-8 md:border-0',
                 { 'mb-10 space-y-5 pt-10 md:mb-0 md:space-y-0 md:pt-0': open },
               )}
             >
               <li>
                 <Link
                   to="/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
                   onClick={closeMenu}
                 >
                   {m.menu_home()}
@@ -83,7 +83,7 @@ export const Header = () => {
               <li>
                 <Link
                   to="/about/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
                   onClick={closeMenu}
                 >
                   {m.menu_about()}
@@ -92,7 +92,7 @@ export const Header = () => {
               <li>
                 <Link
                   to="/prices/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
                   onClick={closeMenu}
                 >
                   {m.menu_prices()}
@@ -101,7 +101,7 @@ export const Header = () => {
               <li>
                 <Link
                   to="/training/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
                   onClick={closeMenu}
                 >
                   {m.menu_trainings()}
@@ -110,7 +110,7 @@ export const Header = () => {
               <li>
                 <Link
                   to="/gallery/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
                   onClick={closeMenu}
                 >
                   {m.menu_gallery()}
@@ -119,7 +119,7 @@ export const Header = () => {
               <li>
                 <Link
                   to="/contact/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary"
+                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
                   onClick={closeMenu}
                 >
                   {m.menu_contact()}

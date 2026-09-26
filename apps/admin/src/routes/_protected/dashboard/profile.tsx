@@ -6,7 +6,7 @@ const RouteComponent = () => {
 
   return (
     <div className="grid lg:grid-cols-2">
-      <div className="rounded-md border border-primary-light bg-white p-6 dark:border-tertiary-light dark:bg-tertiary">
+      <div className="card p-6">
         <h1 className="mb-5 font-bold text-lg md:text-2xl">Profile</h1>
         <div className="space-y-2">
           <div className="flex items-center gap-2">

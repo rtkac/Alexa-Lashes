@@ -12,7 +12,7 @@ type TrainingPriceProps = {
 const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
   return (
     <div className="grid md:grid-cols-5">
-      <div className="space-y-3.5 rounded-tl-md rounded-tr-md border border-primary-light bg-white p-8 md:col-span-3 md:rounded-tr-0 md:rounded-tr-none md:rounded-bl-md dark:border-tertiary-light dark:bg-tertiary">
+      <div className="card space-y-3.5 rounded-b-none p-8 md:col-span-3 md:rounded-tr-none md:rounded-bl-md">
         <h2 className="font-bold text-2xl">{m.training_information_title()}</h2>
         <div className="space-y-3.5">
           <div className="flex items-center space-x-2">
