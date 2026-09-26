@@ -144,6 +144,7 @@ export const ReviewForm = ({
                     onBlur={field.handleBlur}
                     className="border-primary-disabled"
                     invalid={field.meta.isInvalid}
+                    rows={8}
                   />
                   <FieldError errors={field.errors} />
                 </div>

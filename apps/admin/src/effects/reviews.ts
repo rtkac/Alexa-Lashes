@@ -2,6 +2,7 @@ import type {
   CreateReviewInput,
   RenumberReviewsInput,
   ReorderReviewInput,
+  SetReviewEnabledInput,
   UpdateReviewInput,
 } from '@alexa-lashes/contracts/reviews';
 import type { Locale } from '@alexa-lashes/types/locales';
@@ -14,6 +15,7 @@ import {
   getReviews,
   renumberReviews,
   reorderReview,
+  setReviewEnabled,
   updateReview,
 } from '@/server/reviews';
 
@@ -82,6 +84,13 @@ export const renumberReviewsOptions = () =>
 export const deleteReviewOptions = () =>
   mutationOptions({
     mutationFn: (id: string) => deleteReview({ data: { id } }),
+    onSuccess: (_data, _variables, _onMutateResult, context) =>
+      context.client.invalidateQueries({ queryKey: ['reviews'] }),
+  });
+
+export const setReviewEnabledOptions = () =>
+  mutationOptions({
+    mutationFn: (data: SetReviewEnabledInput) => setReviewEnabled({ data }),
     onSuccess: (_data, _variables, _onMutateResult, context) =>
       context.client.invalidateQueries({ queryKey: ['reviews'] }),
   });

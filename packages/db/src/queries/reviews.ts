@@ -62,6 +62,10 @@ export async function updateReviewOrder(id: string, displayOrder: number) {
   await db.update(reviews).set({ displayOrder, updatedAt: new Date() }).where(eq(reviews.id, id));
 }
 
+export async function updateReviewEnabled(id: string, enabled: boolean) {
+  await db.update(reviews).set({ enabled, updatedAt: new Date() }).where(eq(reviews.id, id));
+}
+
 export async function deleteReview(id: string) {
   await db.delete(reviews).where(eq(reviews.id, id));
 }
@@ -96,6 +100,7 @@ export async function getReviews(locale: Locale): Promise<Review[]> {
       url: reviews.url,
       description: reviewTranslations.description,
       displayOrder: reviews.displayOrder,
+      enabled: reviews.enabled,
     })
     .from(reviews)
     .innerJoin(reviewTranslations, eq(reviewTranslations.reviewId, reviews.id))
@@ -112,13 +117,13 @@ export async function getReviewsWithMissingTranslations(locale: Locale): Promise
       url: reviews.url,
       description: reviewTranslations.description,
       displayOrder: reviews.displayOrder,
+      enabled: reviews.enabled,
     })
     .from(reviews)
     .leftJoin(
       reviewTranslations,
       and(eq(reviewTranslations.reviewId, reviews.id), eq(reviewTranslations.locale, locale)),
     )
-    .where(eq(reviews.enabled, true))
     .orderBy(asc(reviews.displayOrder), asc(reviews.createdAt));
 }
 

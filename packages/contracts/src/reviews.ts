@@ -31,6 +31,12 @@ export const reorderReviewSchema = z.object({
 });
 export type ReorderReviewInput = z.infer<typeof reorderReviewSchema>;
 
+export const setReviewEnabledSchema = z.object({
+  id: z.string().min(1),
+  enabled: z.boolean(),
+});
+export type SetReviewEnabledInput = z.infer<typeof setReviewEnabledSchema>;
+
 // Rare self-healing fallback for when two drag neighbors' displayOrder gap
 // has closed below 2 (no integer midpoint left) — renumbers a whole ordered
 // list 1000 apart in one go.
@@ -46,6 +52,7 @@ export type Review = {
   url: string | null;
   description: string | null;
   displayOrder: number;
+  enabled: boolean;
 };
 
 export type ReviewWithTranslation = {

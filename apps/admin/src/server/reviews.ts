@@ -3,6 +3,7 @@ import {
   createReviewSchema,
   renumberReviewsSchema,
   reorderReviewSchema,
+  setReviewEnabledSchema,
   updateReviewSchema,
 } from '@alexa-lashes/contracts/reviews';
 import {
@@ -12,6 +13,7 @@ import {
   getReviewsWithMissingTranslations,
   renumberReviews as renumberReviewsInDb,
   updateReview as updateReviewInDb,
+  updateReviewEnabled as updateReviewEnabledInDb,
   updateReviewOrder as updateReviewOrderInDb,
 } from '@alexa-lashes/db/queries/reviews';
 import type { Locale } from '@alexa-lashes/types/locales';
@@ -82,4 +84,13 @@ export const deleteReview = createServerFn({
   .handler(async ({ data }) => {
     await ensureSession();
     await deleteReviewInDb(data.id);
+  });
+
+export const setReviewEnabled = createServerFn({
+  method: 'POST',
+})
+  .validator(setReviewEnabledSchema)
+  .handler(async ({ data }) => {
+    await ensureSession();
+    await updateReviewEnabledInDb(data.id, data.enabled);
   });
