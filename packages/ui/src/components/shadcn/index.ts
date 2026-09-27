@@ -6,3 +6,4 @@ export * from './Tabs';
 export * from './Textarea';
 export * from './Button';
 export * from './Dialog';
+export * from './Drawer';

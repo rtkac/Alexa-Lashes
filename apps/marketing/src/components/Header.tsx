@@ -1,29 +1,39 @@
 import logo from '/logo_primary.svg';
-import { cn } from '@alexa-lashes/ui/lib/utils';
+import { MenuToggle } from '@alexa-lashes/ui/components';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+} from '@alexa-lashes/ui/shadcn';
 import { Link } from '@tanstack/react-router';
-import { useId, useState } from 'react';
+import { XIcon } from 'lucide-react';
+import { useState } from 'react';
 
 import LanguageSwitcher from './LanguageSwitcher';
 
 import { m } from '@/paraglide/messages';
 
 export const Header = () => {
-  const menuId = useId();
   const [open, setOpen] = useState(false);
 
-  const closeMenu = () => {
-    if (open) {
-      setOpen(false);
-    }
-  };
+  const closeMenu = () => setOpen(false);
+
+  const links = [
+    { to: '/', label: m.menu_home() },
+    { to: '/about/', label: m.menu_about() },
+    { to: '/prices/', label: m.menu_prices() },
+    { to: '/training/', label: m.menu_trainings() },
+    { to: '/gallery/', label: m.menu_gallery() },
+    { to: '/contact/', label: m.menu_contact() },
+  ] as const;
 
   return (
-    <header
-      className={cn('z-2 w-full border-primary-light border-b', { 'fixed md:relative': open })}
-    >
+    <header className="z-2 w-full border-primary-light border-b">
       <nav>
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
-          <Link to="/" className="z-10 flex items-center space-x-3" onClick={closeMenu}>
+          <Link to="/" className="z-10 flex items-center space-x-3">
             <img src={logo} alt="Alexa Lashes Logo" width={42} height={36} />
             <span className="self-center whitespace-nowrap font-semibold text-foreground text-xl dark:text-primary">
               Alexa Lashes
@@ -31,105 +41,65 @@ export const Header = () => {
           </Link>
           <button
             type="button"
-            className="relative z-10 h-10 w-10 cursor-pointer rounded bg-primary focus:outline-none md:hidden"
+            className="cursor-pointer md:hidden"
             aria-label={open ? m.menu_close() : m.menu_open()}
             aria-expanded={open}
-            aria-controls={menuId}
             onClick={() => setOpen((prev) => !prev)}
           >
-            <div className="absolute top-1/2 left-4.5 block w-5 -translate-x-1/2 -translate-y-1/2 transform">
-              <span
-                className={cn(
-                  'absolute block h-0.5 w-6 transform bg-current text-white transition duration-250 ease-in-out',
-                  { 'rotate-45': open, '-translate-y-1.5': !open },
-                )}
-              ></span>
-              <span
-                className={cn(
-                  'absolute block h-0.5 w-6 transform bg-current text-white transition duration-250 ease-in-out',
-                  { 'opacity-0': open },
-                )}
-              ></span>
-              <span
-                className={cn(
-                  'absolute block h-0.5 w-6 transform bg-current text-white transition duration-250 ease-in-out',
-                  { '-rotate-45': open, 'translate-y-1.5': !open },
-                )}
-              ></span>
-            </div>
+            <MenuToggle open={open} />
           </button>
-          <div
-            className={cn('w-full md:flex md:w-auto md:pt-0', {
-              'fixed top-0 left-0 h-full bg-background pt-18 md:relative md:bg-transparent': open,
-              hidden: !open,
-            })}
-            id={menuId}
-          >
-            <ul
-              className={cn(
-                'border-primary-light border-t text-center font-medium md:mt-0 md:mr-20 md:flex md:flex-row md:space-x-8 md:border-0',
-                { 'mb-10 space-y-5 pt-10 md:mb-0 md:space-y-0 md:pt-0': open },
-              )}
-            >
-              <li>
-                <Link
-                  to="/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
-                  onClick={closeMenu}
-                >
-                  {m.menu_home()}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
-                  onClick={closeMenu}
-                >
-                  {m.menu_about()}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/prices/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
-                  onClick={closeMenu}
-                >
-                  {m.menu_prices()}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/training/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
-                  onClick={closeMenu}
-                >
-                  {m.menu_trainings()}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/gallery/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
-                  onClick={closeMenu}
-                >
-                  {m.menu_gallery()}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact/"
-                  className="block px-3 py-2 text-xl hover:text-primary md:p-0 md:text-base [&.active]:text-primary transition-colors"
-                  onClick={closeMenu}
-                >
-                  {m.menu_contact()}
-                </Link>
-              </li>
+          <div className="hidden md:flex md:items-center md:gap-8">
+            <ul className="flex flex-row space-x-8 font-medium">
+              {links.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-base transition-colors hover:text-primary [&.active]:text-primary"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <LanguageSwitcher />
           </div>
         </div>
       </nav>
+
+      <Drawer open={open} onOpenChange={setOpen} swipeDirection="right">
+        <DrawerContent className="w-full max-w-xs">
+          <DrawerHeader className="flex-row items-center justify-between border-primary-light border-b">
+            <DrawerTitle className="text-lg">Alexa Lashes</DrawerTitle>
+            <DrawerClose
+              render={
+                <button
+                  type="button"
+                  className="cursor-pointer rounded-full p-2 text-primary transition-colors hover:bg-primary-light"
+                />
+              }
+            >
+              <XIcon className="size-5" />
+              <span className="sr-only">{m.menu_close()}</span>
+            </DrawerClose>
+          </DrawerHeader>
+          <ul className="flex flex-1 flex-col gap-1 overflow-y-auto p-4 font-medium">
+            {links.map((link) => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className="block rounded-md px-3 py-2.5 text-lg transition-colors hover:bg-primary-light hover:text-primary [&.active]:text-primary"
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="border-primary-light border-t p-4">
+            <LanguageSwitcher />
+          </div>
+        </DrawerContent>
+      </Drawer>
     </header>
   );
 };
