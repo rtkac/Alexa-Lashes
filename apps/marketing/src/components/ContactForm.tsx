@@ -64,8 +64,14 @@ const ContactForm = () => {
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
+                      aria-describedby={
+                        field.state.meta.isTouched && field.state.meta.errors.length > 0
+                          ? `${field.name}-error`
+                          : undefined
+                      }
                     />
                     <FieldError
+                      id={`${field.name}-error`}
                       errors={field.state.meta.isTouched ? field.state.meta.errors : []}
                     />
                   </div>
@@ -99,8 +105,14 @@ const ContactForm = () => {
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
+                      aria-describedby={
+                        field.state.meta.isTouched && field.state.meta.errors.length > 0
+                          ? `${field.name}-error`
+                          : undefined
+                      }
                     />
                     <FieldError
+                      id={`${field.name}-error`}
                       errors={field.state.meta.isTouched ? field.state.meta.errors : []}
                     />
                   </div>
@@ -136,8 +148,14 @@ const ContactForm = () => {
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
+                      aria-describedby={
+                        field.state.meta.isTouched && field.state.meta.errors.length > 0
+                          ? `${field.name}-error`
+                          : undefined
+                      }
                     />
                     <FieldError
+                      id={`${field.name}-error`}
                       errors={field.state.meta.isTouched ? field.state.meta.errors : []}
                     />
                   </div>

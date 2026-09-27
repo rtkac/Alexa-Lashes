@@ -8,6 +8,7 @@ import { Disclaimer } from '@/components/Disclaimer';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { initializeAnalytics } from '@/lib/analytics';
+import { m } from '@/paraglide/messages';
 import { getLocale } from '@/paraglide/runtime';
 
 type RootDocumentProps = { children: React.ReactNode };
@@ -26,8 +27,16 @@ const RootDocument = ({ children }: RootDocumentProps) => {
         <HeadContent />
       </head>
       <body>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:font-medium focus:text-primary-strong focus:outline-2 focus:outline-offset-2 focus:outline-primary-strong"
+        >
+          {m.skip_to_content()}
+        </a>
         <Header />
-        <main className="min-h-[calc(100vh-300px)]">{children}</main>
+        <main id="main-content" className="min-h-[calc(100vh-300px)]">
+          {children}
+        </main>
         <Footer />
         <Disclaimer />
         <Scripts />

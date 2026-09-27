@@ -68,8 +68,16 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                     onBlur={field.handleBlur}
                     className="border-primary-disabled"
                     invalid={!field.state.meta.isValid}
+                    aria-describedby={
+                      field.state.meta.isTouched && field.state.meta.errors.length > 0
+                        ? `${field.name}-error`
+                        : undefined
+                    }
                   />
-                  <FieldError errors={field.state.meta.isTouched ? field.state.meta.errors : []} />
+                  <FieldError
+                    id={`${field.name}-error`}
+                    errors={field.state.meta.isTouched ? field.state.meta.errors : []}
+                  />
                 </div>
               )}
             </form.Field>
@@ -104,8 +112,16 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                     onBlur={field.handleBlur}
                     className="border-primary-disabled"
                     invalid={!field.state.meta.isValid}
+                    aria-describedby={
+                      field.state.meta.isTouched && field.state.meta.errors.length > 0
+                        ? `${field.name}-error`
+                        : undefined
+                    }
                   />
-                  <FieldError errors={field.state.meta.isTouched ? field.state.meta.errors : []} />
+                  <FieldError
+                    id={`${field.name}-error`}
+                    errors={field.state.meta.isTouched ? field.state.meta.errors : []}
+                  />
                 </div>
               )}
             </form.Field>
@@ -142,8 +158,16 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                     onBlur={field.handleBlur}
                     className="border-primary-disabled"
                     invalid={!field.state.meta.isValid}
+                    aria-describedby={
+                      field.state.meta.isTouched && field.state.meta.errors.length > 0
+                        ? `${field.name}-error`
+                        : undefined
+                    }
                   />
-                  <FieldError errors={field.state.meta.isTouched ? field.state.meta.errors : []} />
+                  <FieldError
+                    id={`${field.name}-error`}
+                    errors={field.state.meta.isTouched ? field.state.meta.errors : []}
+                  />
                 </div>
               )}
             </form.Field>

@@ -16,7 +16,7 @@ const Includes = ({ data }: IncludesProps) => {
               'mb-4 border-primary-light border-b pb-4': index !== data.length - 1,
             })}
           >
-            <CircleCheckIcon className="mr-3 w-5 shrink-0 fill-primary stroke-white" />
+            <CircleCheckIcon className="mr-3 w-5 shrink-0 fill-primary-strong stroke-white" />
             <p className="text-sm">{include}</p>
           </div>
         ))}
