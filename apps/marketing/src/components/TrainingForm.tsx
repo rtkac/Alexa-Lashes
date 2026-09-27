@@ -56,7 +56,7 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
             >
               {(field) => (
                 <div className="flex flex-col space-y-1.5">
-                  <Label className="font-bold text-primary brightness-50" name={field.name}>
+                  <Label className="font-bold text-primary-strong" name={field.name}>
                     {m.training_form_name_label()}
                   </Label>
                   <Input
@@ -92,7 +92,7 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
             >
               {(field) => (
                 <div className="flex flex-col space-y-1.5">
-                  <Label className="font-bold text-primary brightness-50" name={field.name}>
+                  <Label className="font-bold text-primary-strong" name={field.name}>
                     {m.training_form_email_label()}
                   </Label>
                   <Input
@@ -130,7 +130,7 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
             >
               {(field) => (
                 <div className="flex flex-col space-y-1.5">
-                  <Label className="font-bold text-primary brightness-50" name={field.name}>
+                  <Label className="font-bold text-primary-strong" name={field.name}>
                     {m.training_form_message_label()}
                   </Label>
                   <Textarea

@@ -6,9 +6,7 @@ const QrCode = () => {
       <img src="/qr_code.webp" alt="QR code" className="mx-auto h-40 w-40" />
       <div>
         <h2 className="mt-7 mb-3 font-bold text-xl md:mt-0 md:text-xl">{m.qr_code_title()}</h2>
-        <p className="text-neutral-500 text-sm md:text-base dark:text-amber-50">
-          {m.qr_code_desc()}
-        </p>
+        <p className="text-neutral-500 text-sm md:text-base">{m.qr_code_desc()}</p>
       </div>
     </div>
   );

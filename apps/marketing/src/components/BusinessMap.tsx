@@ -8,7 +8,7 @@ const BusinessMap = () => {
       <GoogleMap
         defaultCenter={position}
         defaultZoom={15}
-        gestureHandling="greedy"
+        gestureHandling="cooperative"
         disableDefaultUI
         mapId="map-id"
         className="h-90 w-full"

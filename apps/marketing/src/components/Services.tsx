@@ -9,10 +9,10 @@ const Services = ({ data }: ServicesProps) => {
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
       {data.map((service) => (
         <div className="card p-5" key={service.name}>
-          <h3 className="mb-1 text-sm sm:text-base">{service.name}</h3>
+          <p className="mb-1 text-sm sm:text-base">{service.name}</p>
           <div className="flex space-x-5">
             <div className="flex items-center justify-center space-x-1.5">
-              <span className="font-bold text-2xl text-primary">{service.price} €</span>
+              <span className="font-bold text-2xl text-primary-strong">{service.price} €</span>
             </div>
           </div>
         </div>

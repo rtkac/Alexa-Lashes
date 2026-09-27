@@ -20,7 +20,7 @@ const ReviewContent = ({ review }: ReviewContentProps) => (
       <meta itemProp="worstRating" content="1" />
       <meta itemProp="ratingValue" content={String(review.rating)} />
       <meta itemProp="bestRating" content="5" />
-      <p className="text-neutral-600 text-sm dark:text-amber-50" itemProp="reviewBody">
+      <p className="text-neutral-600 text-sm" itemProp="reviewBody">
         {review.description}
       </p>
     </div>
@@ -44,14 +44,14 @@ const ReviewContent = ({ review }: ReviewContentProps) => (
           loading="lazy"
         />
       </div>
-      <h3
+      <p
         className="font-bold text-black text-sm"
         itemProp="author"
         itemScope
         itemType="https://schema.org/Person"
       >
         <span itemProp="name">{review.name}</span>
-      </h3>
+      </p>
     </div>
   </>
 );

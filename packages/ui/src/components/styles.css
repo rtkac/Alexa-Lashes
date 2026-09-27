@@ -4,11 +4,8 @@
 
 @import 'tw-animate-css';
 
-/* shadcn variants (data-open, data-active, …), accordion keyframes and utilities */
 @import 'shadcn/tailwind.css';
 
-/* Scan the whole ui package (custom + shadcn components, icons). The apps are scanned
-   automatically, but this package is reached through node_modules, which is skipped. */
 @source '..';
 
 @custom-variant dark (&:is(.dark *));
@@ -42,6 +39,7 @@ code {
   --primary: #c4ad72;
   --primary-light: #f7f3e9;
   --primary-disabled: #e1d6b8;
+  --primary-strong: color-mix(in srgb, var(--primary) 60%, black 40%);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: #f4f2ee;
   --secondary-foreground: oklch(0.205 0 0);
@@ -118,6 +116,7 @@ code {
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
   --color-primary-disabled: var(--primary-disabled);
+  --color-primary-strong: var(--primary-strong);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -181,6 +180,6 @@ code {
     @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center cursor-pointer dark:text-amber-50 border-2 border-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
   }
   .btn-outline-primary {
-    @apply bg-background text-primary inline-block py-2.5 px-4 rounded-md hover:bg-white transition font-bold text-center cursor-pointer border-2 border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+    @apply bg-background text-primary-strong inline-block py-2.5 px-4 rounded-md hover:bg-white transition font-bold text-center cursor-pointer border-2 border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
   }
 }

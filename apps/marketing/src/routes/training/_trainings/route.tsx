@@ -11,7 +11,7 @@ const PathlessLayoutComponent = () => {
         itemType="https://schema.org/BreadcrumbList"
       >
         <li
-          className="text-primary"
+          className="text-primary-strong"
           itemProp="itemListElement"
           itemScope
           itemType="https://schema.org/ListItem"
@@ -23,7 +23,7 @@ const PathlessLayoutComponent = () => {
         </li>
         /
         <li
-          className="text-primary brightness-50"
+          className="text-primary-strong"
           itemProp="itemListElement"
           itemScope
           itemType="https://schema.org/ListItem"
