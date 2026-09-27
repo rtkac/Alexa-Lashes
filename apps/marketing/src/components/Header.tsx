@@ -35,7 +35,7 @@ export const Header = () => {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
           <Link to="/" className="z-10 flex items-center space-x-3">
             <img src={logo} alt="Alexa Lashes Logo" width={42} height={36} />
-            <span className="self-center whitespace-nowrap font-semibold text-foreground text-xl dark:text-primary">
+            <span className="self-center whitespace-nowrap font-semibold text-foreground text-xl">
               Alexa Lashes
             </span>
           </Link>
@@ -54,7 +54,7 @@ export const Header = () => {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-base transition-colors hover:text-primary [&.active]:text-primary"
+                    className="rounded-full px-3 py-1.5 text-base transition-colors hover:text-primary [&.active]:bg-primary-light [&.active]:font-semibold [&.active]:text-primary-strong"
                   >
                     {link.label}
                   </Link>
@@ -87,7 +87,7 @@ export const Header = () => {
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="block rounded-md px-3 py-2.5 text-lg transition-colors hover:bg-primary-light hover:text-primary [&.active]:text-primary"
+                  className="block rounded-md px-3 py-2.5 text-lg transition-colors hover:bg-primary-light hover:text-primary [&.active]:bg-primary-light [&.active]:font-semibold [&.active]:text-primary-strong"
                   onClick={closeMenu}
                 >
                   {link.label}

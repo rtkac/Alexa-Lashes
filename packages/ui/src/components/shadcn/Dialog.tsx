@@ -63,7 +63,7 @@ function DialogContent({
             data-slot="dialog-close"
             render={<button type="button" className="absolute top-4 right-4 cursor-pointer" />}
           >
-            <XIcon className="text-primary brightness-50" />
+            <XIcon className="text-primary-strong" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}
@@ -126,7 +126,7 @@ function DialogDescription({ className, ...props }: DialogPrimitive.Description.
     <DialogPrimitive.Description
       data-slot="dialog-description"
       className={cn(
-        'text-primary text-sm brightness-50 *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground',
+        'text-primary-strong text-sm *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground',
         className,
       )}
       {...props}

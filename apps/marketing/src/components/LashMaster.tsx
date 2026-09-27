@@ -20,8 +20,8 @@ export const LashMaster = ({ title, desc_1, desc_2 }: LashMasterProps) => {
         </div>
       </div>
       <div className="space-y-3 text-center md:col-span-3 md:text-left">
-        <h2 className="font-bold text-primary">{title}</h2>
-        <h3 className="pb-2 font-bold text-2xl md:text-3xl">{m.lash_master_name()}</h3>
+        <p className="font-bold text-primary-strong">{title}</p>
+        <h2 className="pb-2 font-bold text-2xl md:text-3xl">{m.lash_master_name()}</h2>
         <p className="leading-6">{desc_1}</p>
         {desc_2 && <p className="leading-6">{desc_2}</p>}
       </div>

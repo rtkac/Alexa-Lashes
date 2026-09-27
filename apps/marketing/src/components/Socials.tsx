@@ -2,7 +2,7 @@ import { instagramUrl, tiktokUrl, whatsAppNumber } from '@/types';
 
 const Socials = () => {
   return (
-    <ul className="flex space-x-10 text-neutral-700 text-sm md:space-x-5 md:text-base dark:text-primary">
+    <ul className="flex space-x-10 text-neutral-700 text-sm md:space-x-5 md:text-base">
       <li>
         <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
           <svg

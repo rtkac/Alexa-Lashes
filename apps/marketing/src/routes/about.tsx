@@ -50,7 +50,7 @@ const RouteComponent = () => {
       <div className="mb-18 grid gap-8 sm:grid-cols-2 md:mb-25 md:gap-12">
         <div className="text-center sm:text-left">
           <div className="space-y-5">
-            <h2 className="font-bold text-xl md:text-3xl dark:text-primary">{m.about_title()}</h2>
+            <h2 className="font-bold text-xl md:text-3xl">{m.about_title()}</h2>
             <p className="leading-6">{m.about_desc_1()}</p>
             <p className="leading-6">
               <ParaglideMessage
@@ -61,7 +61,7 @@ const RouteComponent = () => {
                 }}
               />
             </p>
-            <p className="rounded-r-md border-primary border-l-4 bg-primary-light p-5 font-bold text-primary italic">
+            <p className="rounded-r-md border-primary border-l-4 bg-primary-light p-5 font-bold text-primary-strong italic">
               {m.about_desc_label()}
             </p>
           </div>
@@ -71,7 +71,7 @@ const RouteComponent = () => {
         </div>
       </div>
       <div className="mb-18 md:mb-25">
-        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl dark:text-primary">
+        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
           {m.about_gallery_title()}
         </h2>
         <PreviewGallery gallery={gallery()} />

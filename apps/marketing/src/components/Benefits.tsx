@@ -11,7 +11,7 @@ const Benefits = ({ data }: BenefitsProps) => {
         <div key={benefit.title} className="card p-5">
           <span className="flex justify-center">{benefit.icon}</span>
           <h3 className="mb-1 font-bold">{benefit.title}</h3>
-          <p className="text-neutral-600 text-sm dark:text-amber-50">{benefit.description}</p>
+          <p className="text-neutral-600 text-sm">{benefit.description}</p>
         </div>
       ))}
     </div>

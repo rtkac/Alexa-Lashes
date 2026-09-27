@@ -46,7 +46,7 @@ const RouteComponent = () => {
         }
       />
       <div className="mx-auto mb-20 max-w-4xl text-center">
-        <h2 className="mb-6 font-bold text-primary text-xl md:text-3xl">
+        <h2 className="mb-6 font-bold text-primary-strong text-xl md:text-3xl">
           {m.training_basic_welcome_title()}
         </h2>
         <p className="mb-4">{m.training_basic_welcome_desc_1()}</p>
@@ -57,20 +57,20 @@ const RouteComponent = () => {
         <p className="mb-4 font-bold">{m.training_basic_welcome_desc_6()}</p>
       </div>
       <div className="mb-18">
-        <h2 className="mb-10 text-center font-bold text-xl md:text-3xl dark:text-primary">
+        <h2 className="mb-10 text-center font-bold text-xl md:text-3xl">
           {m.training_basic_why_title()}
         </h2>
         <Includes data={benefits()} />
         <p className="text-center text-neutral-500 text-sm">{m.training_basic_why_desc()}</p>
       </div>
       <div className="mb-18">
-        <h2 className="mb-10 text-center font-bold text-xl md:text-3xl dark:text-primary">
+        <h2 className="mb-10 text-center font-bold text-xl md:text-3xl">
           {m.training_basic_program_title()}
         </h2>
         <Program />
       </div>
       <div className="mb-18">
-        <h2 className="mb-5 text-center font-bold text-xl md:text-3xl dark:text-primary">
+        <h2 className="mb-5 text-center font-bold text-xl md:text-3xl">
           {m.training_basic_includes_title()}
         </h2>
         <p className="mb-5 text-center">{m.training_basic_includes_desc()}</p>

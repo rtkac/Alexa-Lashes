@@ -12,14 +12,14 @@ export const Program = () => {
         </h3>
         <div className="flex flex-col gap-7">
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">10:00</span>
+            <span className="w-11 font-bold text-primary-strong">10:00</span>
             <span className="font-bold">{m.training_basic_day_1_event_1()}</span>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">10:15</span>
+            <span className="w-11 font-bold text-primary-strong">10:15</span>
             <div className="flex flex-col gap-2">
               <span className="font-bold">{m.training_basic_day_1_event_2()}</span>
-              <p className="font-bold text-primary text-sm">
+              <p className="font-bold text-primary-strong text-sm">
                 {m.training_basic_day_1_event_2_desc()}
               </p>
               <ul className="ml-4 list-disc text-neutral-500 text-sm">
@@ -33,14 +33,14 @@ export const Program = () => {
             </div>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">13:00</span>
+            <span className="w-11 font-bold text-primary-strong">13:00</span>
             <span className="font-bold">{m.training_basic_day_1_event_3()}</span>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">13:30</span>
+            <span className="w-11 font-bold text-primary-strong">13:30</span>
             <div className="flex flex-col gap-2">
               <span className="font-bold">{m.training_basic_day_1_event_4()}</span>
-              <p className="font-bold text-primary text-sm">
+              <p className="font-bold text-primary-strong text-sm">
                 {m.training_basic_day_1_event_4_desc()}
               </p>
               <ul className="ml-4 list-disc text-neutral-500 text-sm">
@@ -51,7 +51,7 @@ export const Program = () => {
             </div>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">17:00</span>
+            <span className="w-11 font-bold text-primary-strong">17:00</span>
             <span className="font-bold">{m.training_basic_day_1_event_5()}</span>
           </div>
         </div>
@@ -65,30 +65,30 @@ export const Program = () => {
         </h3>
         <div className="flex flex-col gap-7">
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">10:00</span>
+            <span className="w-11 font-bold text-primary-strong">10:00</span>
             <span className="font-bold">{m.training_basic_day_2_event_1()}</span>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">12:00</span>
+            <span className="w-11 font-bold text-primary-strong">12:00</span>
             <span className="font-bold">{m.training_basic_day_2_event_2()}</span>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">12:30</span>
+            <span className="w-11 font-bold text-primary-strong">12:30</span>
             <span className="font-bold">{m.training_basic_day_2_event_3()}</span>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">12:45</span>
+            <span className="w-11 font-bold text-primary-strong">12:45</span>
             <div className="flex flex-col gap-2">
               <span className="font-bold">{m.training_basic_day_2_event_4()}</span>
               <p className="text-neutral-500 text-sm">{m.training_basic_day_2_event_4_desc()}</p>
             </div>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">16:30</span>
+            <span className="w-11 font-bold text-primary-strong">16:30</span>
             <span className="font-bold">{m.training_basic_day_2_event_5()}</span>
           </div>
           <div className="flex gap-6 sm:gap-14">
-            <span className="w-11 font-bold text-primary">17:00</span>
+            <span className="w-11 font-bold text-primary-strong">17:00</span>
             <span className="font-bold">{m.training_basic_day_2_event_6()}</span>
           </div>
         </div>

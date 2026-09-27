@@ -17,7 +17,7 @@ const Includes = ({ data }: IncludesProps) => {
             })}
           >
             <CircleCheckIcon className="mr-3 w-5 shrink-0 fill-primary stroke-white" />
-            <h3 className="text-sm">{include}</h3>
+            <p className="text-sm">{include}</p>
           </div>
         ))}
       </div>

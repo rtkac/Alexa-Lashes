@@ -17,20 +17,18 @@ export const Footer = () => {
         <div className="mx-auto max-w-6xl space-y-10 px-4 text-neutral-700 text-sm md:text-base">
           <div className="grid space-y-10 text-center md:grid-cols-3 md:space-x-10 md:space-y-0 md:text-left">
             <div>
-              <p className="mb-2 font-bold dark:text-primary">{m.footer_alexa_lashes_title()}</p>
-              <p className="text-neutral-500 text-sm dark:text-neutral-300">
-                {m.footer_alexa_lashes_desc()}
-              </p>
+              <p className="mb-2 font-bold">{m.footer_alexa_lashes_title()}</p>
+              <p className="text-neutral-500 text-sm">{m.footer_alexa_lashes_desc()}</p>
             </div>
             <div>
-              <p className="mb-2 font-bold dark:text-primary">{m.footer_contact_title()}</p>
-              <p className="mb-1 text-neutral-500 text-sm dark:text-neutral-300">
+              <p className="mb-2 font-bold">{m.footer_contact_title()}</p>
+              <p className="mb-1 text-neutral-500 text-sm">
                 <a href={`mailto:${email}`}>{email}</a>
               </p>
-              <p className="mb-1 text-neutral-500 text-sm dark:text-neutral-300">
+              <p className="mb-1 text-neutral-500 text-sm">
                 <a href={`tel:${telephoneNumber}`}>{telephoneNumber}</a>
               </p>
-              <p className="mb-1 text-neutral-500 text-sm dark:text-neutral-300">
+              <p className="mb-1 text-neutral-500 text-sm">
                 <a
                   href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
                   target="_blank"
@@ -41,16 +39,10 @@ export const Footer = () => {
               </p>
             </div>
             <div>
-              <p className="mb-2 font-bold dark:text-primary">{m.footer_opening_hours_title()}</p>
-              <p className="mb-1 text-neutral-500 text-sm dark:text-neutral-300">
-                {m.footer_opening_hours_weekdays()}
-              </p>
-              <p className="mb-1 text-neutral-500 text-sm dark:text-neutral-300">
-                {m.footer_opening_hours_saturday()}
-              </p>
-              <p className="mb-1 text-neutral-500 text-sm dark:text-neutral-300">
-                {m.footer_opening_hours_sunday()}
-              </p>
+              <p className="mb-2 font-bold">{m.footer_opening_hours_title()}</p>
+              <p className="mb-1 text-neutral-500 text-sm">{m.footer_opening_hours_weekdays()}</p>
+              <p className="mb-1 text-neutral-500 text-sm">{m.footer_opening_hours_saturday()}</p>
+              <p className="mb-1 text-neutral-500 text-sm">{m.footer_opening_hours_sunday()}</p>
             </div>
           </div>
         </div>

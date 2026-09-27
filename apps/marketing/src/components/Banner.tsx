@@ -16,12 +16,7 @@ const Banner = ({
   buttons,
 }: BannerProps) => {
   return (
-    <div
-      className={cn(
-        'mb-13 rounded-md bg-center bg-cover text-center text-white dark:text-amber-50',
-        image,
-      )}
-    >
+    <div className={cn('mb-13 rounded-md bg-center bg-cover text-center text-white', image)}>
       <div
         className={cn(
           'flex h-full min-h-100 w-full items-center justify-center rounded-md p-6 md:min-h-130',
