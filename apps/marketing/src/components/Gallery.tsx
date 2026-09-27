@@ -279,8 +279,9 @@ const Gallery = () => {
         <div className="mb-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {galleryWork.map(({ src, name }) => (
             <PhotoView key={name} src={src}>
-              <div
-                className="group h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60"
+              <button
+                type="button"
+                className="group block h-40 w-full appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-60"
                 itemScope
                 itemType="http://schema.org/ImageObject"
               >
@@ -290,7 +291,7 @@ const Gallery = () => {
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                   itemProp="contentUrl"
                 />
-              </div>
+              </button>
             </PhotoView>
           ))}
         </div>
@@ -302,8 +303,9 @@ const Gallery = () => {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {galleryTraining.map(({ src, name }) => (
             <PhotoView key={name} src={src}>
-              <div
-                className="group h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-60"
+              <button
+                type="button"
+                className="group block h-40 w-full appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-60"
                 itemScope
                 itemType="http://schema.org/ImageObject"
               >
@@ -314,7 +316,7 @@ const Gallery = () => {
                   itemProp="contentUrl"
                   loading="lazy"
                 />
-              </div>
+              </button>
             </PhotoView>
           ))}
         </div>

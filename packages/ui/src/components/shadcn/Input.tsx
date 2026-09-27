@@ -16,7 +16,7 @@ function Input({ name, invalid, className, ...props }: InputProps) {
       data-slot="input"
       aria-invalid={invalid}
       className={cn(
-        'rounded-md border border-primary-light bg-background px-4 py-3 focus:outline-primary',
+        'rounded-md border border-primary-light bg-background px-4 py-3 focus:outline-primary-strong',
         'aria-invalid:border-red-300 aria-invalid:focus:outline-red-400',
         className,
       )}

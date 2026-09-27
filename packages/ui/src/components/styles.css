@@ -174,12 +174,12 @@ code {
     @apply rounded-md border border-primary-light bg-white dark:border-tertiary-light dark:bg-tertiary;
   }
   .btn-primary {
-    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center disabled:bg-primary-disabled border-2 border-primary disabled:hover:brightness-100 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+    @apply bg-primary text-white inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center disabled:bg-primary-disabled border-2 border-primary disabled:hover:brightness-100 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong;
   }
   .btn-secondary {
-    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center cursor-pointer dark:text-amber-50 border-2 border-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+    @apply bg-secondary text-black inline-block py-2.5 px-4 rounded-md hover:brightness-120 transition font-bold text-center cursor-pointer dark:text-amber-50 border-2 border-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong;
   }
   .btn-outline-primary {
-    @apply bg-background text-primary-strong inline-block py-2.5 px-4 rounded-md hover:bg-white transition font-bold text-center cursor-pointer border-2 border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+    @apply bg-background text-primary-strong inline-block py-2.5 px-4 rounded-md hover:bg-white transition font-bold text-center cursor-pointer border-2 border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong;
   }
 }

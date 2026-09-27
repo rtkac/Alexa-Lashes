@@ -16,8 +16,9 @@ const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
       <PhotoProvider>
         {gallery.map(({ src, name }) => (
           <PhotoView key={name} src={src}>
-            <div
-              className="group h-40 overflow-hidden rounded-md hover:cursor-pointer md:h-50"
+            <button
+              type="button"
+              className="group block h-40 w-full appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-50"
               itemScope
               itemType="http://schema.org/ImageObject"
             >
@@ -28,7 +29,7 @@ const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
                 loading="lazy"
                 itemProp="contentUrl"
               />
-            </div>
+            </button>
           </PhotoView>
         ))}
       </PhotoProvider>

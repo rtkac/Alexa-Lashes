@@ -41,15 +41,15 @@ export const Header = () => {
           </Link>
           <button
             type="button"
-            className="cursor-pointer md:hidden"
+            className="cursor-pointer lg:hidden"
             aria-label={open ? m.menu_close() : m.menu_open()}
             aria-expanded={open}
             onClick={() => setOpen((prev) => !prev)}
           >
             <MenuToggle open={open} />
           </button>
-          <div className="hidden md:flex md:items-center md:gap-8">
-            <ul className="flex flex-row space-x-8 font-medium">
+          <div className="hidden lg:flex lg:items-center lg:gap-4">
+            <ul className="flex flex-row items-center gap-1 font-medium">
               {links.map((link) => (
                 <li key={link.to}>
                   <Link
@@ -69,12 +69,15 @@ export const Header = () => {
       <Drawer open={open} onOpenChange={setOpen} swipeDirection="right">
         <DrawerContent className="w-full max-w-xs">
           <DrawerHeader className="flex-row items-center justify-between border-primary-light border-b">
-            <DrawerTitle className="text-lg">Alexa Lashes</DrawerTitle>
+            <div className="flex items-center space-x-3">
+              <img src={logo} alt="" width={42} height={36} />
+              <DrawerTitle className="text-lg">Alexa Lashes</DrawerTitle>
+            </div>
             <DrawerClose
               render={
                 <button
                   type="button"
-                  className="cursor-pointer rounded-full p-2 text-primary transition-colors hover:bg-primary-light"
+                  className="cursor-pointer rounded-full p-3 text-primary transition-colors hover:bg-primary-light"
                 />
               }
             >
@@ -87,7 +90,7 @@ export const Header = () => {
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="block rounded-md px-3 py-2.5 text-lg transition-colors hover:bg-primary-light hover:text-primary [&.active]:bg-primary-light [&.active]:font-semibold [&.active]:text-primary-strong"
+                  className="block rounded-md px-3 py-2.5 text-lg no-underline transition-colors hover:bg-primary-light hover:text-primary [&.active]:bg-primary-light [&.active]:font-semibold [&.active]:text-primary-strong"
                   onClick={closeMenu}
                 >
                   {link.label}

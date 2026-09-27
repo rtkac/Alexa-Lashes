@@ -99,7 +99,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
       <button
         type="button"
         aria-label="Previous review"
-        className="absolute top-1/2 -left-3 flex h-9 w-9 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary shadow-lg shadow-primary-light transition hover:border-primary hover:shadow-none xl:-left-5"
+        className="absolute top-1/2 -left-3 flex h-11 w-11 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary shadow-lg shadow-primary-light transition hover:border-primary hover:shadow-none xl:-left-5"
         onClick={goToPrev}
       >
         <ChevronLeftIcon size={24} aria-hidden="true" />
@@ -107,7 +107,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
       <button
         type="button"
         aria-label="Next review"
-        className="absolute top-1/2 -right-3 flex h-9 w-9 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary shadow-lg shadow-primary-light transition hover:border-primary hover:shadow-none xl:-right-5"
+        className="absolute top-1/2 -right-3 flex h-11 w-11 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary shadow-lg shadow-primary-light transition hover:border-primary hover:shadow-none xl:-right-5"
         onClick={goToNext}
       >
         <ChevronRightIcon size={24} aria-hidden="true" />
