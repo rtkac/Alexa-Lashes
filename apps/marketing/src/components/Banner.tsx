@@ -24,11 +24,13 @@ const Banner = ({
         )}
       >
         <div className="flex w-250 flex-col justify-between">
-          <h1 className="mb-8 font-extrabold text-2xl md:mb-3 md:text-5xl">{title}</h1>
-          <p className="mb-6 hidden whitespace-pre-line leading-7 md:block md:font-bold lg:text-lg">
+          <h1 className="mb-8 text-balance font-extrabold text-3xl text-shadow-sm md:mb-3 md:text-5xl">
+            {title}
+          </h1>
+          <p className="mb-6 hidden whitespace-pre-line text-shadow-sm leading-7 md:block md:font-bold lg:text-lg">
             {description}
           </p>
-          <div className="space-y-4">{buttons}</div>
+          <div className="flex flex-wrap justify-center gap-y-4">{buttons}</div>
         </div>
       </div>
     </div>

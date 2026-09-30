@@ -12,7 +12,7 @@ const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-14 max-w-180 text-center">
-        <h1 className="mb-3 font-bold text-2xl md:text-4xl">{m.contact_title()}</h1>
+        <h1 className="mb-3 text-balance font-bold text-2xl md:text-4xl">{m.contact_title()}</h1>
         <p className="leading-6">{m.contact_desc()}</p>
       </div>
       <div className="mb-5 grid gap-5 md:mb-18 md:grid-cols-7 md:gap-15">
@@ -22,9 +22,9 @@ const RouteComponent = () => {
         <div className="space-y-5 md:col-span-3">
           <div className="card p-6">
             <h2 className="mb-3 font-bold text-lg">{m.contact_info()}</h2>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <MapPinIcon size="20" className="text-primary" />
+            <ul className="space-y-3">
+              <li className="flex items-center space-x-3">
+                <MapPinIcon size="20" className="shrink-0 text-primary" />
                 <a
                   href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
                   target="_blank"
@@ -32,33 +32,35 @@ const RouteComponent = () => {
                 >
                   {address}
                 </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <PhoneIcon size="20" className="text-primary" />
+              </li>
+              <li className="flex items-center space-x-3">
+                <PhoneIcon size="20" className="shrink-0 text-primary" />
                 <a href={`tel:${telephoneNumber}`}>{telephoneNumber}</a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MailIcon size="20" className="text-primary" />
-                <a href={`mailto:${email}`}>{email}</a>
-              </div>
-            </div>
+              </li>
+              <li className="flex items-center space-x-3">
+                <MailIcon size="20" className="shrink-0 text-primary" />
+                <a href={`mailto:${email}`} className="break-all">
+                  {email}
+                </a>
+              </li>
+            </ul>
           </div>
           <div className="card p-6">
             <h2 className="mb-3 font-bold text-lg">{m.contact_opening_hours()}</h2>
-            <div className="space-y-3">
-              <div className="flex justify-between">
-                <span>{m.contact_opening_hours_weekdays()}</span>
-                <p>{m.contact_opening_hours_weekdays_hours()}</p>
+            <dl className="space-y-3">
+              <div className="flex justify-between gap-4">
+                <dt>{m.contact_opening_hours_weekdays()}</dt>
+                <dd>{m.contact_opening_hours_weekdays_hours()}</dd>
               </div>
-              <div className="flex justify-between">
-                <span>{m.contact_opening_hours_saturday()}</span>
-                <p>{m.contact_opening_hours_saturday_hours()}</p>
+              <div className="flex justify-between gap-4">
+                <dt>{m.contact_opening_hours_saturday()}</dt>
+                <dd>{m.contact_opening_hours_saturday_hours()}</dd>
               </div>
-              <div className="flex justify-between">
-                <span>{m.contact_opening_hours_sunday()}</span>
-                <p>{m.contact_opening_hours_sunday_hours()}</p>
+              <div className="flex justify-between gap-4">
+                <dt>{m.contact_opening_hours_sunday()}</dt>
+                <dd>{m.contact_opening_hours_sunday_hours()}</dd>
               </div>
-            </div>
+            </dl>
           </div>
           <div className="card p-6">
             <h2 className="mb-3 font-bold text-lg">{m.contact_socials()}</h2>

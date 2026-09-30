@@ -9,8 +9,16 @@
       "Bash(bun run format *)",
       "Bash(bun run format:write *)",
       "Bash(bun run build *)",
-      "Bash(bun run build *)",
-      "Bash(bun run dev *)"
+      "Bash(bun run dev *)",
+      "Bash(ls *)",
+      "Bash(cat *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(DROP TABLE *)",
+      "Bash(sudo *)"
     ]
   }
 }

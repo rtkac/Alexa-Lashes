@@ -1,3 +1,4 @@
+import { getLocale } from '@/paraglide/runtime';
 import type { LashPrice } from '@/types';
 
 type ServicesProps = {
@@ -5,19 +6,23 @@ type ServicesProps = {
 };
 
 const Services = ({ data }: ServicesProps) => {
+  const formatPrice = new Intl.NumberFormat(getLocale(), {
+    style: 'currency',
+    currency: 'EUR',
+    maximumFractionDigits: 0,
+  }).format;
+
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+    <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
       {data.map((service) => (
-        <div className="card p-5" key={service.name}>
+        <li className="card p-5" key={service.name}>
           <p className="mb-1 text-sm sm:text-base">{service.name}</p>
-          <div className="flex space-x-5">
-            <div className="flex items-center justify-center space-x-1.5">
-              <span className="font-bold text-2xl text-primary-strong">{service.price} €</span>
-            </div>
-          </div>
-        </div>
+          <p className="font-bold text-2xl text-primary-strong tabular-nums">
+            {formatPrice(service.price)}
+          </p>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

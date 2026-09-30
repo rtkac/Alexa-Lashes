@@ -89,7 +89,9 @@ const RouteComponent = () => {
         }
       />
       <div className="mx-auto mb-10 max-w-180 text-center">
-        <h2 className="mb-3 font-bold text-xl md:text-3xl">{m.home_welcome_title()}</h2>
+        <h2 className="mb-3 text-balance font-bold text-xl md:text-3xl">
+          {m.home_welcome_title()}
+        </h2>
         <p className="leading-6">{m.home_welcome_desc()}</p>
       </div>
       <div className="mb-18 md:mb-25">
@@ -100,7 +102,7 @@ const RouteComponent = () => {
       </div>
       <div className="mb-18 md:mb-25">
         <div className="mb-6">
-          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
+          <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
             {m.home_gallery_title()}
           </h2>
           <PreviewGallery gallery={gallery()} />
@@ -113,7 +115,7 @@ const RouteComponent = () => {
       </div>
       {filteredReviews.length > 0 && (
         <div className="mb-18 md:mb-25">
-          <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
+          <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
             {m.home_reviews_title()}
           </h2>
           <Reviews reviews={filteredReviews} />

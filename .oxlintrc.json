@@ -19,7 +19,9 @@
     "**/lib/",
     "**/dist/",
     "**/**.hbs",
-    "**/*.gen.ts"
+    "**/*.gen.ts",
+    ".agents/",
+    ".claude/"
   ],
   "rules": {
     "constructor-super": "error",

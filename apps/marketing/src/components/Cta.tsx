@@ -17,9 +17,9 @@ const Cta = ({ variant = 'wheat', title, description, buttonLabel }: CtaProps) =
         'border border-primary-light bg-white': variant === 'white',
       })}
     >
-      <h2 className="mb-4 font-bold text-xl md:text-3xl">{title || m.cta_title()}</h2>
+      <h2 className="mb-4 text-balance font-bold text-xl md:text-3xl">{title || m.cta_title()}</h2>
       <p className="mx-auto mb-6 max-w-130 leading-6">{description || m.cta_desc()}</p>
-      <a href={whatsAppNumber} aria-label="Chat on WhatsApp" className="btn-primary">
+      <a href={whatsAppNumber} className="btn-primary">
         {buttonLabel || m.cta_link()}
       </a>
     </div>
