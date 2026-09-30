@@ -2,6 +2,7 @@ import { Review } from '@alexa-lashes/contracts/reviews';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from 'lucide-react';
 
+import { m } from '@/paraglide/messages';
 import { address, telephoneNumber } from '@/types';
 
 type ReviewContentProps = {
@@ -13,10 +14,10 @@ const ReviewContent = ({ review }: ReviewContentProps) => (
     <div className="mb-3">
       <div className="mb-3 flex space-x-1 text-primary" aria-hidden="true">
         {Array.from({ length: review.rating }).map((_, index) => (
-          <StarIcon key={`${review.id}-${index}`} size="17" />
+          <StarIcon key={`${review.id}-${index}`} size="17" fill="currentColor" />
         ))}
       </div>
-      <span className="sr-only">Rating: {review.rating} out of 5</span>
+      <span className="sr-only">{m.reviews_rating({ rating: review.rating })}</span>
       <meta itemProp="worstRating" content="1" />
       <meta itemProp="ratingValue" content={String(review.rating)} />
       <meta itemProp="bestRating" content="5" />
@@ -36,7 +37,7 @@ const ReviewContent = ({ review }: ReviewContentProps) => (
         <meta itemProp="address" content={address} />
         <img
           src="/logo.svg"
-          alt={review.name}
+          alt=""
           className="h-full w-full object-cover"
           width={35}
           height={35}
@@ -67,7 +68,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
   const goToNext = () => emblaApi?.goToNext();
 
   return (
-    <div className="relative">
+    <div>
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex touch-pan-y touch-pinch-zoom gap-4">
           {reviews.map((review) =>
@@ -96,22 +97,24 @@ const Reviews = ({ reviews }: ReviewsProps) => {
           )}
         </div>
       </div>
-      <button
-        type="button"
-        aria-label="Previous review"
-        className="absolute top-1/2 -left-3 flex h-11 w-11 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary shadow-lg shadow-primary-light transition hover:border-primary hover:shadow-none xl:-left-5"
-        onClick={goToPrev}
-      >
-        <ChevronLeftIcon size={24} aria-hidden="true" />
-      </button>
-      <button
-        type="button"
-        aria-label="Next review"
-        className="absolute top-1/2 -right-3 flex h-11 w-11 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary shadow-lg shadow-primary-light transition hover:border-primary hover:shadow-none xl:-right-5"
-        onClick={goToNext}
-      >
-        <ChevronRightIcon size={24} aria-hidden="true" />
-      </button>
+      <div className="mt-4 flex justify-center gap-3">
+        <button
+          type="button"
+          aria-label={m.reviews_prev()}
+          className="flex size-11 cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary-strong transition-colors hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong"
+          onClick={goToPrev}
+        >
+          <ChevronLeftIcon size={24} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          aria-label={m.reviews_next()}
+          className="flex size-11 cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary-strong transition-colors hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong"
+          onClick={goToNext}
+        >
+          <ChevronRightIcon size={24} aria-hidden="true" />
+        </button>
+      </div>
     </div>
   );
 };

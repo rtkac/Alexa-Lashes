@@ -269,57 +269,48 @@ const galleryTraining: ImageGallery[] = [
   },
 ];
 
+type GalleryGridProps = {
+  title: string;
+  images: ImageGallery[];
+  eagerCount?: number;
+};
+
+const GalleryGrid = ({ title, images, eagerCount = 0 }: GalleryGridProps) => {
+  return (
+    <div itemScope itemType="http://schema.org/ImageGallery">
+      <h2 className="mb-4 font-bold text-xl md:text-2xl" itemProp="name">
+        {title}
+      </h2>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        {images.map(({ src, name }, index) => (
+          <PhotoView key={name} src={src}>
+            <button
+              type="button"
+              className="group block h-40 w-full appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-60"
+              itemScope
+              itemType="http://schema.org/ImageObject"
+            >
+              <img
+                src={src}
+                alt={name}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                itemProp="contentUrl"
+                loading={index < eagerCount ? 'eager' : 'lazy'}
+              />
+            </button>
+          </PhotoView>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Gallery = () => {
   return (
     <PhotoProvider>
-      <div itemScope itemType="http://schema.org/ImageGallery">
-        <h2 className="mb-4 font-bold text-xl md:text-2xl" itemProp="name">
-          {m.gallery_work_title()}
-        </h2>
-        <div className="mb-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {galleryWork.map(({ src, name }) => (
-            <PhotoView key={name} src={src}>
-              <button
-                type="button"
-                className="group block h-40 w-full appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-60"
-                itemScope
-                itemType="http://schema.org/ImageObject"
-              >
-                <img
-                  src={src}
-                  alt={name}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  itemProp="contentUrl"
-                />
-              </button>
-            </PhotoView>
-          ))}
-        </div>
-      </div>
-      <div itemScope itemType="http://schema.org/ImageGallery">
-        <h2 className="mb-4 font-bold text-xl md:text-2xl" itemProp="name">
-          {m.gallery_training_title()}
-        </h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {galleryTraining.map(({ src, name }) => (
-            <PhotoView key={name} src={src}>
-              <button
-                type="button"
-                className="group block h-40 w-full appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-60"
-                itemScope
-                itemType="http://schema.org/ImageObject"
-              >
-                <img
-                  src={src}
-                  alt={name}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  itemProp="contentUrl"
-                  loading="lazy"
-                />
-              </button>
-            </PhotoView>
-          ))}
-        </div>
+      <div className="space-y-14">
+        <GalleryGrid title={m.gallery_work_title()} images={galleryWork} eagerCount={4} />
+        <GalleryGrid title={m.gallery_training_title()} images={galleryTraining} />
       </div>
     </PhotoProvider>
   );

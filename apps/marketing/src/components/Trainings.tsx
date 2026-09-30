@@ -14,12 +14,14 @@ const Trainings = () => {
             <p className="mb-1.5 font-bold text-primary-strong text-sm">
               {m.training_basic_title()}
             </p>
-            <h2 className="mb-2 font-bold text-xl md:text-2xl">{m.training_basic_subtitle()}</h2>
+            <h2 className="mb-2 text-balance font-bold text-xl md:text-2xl">
+              {m.training_basic_subtitle()}
+            </h2>
             <p className="mb-6 text-sm">{m.training_basic_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
                 src="/basic-training-banner.webp"
-                alt="Základný kurz predlžovania mihalníc"
+                alt={m.training_basic_image_alt()}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -45,9 +47,9 @@ const Trainings = () => {
               </ul>
             </div>
           </div>
-          <div className="space-y-5 sm:flex sm:justify-between sm:space-y-0">
+          <div className="space-y-5 sm:flex sm:items-center sm:justify-between sm:space-y-0">
             <div className="flex items-center space-x-2">
-              <ClockIcon size="20" />
+              <ClockIcon size="20" className="shrink-0" />
               <p className="text-sm">
                 {m.training_basic_duration_label()}&nbsp;{m.training_basic_duration()}
               </p>
@@ -64,12 +66,14 @@ const Trainings = () => {
             <p className="mb-1.5 font-bold text-primary-strong text-sm">
               {m.training_advanced_title()}
             </p>
-            <h2 className="mb-2 font-bold text-xl md:text-2xl">{m.training_advanced_subtitle()}</h2>
+            <h2 className="mb-2 text-balance font-bold text-xl md:text-2xl">
+              {m.training_advanced_subtitle()}
+            </h2>
             <p className="mb-6 text-sm">{m.training_advanced_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
                 src="/advanced-training-banner.webp"
-                alt="Pokročilý kurz predlžovania mihalníc"
+                alt={m.training_advanced_image_alt()}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -77,7 +81,7 @@ const Trainings = () => {
               <h3 className="mb-4 font-bold">{m.training_advanced_skills_title()}</h3>
               <ul className="grid gap-2 text-primary-strong text-sm sm:grid-cols-2">
                 <li className="flex items-center space-x-1.5">
-                  <CircleCheckIcon size="15" />
+                  <CircleCheckIcon size="15" className="shrink-0" />
                   <span>{m.training_advanced_skills_1()}</span>
                 </li>
                 <li className="flex items-center space-x-1.5">
@@ -95,9 +99,9 @@ const Trainings = () => {
               </ul>
             </div>
           </div>
-          <div className="h-full space-y-5 sm:flex sm:justify-between sm:space-y-0">
+          <div className="space-y-5 sm:flex sm:items-center sm:justify-between sm:space-y-0">
             <div className="flex items-center space-x-2">
-              <ClockIcon size="20" />
+              <ClockIcon size="20" className="shrink-0" />
               <p className="text-sm">
                 {m.training_advanced_duration_label()}&nbsp;{m.training_advanced_duration()}
               </p>

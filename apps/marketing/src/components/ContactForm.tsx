@@ -58,6 +58,7 @@ const ContactForm = () => {
                     <Label name={field.name}>{m.contact_form_name_label()}</Label>
                     <Input
                       name={field.name}
+                      autoComplete="name"
                       placeholder={m.contact_form_name_placeholder()}
                       value={field.state.value}
                       disabled={isSubmitting}
@@ -99,6 +100,8 @@ const ContactForm = () => {
                     <Label name={field.name}>{m.contact_form_email_label()}</Label>
                     <Input
                       name={field.name}
+                      type="email"
+                      autoComplete="email"
                       placeholder={m.contact_form_email_placeholder()}
                       value={field.state.value}
                       disabled={isSubmitting}
@@ -166,15 +169,21 @@ const ContactForm = () => {
         </div>
 
         {isSuccess && (
-          <div className="flex space-x-3 rounded border border-green-200 bg-green-100 p-5 text-green-800">
-            <CircleCheckIcon />
+          <div
+            role="status"
+            className="flex space-x-3 rounded-md border border-green-200 bg-green-100 p-5 text-green-800"
+          >
+            <CircleCheckIcon className="shrink-0" />
             <p>{m.contact_form_success_message()}</p>
           </div>
         )}
 
         {isError && (
-          <div className="flex space-x-3 rounded border border-red-200 bg-red-100 p-5 text-red-800">
-            <CircleAlertIcon />
+          <div
+            role="alert"
+            className="flex space-x-3 rounded-md border border-red-200 bg-red-100 p-5 text-red-800"
+          >
+            <CircleAlertIcon className="shrink-0" />
             <p>{m.contact_form_error_message()}</p>
           </div>
         )}
@@ -187,7 +196,7 @@ const ContactForm = () => {
             >
               {isSubmitting ? (
                 <span className="flex items-center gap-2">
-                  <LoaderIcon className="h-5 w-5 animate-spin" />
+                  <LoaderIcon className="size-5 animate-spin motion-reduce:animate-none" />
                   {m.contact_form_sending_button()}
                 </span>
               ) : (

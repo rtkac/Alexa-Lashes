@@ -2,9 +2,14 @@ import { instagramUrl, tiktokUrl, whatsAppNumber } from '@/types';
 
 const Socials = () => {
   return (
-    <ul className="flex space-x-10 text-neutral-700 text-sm md:space-x-5 md:text-base">
+    <ul className="-mx-3 flex gap-4 text-neutral-700 text-sm md:gap-0 md:text-base">
       <li>
-        <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex size-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong"
+        >
           <svg
             role="img"
             viewBox="0 0 24 24"
@@ -18,7 +23,12 @@ const Socials = () => {
         </a>
       </li>
       <li>
-        <a href={tiktokUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          href={tiktokUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex size-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong"
+        >
           <svg
             role="img"
             viewBox="0 0 24 24"
@@ -32,7 +42,10 @@ const Socials = () => {
         </a>
       </li>
       <li>
-        <a href={whatsAppNumber} aria-label="Chat on WhatsApp">
+        <a
+          href={whatsAppNumber}
+          className="inline-flex size-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong"
+        >
           <svg
             role="img"
             viewBox="0 0 24 24"

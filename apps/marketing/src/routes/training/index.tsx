@@ -10,27 +10,27 @@ const gallery = (): Gallery[] => [
   {
     thumbSrc: '/course-1.jpg',
     src: '/course-1.webp',
-    name: 'Kurz predlžovania mihalníc',
+    name: m.training_gallery_1_alt(),
   },
   {
     thumbSrc: '/course-2.jpg',
     src: '/course-2.webp',
-    name: 'Hlava na tréning predlžovania mihalníc',
+    name: m.training_gallery_2_alt(),
   },
   {
     thumbSrc: '/course-3.jpg',
     src: '/course-3.webp',
-    name: 'Žiačka s certifikátom na kurze predlžovania mihalníc',
+    name: m.training_gallery_3_alt(),
   },
   {
     thumbSrc: '/course-4.jpg',
     src: '/course-4.webp',
-    name: 'Odstraňovanie umelých mihalníc',
+    name: m.training_gallery_4_alt(),
   },
   {
     thumbSrc: '/course-5.jpg',
     src: '/course-5.webp',
-    name: 'Prax žiačky',
+    name: m.training_gallery_5_alt(),
   },
 ];
 
@@ -38,7 +38,7 @@ const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-14 max-w-180 text-center">
-        <h1 className="mb-3 font-bold text-2xl md:text-4xl">{m.training_title()}</h1>
+        <h1 className="mb-3 text-balance font-bold text-2xl md:text-4xl">{m.training_title()}</h1>
         <p className="leading-6">{m.training_desc()}</p>
       </div>
 
@@ -47,7 +47,7 @@ const RouteComponent = () => {
       </div>
 
       <div className="mb-18">
-        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
+        <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
           {m.training_gallery_title()}
         </h2>
         <div className="mb-6">

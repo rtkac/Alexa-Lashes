@@ -8,14 +8,16 @@ export const AboutUs = () => {
       <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
         <img
           src="/salon-alexa.webp"
-          alt="Salón Alexa Lashes"
-          className="w-full rounded-md"
+          alt={m.home_about_us_image_alt()}
+          width={1000}
+          height={1333}
+          className="h-auto w-full rounded-md"
           loading="lazy"
         />
       </div>
       <div className="text-center sm:text-left">
         <div className="mb-8 space-y-5">
-          <h2 className="font-bold text-xl md:text-2xl">{m.home_about_us_title()}</h2>
+          <h2 className="text-balance font-bold text-xl md:text-3xl">{m.home_about_us_title()}</h2>
           <p className="text-neutral-600 leading-6">{m.home_about_us_desc_1()}</p>
           <p className="text-neutral-600 leading-6">{m.home_about_us_desc_2()}</p>
         </div>

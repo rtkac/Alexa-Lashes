@@ -12,27 +12,27 @@ const gallery = (): Gallery[] => [
   {
     thumbSrc: '/reception.jpg',
     src: '/reception.webp',
-    name: 'Recepcia Alexa Lashes',
+    name: m.about_gallery_1_alt(),
   },
   {
     thumbSrc: '/salon-4.jpg',
     src: '/salon-4.webp',
-    name: 'Darčeky pre klientov salónu',
+    name: m.about_gallery_2_alt(),
   },
   {
     thumbSrc: '/salon-2.jpg',
     src: '/salon-2.webp',
-    name: 'Čakáreň Alexa Lashes',
+    name: m.about_gallery_3_alt(),
   },
   {
     thumbSrc: '/salon-3.jpg',
     src: '/salon-3.webp',
-    name: 'Kozmetické kreslo so svetlom',
+    name: m.about_gallery_4_alt(),
   },
   {
     thumbSrc: '/salon-5.jpg',
     src: '/salon-5.webp',
-    name: 'Kvety a darčeková poukážka',
+    name: m.about_gallery_5_alt(),
   },
 ];
 
@@ -50,7 +50,7 @@ const RouteComponent = () => {
       <div className="mb-18 grid gap-8 sm:grid-cols-2 md:mb-25 md:gap-12">
         <div className="text-center sm:text-left">
           <div className="space-y-5">
-            <h2 className="font-bold text-xl md:text-3xl">{m.about_title()}</h2>
+            <h2 className="text-balance font-bold text-xl md:text-3xl">{m.about_title()}</h2>
             <p className="leading-6">{m.about_desc_1()}</p>
             <p className="leading-6">
               <ParaglideMessage
@@ -61,17 +61,23 @@ const RouteComponent = () => {
                 }}
               />
             </p>
-            <p className="rounded-r-md border-primary border-l-4 bg-primary-light p-5 font-bold text-primary-strong italic">
+            <p className="rounded-md bg-primary-light p-5 font-bold text-primary-strong italic">
               {m.about_desc_label()}
             </p>
           </div>
         </div>
         <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
-          <img src="/salon-alexa.webp" alt="Salón Alexa Lashes" className="w-full rounded-md" />
+          <img
+            src="/salon-alexa.webp"
+            alt={m.home_about_us_image_alt()}
+            width={1000}
+            height={1333}
+            className="h-auto w-full rounded-md"
+          />
         </div>
       </div>
       <div className="mb-18 md:mb-25">
-        <h2 className="mb-6 text-center font-bold text-xl md:text-2xl">
+        <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
           {m.about_gallery_title()}
         </h2>
         <PreviewGallery gallery={gallery()} />
