@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 
 import Cta from '@/components/Cta';
+import LashPriceCard from '@/components/LashPriceCard';
 import Services from '@/components/Services';
 import { m } from '@/paraglide/messages';
 import type { LashPrice } from '@/types';
@@ -114,36 +115,18 @@ const itemListElement = (prices: LashPrice[]) =>
 const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <div className="mx-auto mb-14 max-w-180 text-center">
+      <div className="mx-auto mb-12 max-w-180 text-center">
         <h1 className="mb-3 text-balance font-bold text-2xl md:text-4xl">{m.prices_title()}</h1>
         <p className="leading-6">{m.prices_desc()}</p>
       </div>
-      <div className="mb-14">
-        <h2 className="mb-6 text-balance font-bold text-xl md:text-2xl">
-          {m.prices_classic_lashes_title()}
-        </h2>
-        <Services data={lashesClassic()} />
-      </div>
-      <div className="mb-14">
-        <h2 className="mb-6 text-balance font-bold text-xl md:text-2xl">
-          {m.prices_2d_lashes_title()}
-        </h2>
-        <Services data={lashes2D()} />
-      </div>
-      <div className="mb-14">
-        <h2 className="mb-6 text-balance font-bold text-xl md:text-2xl">
-          {m.prices_34d_lashes_title()}
-        </h2>
-        <Services data={lashes34D()} />
-      </div>
-      <div className="mb-14">
-        <h2 className="mb-6 text-balance font-bold text-xl md:text-2xl">
-          {m.prices_56d_lashes_title()}
-        </h2>
-        <Services data={lashes56D()} />
+      <div className="mb-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <LashPriceCard title={m.prices_classic_lashes_title()} data={lashesClassic()} />
+        <LashPriceCard title={m.prices_2d_lashes_title()} data={lashes2D()} />
+        <LashPriceCard title={m.prices_34d_lashes_title()} data={lashes34D()} />
+        <LashPriceCard title={m.prices_56d_lashes_title()} data={lashes56D()} />
       </div>
       <div className="mb-18">
-        <h2 className="mb-6 text-balance font-bold text-xl md:text-2xl">
+        <h2 className="mb-5 text-balance font-bold text-xl md:text-2xl">
           {m.prices_additional_lashes_title()}
         </h2>
         <Services data={lashesAdditional()} />

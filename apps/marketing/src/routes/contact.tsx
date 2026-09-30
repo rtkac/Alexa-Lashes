@@ -15,67 +15,84 @@ const RouteComponent = () => {
         <h1 className="mb-3 text-balance font-bold text-2xl md:text-4xl">{m.contact_title()}</h1>
         <p className="leading-6">{m.contact_desc()}</p>
       </div>
-      <div className="mb-5 grid gap-5 md:mb-18 md:grid-cols-7 md:gap-15">
-        <div className="md:col-span-4">
-          <ContactForm />
-        </div>
-        <div className="space-y-5 md:col-span-3">
-          <div className="card p-6">
-            <h2 className="mb-3 font-bold text-lg">{m.contact_info()}</h2>
-            <ul className="space-y-3">
-              <li className="flex items-center space-x-3">
-                <MapPinIcon size="20" className="shrink-0 text-primary" />
+      <div className="mb-5 grid gap-5 md:mb-15 md:grid-cols-7 md:gap-15">
+        <div className="card divide-y divide-primary-light self-start md:col-span-3">
+          <div className="p-6">
+            <h2 className="mb-4 font-bold text-lg">{m.contact_info()}</h2>
+            <ul className="space-y-3.5">
+              <li>
                 <a
                   href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center gap-3 font-medium no-underline decoration-primary underline-offset-4 hover:text-primary-strong hover:underline"
                 >
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary-strong">
+                    <MapPinIcon aria-hidden="true" size="16" />
+                  </span>
                   {address}
                 </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <PhoneIcon size="20" className="shrink-0 text-primary" />
-                <a href={`tel:${telephoneNumber}`}>{telephoneNumber}</a>
+              <li>
+                <a
+                  href={`tel:${telephoneNumber}`}
+                  className="flex items-center gap-3 font-medium no-underline decoration-primary underline-offset-4 hover:text-primary-strong hover:underline"
+                >
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary-strong">
+                    <PhoneIcon aria-hidden="true" size="16" />
+                  </span>
+                  {telephoneNumber}
+                </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <MailIcon size="20" className="shrink-0 text-primary" />
-                <a href={`mailto:${email}`} className="break-all">
+              <li>
+                <a
+                  href={`mailto:${email}`}
+                  className="flex items-center gap-3 font-medium no-underline decoration-primary underline-offset-4 hover:text-primary-strong hover:underline break-all"
+                >
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary-strong">
+                    <MailIcon aria-hidden="true" size="16" />
+                  </span>
                   {email}
                 </a>
               </li>
             </ul>
           </div>
-          <div className="card p-6">
-            <h2 className="mb-3 font-bold text-lg">{m.contact_opening_hours()}</h2>
-            <dl className="space-y-3">
-              <div className="flex justify-between gap-4">
+          <div className="p-6">
+            <h2 className="mb-2 font-bold text-lg">{m.contact_opening_hours()}</h2>
+            <dl className="divide-y divide-primary-light">
+              <div className="flex justify-between gap-4 py-2.5">
                 <dt>{m.contact_opening_hours_weekdays()}</dt>
-                <dd>{m.contact_opening_hours_weekdays_hours()}</dd>
+                <dd className="font-bold tabular-nums">
+                  {m.contact_opening_hours_weekdays_hours()}
+                </dd>
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex justify-between gap-4 py-2.5 text-neutral-600">
                 <dt>{m.contact_opening_hours_saturday()}</dt>
                 <dd>{m.contact_opening_hours_saturday_hours()}</dd>
               </div>
-              <div className="flex justify-between gap-4">
+              <div className="flex justify-between gap-4 pt-2.5 text-neutral-600">
                 <dt>{m.contact_opening_hours_sunday()}</dt>
                 <dd>{m.contact_opening_hours_sunday_hours()}</dd>
               </div>
             </dl>
           </div>
-          <div className="card p-6">
-            <h2 className="mb-3 font-bold text-lg">{m.contact_socials()}</h2>
+          <div className="px-6 pt-6 pb-4">
+            <h2 className="mb-1 font-bold text-lg">{m.contact_socials()}</h2>
             <Socials />
           </div>
         </div>
+        <div className="md:col-span-4">
+          <ContactForm />
+        </div>
       </div>
       <div className="mb-10 grid gap-5 md:grid-cols-7 md:gap-15">
-        <div className="overflow-hidden rounded-md md:col-span-4">
+        <div className="md:col-span-3">
+          <QrCode />
+        </div>
+        <div className="overflow-hidden rounded-md border border-primary-light md:col-span-4">
           <CatchBoundary getResetKey={() => 'reset'} errorComponent={() => null}>
             <BusinessMap />
           </CatchBoundary>
-        </div>
-        <div className="md:col-span-3">
-          <QrCode />
         </div>
       </div>
     </div>
