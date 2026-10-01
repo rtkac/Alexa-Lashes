@@ -5,6 +5,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
+  Button,
   Drawer,
   DrawerClose,
   DrawerContent,
@@ -43,12 +44,12 @@ const AvatarDropdown = ({ name, image }: AvatarDropdownProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <button>
+          <Button variant="ghost" size="icon">
             <Avatar>
               <AvatarImage src={image} alt={name} />
               <AvatarFallback>{name[0]}</AvatarFallback>
             </Avatar>
-          </button>
+          </Button>
         }
       >
         Open
@@ -94,15 +95,16 @@ export const Header = ({ user }: HeaderProps) => {
               <div className="flex items-center md:hidden">
                 <AvatarDropdown name={user.name} image={user.image ?? undefined} />
               </div>
-              <button
-                type="button"
-                className="cursor-pointer md:hidden"
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
                 aria-label={open ? 'Close menu' : 'Open menu'}
                 aria-expanded={open}
                 onClick={() => setOpen((prev) => !prev)}
               >
                 <MenuToggle open={open} />
-              </button>
+              </Button>
               <ul className="hidden items-center gap-8 font-medium md:flex">
                 <li>
                   <Link
@@ -127,14 +129,7 @@ export const Header = ({ user }: HeaderProps) => {
           <DrawerContent className="w-full max-w-xs">
             <DrawerHeader className="flex-row items-center justify-between border-primary-light border-b">
               <DrawerTitle className="text-lg">Alexa Lashes</DrawerTitle>
-              <DrawerClose
-                render={
-                  <button
-                    type="button"
-                    className="cursor-pointer rounded-full p-2 text-primary transition-colors hover:bg-primary-light"
-                  />
-                }
-              >
+              <DrawerClose render={<Button variant="ghost" size="icon" />}>
                 <XIcon className="size-5" />
                 <span className="sr-only">Close menu</span>
               </DrawerClose>

@@ -1,5 +1,6 @@
 import { Review } from '@alexa-lashes/contracts/reviews';
 import { baseLocale, type Locale } from '@alexa-lashes/types/locales';
+import { buttonVariants } from '@alexa-lashes/ui/shadcn';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from 'lucide-react';
 
@@ -79,10 +80,13 @@ const RouteComponent = () => {
         image="bg-[url(/banner-main-mobile.webp)] md:bg-[url(/banner-main-desktop.webp)]"
         buttons={
           <>
-            <Link to="/prices/" className="btn-primary mx-2">
+            <Link to="/prices/" className={buttonVariants({ className: 'mx-2' })}>
               {m.banner_link_services()}
             </Link>
-            <Link to="/contact/" className="btn-secondary mx-2">
+            <Link
+              to="/contact/"
+              className={buttonVariants({ variant: 'secondary', className: 'mx-2' })}
+            >
               {m.banner_link_contact()}
             </Link>
           </>
@@ -108,7 +112,7 @@ const RouteComponent = () => {
           <PreviewGallery gallery={gallery()} />
         </div>
         <div className="flex justify-center">
-          <Link to="/gallery/" className="btn-primary">
+          <Link to="/gallery/" className={buttonVariants()}>
             {m.home_gallery_link()}
           </Link>
         </div>

@@ -1,6 +1,7 @@
 import { signIn } from '@alexa-lashes/auth/client';
 import { getSession } from '@alexa-lashes/auth/server';
 import { GoogleIcon } from '@alexa-lashes/ui/icons';
+import { Button } from '@alexa-lashes/ui/shadcn';
 import { createFileRoute } from '@tanstack/react-router';
 
 import { Header } from '@/components/Header';
@@ -20,13 +21,10 @@ const RouteComponent = () => {
           <div className="card p-6 space-y-5">
             <h1 className="font-bold text-xl md:text-2xl">Welcome to Alexa Lashes Admin</h1>
             <p>Please sign in with your Google account to access the admin dashboard.</p>
-            <button
-              className="rounded p-2 pr-4 border border-neutral-500 [&_svg]:mx-2 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5 inline-flex items-center cursor-pointer hover:bg-neutral-100 bg-white transition-colors"
-              onClick={handleGoogleSignIn}
-            >
-              <GoogleIcon />
+            <Button variant="outline" onClick={handleGoogleSignIn}>
+              <GoogleIcon className="size-5" />
               Sign in with Google
-            </button>
+            </Button>
           </div>
         </div>
       </main>

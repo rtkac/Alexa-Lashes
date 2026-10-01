@@ -1,4 +1,5 @@
 import { Review } from '@alexa-lashes/contracts/reviews';
+import { Button } from '@alexa-lashes/ui/shadcn';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from 'lucide-react';
 
@@ -98,22 +99,12 @@ const Reviews = ({ reviews }: ReviewsProps) => {
         </div>
       </div>
       <div className="mt-4 flex justify-center gap-3">
-        <button
-          type="button"
-          aria-label={m.reviews_prev()}
-          className="flex size-11 cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary-strong transition-colors hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong"
-          onClick={goToPrev}
-        >
-          <ChevronLeftIcon size={24} aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          aria-label={m.reviews_next()}
-          className="flex size-11 cursor-pointer items-center justify-center rounded-full border-2 border-primary-light bg-white text-primary-strong transition-colors hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong"
-          onClick={goToNext}
-        >
-          <ChevronRightIcon size={24} aria-hidden="true" />
-        </button>
+        <Button variant="outline" size="icon" aria-label={m.reviews_prev()} onClick={goToPrev}>
+          <ChevronLeftIcon className="size-6" aria-hidden="true" />
+        </Button>
+        <Button variant="outline" size="icon" aria-label={m.reviews_next()} onClick={goToNext}>
+          <ChevronRightIcon className="size-6" aria-hidden="true" />
+        </Button>
       </div>
     </div>
   );

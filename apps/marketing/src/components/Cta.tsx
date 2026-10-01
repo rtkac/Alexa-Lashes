@@ -1,4 +1,5 @@
 import { cn } from '@alexa-lashes/ui/lib/utils';
+import { buttonVariants } from '@alexa-lashes/ui/shadcn';
 
 import { m } from '@/paraglide/messages';
 import { whatsAppNumber } from '@/types';
@@ -19,7 +20,7 @@ const Cta = ({ variant = 'wheat', title, description, buttonLabel }: CtaProps) =
     >
       <h2 className="mb-4 text-balance font-bold text-xl md:text-3xl">{title || m.cta_title()}</h2>
       <p className="mx-auto mb-6 max-w-130 leading-6">{description || m.cta_desc()}</p>
-      <a href={whatsAppNumber} className="btn-primary">
+      <a href={whatsAppNumber} className={buttonVariants()}>
         {buttonLabel || m.cta_link()}
       </a>
     </div>

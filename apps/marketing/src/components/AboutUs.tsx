@@ -1,3 +1,4 @@
+import { buttonVariants } from '@alexa-lashes/ui/shadcn';
 import { Link } from '@tanstack/react-router';
 
 import { m } from '@/paraglide/messages';
@@ -21,7 +22,7 @@ export const AboutUs = () => {
           <p className="text-neutral-600 leading-6">{m.home_about_us_desc_1()}</p>
           <p className="text-neutral-600 leading-6">{m.home_about_us_desc_2()}</p>
         </div>
-        <Link to="/about/" className="btn-outline-primary">
+        <Link to="/about/" className={buttonVariants({ variant: 'outline' })}>
           {m.home_about_us_link()}
         </Link>
       </div>

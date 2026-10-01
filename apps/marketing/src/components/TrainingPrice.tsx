@@ -1,3 +1,4 @@
+import { Button } from '@alexa-lashes/ui/shadcn';
 import { Clock4Icon, MapPinIcon, UsersIcon } from 'lucide-react';
 
 import { TrainingFormModal } from './TrainingFormModal';
@@ -56,11 +57,7 @@ const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
         <p className="font-extrabold text-4xl tabular-nums">{formattedPrice}</p>
         <p className="mb-4 text-xs">{m.training_deposit()}</p>
         <TrainingFormModal
-          trigger={
-            <button type="button" className="btn-secondary">
-              {m.training_link_interest()}
-            </button>
-          }
+          trigger={<Button variant="secondary">{m.training_link_interest()}</Button>}
         />
       </div>
     </div>

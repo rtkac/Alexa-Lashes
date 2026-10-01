@@ -1,3 +1,4 @@
+import { buttonVariants } from '@alexa-lashes/ui/shadcn';
 import { createFileRoute, Link } from '@tanstack/react-router';
 
 import Cta from '@/components/Cta';
@@ -54,7 +55,7 @@ const RouteComponent = () => {
           <PreviewGallery gallery={gallery()} />
         </div>
         <div className="flex justify-center">
-          <Link to="/gallery/" className="btn-outline-primary">
+          <Link to="/gallery/" className={buttonVariants({ variant: 'outline' })}>
             {m.training_gallery_link()}
           </Link>
         </div>

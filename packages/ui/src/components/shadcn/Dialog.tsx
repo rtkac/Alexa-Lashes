@@ -5,6 +5,7 @@ import { XIcon } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '../../lib/utils';
+import { Button } from './Button';
 
 // Generic over `Payload`, so one dialog can be opened by many triggers via a shared handle
 function Dialog<Payload>({ ...props }: DialogPrimitive.Root.Props<Payload>) {
@@ -61,9 +62,11 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close
             data-slot="dialog-close"
-            render={<button type="button" className="absolute top-4 right-4 cursor-pointer" />}
+            render={
+              <Button variant="ghost" size="icon-sm" className="absolute top-2.5 right-2.5" />
+            }
           >
-            <XIcon className="text-primary-strong" />
+            <XIcon className="size-5" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}
@@ -103,7 +106,7 @@ function DialogFooter({
     >
       {children}
       {showCloseButton && closeLabel && (
-        <DialogPrimitive.Close render={<button type="button" className="btn-primary w-full" />}>
+        <DialogPrimitive.Close render={<Button className="w-full" />}>
           {closeLabel}
         </DialogPrimitive.Close>
       )}

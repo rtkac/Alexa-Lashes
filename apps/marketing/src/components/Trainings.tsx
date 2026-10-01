@@ -1,3 +1,4 @@
+import { Button, buttonVariants } from '@alexa-lashes/ui/shadcn';
 import { Link } from '@tanstack/react-router';
 import { CircleCheckIcon, ClockIcon } from 'lucide-react';
 
@@ -54,7 +55,10 @@ const Trainings = () => {
                 {m.training_basic_duration_label()}&nbsp;{m.training_basic_duration()}
               </p>
             </div>
-            <Link to="/training/basic/" className="btn-primary w-full sm:w-auto">
+            <Link
+              to="/training/basic/"
+              className={buttonVariants({ className: 'w-full sm:w-auto' })}
+            >
               {m.training_basic_link_label()}
             </Link>
           </div>
@@ -108,9 +112,9 @@ const Trainings = () => {
             </div>
             <TrainingFormModal
               trigger={
-                <button type="button" className="btn-secondary w-full sm:w-auto">
+                <Button variant="secondary" className="w-full sm:w-auto">
                   {m.cta_training_button()}
-                </button>
+                </Button>
               }
             />
           </div>
