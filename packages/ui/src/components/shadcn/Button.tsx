@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '../../lib/utils';
 
-const buttonVariants = cva(
+const baseButtonVariants = cva(
   "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md border-2 border-transparent text-center font-bold no-underline transition-colors outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
@@ -37,12 +37,16 @@ const buttonVariants = cva(
   },
 );
 
-type ButtonProps = ButtonPrimitive.Props & VariantProps<typeof buttonVariants>;
+// Merged so `border-transparent` in the base yields to a variant border when used outside <Button>.
+const buttonVariants = (props?: Parameters<typeof baseButtonVariants>[0]) =>
+  cn(baseButtonVariants(props));
+
+type ButtonProps = ButtonPrimitive.Props & VariantProps<typeof baseButtonVariants>;
 
 const Button = ({ className, variant = 'default', size = 'default', ...props }: ButtonProps) => (
   <ButtonPrimitive
     data-slot="button"
-    className={cn(buttonVariants({ variant, size, className }))}
+    className={buttonVariants({ variant, size, className })}
     {...props}
   />
 );
