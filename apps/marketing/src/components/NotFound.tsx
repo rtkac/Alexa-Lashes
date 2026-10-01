@@ -5,13 +5,25 @@ import { m } from '@/paraglide/messages';
 
 const NotFound = () => {
   return (
-    <div className="mx-auto max-w-180 p-10 text-center md:p-20">
-      <h1 className="mb-5 font-bold text-5xl text-primary-strong md:mb-6 md:text-7xl">404</h1>
-      <h2 className="mb-4 font-bold text-xl md:text-3xl">{m.notFound_title()}</h2>
-      <p className="mb-7 md:mb-9">{m.notFound_desc()}</p>
-      <Link to="/" className={buttonVariants()}>
-        {m.notFound_link()}
-      </Link>
+    <div className="mx-auto max-w-180 px-4 py-16 text-center md:py-24">
+      <title>{m.meta_notFound_title()}</title>
+      <meta name="robots" content="noindex" />
+      <p
+        aria-hidden="true"
+        className="mb-4 font-bold text-6xl text-primary-strong tabular-nums tracking-tight md:mb-6 md:text-8xl"
+      >
+        404
+      </p>
+      <h1 className="mb-4 text-balance font-bold text-2xl md:text-4xl">{m.notFound_title()}</h1>
+      <p className="mx-auto mb-8 max-w-130 text-pretty leading-6 md:mb-10">{m.notFound_desc()}</p>
+      <div className="flex flex-wrap justify-center gap-3">
+        <Link to="/" className={buttonVariants()}>
+          {m.notFound_link()}
+        </Link>
+        <Link to="/contact/" className={buttonVariants({ variant: 'outline' })}>
+          {m.menu_contact()}
+        </Link>
+      </div>
     </div>
   );
 };
