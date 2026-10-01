@@ -1,3 +1,4 @@
+import { buttonVariants } from '@alexa-lashes/ui/shadcn';
 import { Link } from '@tanstack/react-router';
 import CookieConsent from 'react-cookie-consent';
 
@@ -11,8 +12,8 @@ export const Disclaimer = () => (
     expires={150}
     buttonText={m.disclaimer_accept_button()}
     declineButtonText={m.disclaimer_decline_button()}
-    buttonClasses="btn-primary py-2 text-sm"
-    declineButtonClasses="btn-secondary py-2 text-sm mr-4"
+    buttonClasses={buttonVariants({ size: 'sm' })}
+    declineButtonClasses={buttonVariants({ variant: 'secondary', size: 'sm', className: 'mr-4' })}
     contentClasses="mb-4"
     containerClasses="bg-white border border-primary-light fixed right-0 z-50 max-w-96 p-4 md:p-6 rounded-md m-4"
     onAccept={() => {

@@ -1,3 +1,4 @@
+import { Button } from '@alexa-lashes/ui/shadcn';
 import { RefreshCcwIcon } from 'lucide-react';
 
 type DefaultCatchBoundaryProps = {
@@ -13,14 +14,10 @@ export const DefaultCatchBoundary = ({ onRetry }: DefaultCatchBoundaryProps) => 
         a moment. If the problem persists, contact us.
       </p>
       <div>
-        <button
-          type="button"
-          className="btn-primary mx-auto flex max-w-max items-center justify-center gap-2"
-          onClick={onRetry}
-        >
+        <Button className="mx-auto" onClick={onRetry}>
           <RefreshCcwIcon />
           Retry
-        </button>
+        </Button>
       </div>
     </div>
   );

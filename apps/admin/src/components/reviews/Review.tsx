@@ -87,10 +87,9 @@ export const Review = ({ review, index, locale, editDialogHandle }: ReviewProps)
           {review.enabled ? <EyeIcon /> : <EyeOffIcon />}
         </Button>
         <Button
-          variant="outline"
+          variant="destructive"
           size="icon-sm"
           aria-label="Delete review"
-          className="text-destructive hover:text-destructive"
           onClick={handleDelete}
         >
           <Trash2Icon />

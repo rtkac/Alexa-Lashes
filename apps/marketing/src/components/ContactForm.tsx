@@ -1,5 +1,5 @@
 import { FieldError, Label } from '@alexa-lashes/ui/components';
-import { Input, Textarea } from '@alexa-lashes/ui/shadcn';
+import { Button, Input, Textarea } from '@alexa-lashes/ui/shadcn';
 import { useForm } from '@tanstack/react-form';
 import { CircleAlertIcon, CircleCheckIcon, LoaderIcon } from 'lucide-react';
 import { useState } from 'react';
@@ -189,20 +189,16 @@ const ContactForm = () => {
         )}
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="btn-primary flex w-full items-center justify-center"
-            >
+            <Button type="submit" disabled={isSubmitting} className="w-full">
               {isSubmitting ? (
-                <span className="flex items-center gap-2">
+                <>
                   <LoaderIcon className="size-5 animate-spin motion-reduce:animate-none" />
                   {m.contact_form_sending_button()}
-                </span>
+                </>
               ) : (
                 m.contact_form_submit_button()
               )}
-            </button>
+            </Button>
           )}
         </form.Subscribe>
       </form>

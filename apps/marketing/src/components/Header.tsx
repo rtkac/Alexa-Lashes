@@ -1,6 +1,7 @@
 import logo from '/logo_primary.svg';
 import { MenuToggle } from '@alexa-lashes/ui/components';
 import {
+  Button,
   Drawer,
   DrawerClose,
   DrawerContent,
@@ -39,15 +40,16 @@ export const Header = () => {
               Alexa Lashes
             </span>
           </Link>
-          <button
-            type="button"
-            className="cursor-pointer lg:hidden"
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden"
             aria-label={open ? m.menu_close() : m.menu_open()}
             aria-expanded={open}
             onClick={() => setOpen((prev) => !prev)}
           >
             <MenuToggle open={open} />
-          </button>
+          </Button>
           <div className="hidden lg:flex lg:items-center lg:gap-4">
             <ul className="flex flex-row items-center gap-1 font-medium">
               {links.map((link) => (
@@ -73,14 +75,7 @@ export const Header = () => {
               <img src={logo} alt="" width={42} height={36} />
               <DrawerTitle className="text-lg">Alexa Lashes</DrawerTitle>
             </div>
-            <DrawerClose
-              render={
-                <button
-                  type="button"
-                  className="cursor-pointer rounded-full p-3 text-primary transition-colors hover:bg-primary-light"
-                />
-              }
-            >
+            <DrawerClose render={<Button variant="ghost" size="icon" />}>
               <XIcon className="size-5" />
               <span className="sr-only">{m.menu_close()}</span>
             </DrawerClose>

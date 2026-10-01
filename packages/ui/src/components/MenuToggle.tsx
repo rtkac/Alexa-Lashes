@@ -11,10 +11,7 @@ export const MenuToggle = ({ open, className }: MenuToggleProps) => {
   return (
     <span
       aria-hidden="true"
-      className={cn(
-        'relative flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-primary-light',
-        className,
-      )}
+      className={cn('relative flex size-5 items-center justify-center', className)}
     >
       <MenuIcon
         className={cn(

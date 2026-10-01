@@ -1,3 +1,4 @@
+import { Button } from '@alexa-lashes/ui/shadcn';
 import { createFileRoute } from '@tanstack/react-router';
 
 import Banner from '@/components/Banner';
@@ -36,13 +37,7 @@ const RouteComponent = () => {
         image="bg-[url(/basic-training-banner.webp)]"
         isDark
         buttons={
-          <TrainingFormModal
-            trigger={
-              <button type="button" className="btn-primary">
-                {m.training_basic_banner_link_contact()}
-              </button>
-            }
-          />
+          <TrainingFormModal trigger={<Button>{m.training_basic_banner_link_contact()}</Button>} />
         }
       />
       <div className="mx-auto mb-20 max-w-4xl text-center *:[p]:mx-auto *:[p]:max-w-3xl *:[p]:text-pretty">
