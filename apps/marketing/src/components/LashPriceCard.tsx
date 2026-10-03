@@ -25,7 +25,7 @@ const LashPriceCard = ({ title, data }: LashPriceCardProps) => {
           </p>
         </div>
       </div>
-      <dl className="divide-y divide-primary-light px-6 py-2">
+      <dl className="divide-y divide-primary-line px-6 py-2">
         {refills.map((refill) => (
           <div className="flex items-baseline justify-between gap-4 py-3" key={refill.name}>
             <dt className="text-sm">{refill.name}</dt>

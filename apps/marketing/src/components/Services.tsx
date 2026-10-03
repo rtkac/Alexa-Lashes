@@ -13,7 +13,7 @@ const Services = ({ data }: ServicesProps) => {
     <dl className="card grid px-6 py-2 md:grid-cols-2 md:gap-x-12">
       {data.map((service) => (
         <div
-          className="flex items-baseline gap-3 border-primary-light py-4 not-first:border-t md:nth-2:border-t-0"
+          className="flex items-baseline gap-3 border-primary-line py-4 not-first:border-t md:nth-2:border-t-0"
           key={service.name}
         >
           <dt className="flex flex-1 items-baseline gap-3">

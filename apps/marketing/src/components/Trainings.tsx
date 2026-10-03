@@ -26,7 +26,7 @@ const Trainings = () => {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="mb-4 border-primary-light border-b pb-4">
+            <div className="mb-4 border-primary-line border-b pb-4">
               <h3 className="mb-4 font-bold">{m.training_basic_skills_title()}</h3>
               <ul className="grid gap-2 text-primary-strong text-sm sm:grid-cols-2">
                 <li className="flex items-center space-x-1.5">
@@ -81,7 +81,7 @@ const Trainings = () => {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="mb-4 border-primary-light border-b pb-4">
+            <div className="mb-4 border-primary-line border-b pb-4">
               <h3 className="mb-4 font-bold">{m.training_advanced_skills_title()}</h3>
               <ul className="grid gap-2 text-primary-strong text-sm sm:grid-cols-2">
                 <li className="flex items-center space-x-1.5">

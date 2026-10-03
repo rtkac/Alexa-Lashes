@@ -6,13 +6,13 @@ import { m } from '@/paraglide/messages';
 export const AboutUs = () => {
   return (
     <div className="grid gap-8 sm:grid-cols-2 md:gap-12">
-      <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
+      <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-xl sm:max-h-full md:max-h-105">
         <img
           src="/salon-alexa.webp"
           alt={m.home_about_us_image_alt()}
           width={1000}
           height={1333}
-          className="h-auto w-full rounded-md"
+          className="h-auto w-full rounded-xl"
           loading="lazy"
         />
       </div>

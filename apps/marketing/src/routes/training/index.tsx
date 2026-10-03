@@ -1,8 +1,9 @@
-import { buttonVariants } from '@alexa-lashes/ui/shadcn';
+import { Button, buttonVariants } from '@alexa-lashes/ui/shadcn';
 import { createFileRoute, Link } from '@tanstack/react-router';
 
 import Cta from '@/components/Cta';
 import PreviewGallery from '@/components/PreviewGallery';
+import { TrainingFormModal } from '@/components/TrainingFormModal';
 import Trainings from '@/components/Trainings';
 import { m } from '@/paraglide/messages';
 import type { Gallery } from '@/types';
@@ -63,10 +64,9 @@ const RouteComponent = () => {
       </div>
 
       <Cta
-        variant="white"
         title={m.cta_training_title()}
         description={m.cta_training_desc()}
-        buttonLabel={m.cta_training_button()}
+        action={<TrainingFormModal trigger={<Button>{m.cta_training_button()}</Button>} />}
       />
     </div>
   );

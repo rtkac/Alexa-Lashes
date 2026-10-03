@@ -17,7 +17,7 @@ const RouteComponent = () => {
         <p className="leading-6">{m.contact_desc()}</p>
       </div>
       <div className="mb-5 grid gap-5 md:mb-15 md:grid-cols-7 md:gap-15">
-        <div className="card divide-y divide-primary-light self-start md:col-span-3">
+        <div className="card divide-y divide-primary-line self-start md:col-span-3">
           <div className="p-6">
             <h2 className="mb-4 font-bold text-lg">{m.contact_info()}</h2>
             <ul className="space-y-3.5">
@@ -61,7 +61,7 @@ const RouteComponent = () => {
           </div>
           <div className="p-6">
             <h2 className="mb-2 font-bold text-lg">{m.contact_opening_hours()}</h2>
-            <dl className="divide-y divide-primary-light">
+            <dl className="divide-y divide-primary-line">
               <div className="flex justify-between gap-4 py-2.5">
                 <dt>{m.contact_opening_hours_weekdays()}</dt>
                 <dd className="font-bold tabular-nums">
@@ -91,7 +91,7 @@ const RouteComponent = () => {
         <div className="md:col-span-3">
           <QrCode />
         </div>
-        <div className="overflow-hidden rounded-md border border-primary-light md:col-span-4">
+        <div className="overflow-hidden rounded-xl border border-primary-line md:col-span-4">
           <CatchBoundary getResetKey={() => 'reset'} errorComponent={() => null}>
             <BusinessMap />
           </CatchBoundary>
