@@ -72,7 +72,7 @@ export const Program = () => {
         <div className="card p-8 md:p-10" key={day.number}>
           <h3 className="mb-10 flex items-center font-bold text-lg uppercase">
             <span
-              className="mr-3 flex size-10 shrink-0 items-center justify-center rounded-lg border border-primary-light bg-primary p-1 text-primary-ink tabular-nums"
+              className="mr-3 flex size-10 shrink-0 items-center justify-center rounded-md bg-primary p-1 text-primary-ink tabular-nums"
               aria-hidden="true"
             >
               {day.number}

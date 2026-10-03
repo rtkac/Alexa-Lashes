@@ -286,7 +286,7 @@ const GalleryGrid = ({ title, images, eagerCount = 0 }: GalleryGridProps) => {
           <PhotoView key={name} src={src}>
             <button
               type="button"
-              className="group block h-40 w-full appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-60"
+              className="group block h-40 w-full appearance-none overflow-hidden rounded-xl border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-60"
               itemScope
               itemType="http://schema.org/ImageObject"
             >

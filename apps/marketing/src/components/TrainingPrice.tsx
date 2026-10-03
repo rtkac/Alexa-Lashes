@@ -20,7 +20,7 @@ const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
 
   return (
     <div className="grid md:grid-cols-5">
-      <div className="card space-y-3.5 rounded-b-none p-8 md:col-span-3 md:rounded-tr-none md:rounded-bl-md">
+      <div className="card space-y-3.5 rounded-b-none p-8 md:col-span-3 md:rounded-tr-none md:rounded-bl-xl">
         <h2 className="font-bold text-2xl">{m.training_information_title()}</h2>
         <div className="space-y-3.5">
           <div className="flex items-center space-x-2">
@@ -53,7 +53,7 @@ const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
           <p className="text-neutral-500 text-xs italic">{m.training_agreement()}</p>
         </div>
       </div>
-      <div className="rounded-br-md rounded-bl-md bg-primary px-10 py-8 text-center text-primary-ink md:col-span-2 md:rounded-tr-md md:rounded-bl-none">
+      <div className="rounded-b-xl bg-primary px-10 py-8 text-center text-primary-ink md:col-span-2 md:rounded-tr-xl md:rounded-bl-none">
         <p className="mb-1 text-sm">{m.training_price()}</p>
         <p className="font-extrabold text-4xl tabular-nums">{formattedPrice}</p>
         <p className="mb-4 text-xs">{m.training_deposit()}</p>

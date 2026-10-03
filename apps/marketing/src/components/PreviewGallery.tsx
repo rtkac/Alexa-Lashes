@@ -18,7 +18,7 @@ const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
           <PhotoView key={name} src={src}>
             <button
               type="button"
-              className="group block h-40 w-full max-sm:last:odd:col-span-2 max-sm:last:odd:h-64 appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-50"
+              className="group block h-40 w-full max-sm:last:odd:col-span-2 max-sm:last:odd:h-64 appearance-none overflow-hidden rounded-xl border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong md:h-50"
               itemScope
               itemType="http://schema.org/ImageObject"
             >

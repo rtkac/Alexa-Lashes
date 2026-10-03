@@ -62,18 +62,18 @@ const RouteComponent = () => {
                 }}
               />
             </p>
-            <p className="rounded-md bg-primary-light p-5 font-bold text-primary-strong italic">
+            <p className="rounded-xl bg-primary-light p-5 font-bold text-primary-strong italic">
               {m.about_desc_label()}
             </p>
           </div>
         </div>
-        <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-md sm:max-h-full md:max-h-105">
+        <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-xl sm:max-h-full md:max-h-105">
           <img
             src="/salon-alexa.webp"
             alt={m.home_about_us_image_alt()}
             width={1000}
             height={1333}
-            className="h-auto w-full rounded-md"
+            className="h-auto w-full rounded-xl"
           />
         </div>
       </div>

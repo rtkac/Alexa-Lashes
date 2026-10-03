@@ -39,6 +39,7 @@ code {
   --primary: #c4ad72;
   --primary-light: #f7f3e9;
   --primary-disabled: #e1d6b8;
+  --primary-line: #f0ece4;
   --primary-strong: color-mix(in srgb, var(--primary) 60%, black 40%);
   --primary-foreground: oklch(0.985 0 0);
   --primary-ink: #2b2418;
@@ -83,6 +84,7 @@ code {
   --secondary-foreground: oklch(0.985 0 0);
   --tertiary: #4a413a;
   --tertiary-light: #625745;
+  --primary-line: #625745;
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
@@ -117,6 +119,7 @@ code {
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
   --color-primary-disabled: var(--primary-disabled);
+  --color-primary-line: var(--primary-line);
   --color-primary-strong: var(--primary-strong);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-ink: var(--primary-ink);
@@ -191,6 +194,6 @@ code {
 
 @layer components {
   .card {
-    @apply rounded-md border border-primary-light bg-white dark:border-tertiary-light dark:bg-tertiary;
+    @apply rounded-xl border border-primary-line bg-white dark:bg-tertiary;
   }
 }

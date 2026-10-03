@@ -38,17 +38,17 @@ const canonicalUrls: Record<Locale, string> = {
 
 const benefits = (): Benefit[] => [
   {
-    icon: <AwardIcon className="mb-4 text-primary" />,
+    icon: <AwardIcon className="size-5 text-primary-strong" />,
     title: m.benefits_1_title(),
     description: m.benefits_1_desc(),
   },
   {
-    icon: <ShieldCheckIcon className="mb-4 text-primary" />,
+    icon: <ShieldCheckIcon className="size-5 text-primary-strong" />,
     title: m.benefits_2_title(),
     description: m.benefits_2_desc(),
   },
   {
-    icon: <HeartIcon className="mb-4 text-primary" />,
+    icon: <HeartIcon className="size-5 text-primary-strong" />,
     title: m.benefits_3_title(),
     description: m.benefits_3_desc(),
   },

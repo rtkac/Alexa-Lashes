@@ -31,7 +31,7 @@ export const Header = () => {
   ] as const;
 
   return (
-    <header className="z-2 w-full border-primary-light border-b">
+    <header className="z-2 w-full border-primary-line border-b">
       <nav>
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
           <Link to="/" className="z-10 flex items-center space-x-3">
@@ -70,7 +70,7 @@ export const Header = () => {
 
       <Drawer open={open} onOpenChange={setOpen} swipeDirection="right">
         <DrawerContent className="w-full max-w-xs">
-          <DrawerHeader className="flex-row items-center justify-between border-primary-light border-b">
+          <DrawerHeader className="flex-row items-center justify-between border-primary-line border-b">
             <div className="flex items-center space-x-3">
               <img src={logo} alt="" width={42} height={36} />
               <DrawerTitle className="text-lg">Alexa Lashes</DrawerTitle>
@@ -93,7 +93,7 @@ export const Header = () => {
               </li>
             ))}
           </ul>
-          <div className="border-primary-light border-t p-4">
+          <div className="border-primary-line border-t p-4">
             <LanguageSwitcher />
           </div>
         </DrawerContent>

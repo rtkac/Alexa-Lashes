@@ -18,10 +18,10 @@ const Banner = ({
   hideDescriptionOnMobile,
 }: BannerProps) => {
   return (
-    <div className={cn('mb-13 rounded-md bg-center bg-cover text-center text-white', image)}>
+    <div className={cn('mb-13 rounded-xl bg-center bg-cover text-center text-white', image)}>
       <div
         className={cn(
-          'flex h-full min-h-100 w-full items-center justify-center rounded-md px-5 py-10 sm:p-6 md:min-h-130',
+          'flex h-full min-h-100 w-full items-center justify-center rounded-xl px-5 py-10 sm:p-6 md:min-h-130',
           isDark
             ? 'backdrop-brightness-50'
             : 'bg-linear-to-b from-black/25 via-black/15 via-45% to-transparent to-75%',

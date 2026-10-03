@@ -2,7 +2,7 @@ import { Alert, FieldError, Label } from '@alexa-lashes/ui/components';
 import { Button, Input, Textarea } from '@alexa-lashes/ui/shadcn';
 import { useForm } from '@tanstack/react-form';
 import { LoaderIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import { submitForm } from '@/lib/form';
 import { formOpts } from '@/lib/form-isomorphic';
@@ -10,6 +10,7 @@ import { m } from '@/paraglide/messages';
 import { emailRegex, nameRegex } from '@/utils';
 
 const ContactForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -21,12 +22,14 @@ const ContactForm = () => {
       try {
         await submitForm({ data: { contactType: 'contact', ...value } });
         setIsSuccess(true);
+        form.reset();
       } catch {
         setIsError(true);
       }
     },
     onSubmitInvalid() {
-      const invalidInput = document.querySelector<HTMLInputElement>('[aria-invalid="true"]');
+      const invalidInput =
+        formRef.current?.querySelector<HTMLInputElement>('[aria-invalid="true"]');
       invalidInput?.focus();
     },
   });
@@ -35,6 +38,7 @@ const ContactForm = () => {
     <div className="card p-6">
       <h2 className="mb-5 font-bold text-lg md:text-2xl">{m.contact_form_title()}</h2>
       <form
+        ref={formRef}
         method="post"
         onSubmit={(e) => {
           e.preventDefault();
@@ -171,7 +175,6 @@ const ContactForm = () => {
             )}
           </form.Subscribe>
         </div>
-
         <div>
           <div aria-live="polite">
             {isSuccess && (

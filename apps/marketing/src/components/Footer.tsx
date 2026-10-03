@@ -8,12 +8,12 @@ import { address, email, telephoneNumber } from '@/types';
 export const Footer = () => {
   return (
     <footer className="w-full">
-      <div className="border-primary-light border-t py-8">
+      <div className="border-primary-line border-t py-8">
         <div className="mx-auto flex max-w-6xl justify-center">
           <Socials />
         </div>
       </div>
-      <div className="border-primary-light border-t py-12">
+      <div className="border-primary-line border-t py-12">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 text-center text-neutral-600 md:grid-cols-3 md:text-left">
           <div>
             <p className="mb-3 font-bold text-foreground">{m.footer_alexa_lashes_title()}</p>
@@ -61,7 +61,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="border-primary-light border-t py-8">
+      <div className="border-primary-line border-t py-8">
         <div className="mx-auto max-w-6xl px-4 text-center text-neutral-600 text-sm">
           <Link to="/privacy-policy/" className="inline-block py-1.5 hover:text-primary-strong">
             {m.footer_privacy_policy_link()}

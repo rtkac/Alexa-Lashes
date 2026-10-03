@@ -29,10 +29,8 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
       }
     },
     onSubmitInvalid() {
-      requestAnimationFrame(() => {
-        const invalidInput = document.querySelector<HTMLInputElement>('[aria-invalid="true"]');
-        invalidInput?.focus();
-      });
+      const invalidInput = document.querySelector<HTMLInputElement>('[aria-invalid="true"]');
+      invalidInput?.focus();
     },
   });
 
@@ -70,7 +68,7 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                     autoComplete="name"
                     placeholder={m.training_form_name_placeholder()}
                     value={field.state.value}
-                    disabled={isSubmitting}
+                    readOnly={isSubmitting}
                     onChange={(e) => field.handleChange(e.target.value)}
                     onBlur={field.handleBlur}
                     invalid={!field.state.meta.isValid}
@@ -115,7 +113,7 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                     autoComplete="email"
                     placeholder={m.training_form_email_placeholder()}
                     value={field.state.value}
-                    disabled={isSubmitting}
+                    readOnly={isSubmitting}
                     onChange={(e) => field.handleChange(e.target.value)}
                     onBlur={field.handleBlur}
                     invalid={!field.state.meta.isValid}
@@ -160,7 +158,7 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                     name={field.name}
                     placeholder={m.training_form_message_placeholder()}
                     value={field.state.value}
-                    disabled={isSubmitting}
+                    readOnly={isSubmitting}
                     onChange={(e) => field.handleChange(e.target.value)}
                     onBlur={field.handleBlur}
                     invalid={!field.state.meta.isValid}
