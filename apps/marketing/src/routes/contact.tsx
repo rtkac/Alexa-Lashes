@@ -7,6 +7,7 @@ import QrCode from '@/components/QrCode';
 import Socials from '@/components/Socials';
 import { m } from '@/paraglide/messages';
 import { address, email, telephoneNumber } from '@/types';
+import { pageLinks, pageUrl } from '@/utils';
 
 const RouteComponent = () => {
   return (
@@ -100,7 +101,7 @@ const RouteComponent = () => {
 };
 
 export const Route = createFileRoute('/contact')({
-  head: ({ match }) => ({
+  head: () => ({
     meta: [
       { title: m.meta_contact_title() },
       { name: 'description', content: m.meta_contact_desc() },
@@ -108,17 +109,9 @@ export const Route = createFileRoute('/contact')({
       { property: 'og:title', content: m.meta_contact_title() },
       { property: 'og:description', content: m.meta_contact_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/salon-2.webp' },
+      { property: 'og:url', content: pageUrl('/contact/') },
     ],
-    links: [
-      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}/`, hrefLang: 'sk' },
-      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: 'en' },
-      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}/`, hrefLang: 'ru' },
-      {
-        rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}/`,
-        hrefLang: 'x-default',
-      },
-    ],
+    links: pageLinks('/contact/'),
   }),
   component: RouteComponent,
 });

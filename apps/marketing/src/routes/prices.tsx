@@ -5,6 +5,7 @@ import LashPriceCard from '@/components/LashPriceCard';
 import Services from '@/components/Services';
 import { m } from '@/paraglide/messages';
 import type { LashPrice } from '@/types';
+import { pageLinks, pageUrl } from '@/utils';
 
 const lashesClassic = (): LashPrice[] => [
   {
@@ -141,7 +142,7 @@ const RouteComponent = () => {
 };
 
 export const Route = createFileRoute('/prices')({
-  head: ({ match }) => ({
+  head: () => ({
     meta: [
       { title: m.meta_prices_title() },
       { name: 'description', content: m.meta_prices_desc() },
@@ -149,17 +150,9 @@ export const Route = createFileRoute('/prices')({
       { property: 'og:title', content: m.meta_prices_title() },
       { property: 'og:description', content: m.meta_prices_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/salon-2.webp' },
+      { property: 'og:url', content: pageUrl('/prices/') },
     ],
-    links: [
-      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}/`, hrefLang: 'sk' },
-      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: 'en' },
-      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}/`, hrefLang: 'ru' },
-      {
-        rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}/`,
-        hrefLang: 'x-default',
-      },
-    ],
+    links: pageLinks('/prices/'),
     scripts: [
       {
         type: 'application/ld+json',
@@ -167,8 +160,11 @@ export const Route = createFileRoute('/prices')({
           '@context': 'https://schema.org',
           '@type': 'Service',
           name: m.meta_schema_prices_title(),
+          url: pageUrl('/prices/'),
+          areaServed: { '@type': 'City', name: 'Bratislava' },
           provider: {
             '@type': 'BeautySalon',
+            '@id': 'https://alexalashes.sk/#salon',
             name: 'Alexa Lashes',
             url: 'https://alexalashes.sk',
           },

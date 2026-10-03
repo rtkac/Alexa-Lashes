@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 
 import { m } from '@/paraglide/messages';
+import { pageLinks, pageUrl } from '@/utils';
 
 const RouteComponent = () => {
   return (
@@ -49,7 +50,7 @@ const RouteComponent = () => {
 };
 
 export const Route = createFileRoute('/privacy-policy')({
-  head: ({ match }) => ({
+  head: () => ({
     meta: [
       { title: m.meta_privacy_policy_title() },
       { name: 'description', content: m.meta_privacy_policy_desc() },
@@ -57,17 +58,9 @@ export const Route = createFileRoute('/privacy-policy')({
       { property: 'og:title', content: m.meta_privacy_policy_title() },
       { property: 'og:description', content: m.meta_privacy_policy_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/banner-main-desktop.webp' },
+      { property: 'og:url', content: pageUrl('/privacy-policy/') },
     ],
-    links: [
-      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}/`, hrefLang: 'sk' },
-      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: 'en' },
-      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}/`, hrefLang: 'ru' },
-      {
-        rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}/`,
-        hrefLang: 'x-default',
-      },
-    ],
+    links: pageLinks('/privacy-policy/'),
   }),
   component: RouteComponent,
 });

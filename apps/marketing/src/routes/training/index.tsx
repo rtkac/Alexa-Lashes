@@ -6,6 +6,7 @@ import PreviewGallery from '@/components/PreviewGallery';
 import Trainings from '@/components/Trainings';
 import { m } from '@/paraglide/messages';
 import type { Gallery } from '@/types';
+import { pageLinks, pageUrl } from '@/utils';
 
 const gallery = (): Gallery[] => [
   {
@@ -72,7 +73,7 @@ const RouteComponent = () => {
 };
 
 export const Route = createFileRoute('/training/')({
-  head: ({ match }) => ({
+  head: () => ({
     meta: [
       { title: m.meta_training_title() },
       { name: 'description', content: m.meta_training_desc() },
@@ -80,17 +81,9 @@ export const Route = createFileRoute('/training/')({
       { property: 'og:title', content: m.meta_training_title() },
       { property: 'og:description', content: m.meta_training_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/basic-training-banner.webp' },
+      { property: 'og:url', content: pageUrl('/training/') },
     ],
-    links: [
-      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}`, hrefLang: 'sk' },
-      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}`, hrefLang: 'en' },
-      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}`, hrefLang: 'ru' },
-      {
-        rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}/`,
-        hrefLang: 'x-default',
-      },
-    ],
+    links: pageLinks('/training/'),
   }),
   component: RouteComponent,
 });
