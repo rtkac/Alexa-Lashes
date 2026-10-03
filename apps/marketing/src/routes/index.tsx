@@ -22,6 +22,7 @@ import {
   instagramUrl,
   telephoneNumber,
   tiktokUrl,
+  youtubeUrl,
 } from '@/types';
 
 const reviewsByLocale = reviewsJson as Record<Locale, Review[]>;
@@ -231,7 +232,7 @@ export const Route = createFileRoute('/')({
             reviewCount: 52,
             ratingValue: averageRating.toFixed(1),
           },
-          sameAs: [instagramUrl, tiktokUrl],
+          sameAs: [instagramUrl, tiktokUrl, youtubeUrl],
         }),
       },
     ],
