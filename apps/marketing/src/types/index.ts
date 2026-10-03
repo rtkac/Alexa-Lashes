@@ -2,6 +2,7 @@ export const telephoneNumber = '+421 951 268 876';
 export const whatsAppNumber = 'https://wa.me/421951268876';
 export const instagramUrl = 'https://instagram.com/alexa_lashes_bratislava';
 export const tiktokUrl = 'https://tiktok.com/@alexa_lashes_bratislava';
+export const youtubeUrl = 'https://www.youtube.com/@alexa_lashes_bratislava';
 export const email = 'alecsandraafanasyeva@gmail.com';
 export const address = 'Pajštúnska 1, 851 01 Bratislava - Petržalka';
 export const geoCoordinates = { lat: 48.11161906921437, lng: 17.102062243103443 };
