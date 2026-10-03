@@ -20,7 +20,9 @@ const Banner = ({
       <div
         className={cn(
           'flex h-full min-h-100 w-full items-center justify-center rounded-md p-6 md:min-h-130',
-          isDark && 'backdrop-brightness-50',
+          isDark
+            ? 'backdrop-brightness-50'
+            : 'bg-linear-to-b from-black/25 via-black/15 via-45% to-transparent to-75%',
         )}
       >
         <div className="flex w-250 flex-col justify-between">
@@ -30,7 +32,7 @@ const Banner = ({
           <p className="mb-6 hidden whitespace-pre-line text-shadow-sm leading-7 md:block md:font-bold lg:text-lg">
             {description}
           </p>
-          <div className="flex flex-wrap justify-center gap-y-4">{buttons}</div>
+          <div className="flex flex-wrap justify-center gap-4">{buttons}</div>
         </div>
       </div>
     </div>

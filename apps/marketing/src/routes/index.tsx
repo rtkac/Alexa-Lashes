@@ -1,5 +1,6 @@
 import { Review } from '@alexa-lashes/contracts/reviews';
 import { baseLocale, type Locale } from '@alexa-lashes/types/locales';
+import { cn } from '@alexa-lashes/ui/lib/utils';
 import { buttonVariants } from '@alexa-lashes/ui/shadcn';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from 'lucide-react';
@@ -91,16 +92,18 @@ const RouteComponent = () => {
       <Banner
         title={m.banner_title()}
         description={m.banner_desc()}
-        image="bg-[url(/banner-main-mobile.webp)] md:bg-[url(/banner-main-desktop.webp)]"
+        // Mobile pins the eyes (y≈62% of the image width) at 344px of the 400px banner, below the
+        // centered title and buttons. md shows more of the top of the cover crop so the eyes sit below the buttons.
+        image={cn(
+          'bg-[url(/banner-main-mobile.webp)] bg-position-[center_calc(344px-max(62svw,347px))] bg-size-[max(100svw,560px)_auto]',
+          'md:bg-[url(/banner-main-desktop.webp)] md:bg-cover md:bg-position-[center_30%] lg:bg-center',
+        )}
         buttons={
           <>
-            <Link to="/prices/" className={buttonVariants({ className: 'mx-2' })}>
+            <Link to="/prices/" className={buttonVariants()}>
               {m.banner_link_services()}
             </Link>
-            <Link
-              to="/contact/"
-              className={buttonVariants({ variant: 'secondary', className: 'mx-2' })}
-            >
+            <Link to="/contact/" className={buttonVariants({ variant: 'secondary' })}>
               {m.banner_link_contact()}
             </Link>
           </>
