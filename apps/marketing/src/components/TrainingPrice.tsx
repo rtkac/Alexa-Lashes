@@ -46,6 +46,7 @@ const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
                 rel="noopener noreferrer"
               >
                 {m.training_location()}
+                <span className="sr-only"> {m.link_new_tab()}</span>
               </a>
             </p>
           </div>

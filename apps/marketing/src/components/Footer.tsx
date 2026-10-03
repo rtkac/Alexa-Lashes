@@ -46,6 +46,7 @@ export const Footer = () => {
                   className="inline-block py-1.5 hover:text-primary-strong"
                 >
                   {address}
+                  <span className="sr-only"> {m.link_new_tab()}</span>
                 </a>
               </li>
             </ul>

@@ -58,27 +58,27 @@ const gallery = (): Gallery[] => [
   {
     thumbSrc: '/1-thumb.jpg',
     src: '/1.webp',
-    name: '2D mihalnice',
+    name: m.home_gallery_1_alt(),
   },
   {
     thumbSrc: '/2-thumb.jpg',
     src: '/2.webp',
-    name: '1D mihalnice',
+    name: m.home_gallery_2_alt(),
   },
   {
     thumbSrc: '/3-thumb.jpg',
     src: '/3.webp',
-    name: '3-4D mihalnice',
+    name: m.home_gallery_3_alt(),
   },
   {
     thumbSrc: '/4-thumb.jpg',
     src: '/4.webp',
-    name: '2D mihalnice mokrý efekt',
+    name: m.home_gallery_4_alt(),
   },
   {
     thumbSrc: '/5-thumb.jpg',
     src: '/5.webp',
-    name: '2D hnedé mihalnice mokrý efekt',
+    name: m.home_gallery_5_alt(),
   },
 ];
 

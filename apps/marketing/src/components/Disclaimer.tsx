@@ -12,6 +12,9 @@ export const Disclaimer = () => (
     expires={150}
     buttonText={m.disclaimer_accept_button()}
     declineButtonText={m.disclaimer_decline_button()}
+    ariaAcceptLabel={m.disclaimer_accept_button()}
+    ariaDeclineLabel={m.disclaimer_decline_button()}
+    customContainerAttributes={{ role: 'region', 'aria-label': m.disclaimer_title() }}
     buttonClasses={buttonVariants({ size: 'sm' })}
     declineButtonClasses={buttonVariants({ variant: 'secondary', size: 'sm', className: 'mr-4' })}
     contentClasses="mb-4"

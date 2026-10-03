@@ -12,7 +12,7 @@ export const FieldError = ({ errors, className, id }: FieldErrorProps) => {
     .map((error) => (typeof error === 'string' ? error : error.message));
 
   return messages.length ? (
-    <p id={id} className={cn('text-red-600 text-sm', className)}>
+    <p id={id} className={cn('text-red-700 text-sm', className)}>
       {messages.join(', ')}
     </p>
   ) : null;

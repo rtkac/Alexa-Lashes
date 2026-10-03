@@ -5,7 +5,7 @@ import { pageLinks, pageUrl } from '@/utils';
 
 const RouteComponent = () => {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <div className="mx-auto max-w-6xl space-y-2 px-4 py-10">
       <h1 className="mb-2.5 font-bold text-2xl md:text-4xl">{m.privacy_policy_title()}</h1>
       <h2 className="mt-6 mb-2.5 font-bold text-xl">{m.privacy_policy_1_title()}</h2>
       <p>{m.privacy_policy_1_desc()}</p>
@@ -17,14 +17,14 @@ const RouteComponent = () => {
       <p>{m.privacy_policy_2_desc_5()}</p>
       <h2 className="mt-6 mb-2.5 font-bold text-xl">{m.privacy_policy_3_title()}</h2>
       <p>{m.privacy_policy_3_desc()}</p>
-      <ul className="list-inside list-disc">
+      <ul className="list-outside list-disc space-y-1 pl-5">
         <li>{m.privacy_policy_3_list_1()}</li>
         <li>{m.privacy_policy_3_list_2()}</li>
         <li>{m.privacy_policy_3_list_3()}</li>
       </ul>
       <h2 className="mt-6 mb-2.5 font-bold text-xl">{m.privacy_policy_4_title()}</h2>
       <p>{m.privacy_policy_4_desc_1()}</p>
-      <ul className="list-inside list-disc">
+      <ul className="list-outside list-disc space-y-1 pl-5">
         <li>{m.privacy_policy_4_list_1()}</li>
         <li>{m.privacy_policy_4_list_2()}</li>
       </ul>
@@ -33,7 +33,7 @@ const RouteComponent = () => {
       <h2 className="mt-6 mb-2.5 font-bold text-xl">{m.privacy_policy_5_title()}</h2>
       <p>{m.privacy_policy_5_desc_1()}</p>
       <p>{m.privacy_policy_5_desc_2()}</p>
-      <ul className="list-inside list-disc">
+      <ul className="list-outside list-disc space-y-1 pl-5">
         <li>{m.privacy_policy_5_list_1()}</li>
         <li>{m.privacy_policy_5_list_2()}</li>
       </ul>

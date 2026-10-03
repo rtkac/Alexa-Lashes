@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const baseButtonVariants = cva(
-  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md border-2 border-transparent text-center font-bold no-underline transition-colors outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md border-2 border-transparent text-center font-bold no-underline transition-colors select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-strong disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -15,8 +15,7 @@ const baseButtonVariants = cva(
         outline:
           'border-primary bg-background text-primary-strong hover:bg-white disabled:opacity-50',
         ghost: 'text-primary-strong hover:bg-primary-light disabled:opacity-50',
-        destructive:
-          'bg-destructive/10 text-destructive hover:bg-destructive/20 disabled:opacity-50',
+        destructive: 'bg-destructive/10 text-red-700 hover:bg-destructive/20 disabled:opacity-50',
         link: 'border-0 text-primary-strong underline-offset-4 hover:underline disabled:opacity-50',
       },
       size: {

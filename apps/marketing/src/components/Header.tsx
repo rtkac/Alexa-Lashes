@@ -56,7 +56,7 @@ export const Header = () => {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="rounded-full px-3 py-1.5 text-base transition-colors hover:text-primary [&.active]:bg-primary-light [&.active]:font-semibold [&.active]:text-primary-strong"
+                    className="rounded-full px-3 py-1.5 text-base transition-colors hover:text-primary-strong [&.active]:bg-primary-light [&.active]:font-semibold [&.active]:text-primary-strong"
                   >
                     {link.label}
                   </Link>
@@ -85,7 +85,7 @@ export const Header = () => {
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="block rounded-md px-3 py-2.5 text-lg no-underline transition-colors hover:bg-primary-light hover:text-primary [&.active]:bg-primary-light [&.active]:font-semibold [&.active]:text-primary-strong"
+                  className="block rounded-md px-3 py-2.5 text-lg no-underline transition-colors hover:bg-primary-light hover:text-primary-strong [&.active]:bg-primary-light [&.active]:font-semibold [&.active]:text-primary-strong"
                   onClick={closeMenu}
                 >
                   {link.label}

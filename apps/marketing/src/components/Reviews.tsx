@@ -66,7 +66,10 @@ const Reviews = ({ reviews }: ReviewsProps) => {
   const goToNext = () => emblaApi?.goToNext();
 
   return (
-    <div>
+    <section
+      aria-roledescription={m.reviews_carousel_roledescription()}
+      aria-label={m.reviews_carousel_label()}
+    >
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex touch-pan-y touch-pinch-zoom gap-4">
           {reviews.map((review) =>
@@ -76,11 +79,12 @@ const Reviews = ({ reviews }: ReviewsProps) => {
                 href={review.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card flex min-w-0 shrink-0 grow-0 basis-[75%] xs:basis-[45%] flex-col justify-between p-5 no-underline transition-colors hover:cursor-pointer hover:border-primary hover:no-underline md:basis-[40%] lg:basis-[calc(33.1%-8px)]"
+                className="card flex min-w-0 shrink-0 grow-0 basis-[75%] xs:basis-[45%] flex-col justify-between p-5 no-underline transition-colors hover:cursor-pointer hover:border-primary hover:no-underline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary-strong md:basis-[40%] lg:basis-[calc(33.1%-8px)]"
                 itemScope
                 itemType="https://schema.org/Review"
               >
                 <ReviewContent review={review} />
+                <span className="sr-only">{m.link_new_tab()}</span>
               </a>
             ) : (
               <div
@@ -103,7 +107,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
           <ChevronRightIcon className="size-6" aria-hidden="true" />
         </Button>
       </div>
-    </div>
+    </section>
   );
 };
 
