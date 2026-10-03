@@ -3,6 +3,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import Cta from '@/components/Cta';
 import Gallery from '@/components/Gallery';
 import { m } from '@/paraglide/messages';
+import { pageLinks, pageUrl } from '@/utils';
 
 const RouteComponent = () => {
   return (
@@ -24,7 +25,7 @@ const RouteComponent = () => {
 };
 
 export const Route = createFileRoute('/gallery')({
-  head: ({ match }) => ({
+  head: () => ({
     meta: [
       { title: m.meta_gallery_title() },
       { name: 'description', content: m.meta_gallery_desc() },
@@ -32,17 +33,9 @@ export const Route = createFileRoute('/gallery')({
       { property: 'og:title', content: m.meta_gallery_title() },
       { property: 'og:description', content: m.meta_gallery_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/salon-2.webp' },
+      { property: 'og:url', content: pageUrl('/gallery/') },
     ],
-    links: [
-      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}/`, hrefLang: 'sk' },
-      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: 'en' },
-      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}/`, hrefLang: 'ru' },
-      {
-        rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}/`,
-        hrefLang: 'x-default',
-      },
-    ],
+    links: pageLinks('/gallery/'),
   }),
   component: RouteComponent,
 });

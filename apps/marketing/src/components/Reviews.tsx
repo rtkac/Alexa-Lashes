@@ -4,7 +4,6 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from 'lucide-react';
 
 import { m } from '@/paraglide/messages';
-import { address, telephoneNumber } from '@/types';
 
 type ReviewContentProps = {
   review: Review;
@@ -31,18 +30,16 @@ const ReviewContent = ({ review }: ReviewContentProps) => (
         className="size-8.75 overflow-hidden rounded-full"
         itemProp="itemReviewed"
         itemScope
-        itemType="https://schema.org/LocalBusiness"
+        itemType="https://schema.org/BeautySalon"
+        itemID="https://alexalashes.sk/#salon"
       >
         <meta itemProp="name" content="Alexa Lashes" />
-        <meta itemProp="telephone" content={telephoneNumber} />
-        <meta itemProp="address" content={address} />
         <img
           src="/logo.svg"
           alt=""
           className="h-full w-full object-cover"
           width={35}
           height={35}
-          itemProp="image"
           loading="lazy"
         />
       </div>

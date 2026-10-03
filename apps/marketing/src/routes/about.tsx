@@ -7,6 +7,7 @@ import { LashMaster } from '@/components/LashMaster';
 import PreviewGallery from '@/components/PreviewGallery';
 import { m } from '@/paraglide/messages';
 import type { Gallery } from '@/types';
+import { pageLinks, pageUrl } from '@/utils';
 
 const gallery = (): Gallery[] => [
   {
@@ -103,7 +104,7 @@ const RouteComponent = () => {
 };
 
 export const Route = createFileRoute('/about')({
-  head: ({ match }) => ({
+  head: () => ({
     meta: [
       { title: m.meta_about_title() },
       { name: 'description', content: m.meta_about_desc() },
@@ -111,17 +112,9 @@ export const Route = createFileRoute('/about')({
       { property: 'og:title', content: m.meta_about_title() },
       { property: 'og:description', content: m.meta_about_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/salon-2.webp' },
+      { property: 'og:url', content: pageUrl('/about/') },
     ],
-    links: [
-      { rel: 'alternate', href: `https://alexalashes.sk${match.pathname}/`, hrefLang: 'sk' },
-      { rel: 'alternate', href: `https://alexalashes.sk/en${match.pathname}/`, hrefLang: 'en' },
-      { rel: 'alternate', href: `https://alexalashes.sk/ru${match.pathname}/`, hrefLang: 'ru' },
-      {
-        rel: 'alternate',
-        href: `https://alexalashes.sk${match.pathname}/`,
-        hrefLang: 'x-default',
-      },
-    ],
+    links: pageLinks('/about/'),
   }),
   component: RouteComponent,
 });

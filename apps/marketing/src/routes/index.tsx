@@ -13,13 +13,27 @@ import Reviews from '@/components/Reviews';
 import reviewsJson from '@/data/reviews.json';
 import { m } from '@/paraglide/messages';
 import { getLocale } from '@/paraglide/runtime';
-import { type Benefit, type Gallery, instagramUrl, telephoneNumber, tiktokUrl } from '@/types';
+import {
+  type Benefit,
+  email,
+  type Gallery,
+  geoCoordinates,
+  instagramUrl,
+  telephoneNumber,
+  tiktokUrl,
+} from '@/types';
 
 const reviewsByLocale = reviewsJson as Record<Locale, Review[]>;
 const canonicalReviews = reviewsByLocale[baseLocale];
 const averageRating = canonicalReviews.length
   ? canonicalReviews.reduce((sum, review) => sum + review.rating, 0) / canonicalReviews.length
   : 5;
+
+const canonicalUrls: Record<Locale, string> = {
+  sk: 'https://alexalashes.sk/',
+  en: 'https://alexalashes.sk/en',
+  ru: 'https://alexalashes.sk/ru',
+};
 
 const benefits = (): Benefit[] => [
   {
@@ -139,8 +153,25 @@ export const Route = createFileRoute('/')({
       { property: 'og:title', content: m.meta_index_title() },
       { property: 'og:description', content: m.meta_index_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/banner-main-desktop.webp' },
+      { property: 'og:url', content: canonicalUrls[getLocale()] },
+      { name: 'twitter:image', content: 'https://alexalashes.sk/banner-main-desktop.webp' },
     ],
     links: [
+      { rel: 'canonical', href: canonicalUrls[getLocale()] },
+      {
+        rel: 'preload',
+        as: 'image',
+        href: '/banner-main-mobile.webp',
+        media: '(max-width: 47.99rem)',
+        fetchPriority: 'high',
+      },
+      {
+        rel: 'preload',
+        as: 'image',
+        href: '/banner-main-desktop.webp',
+        media: '(min-width: 48rem)',
+        fetchPriority: 'high',
+      },
       { rel: 'alternate', href: 'https://alexalashes.sk/', hrefLang: 'sk' },
       { rel: 'alternate', href: 'https://alexalashes.sk/en', hrefLang: 'en' },
       { rel: 'alternate', href: 'https://alexalashes.sk/ru', hrefLang: 'ru' },
@@ -156,6 +187,7 @@ export const Route = createFileRoute('/')({
           name: 'Alexa Lashes',
           description: m.meta_index_desc(),
           telephone: telephoneNumber,
+          email,
           url: 'https://alexalashes.sk',
           image: 'https://alexalashes.sk/banner-main-desktop.webp',
           logo: 'https://alexalashes.sk/logo.png',
@@ -178,19 +210,21 @@ export const Route = createFileRoute('/')({
               '@type': 'OpeningHoursSpecification',
               dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
               opens: '09:00',
-              closes: '17:00',
+              closes: '18:00',
             },
           ],
           geo: {
             '@type': 'GeoCoordinates',
-            latitude: 48.11161906921437,
-            longitude: 17.102062243103443,
+            latitude: geoCoordinates.lat,
+            longitude: geoCoordinates.lng,
           },
+          hasMap: `https://www.google.com/maps/search/?api=1&query=${geoCoordinates.lat},${geoCoordinates.lng}`,
+          areaServed: { '@type': 'City', name: 'Bratislava' },
           priceRange: '€€',
           aggregateRating: {
             '@type': 'AggregateRating',
             bestRating: '5',
-            reviewCount: 51,
+            reviewCount: 52,
             ratingValue: averageRating.toFixed(1),
           },
           sameAs: [instagramUrl, tiktokUrl],

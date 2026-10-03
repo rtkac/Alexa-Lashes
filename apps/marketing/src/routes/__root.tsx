@@ -57,8 +57,10 @@ export const Route = createRootRoute({
       },
       {
         property: 'og:locale',
-        content: getLocale() === 'sk' ? 'sk_SK' : getLocale() === 'ru' ? 'ru_RU' : 'en_US',
+        content: getLocale() === 'sk' ? 'sk_SK' : getLocale() === 'ru' ? 'ru_RU' : 'en_GB',
       },
+      { property: 'og:site_name', content: 'Alexa Lashes' },
+      { name: 'twitter:card', content: 'summary_large_image' },
     ],
     links: [
       {

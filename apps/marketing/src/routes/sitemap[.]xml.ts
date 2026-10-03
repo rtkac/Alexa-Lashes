@@ -4,19 +4,12 @@ import { generateStaticLocalizedUrls } from '@/paraglide/runtime.js';
 
 const localizedUrls = generateStaticLocalizedUrls([
   '/',
-  '/about',
   '/about/',
-  '/prices',
   '/prices/',
-  '/training',
   '/training/',
-  '/training/basic',
   '/training/basic/',
-  '/gallery',
   '/gallery/',
-  '/contact',
   '/contact/',
-  '/privacy-policy',
   '/privacy-policy/',
 ]);
 
