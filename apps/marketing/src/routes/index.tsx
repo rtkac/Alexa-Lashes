@@ -92,6 +92,7 @@ const RouteComponent = () => {
       <Banner
         title={m.banner_title()}
         description={m.banner_desc()}
+        hideDescriptionOnMobile
         // Mobile pins the eyes (y≈62% of the image width) at 344px of the 400px banner, below the
         // centered title and buttons. md shows more of the top of the cover crop so the eyes sit below the buttons.
         image={cn(
