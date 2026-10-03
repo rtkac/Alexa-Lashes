@@ -1,7 +1,7 @@
-import { FieldError, Label } from '@alexa-lashes/ui/components';
+import { Alert, FieldError, Label } from '@alexa-lashes/ui/components';
 import { Button, Input, Textarea } from '@alexa-lashes/ui/shadcn';
 import { useForm } from '@tanstack/react-form';
-import { CircleAlertIcon, LoaderIcon } from 'lucide-react';
+import { LoaderIcon } from 'lucide-react';
 import { useState } from 'react';
 
 import { submitForm } from '@/lib/form';
@@ -27,6 +27,12 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
       } catch {
         setIsError(true);
       }
+    },
+    onSubmitInvalid() {
+      requestAnimationFrame(() => {
+        const invalidInput = document.querySelector<HTMLInputElement>('[aria-invalid="true"]');
+        invalidInput?.focus();
+      });
     },
   });
 
@@ -61,12 +67,12 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                   </Label>
                   <Input
                     name={field.name}
+                    autoComplete="name"
                     placeholder={m.training_form_name_placeholder()}
                     value={field.state.value}
                     disabled={isSubmitting}
                     onChange={(e) => field.handleChange(e.target.value)}
                     onBlur={field.handleBlur}
-                    className="border-primary-disabled"
                     invalid={!field.state.meta.isValid}
                     aria-describedby={
                       field.state.meta.isTouched && field.state.meta.errors.length > 0
@@ -105,12 +111,13 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                   </Label>
                   <Input
                     name={field.name}
+                    type="email"
+                    autoComplete="email"
                     placeholder={m.training_form_email_placeholder()}
                     value={field.state.value}
                     disabled={isSubmitting}
                     onChange={(e) => field.handleChange(e.target.value)}
                     onBlur={field.handleBlur}
-                    className="border-primary-disabled"
                     invalid={!field.state.meta.isValid}
                     aria-describedby={
                       field.state.meta.isTouched && field.state.meta.errors.length > 0
@@ -156,7 +163,6 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
                     disabled={isSubmitting}
                     onChange={(e) => field.handleChange(e.target.value)}
                     onBlur={field.handleBlur}
-                    className="border-primary-disabled"
                     invalid={!field.state.meta.isValid}
                     aria-describedby={
                       field.state.meta.isTouched && field.state.meta.errors.length > 0
@@ -174,26 +180,29 @@ export const TrainingForm = ({ setIsSuccess }: TrainingFormProps) => {
           )}
         </form.Subscribe>
       </div>
-      {isError && (
-        <div className="flex space-x-3 rounded border border-red-200 bg-red-100 p-5 text-red-800">
-          <CircleAlertIcon />
-          <p>{m.training_form_error_message()}</p>
+      <div>
+        <div role="alert">
+          {isError && (
+            <Alert variant="error" className="mb-5">
+              {m.training_form_error_message()}
+            </Alert>
+          )}
         </div>
-      )}
-      <form.Subscribe selector={(state) => state.isSubmitting}>
-        {(isSubmitting) => (
-          <Button type="submit" disabled={isSubmitting} className="w-full">
-            {isSubmitting ? (
-              <>
-                <LoaderIcon className="size-5 animate-spin motion-reduce:animate-none" />
-                {m.training_form_sending_button()}
-              </>
-            ) : (
-              m.training_form_submit_button()
-            )}
-          </Button>
-        )}
-      </form.Subscribe>
+        <form.Subscribe selector={(state) => state.isSubmitting}>
+          {(isSubmitting) => (
+            <Button type="submit" disabled={isSubmitting} className="w-full">
+              {isSubmitting ? (
+                <>
+                  <LoaderIcon className="size-5 animate-spin motion-reduce:animate-none" />
+                  {m.training_form_sending_button()}
+                </>
+              ) : (
+                m.training_form_submit_button()
+              )}
+            </Button>
+          )}
+        </form.Subscribe>
+      </div>
     </form>
   );
 };

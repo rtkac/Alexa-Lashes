@@ -9,7 +9,7 @@ type DefaultCatchBoundaryProps = {
 
 export const DefaultCatchBoundary = ({ onRetry }: DefaultCatchBoundaryProps) => {
   return (
-    <div className="mx-auto max-w-180 p-10 text-center md:p-20">
+    <div role="alert" className="mx-auto max-w-180 p-10 text-center md:p-20">
       <h1 className="mb-4 font-bold text-xl md:text-3xl">{m.server_error_title()}</h1>
       <p className="mb-7 md:mb-9">{m.server_error_desc()}</p>
       <div>

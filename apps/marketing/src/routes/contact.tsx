@@ -32,6 +32,7 @@ const RouteComponent = () => {
                     <MapPinIcon aria-hidden="true" size="16" />
                   </span>
                   {address}
+                  <span className="sr-only"> {m.link_new_tab()}</span>
                 </a>
               </li>
               <li>

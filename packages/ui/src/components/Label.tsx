@@ -3,8 +3,8 @@ type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
   className?: string;
 } & React.PropsWithChildren;
 
-export const Label = ({ name, children, className }: LabelProps) => (
-  <label htmlFor={name} className={className}>
+export const Label = ({ name, htmlFor, children, className, ...props }: LabelProps) => (
+  <label htmlFor={htmlFor ?? name} className={className} {...props}>
     {children}
   </label>
 );

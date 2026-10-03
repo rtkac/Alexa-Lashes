@@ -9,6 +9,7 @@ export const GoogleIcon = (props: GoogleIconProps): React.ReactElement => {
       xmlSpace="preserve"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
       {...props}
     >
       <defs>

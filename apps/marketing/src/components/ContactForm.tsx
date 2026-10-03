@@ -1,7 +1,7 @@
-import { FieldError, Label } from '@alexa-lashes/ui/components';
+import { Alert, FieldError, Label } from '@alexa-lashes/ui/components';
 import { Button, Input, Textarea } from '@alexa-lashes/ui/shadcn';
 import { useForm } from '@tanstack/react-form';
-import { CircleAlertIcon, CircleCheckIcon, LoaderIcon } from 'lucide-react';
+import { LoaderIcon } from 'lucide-react';
 import { useState } from 'react';
 
 import { submitForm } from '@/lib/form';
@@ -24,6 +24,10 @@ const ContactForm = () => {
       } catch {
         setIsError(true);
       }
+    },
+    onSubmitInvalid() {
+      const invalidInput = document.querySelector<HTMLInputElement>('[aria-invalid="true"]');
+      invalidInput?.focus();
     },
   });
 
@@ -61,7 +65,7 @@ const ContactForm = () => {
                       autoComplete="name"
                       placeholder={m.contact_form_name_placeholder()}
                       value={field.state.value}
-                      disabled={isSubmitting}
+                      readOnly={isSubmitting}
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
@@ -104,7 +108,7 @@ const ContactForm = () => {
                       autoComplete="email"
                       placeholder={m.contact_form_email_placeholder()}
                       value={field.state.value}
-                      disabled={isSubmitting}
+                      readOnly={isSubmitting}
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
@@ -147,7 +151,7 @@ const ContactForm = () => {
                       name={field.name}
                       placeholder={m.contact_form_message_placeholder()}
                       value={field.state.value}
-                      disabled={isSubmitting}
+                      readOnly={isSubmitting}
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={field.handleBlur}
                       invalid={!field.state.meta.isValid}
@@ -168,39 +172,41 @@ const ContactForm = () => {
           </form.Subscribe>
         </div>
 
-        {isSuccess && (
-          <div
-            role="status"
-            className="flex space-x-3 rounded-md border border-green-200 bg-green-100 p-5 text-green-800"
-          >
-            <CircleCheckIcon className="shrink-0" />
-            <p>{m.contact_form_success_message()}</p>
+        <div>
+          <div aria-live="polite">
+            {isSuccess && (
+              <Alert variant="success" className="mb-5">
+                {m.contact_form_success_message()}
+              </Alert>
+            )}
           </div>
-        )}
-
-        {isError && (
-          <div
-            role="alert"
-            className="flex space-x-3 rounded-md border border-red-200 bg-red-100 p-5 text-red-800"
-          >
-            <CircleAlertIcon className="shrink-0" />
-            <p>{m.contact_form_error_message()}</p>
+          <div role="alert">
+            {isError && (
+              <Alert variant="error" className="mb-5">
+                {m.contact_form_error_message()}
+              </Alert>
+            )}
           </div>
-        )}
-        <form.Subscribe selector={(state) => state.isSubmitting}>
-          {(isSubmitting) => (
-            <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? (
-                <>
-                  <LoaderIcon className="size-5 animate-spin motion-reduce:animate-none" />
-                  {m.contact_form_sending_button()}
-                </>
-              ) : (
-                m.contact_form_submit_button()
-              )}
-            </Button>
-          )}
-        </form.Subscribe>
+          <form.Subscribe selector={(state) => state.isSubmitting}>
+            {(isSubmitting) => (
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                focusableWhenDisabled
+                className="w-full aria-disabled:border-primary-disabled aria-disabled:bg-primary-disabled"
+              >
+                {isSubmitting ? (
+                  <>
+                    <LoaderIcon className="size-5 animate-spin motion-reduce:animate-none" />
+                    {m.contact_form_sending_button()}
+                  </>
+                ) : (
+                  m.contact_form_submit_button()
+                )}
+              </Button>
+            )}
+          </form.Subscribe>
+        </div>
       </form>
     </div>
   );

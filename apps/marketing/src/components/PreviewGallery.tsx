@@ -25,7 +25,7 @@ const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
               <img
                 src={src}
                 alt={name}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading="lazy"
                 itemProp="contentUrl"
               />

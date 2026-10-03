@@ -45,14 +45,14 @@ code {
   --secondary: #f4f2ee;
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.5 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: var(--primary-strong);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -155,9 +155,24 @@ code {
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Near-instant (not zero) so libraries waiting for animationend/transitionend still unmount overlays */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-primary-strong;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2;
   }
   body {
     @apply bg-background text-foreground dark:text-amber-50;
@@ -170,7 +185,7 @@ code {
     @apply text-base leading-snug;
   }
   a:not(header a) {
-    @apply hover:text-primary underline-offset-2 underline;
+    @apply hover:text-primary-strong underline-offset-2 underline;
   }
 }
 

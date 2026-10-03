@@ -22,6 +22,7 @@ const Cta = ({ variant = 'wheat', title, description, buttonLabel }: CtaProps) =
       <p className="mx-auto mb-6 max-w-130 leading-6">{description || m.cta_desc()}</p>
       <a href={whatsAppNumber} className={buttonVariants()}>
         {buttonLabel || m.cta_link()}
+        <span className="sr-only"> {m.link_whatsapp()}</span>
       </a>
     </div>
   );
