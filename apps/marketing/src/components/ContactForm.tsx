@@ -1,7 +1,7 @@
-import { FieldError, Label } from '@alexa-lashes/ui/components';
+import { Alert, FieldError, Label } from '@alexa-lashes/ui/components';
 import { Button, Input, Textarea } from '@alexa-lashes/ui/shadcn';
 import { useForm } from '@tanstack/react-form';
-import { CircleAlertIcon, CircleCheckIcon, LoaderIcon } from 'lucide-react';
+import { LoaderIcon } from 'lucide-react';
 import { useState } from 'react';
 
 import { submitForm } from '@/lib/form';
@@ -175,18 +175,16 @@ const ContactForm = () => {
         <div>
           <div aria-live="polite">
             {isSuccess && (
-              <div className="mb-5 flex space-x-3 rounded-md border border-green-200 bg-green-100 p-5 text-green-800">
-                <CircleCheckIcon className="shrink-0" />
-                <p>{m.contact_form_success_message()}</p>
-              </div>
+              <Alert variant="success" className="mb-5">
+                {m.contact_form_success_message()}
+              </Alert>
             )}
           </div>
           <div role="alert">
             {isError && (
-              <div className="mb-5 flex space-x-3 rounded-md border border-red-200 bg-red-100 p-5 text-red-800">
-                <CircleAlertIcon className="shrink-0" />
-                <p>{m.contact_form_error_message()}</p>
-              </div>
+              <Alert variant="error" className="mb-5">
+                {m.contact_form_error_message()}
+              </Alert>
             )}
           </div>
           <form.Subscribe selector={(state) => state.isSubmitting}>
