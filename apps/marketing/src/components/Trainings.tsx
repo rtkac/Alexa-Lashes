@@ -23,6 +23,8 @@ const Trainings = () => {
               <img
                 src="/basic-training-banner.webp"
                 alt={m.training_basic_image_alt()}
+                width={1119}
+                height={649}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -78,6 +80,8 @@ const Trainings = () => {
               <img
                 src="/advanced-training-banner.webp"
                 alt={m.training_advanced_image_alt()}
+                width={1120}
+                height={1407}
                 className="h-full w-full object-cover"
               />
             </div>

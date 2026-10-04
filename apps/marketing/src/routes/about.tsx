@@ -11,27 +11,22 @@ import { pageLinks, pageUrl } from '@/utils';
 
 const gallery = (): Gallery[] => [
   {
-    thumbSrc: '/reception.jpg',
     src: '/reception.webp',
     name: m.about_gallery_1_alt(),
   },
   {
-    thumbSrc: '/salon-4.jpg',
     src: '/salon-4.webp',
     name: m.about_gallery_2_alt(),
   },
   {
-    thumbSrc: '/salon-2.jpg',
     src: '/salon-2.webp',
     name: m.about_gallery_3_alt(),
   },
   {
-    thumbSrc: '/salon-3.jpg',
     src: '/salon-3.webp',
     name: m.about_gallery_4_alt(),
   },
   {
-    thumbSrc: '/salon-5.jpg',
     src: '/salon-5.webp',
     name: m.about_gallery_5_alt(),
   },

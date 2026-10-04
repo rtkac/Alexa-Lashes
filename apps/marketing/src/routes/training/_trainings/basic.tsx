@@ -8,8 +8,8 @@ import { Program } from '@/components/Program';
 import { TrainingFormModal } from '@/components/TrainingFormModal';
 import TrainingPrice from '@/components/TrainingPrice';
 import { m } from '@/paraglide/messages';
-import { instagramUrl } from '@/types';
 import { pageLinks, pageUrl } from '@/utils';
+import { basicCourseSchema, basicTrainingPrice } from '@/utils/training-schema';
 
 const benefits = (): string[] => [
   m.training_basic_benefit_1_title(),
@@ -73,7 +73,7 @@ const RouteComponent = () => {
         <Includes data={includes()} />
       </div>
       <div className="mb-18">
-        <TrainingPrice duration={m.training_basic_duration()} price={870} />
+        <TrainingPrice duration={m.training_basic_duration()} price={basicTrainingPrice} />
       </div>
       <div className="mb-8">
         <LashMaster title={m.teacher_title()} desc_1={m.teacher_desc()} />
@@ -87,63 +87,50 @@ export const Route = createFileRoute('/training/_trainings/basic')({
     meta: [
       { title: m.meta_training_basic_title() },
       { name: 'description', content: m.meta_training_basic_desc() },
-      { property: 'og:type', content: 'article' },
+      { property: 'og:type', content: 'website' },
       { property: 'og:title', content: m.meta_training_basic_title() },
       { property: 'og:description', content: m.meta_training_basic_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/basic-training-banner.webp' },
+      { property: 'og:image:width', content: '1119' },
+      { property: 'og:image:height', content: '649' },
+      { property: 'og:image:alt', content: m.training_basic_image_alt() },
       { property: 'og:url', content: pageUrl('/training/basic/') },
     ],
-    links: pageLinks('/training/basic/'),
+    links: [
+      ...pageLinks('/training/basic/'),
+      {
+        rel: 'preload',
+        as: 'image',
+        href: '/basic-training-banner.webp',
+        type: 'image/webp',
+        fetchPriority: 'high',
+      },
+    ],
     scripts: [
       {
         type: 'application/ld+json',
         children: JSON.stringify({
           '@context': 'https://schema.org',
-          '@type': 'Course',
-          name: m.meta_schema_training_basic_title(),
-          description: m.meta_training_basic_desc(),
-          image: 'https://alexalashes.sk/basic-training-banner.webp',
-          instructor: {
-            '@type': 'Person',
-            jobTitle: 'Lash Stylist',
-            name: 'Oleksandra Afanasieva',
-            image: 'https://alexalashes.sk/alexa-lashes-stylist.webp',
-            sameAs: instagramUrl,
-          },
-          hasCourseInstance: {
-            '@type': 'CourseInstance',
-            courseMode: ['onsite'],
-            offers: {
-              '@type': 'Offer',
-              price: '870',
-              priceCurrency: 'EUR',
-            },
-          },
-          location: {
-            '@type': 'Place',
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: 'Pajštúnska 1',
-              addressLocality: 'Bratislava',
-              addressRegion: 'Bratislava',
-              postalCode: '85101',
-              addressCountry: 'SK',
-            },
-            url: 'https://alexalashes.sk/contact',
-          },
-          duration: 'PT16H',
-          availableLanguage: [
+          ...basicCourseSchema(),
+        }),
+      },
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
             {
-              '@type': 'Language',
-              name: 'Slovak',
+              '@type': 'ListItem',
+              position: 1,
+              name: m.breadcrumbs_training(),
+              item: pageUrl('/training/'),
             },
             {
-              '@type': 'Language',
-              name: 'Russian',
-            },
-            {
-              '@type': 'Language',
-              name: 'Ukrainian',
+              '@type': 'ListItem',
+              position: 2,
+              name: m.breadcrumbs_training_basic(),
+              item: pageUrl('/training/basic/'),
             },
           ],
         }),

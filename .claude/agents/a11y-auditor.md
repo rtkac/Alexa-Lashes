@@ -55,6 +55,8 @@ them under their own heading and don't repeat them as separate findings below.
   user-facing strings in JSX; mixed-language content without a `lang` attribute.
 - **Images** (1.1.1): informative images have meaningful, localized `alt`; decorative ones `alt=""`;
   no `alt` that repeats nearby text or says "image of".
+  A hardcoded proper name as `alt` (the instructor's photo in `LashMaster.tsx`) is intentional
+  and locale-independent; don't report it as a hardcoded string or a weak `alt`.
 - **Landmarks & navigation** (1.3.1, 2.4.1, 2.4.4): exactly one `main#main-content`, skip link intact
   in `__root.tsx`, `nav` labelled when there is more than one, `aria-current` on the active link,
   link text makes sense on its own, iframes/map titled.

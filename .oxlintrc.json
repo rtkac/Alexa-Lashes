@@ -16,7 +16,6 @@
     "**/.output/",
     "**/.storybook-static/",
     "**/coverage/",
-    "**/lib/",
     "**/dist/",
     "**/**.hbs",
     "**/*.gen.ts",
