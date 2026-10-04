@@ -61,7 +61,7 @@ house rule is at least **Important**.
 
 - Every indexable route in `src/routes` (skip `__root`, layouts, `sitemap[.]xml.ts`, API routes)
   appears once per locale. No duplicates (e.g. `/about` and `/about/`), no missing or dead routes.
-- `lastmod` is meaningful (not always "today"). `xhtml:link` alternates are present if the
+- `lastmod` is absent or meaningful (not always "today"). `xhtml:link` alternates are present if the
   `xhtml` namespace is declared.
 - `robots.txt` points to the sitemap on the same host and doesn't block assets needed for rendering.
 
@@ -90,6 +90,8 @@ house rule is at least **Important**.
 - Descriptive link text (no "click here"/"viac"). Every indexable page is reachable through internal
   links (Header, Footer, in-page).
 - Image `alt` is relevant to the content (whether it exists at all belongs to `a11y-auditor`).
+  A hardcoded proper name as `alt` (the instructor's photo in `LashMaster.tsx`) is intentional;
+  don't report it.
   Note generic image filenames (`0.webp`, `course-7.webp`) as Minor.
 
 **Performance signals (code evidence only)**

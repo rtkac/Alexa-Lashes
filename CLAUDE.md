@@ -185,6 +185,8 @@ Target is WCAG 2.2 AA. These house rules came out of earlier a11y fixes. Keep th
   `aria-label` from Paraglide, and touch targets are at least 24×24px (44×44 preferred).
 - User-facing strings, including `alt`/`aria-label`, come from Paraglide (`messages/{sk,en,ru}.json`),
   with the key present in all three locales. Decorative images use `alt=""`.
+  Exception: a proper name used as `alt` (e.g. the instructor's photo in `LashMaster.tsx`,
+  `alt="Oleksandra Afanasieva"`) stays hardcoded — it's the same in every locale. Don't flag it.
 - Embedded iframes/maps have a `title` or labelled region.
 
 Run the `a11y-auditor` subagent only when the user asks for it. When the user asks for a commit,

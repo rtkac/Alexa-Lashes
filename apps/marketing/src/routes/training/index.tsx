@@ -8,30 +8,26 @@ import Trainings from '@/components/Trainings';
 import { m } from '@/paraglide/messages';
 import type { Gallery } from '@/types';
 import { pageLinks, pageUrl } from '@/utils';
+import { advancedCourseSchema, basicCourseSchema } from '@/utils/training-schema';
 
 const gallery = (): Gallery[] => [
   {
-    thumbSrc: '/course-1.jpg',
     src: '/course-1.webp',
     name: m.training_gallery_1_alt(),
   },
   {
-    thumbSrc: '/course-2.jpg',
     src: '/course-2.webp',
     name: m.training_gallery_2_alt(),
   },
   {
-    thumbSrc: '/course-3.jpg',
     src: '/course-3.webp',
     name: m.training_gallery_3_alt(),
   },
   {
-    thumbSrc: '/course-4.jpg',
     src: '/course-4.webp',
     name: m.training_gallery_4_alt(),
   },
   {
-    thumbSrc: '/course-5.jpg',
     src: '/course-5.webp',
     name: m.training_gallery_5_alt(),
   },
@@ -81,9 +77,26 @@ export const Route = createFileRoute('/training/')({
       { property: 'og:title', content: m.meta_training_title() },
       { property: 'og:description', content: m.meta_training_desc() },
       { property: 'og:image', content: 'https://alexalashes.sk/basic-training-banner.webp' },
+      { property: 'og:image:width', content: '1119' },
+      { property: 'og:image:height', content: '649' },
+      { property: 'og:image:alt', content: m.training_basic_image_alt() },
       { property: 'og:url', content: pageUrl('/training/') },
     ],
     links: pageLinks('/training/'),
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          itemListElement: [basicCourseSchema(), advancedCourseSchema()].map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item,
+          })),
+        }),
+      },
+    ],
   }),
   component: RouteComponent,
 });
