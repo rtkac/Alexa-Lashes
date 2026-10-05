@@ -1,9 +1,25 @@
 import { cn } from '@alexa-lashes/ui/lib/utils';
 
+import { cdnSrc, cdnSrcSet } from '@/utils/image';
+
+type BannerSource = {
+  src: string;
+  width: number;
+  height: number;
+};
+
+type BannerImage = BannerSource & {
+  /** Art-directed image used below the `md` breakpoint. */
+  mobile?: BannerSource & { sizes?: string };
+  /** Sizing/positioning overrides for the `<img>` (e.g. `object-position`). */
+  className?: string;
+  sizes?: string;
+};
+
 type BannerProps = {
   title: string;
   description: string;
-  image?: string;
+  image: BannerImage;
   isDark?: boolean;
   buttons?: React.ReactNode;
   hideDescriptionOnMobile?: boolean;
@@ -12,13 +28,34 @@ type BannerProps = {
 const Banner = ({
   title,
   description,
-  image = 'bg-[url(https://placehold.co/1120x520/4a413a/4a413a)]',
+  image,
   isDark,
   buttons,
   hideDescriptionOnMobile,
 }: BannerProps) => {
   return (
-    <div className={cn('mb-13 rounded-xl bg-center bg-cover text-center text-white', image)}>
+    <div className="relative isolate mb-13 overflow-hidden rounded-xl bg-[#4a413a] text-center text-white">
+      <picture>
+        {image.mobile && (
+          <source
+            media="(max-width: 47.99rem)"
+            srcSet={cdnSrcSet(image.mobile.src, image.mobile.width)}
+            sizes={image.mobile.sizes ?? '100vw'}
+            width={image.mobile.width}
+            height={image.mobile.height}
+          />
+        )}
+        <img
+          src={cdnSrc(image.src, image.width)}
+          srcSet={cdnSrcSet(image.src, image.width)}
+          sizes={image.sizes ?? '(min-width: 72rem) 1120px, 100vw'}
+          width={image.width}
+          height={image.height}
+          alt="Banner Alexa Lashes"
+          fetchPriority="high"
+          className={cn('absolute inset-0 -z-10 size-full object-cover', image.className)}
+        />
+      </picture>
       <div
         className={cn(
           'flex h-full min-h-100 w-full items-center justify-center rounded-xl px-5 py-10 sm:p-6 md:min-h-130',

@@ -2,6 +2,7 @@ import { Review } from '@alexa-lashes/contracts/reviews';
 import { baseLocale, type Locale } from '@alexa-lashes/types/locales';
 import { cn } from '@alexa-lashes/ui/lib/utils';
 import { buttonVariants } from '@alexa-lashes/ui/shadcn';
+import { ParaglideMessage } from '@inlang/paraglide-js-react';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { AwardIcon, HeartIcon, ShieldCheckIcon } from 'lucide-react';
 
@@ -82,10 +83,21 @@ const RouteComponent = () => {
         title={m.banner_title()}
         description={m.banner_desc()}
         hideDescriptionOnMobile
-        image={cn(
-          'bg-[url(/banner-main-mobile.webp)] bg-position-[center_calc(344px-max(62svw,347px))] bg-size-[max(100svw,560px)_auto]',
-          'md:bg-[url(/banner-main-desktop.webp)] md:bg-cover md:bg-position-[center_30%] lg:bg-center',
-        )}
+        image={{
+          src: '/banner-main-desktop.webp',
+          width: 1120,
+          height: 1086,
+          mobile: {
+            src: '/banner-main-mobile.webp',
+            width: 1120,
+            height: 1400,
+            sizes: 'max(100vw, 560px)',
+          },
+          className: cn(
+            'inset-auto top-[calc(344px-max(62svw,347px))] left-1/2 h-auto w-[max(100svw,560px)] max-w-none -translate-x-1/2',
+            'md:inset-0 md:size-full md:max-w-full md:translate-x-0 md:object-[center_30%] lg:object-center',
+          ),
+        }}
         buttons={
           <>
             <Link to="/prices/" className={buttonVariants()}>
@@ -101,7 +113,14 @@ const RouteComponent = () => {
         <h2 className="mb-3 text-balance font-bold text-xl md:text-3xl">
           {m.home_welcome_title()}
         </h2>
-        <p className="leading-6">{m.home_welcome_desc()}</p>
+        <p className="leading-6">
+          <ParaglideMessage
+            message={m.home_welcome_desc}
+            markup={{
+              b: ({ children }) => <b>{children}</b>,
+            }}
+          />
+        </p>
       </div>
       <div className="mb-18 md:mb-25">
         <Benefits data={benefits()} />
@@ -149,20 +168,6 @@ export const Route = createFileRoute('/')({
     ],
     links: [
       { rel: 'canonical', href: canonicalUrls[getLocale()] },
-      {
-        rel: 'preload',
-        as: 'image',
-        href: '/banner-main-mobile.webp',
-        media: '(max-width: 47.99rem)',
-        fetchPriority: 'high',
-      },
-      {
-        rel: 'preload',
-        as: 'image',
-        href: '/banner-main-desktop.webp',
-        media: '(min-width: 48rem)',
-        fetchPriority: 'high',
-      },
       { rel: 'alternate', href: 'https://alexalashes.sk/', hrefLang: 'sk' },
       { rel: 'alternate', href: 'https://alexalashes.sk/en', hrefLang: 'en' },
       { rel: 'alternate', href: 'https://alexalashes.sk/ru', hrefLang: 'ru' },

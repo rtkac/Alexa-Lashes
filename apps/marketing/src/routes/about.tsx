@@ -40,7 +40,7 @@ const RouteComponent = () => {
         <Banner
           title={m.about_banner_title()}
           description={m.about_banner_desc()}
-          image="bg-[url(/salon-2.webp)]"
+          image={{ src: '/salon-2.webp', width: 1290, height: 1703 }}
           isDark
         />
       </div>

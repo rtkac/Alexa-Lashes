@@ -96,8 +96,9 @@ house rule is at least **Important**.
 
 **Performance signals (code evidence only)**
 
-- LCP hero (`Banner`, `banner-main-*.webp`) isn't `loading="lazy"` and has `fetchPriority="high"`
-  or a preload. Other below-the-fold images are lazy.
+- LCP hero is `Banner`'s `<picture>`/`<img>` (`fetchPriority="high"`, Image CDN `srcSet`), not a CSS
+  background. A `rel="preload"` for a banner image is a finding: its URL differs from the `srcSet`
+  pick, so the image downloads twice. Other below-the-fold images are lazy.
 - `width`/`height` (or aspect-ratio) on images to avoid CLS.
 - Fonts use `font-display: swap`. Third-party scripts (analytics, Google Maps) load after consent
   or lazily.

@@ -166,6 +166,16 @@ but runtime code from `dist/`, so an app won't see a package change until that p
   In route files, declare the components above `export const Route` (a `const` can't be used before
   its declaration).
 
+## Images (marketing app)
+
+- Hero banners: pass `image={{ src, width, height, mobile?, className?, sizes? }}` to `Banner`, which
+  renders `<picture>`/`<img fetchPriority="high">` via the Netlify Image CDN (`cdnSrc`/`cdnSrcSet` in
+  `src/utils/image.ts`). Don't use `bg-[url()]` backgrounds, and don't add `rel="preload"` links for
+  banners in `head()`: the preload URL wouldn't match the `srcSet` pick, so the image downloads twice.
+- `/.netlify/images` works in `vite dev` (emulated by `@netlify/vite-plugin`). Only production serves AVIF.
+- `og:image`, `twitter:image` and JSON-LD use raw absolute `https://alexalashes.sk/*.webp` URLs, never CDN URLs.
+- `public/_headers` caches images for 7 days. Filenames aren't hashed, so rename a file to replace it immediately.
+
 ## Accessibility (marketing app)
 
 Target is WCAG 2.2 AA. These house rules came out of earlier a11y fixes. Keep them when editing
