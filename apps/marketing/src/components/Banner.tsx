@@ -51,7 +51,7 @@ const Banner = ({
           sizes={image.sizes ?? '(min-width: 72rem) 1120px, 100vw'}
           width={image.width}
           height={image.height}
-          alt="Banner Alexa Lashes"
+          alt=""
           fetchPriority="high"
           className={cn('absolute inset-0 -z-10 size-full object-cover', image.className)}
         />
