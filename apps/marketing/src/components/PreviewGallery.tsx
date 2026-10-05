@@ -1,6 +1,7 @@
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 import type { Gallery } from '@/types';
+import { thumbnailSrc, thumbnailSrcSet } from '@/utils/image';
 
 type PreviewGalleryProps = {
   gallery: Gallery[];
@@ -14,7 +15,7 @@ const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
       itemType="http://schema.org/ImageGallery"
     >
       <PhotoProvider>
-        {gallery.map(({ src, name }) => (
+        {gallery.map(({ src, name }, index) => (
           <PhotoView key={name} src={src}>
             <button
               type="button"
@@ -23,7 +24,13 @@ const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
               itemType="http://schema.org/ImageObject"
             >
               <img
-                src={src}
+                src={thumbnailSrc(src)}
+                srcSet={thumbnailSrcSet(src)}
+                sizes={
+                  index === gallery.length - 1 && gallery.length % 2 === 1
+                    ? '(min-width: 64rem) 212px, (min-width: 40rem) 33vw, 100vw'
+                    : '(min-width: 64rem) 212px, (min-width: 40rem) 33vw, 50vw'
+                }
                 alt={name}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading="lazy"

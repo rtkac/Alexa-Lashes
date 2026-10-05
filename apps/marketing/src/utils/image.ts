@@ -9,3 +9,13 @@ export const cdnSrcSet = (src: string, maxWidth: number, widths = defaultWidths)
   [...widths.filter((width) => width < maxWidth), maxWidth]
     .map((width) => `${cdnSrc(src, width)} ${width}w`)
     .join(', ');
+
+/** Gallery thumbnails render at most ~400px wide, so 600w covers high-DPR screens. */
+const thumbnailWidths = [200, 400];
+const thumbnailMaxWidth = 600;
+
+/** Image CDN thumbnail `src` for gallery grids (the lightbox keeps the original image). */
+export const thumbnailSrc = (src: string) => cdnSrc(src, 400);
+
+/** Image CDN thumbnail `srcSet` for gallery grids. */
+export const thumbnailSrcSet = (src: string) => cdnSrcSet(src, thumbnailMaxWidth, thumbnailWidths);

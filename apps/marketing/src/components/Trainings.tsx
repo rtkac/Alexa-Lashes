@@ -5,6 +5,11 @@ import { CircleCheckIcon, ClockIcon } from 'lucide-react';
 import { TrainingFormModal } from './TrainingFormModal';
 
 import { m } from '@/paraglide/messages';
+import { cdnSrc, cdnSrcSet } from '@/utils/image';
+
+/** Card image width: half of the 1120px container minus card padding on `lg`, full width below. */
+const cardImageSizes = '(min-width: 64rem) 492px, calc(100vw - 88px)';
+const cardImageWidths = [480, 640, 960];
 
 const Trainings = () => {
   return (
@@ -21,7 +26,9 @@ const Trainings = () => {
             <p className="mb-6 text-sm">{m.training_basic_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
-                src="/basic-training-banner.webp"
+                src={cdnSrc('/basic-training-banner.webp', 640)}
+                srcSet={cdnSrcSet('/basic-training-banner.webp', 1119, cardImageWidths)}
+                sizes={cardImageSizes}
                 alt={m.training_basic_image_alt()}
                 width={1119}
                 height={649}
@@ -78,7 +85,9 @@ const Trainings = () => {
             <p className="mb-6 text-sm">{m.training_advanced_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
-                src="/advanced-training-banner.webp"
+                src={cdnSrc('/advanced-training-banner.webp', 640)}
+                srcSet={cdnSrcSet('/advanced-training-banner.webp', 1120, cardImageWidths)}
+                sizes={cardImageSizes}
                 alt={m.training_advanced_image_alt()}
                 width={1120}
                 height={1407}

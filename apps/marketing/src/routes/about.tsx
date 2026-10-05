@@ -8,6 +8,7 @@ import PreviewGallery from '@/components/PreviewGallery';
 import { m } from '@/paraglide/messages';
 import type { Gallery } from '@/types';
 import { pageLinks, pageUrl } from '@/utils';
+import { cdnSrc, cdnSrcSet } from '@/utils/image';
 import { personSchema, salonRef } from '@/utils/schema';
 
 const gallery = (): Gallery[] => [
@@ -65,7 +66,9 @@ const RouteComponent = () => {
         </div>
         <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-xl sm:max-h-full md:max-h-105">
           <img
-            src="/salon-alexa.webp"
+            src={cdnSrc('/salon-alexa.webp', 640)}
+            srcSet={cdnSrcSet('/salon-alexa.webp', 1000, [400, 640, 800])}
+            sizes="(min-width: 72rem) 536px, (min-width: 40rem) 50vw, 100vw"
             alt={m.home_about_us_image_alt()}
             width={1000}
             height={1333}
