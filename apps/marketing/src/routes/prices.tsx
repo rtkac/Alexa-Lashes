@@ -6,6 +6,7 @@ import Services from '@/components/Services';
 import { m } from '@/paraglide/messages';
 import type { LashPrice } from '@/types';
 import { pageLinks, pageUrl } from '@/utils';
+import { areaServed, salonRef } from '@/utils/schema';
 
 const lashesClassic = (): LashPrice[] => [
   {
@@ -161,15 +162,11 @@ export const Route = createFileRoute('/prices')({
           '@type': 'Service',
           name: m.meta_schema_prices_title(),
           url: pageUrl('/prices/'),
-          areaServed: { '@type': 'City', name: 'Bratislava' },
-          provider: {
-            '@type': 'BeautySalon',
-            '@id': 'https://alexalashes.sk/#salon',
-            name: 'Alexa Lashes',
-            url: 'https://alexalashes.sk',
-          },
+          areaServed,
+          provider: salonRef,
           hasOfferCatalog: {
             '@type': 'OfferCatalog',
+            '@id': 'https://alexalashes.sk/prices/#offers',
             name: m.meta_schema_prices_offers_title(),
             itemListElement: [
               {

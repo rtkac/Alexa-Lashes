@@ -17,10 +17,12 @@ const ReviewContent = ({ review }: ReviewContentProps) => (
           <StarIcon key={`${review.id}-${index}`} size="17" fill="currentColor" />
         ))}
       </div>
-      <span className="sr-only">{m.reviews_rating({ rating: review.rating })}</span>
-      <meta itemProp="worstRating" content="1" />
-      <meta itemProp="ratingValue" content={String(review.rating)} />
-      <meta itemProp="bestRating" content="5" />
+      <span itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
+        <span className="sr-only">{m.reviews_rating({ rating: review.rating })}</span>
+        <meta itemProp="worstRating" content="1" />
+        <meta itemProp="ratingValue" content={String(review.rating)} />
+        <meta itemProp="bestRating" content="5" />
+      </span>
       <p className="text-neutral-600 text-sm" itemProp="reviewBody">
         {review.description}
       </p>

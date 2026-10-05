@@ -5,6 +5,7 @@ import { TrainingFormModal } from './TrainingFormModal';
 
 import { m } from '@/paraglide/messages';
 import { getLocale } from '@/paraglide/runtime';
+import { mapsUrl } from '@/types';
 
 type TrainingPriceProps = {
   duration: string;
@@ -40,11 +41,7 @@ const TrainingPrice = ({ duration, price }: TrainingPriceProps) => {
             <MapPinIcon className="shrink-0 text-primary" size="18" />
             <p className="text-sm">
               <span className="font-bold">{m.training_location_label()}</span>&nbsp;
-              <a
-                href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
                 {m.training_location()}
                 <span className="sr-only"> {m.link_new_tab()}</span>
               </a>

@@ -8,6 +8,7 @@ import PreviewGallery from '@/components/PreviewGallery';
 import { m } from '@/paraglide/messages';
 import type { Gallery } from '@/types';
 import { pageLinks, pageUrl } from '@/utils';
+import { personSchema, salonRef } from '@/utils/schema';
 
 const gallery = (): Gallery[] => [
   {
@@ -110,6 +111,20 @@ export const Route = createFileRoute('/about')({
       { property: 'og:url', content: pageUrl('/about/') },
     ],
     links: pageLinks('/about/'),
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: m.meta_about_title(),
+          description: m.meta_about_desc(),
+          url: pageUrl('/about/'),
+          about: salonRef,
+          mainEntity: personSchema(),
+        }),
+      },
+    ],
   }),
   component: RouteComponent,
 });

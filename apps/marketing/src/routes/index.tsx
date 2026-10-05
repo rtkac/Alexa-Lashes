@@ -14,21 +14,14 @@ import Reviews from '@/components/Reviews';
 import reviewsJson from '@/data/reviews.json';
 import { m } from '@/paraglide/messages';
 import { getLocale } from '@/paraglide/runtime';
-import {
-  type Benefit,
-  email,
-  type Gallery,
-  geoCoordinates,
-  instagramUrl,
-  telephoneNumber,
-  tiktokUrl,
-  youtubeUrl,
-} from '@/types';
+import type { Benefit, Gallery } from '@/types';
+import { personSchema, salonSchema, websiteSchema } from '@/utils/schema';
 
 const reviewsByLocale = reviewsJson as Record<Locale, Review[]>;
-const canonicalReviews = reviewsByLocale[baseLocale];
-const averageRating = canonicalReviews.length
-  ? canonicalReviews.reduce((sum, review) => sum + review.rating, 0) / canonicalReviews.length
+const enabledReviews = reviewsByLocale[baseLocale].filter((review) => review.enabled);
+const reviewCount = enabledReviews.length;
+const averageRating = reviewCount
+  ? enabledReviews.reduce((sum, review) => sum + review.rating, 0) / reviewCount
   : 5;
 
 const canonicalUrls: Record<Locale, string> = {
@@ -89,8 +82,6 @@ const RouteComponent = () => {
         title={m.banner_title()}
         description={m.banner_desc()}
         hideDescriptionOnMobile
-        // Mobile pins the eyes (y≈62% of the image width) at 344px of the 400px banner, below the
-        // centered title and buttons. md shows more of the top of the cover crop so the eyes sit below the buttons.
         image={cn(
           'bg-[url(/banner-main-mobile.webp)] bg-position-[center_calc(344px-max(62svw,347px))] bg-size-[max(100svw,560px)_auto]',
           'md:bg-[url(/banner-main-desktop.webp)] md:bg-cover md:bg-position-[center_30%] lg:bg-center',
@@ -182,52 +173,11 @@ export const Route = createFileRoute('/')({
         type: 'application/ld+json',
         children: JSON.stringify({
           '@context': 'https://schema.org',
-          '@type': 'BeautySalon',
-          '@id': 'https://alexalashes.sk/#salon',
-          name: 'Alexa Lashes',
-          description: m.meta_index_desc(),
-          telephone: telephoneNumber,
-          email,
-          url: 'https://alexalashes.sk',
-          image: 'https://alexalashes.sk/banner-main-desktop.webp',
-          logo: 'https://alexalashes.sk/logo.png',
-          owner: {
-            '@type': 'Person',
-            jobTitle: 'Lash Stylist',
-            name: 'Oleksandra Afanasieva',
-            image: 'https://alexalashes.sk/alexa-lashes-stylist.webp',
-            sameAs: instagramUrl,
-          },
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: 'Pajštúnska 1',
-            addressLocality: 'Bratislava',
-            postalCode: '85101',
-            addressCountry: 'SK',
-          },
-          openingHoursSpecification: [
-            {
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-              opens: '09:00',
-              closes: '18:00',
-            },
+          '@graph': [
+            websiteSchema(),
+            salonSchema({ value: averageRating, count: reviewCount }),
+            personSchema(),
           ],
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: geoCoordinates.lat,
-            longitude: geoCoordinates.lng,
-          },
-          hasMap: `https://www.google.com/maps/search/?api=1&query=${geoCoordinates.lat},${geoCoordinates.lng}`,
-          areaServed: { '@type': 'City', name: 'Bratislava' },
-          priceRange: '€€',
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            bestRating: '5',
-            reviewCount: 52,
-            ratingValue: averageRating.toFixed(1),
-          },
-          sameAs: [instagramUrl, tiktokUrl, youtubeUrl],
         }),
       },
     ],
