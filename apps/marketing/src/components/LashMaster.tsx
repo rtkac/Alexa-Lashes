@@ -13,8 +13,8 @@ export const LashMaster = ({ title, desc_1, desc_2 }: LashMasterProps) => {
       <div className="flex items-center justify-center sm:col-span-2">
         <div className="flex h-65 w-65 items-center justify-center rounded-full border-2 border-primary bg-white">
           <img
-            src={cdnSrc('/alexa-lashes-stylist.webp', 480)}
-            srcSet={cdnSrcSet('/alexa-lashes-stylist.webp', 700, [240, 480])}
+            src={cdnSrc('/alexa-lashes-stylist.webp', 480, 80)}
+            srcSet={cdnSrcSet('/alexa-lashes-stylist.webp', 700, [240, 480], 80)}
             sizes="240px"
             alt="Oleksandra Afanasieva"
             width={240}

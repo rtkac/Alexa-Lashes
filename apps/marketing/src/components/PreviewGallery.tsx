@@ -2,6 +2,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 import type { Gallery } from '@/types';
 import { thumbnailSrc, thumbnailSrcSet } from '@/utils/image';
+import { siteUrl } from '@/utils/schema';
 
 type PreviewGalleryProps = {
   gallery: Gallery[];
@@ -34,8 +35,8 @@ const PreviewGallery = ({ gallery }: PreviewGalleryProps) => {
                 alt={name}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading="lazy"
-                itemProp="contentUrl"
               />
+              <meta itemProp="contentUrl" content={`${siteUrl}${src}`} />
             </button>
           </PhotoView>
         ))}

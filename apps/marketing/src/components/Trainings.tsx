@@ -26,8 +26,8 @@ const Trainings = () => {
             <p className="mb-6 text-sm">{m.training_basic_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
-                src={cdnSrc('/basic-training-banner.webp', 640)}
-                srcSet={cdnSrcSet('/basic-training-banner.webp', 1119, cardImageWidths)}
+                src={cdnSrc('/basic-training-banner.webp', 640, 80)}
+                srcSet={cdnSrcSet('/basic-training-banner.webp', 1119, cardImageWidths, 80)}
                 sizes={cardImageSizes}
                 alt={m.training_basic_image_alt()}
                 width={1119}
@@ -85,8 +85,8 @@ const Trainings = () => {
             <p className="mb-6 text-sm">{m.training_advanced_desc()}</p>
             <div className="mb-6 h-50 overflow-hidden rounded-md sm:h-90 lg:h-70">
               <img
-                src={cdnSrc('/advanced-training-banner.webp', 640)}
-                srcSet={cdnSrcSet('/advanced-training-banner.webp', 1120, cardImageWidths)}
+                src={cdnSrc('/advanced-training-banner.webp', 640, 80)}
+                srcSet={cdnSrcSet('/advanced-training-banner.webp', 1120, cardImageWidths, 80)}
                 sizes={cardImageSizes}
                 alt={m.training_advanced_image_alt()}
                 width={1120}

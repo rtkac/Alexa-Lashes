@@ -66,8 +66,8 @@ const RouteComponent = () => {
         </div>
         <div className="flex max-h-80 items-center justify-center overflow-hidden rounded-xl sm:max-h-full md:max-h-105">
           <img
-            src={cdnSrc('/salon-alexa.webp', 640)}
-            srcSet={cdnSrcSet('/salon-alexa.webp', 1000, [400, 640, 800])}
+            src={cdnSrc('/salon-alexa.webp', 640, 85)}
+            srcSet={cdnSrcSet('/salon-alexa.webp', 1000, [400, 640, 800], 85)}
             sizes="(min-width: 72rem) 536px, (min-width: 40rem) 50vw, 100vw"
             alt={m.home_about_us_image_alt()}
             width={1000}

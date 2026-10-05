@@ -5,8 +5,8 @@ const QrCode = () => {
   return (
     <div className="card space-y-5 p-5 text-center md:p-12">
       <img
-        src={cdnSrc('/qr_code.webp', 320)}
-        srcSet={cdnSrcSet('/qr_code.webp', 975, [160, 320, 480])}
+        src={cdnSrc('/qr_code.webp', 320, 70)}
+        srcSet={cdnSrcSet('/qr_code.webp', 975, [160, 320, 480], 70)}
         sizes="160px"
         alt={m.qr_code_alt()}
         width={160}

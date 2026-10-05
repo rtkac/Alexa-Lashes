@@ -15,7 +15,7 @@ import {
  * same salon, website and lash master instead of repeating unlinked copies.
  */
 
-const siteUrl = 'https://alexalashes.sk';
+export const siteUrl = 'https://alexalashes.sk';
 
 export const salonId = `${siteUrl}/#salon`;
 export const websiteId = `${siteUrl}/#website`;
