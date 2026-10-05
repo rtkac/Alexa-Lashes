@@ -6,8 +6,9 @@ import ContactForm from '@/components/ContactForm';
 import QrCode from '@/components/QrCode';
 import Socials from '@/components/Socials';
 import { m } from '@/paraglide/messages';
-import { address, email, telephoneNumber } from '@/types';
+import { address, email, mapsUrl, telephoneNumber } from '@/types';
 import { pageLinks, pageUrl } from '@/utils';
+import { salonRef } from '@/utils/schema';
 
 const RouteComponent = () => {
   return (
@@ -23,7 +24,7 @@ const RouteComponent = () => {
             <ul className="space-y-3.5">
               <li>
                 <a
-                  href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
+                  href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 font-medium no-underline decoration-primary underline-offset-4 hover:text-primary-strong hover:underline"
@@ -113,6 +114,19 @@ export const Route = createFileRoute('/contact')({
       { property: 'og:url', content: pageUrl('/contact/') },
     ],
     links: pageLinks('/contact/'),
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: m.meta_contact_title(),
+          description: m.meta_contact_desc(),
+          url: pageUrl('/contact/'),
+          mainEntity: salonRef,
+        }),
+      },
+    ],
   }),
   component: RouteComponent,
 });

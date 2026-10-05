@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import Socials from './Socials';
 
 import { m } from '@/paraglide/messages';
-import { address, email, telephoneNumber } from '@/types';
+import { address, email, mapsUrl, telephoneNumber } from '@/types';
 
 export const Footer = () => {
   return (
@@ -40,7 +40,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://maps.app.goo.gl/mTVDSACYUsSW4yN17"
+                  href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block py-1.5 hover:text-primary-strong"
