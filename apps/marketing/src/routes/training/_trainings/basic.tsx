@@ -35,7 +35,12 @@ const RouteComponent = () => {
       <Banner
         title={m.training_basic_banner_title()}
         description={m.training_basic_banner_desc()}
-        image="bg-[url(/basic-training-banner.webp)]"
+        image={{
+          src: '/basic-training-banner.webp',
+          width: 1119,
+          height: 649,
+          sizes: '(min-width: 72rem) 1120px, (min-width: 48rem) 100vw, 700px',
+        }}
         isDark
         buttons={
           <TrainingFormModal trigger={<Button>{m.training_basic_banner_link_contact()}</Button>} />
@@ -96,16 +101,7 @@ export const Route = createFileRoute('/training/_trainings/basic')({
       { property: 'og:image:alt', content: m.training_basic_image_alt() },
       { property: 'og:url', content: pageUrl('/training/basic/') },
     ],
-    links: [
-      ...pageLinks('/training/basic/'),
-      {
-        rel: 'preload',
-        as: 'image',
-        href: '/basic-training-banner.webp',
-        type: 'image/webp',
-        fetchPriority: 'high',
-      },
-    ],
+    links: pageLinks('/training/basic/'),
     scripts: [
       {
         type: 'application/ld+json',
