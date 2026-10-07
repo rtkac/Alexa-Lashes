@@ -10,12 +10,13 @@ import { AboutUs } from '@/components/AboutUs';
 import Banner from '@/components/Banner';
 import Benefits from '@/components/Benefits';
 import Cta from '@/components/Cta';
+import Faqs from '@/components/Faqs';
 import PreviewGallery from '@/components/PreviewGallery';
 import Reviews from '@/components/Reviews';
 import reviewsJson from '@/data/reviews.json';
 import { m } from '@/paraglide/messages';
 import { getLocale } from '@/paraglide/runtime';
-import type { Benefit, Gallery } from '@/types';
+import type { Benefit, Faq, Gallery } from '@/types';
 import { personSchema, salonSchema, websiteSchema } from '@/utils/schema';
 
 const reviewsByLocale = reviewsJson as Record<Locale, Review[]>;
@@ -47,6 +48,14 @@ const benefits = (): Benefit[] => [
     title: m.benefits_3_title(),
     description: m.benefits_3_desc(),
   },
+];
+
+const faqs = (): Faq[] => [
+  { question: m.home_faq_1_question(), answer: m.home_faq_1_answer() },
+  { question: m.home_faq_2_question(), answer: m.home_faq_2_answer() },
+  { question: m.home_faq_3_question(), answer: m.home_faq_3_answer() },
+  { question: m.home_faq_4_question(), answer: m.home_faq_4_answer() },
+  { question: m.home_faq_5_question(), answer: m.home_faq_5_answer() },
 ];
 
 const gallery = (): Gallery[] => [
@@ -149,6 +158,12 @@ const RouteComponent = () => {
           <Reviews reviews={filteredReviews} />
         </div>
       )}
+      <div className="mx-auto mb-18 max-w-180 md:mb-25">
+        <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
+          {m.home_faq_title()}
+        </h2>
+        <Faqs data={faqs()} />
+      </div>
       <Cta />
     </div>
   );
@@ -182,6 +197,15 @@ export const Route = createFileRoute('/')({
             websiteSchema(),
             salonSchema({ value: averageRating, count: reviewCount }),
             personSchema(),
+            {
+              '@type': 'FAQPage',
+              '@id': `${canonicalUrls[getLocale()]}#faq`,
+              mainEntity: faqs().map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+              })),
+            },
           ],
         }),
       },
