@@ -18,6 +18,42 @@
   font-display: swap;
 }
 
+/* Display face for h1/h2. size-adjust compensates for Cormorant's small x-height. */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('../fonts/CormorantGaramond-cyrillic.woff2') format('woff2');
+  font-weight: 500 700;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 112%;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('../fonts/CormorantGaramond-latin-ext.woff2') format('woff2');
+  font-weight: 500 700;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 112%;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('../fonts/CormorantGaramond-latin.woff2') format('woff2');
+  font-weight: 500 700;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 112%;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 body {
   @apply m-0;
   font-family: 'Manrope', sans-serif;
@@ -43,10 +79,12 @@ code {
   --primary-strong: color-mix(in srgb, var(--primary) 60%, black 40%);
   --primary-foreground: oklch(0.985 0 0);
   --primary-ink: #2b2418;
+  --tertiary: #4a413a;
   --secondary: #f4f2ee;
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.5 0 0);
+  /* Warm grey to sit on the cream background; >= 4.5:1 on #fdfbf7 and white. */
+  --muted-foreground: #6b6359;
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -109,7 +147,15 @@ code {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Warm neutrals (replace Tailwind's cool greys) to match the cream background. */
+@theme {
+  --color-neutral-500: #6b6359;
+  --color-neutral-600: #5a5249;
+  --color-neutral-700: #453e36;
+}
+
 @theme inline {
+  --font-display: 'Cormorant Garamond', Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -184,8 +230,13 @@ code {
   ::selection {
     background-color: color-mix(in srgb, var(--primary) 35%, transparent);
   }
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
   p {
-    @apply text-base leading-snug;
+    @apply text-base leading-[1.6];
   }
   a:not(header a) {
     @apply hover:text-primary-strong underline-offset-2 underline;

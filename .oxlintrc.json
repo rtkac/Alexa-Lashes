@@ -20,7 +20,8 @@
     "**/**.hbs",
     "**/*.gen.ts",
     ".agents/",
-    ".claude/"
+    ".claude/",
+    ".impeccable/"
   ],
   "rules": {
     "constructor-super": "error",

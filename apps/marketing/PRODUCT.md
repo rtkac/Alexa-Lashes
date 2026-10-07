@@ -56,7 +56,8 @@ the salon.
 
 ## Brand Commitments
 
-- Name: Alexa Lashes. Logo assets: `public/logo.svg`, `public/logo_primary.svg`, `public/logo.png`.
+- Name: Alexa Lashes. The registered company is "AlexaLashses s.r.o." (correct spelling, used only in
+  legal text). Logo assets: `public/logo.svg`, `public/logo_primary.svg`, `public/logo.png`.
 - Voice in existing copy: warm, personal and reassuring; course pages speak in Alexa's first person.
 - Footer line: "Beauty, quality, and your satisfaction come first."
 

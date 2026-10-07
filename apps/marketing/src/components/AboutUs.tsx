@@ -21,7 +21,7 @@ export const AboutUs = () => {
       </div>
       <div className="text-center sm:text-left">
         <div className="mb-8 space-y-5">
-          <h2 className="text-balance font-bold text-xl md:text-3xl">{m.home_about_us_title()}</h2>
+          <h2 className="text-balance font-bold text-3xl md:text-4xl">{m.home_about_us_title()}</h2>
           <p className="text-neutral-600 leading-6">{m.home_about_us_desc_1()}</p>
           <p className="text-neutral-600 leading-6">{m.home_about_us_desc_2()}</p>
         </div>

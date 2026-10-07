@@ -7,6 +7,7 @@ import { useState, useRef } from 'react';
 import { submitForm } from '@/lib/form';
 import { formOpts } from '@/lib/form-isomorphic';
 import { m } from '@/paraglide/messages';
+import { telephoneNumber } from '@/types';
 import { emailRegex, nameRegex } from '@/utils';
 
 const ContactForm = () => {
@@ -186,7 +187,7 @@ const ContactForm = () => {
           <div role="alert">
             {isError && (
               <Alert variant="error" className="mb-5">
-                {m.contact_form_error_message()}
+                {m.contact_form_error_message({ phone: telephoneNumber })}
               </Alert>
             )}
           </div>

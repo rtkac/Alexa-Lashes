@@ -82,13 +82,13 @@ export const Program = () => {
           <ol className="flex flex-col gap-7">
             {day.events.map((event) => (
               <li className="flex gap-6 sm:gap-14" key={event.time}>
-                <time className="w-11 shrink-0 font-bold text-primary-strong tabular-nums">
+                <time className="w-11 shrink-0 font-bold text-foreground tabular-nums">
                   {event.time}
                 </time>
                 <div className="flex flex-col gap-2">
                   <span className="font-bold">{event.title}</span>
                   {event.lead && (
-                    <p className="font-bold text-primary-strong text-sm">{event.lead}</p>
+                    <p className="font-semibold text-neutral-700 text-sm">{event.lead}</p>
                   )}
                   {event.description && (
                     <p className="text-neutral-500 text-sm">{event.description}</p>

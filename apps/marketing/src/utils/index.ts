@@ -36,3 +36,15 @@ export const pageLinks = (path: string) => {
     { rel: 'canonical', href: pageUrl(path) },
   ];
 };
+
+/**
+ * Open Graph image tags for a 1200x630 JPEG in `public/` (X falls back to these, so no `twitter:image`).
+ * Width/height let Facebook, WhatsApp and LinkedIn render a large preview on the first share.
+ */
+export const ogImage = (file: string, alt: string) => [
+  { property: 'og:image', content: `${siteUrl}/${file}` },
+  { property: 'og:image:type', content: 'image/jpeg' },
+  { property: 'og:image:width', content: '1200' },
+  { property: 'og:image:height', content: '630' },
+  { property: 'og:image:alt', content: alt },
+];

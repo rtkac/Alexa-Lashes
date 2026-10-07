@@ -14,5 +14,5 @@
   "sortImports": {
     "groups": ["side_effect", ["builtin", "external"], ["sibling", "parent"], "style"]
   },
-  "ignorePatterns": ["**/**.hbs", "**/*.gen.ts", ".agents/", ".claude/"]
+  "ignorePatterns": ["**/**.hbs", "**/*.gen.ts", ".agents/", ".claude/", ".impeccable/"]
 }

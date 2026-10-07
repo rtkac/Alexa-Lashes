@@ -5,20 +5,35 @@
 - Address: Pajštúnska 1, 851 01 Bratislava – Petržalka, Slovakia
 - Phone / WhatsApp: +421 951 268 876
 - Opening hours: Monday–Friday 9:00–18:00, Saturday and Sunday closed
-- Website languages: Slovak (default), English (/en/), Russian (/ru/)
+- Rating: 5.0 from 53 reviews on Google Maps
+- Google Maps: https://www.google.com/maps?cid=15930515621788203838
 - Instagram: https://instagram.com/alexa_lashes_bratislava
+- Booking: by WhatsApp, phone or the contact form
+- Languages spoken: Slovak, Russian, Ukrainian
+- Website languages: Slovak (default, no prefix), English (/en), Russian (/ru)
+
+## Prices (EUR)
+
+| Style | New set | Refill 2 weeks | Refill 3 weeks | Refill 4 weeks |
+| --- | --- | --- | --- | --- |
+| Classic 1D | 60 | 40 | 45 | 50 |
+| 2D volume | 70 | 45 | 50 | 55 |
+| 3-4D volume | 80 | 50 | 55 | 60 |
+| 5-6D volume | 90 | 55 | 60 | 65 |
+
+Add-ons: Kim Kardashian style lash clusters 5, special curl M/L 5, colored (brown) lashes 5, lash removal 15.
 
 ## Services
 
-- [Price list](https://alexalashes.sk/en/prices/): current prices for new lash sets, 2/3/4-week refills, lash removal and add-ons
-- [Gallery](https://alexalashes.sk/en/gallery/): photos of finished lash sets
+- [Price list](https://alexalashes.sk/prices/) ([en](https://alexalashes.sk/en/prices/), [ru](https://alexalashes.sk/ru/prices/)): new lash sets, 2/3/4-week refills, lash removal and add-ons
+- [Gallery](https://alexalashes.sk/gallery/) ([en](https://alexalashes.sk/en/gallery/), [ru](https://alexalashes.sk/ru/gallery/)): photos of finished lash sets
 
 ## Training
 
-- [Training overview](https://alexalashes.sk/en/training/): basic and advanced eyelash extension courses
-- [Basic course](https://alexalashes.sk/en/training/basic/): two-day onsite course for complete beginners, price and programme
+- [Training overview](https://alexalashes.sk/training/) ([en](https://alexalashes.sk/en/training/), [ru](https://alexalashes.sk/ru/training/)): basic and advanced eyelash extension courses
+- [Basic course](https://alexalashes.sk/training/basic/) ([en](https://alexalashes.sk/en/training/basic/), [ru](https://alexalashes.sk/ru/training/basic/)): two-day onsite course for complete beginners, 870 EUR
 
 ## About and contact
 
-- [About the salon and lash master](https://alexalashes.sk/en/about/)
-- [Contact, map and booking form](https://alexalashes.sk/en/contact/)
+- [About the salon and lash master](https://alexalashes.sk/about/) ([en](https://alexalashes.sk/en/about/), [ru](https://alexalashes.sk/ru/about/))
+- [Contact, map and booking form](https://alexalashes.sk/contact/) ([en](https://alexalashes.sk/en/contact/), [ru](https://alexalashes.sk/ru/contact/))
