@@ -245,7 +245,7 @@ const GalleryGrid = ({ title, images, eagerCount = 0 }: GalleryGridProps) => {
                 srcSet={thumbnailSrcSet(src)}
                 sizes="(min-width: 64rem) 268px, (min-width: 40rem) 33vw, 50vw"
                 alt={name}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading={index < eagerCount ? 'eager' : 'lazy'}
               />
               <meta itemProp="contentUrl" content={`${siteUrl}${src}`} />

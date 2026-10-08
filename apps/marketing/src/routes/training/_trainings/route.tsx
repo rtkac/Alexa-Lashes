@@ -7,11 +7,13 @@ const PathlessLayoutComponent = () => {
     <div className="mx-auto max-w-6xl px-4 pt-5 pb-10">
       <nav aria-label={m.breadcrumbs_label()}>
         <ol className="mb-5 flex items-center gap-2 font-medium text-sm">
-          <li className="text-primary-strong">
+          <li className="text-neutral-600">
             <Link to="/training/">{m.breadcrumbs_training()}</Link>
           </li>
-          <li aria-hidden="true">/</li>
-          <li className="text-primary-strong" aria-current="page">
+          <li aria-hidden="true" className="text-neutral-500">
+            /
+          </li>
+          <li className="font-semibold text-foreground" aria-current="page">
             {m.breadcrumbs_training_basic()}
           </li>
         </ol>

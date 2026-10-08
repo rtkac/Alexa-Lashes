@@ -173,7 +173,9 @@ but runtime code from `dist/`, so an app won't see a package change until that p
   `src/utils/image.ts`). Don't use `bg-[url()]` backgrounds, and don't add `rel="preload"` links for
   banners in `head()`: the preload URL wouldn't match the `srcSet` pick, so the image downloads twice.
 - `/.netlify/images` works in `vite dev` (emulated by `@netlify/vite-plugin`). Only production serves AVIF.
-- `og:image`, `twitter:image` and JSON-LD use raw absolute `https://alexalashes.sk/*.webp` URLs, never CDN URLs.
+- Share images (`og:image`) are dedicated `public/og-*.jpg` files: 1200×630 JPEG, under ~300 KB,
+  never `.webp` (LinkedIn and some messengers handle it poorly) and never CDN URLs. JSON-LD `image`
+  fields use raw absolute `https://alexalashes.sk/*` URLs (`.webp` is fine there), never CDN URLs.
 - `public/_headers` caches images for 7 days. Filenames aren't hashed, so rename a file to replace it immediately.
 
 ## Accessibility (marketing app)
@@ -203,15 +205,40 @@ Run the `a11y-auditor` subagent only when the user asks for it. When the user as
 `/summarize-changes`, or `/pr-description` and the diff touches `apps/marketing` UI (components,
 routes, messages) or `packages/ui` styles, suggest running it in one line. Don't run it automatically.
 
+## Brand and company name
+
+- The salon is **Alexa Lashes** (two words). Use that in all copy, headings and alt text.
+- The registered company is **AlexaLashses s.r.o.** That spelling is correct and legally registered in
+  Slovakia. It is not a typo of the salon name. It appears only in legal text (`footer_rights`,
+  `privacy_policy_2_desc_1`). Don't flag it or "fix" it.
+- Booking replies: don't state a reply time anywhere ("as soon as she can", "within a day", etc.).
+- Don't claim Alexa personally does every set ("osobne Alexa", "done by Alexa herself"); the studio
+  may hire staff. Describing her as founder/lash master since 2017 is fine.
+
 ## SEO (marketing app)
+
+Target keywords (sk): **predĺženie / predlžovanie mihalníc Bratislava** and **umelé mihalnice**.
+Use them where they read naturally: H1, the hero line, meta, and alt text. Don't stuff them. One or
+two natural mentions per page is enough. `Petržalka` is a secondary local term.
 
 The `seo-auditor` subagent checks `apps/marketing` against these house rules:
 
 - Every page route has a `head()` with `title` and `description` from `m.meta_<page>_title/desc()`,
-  a full Open Graph set (`og:type`, `og:title`, `og:description`, `og:image`), and hreflang
-  `alternate` links for `sk`, `en`, `ru` plus `x-default` (= `sk`).
+  a full Open Graph set (`og:type` = `website`, `og:title`, `og:description`, `og:url`, and the image
+  tags below), and hreflang `alternate` links for `sk`, `en`, `ru` plus `x-default` (= `sk`).
+- Image tags come from `ogImage(file, alt)` in `src/utils/index.ts`: `og:image`, `og:image:type`,
+  `og:image:width`/`height` (1200/630, must match the file) and `og:image:alt`. Spread it into `meta`,
+  don't hand-write those tags. The alt is an `m.og_image_alt_*()` message that describes what the photo
+  actually shows (no guessed lash style). If you replace an image, update its alt in all three locales.
+- Current mapping: `og-umele-mihalnice-bratislava.jpg` → home, prices, contact, privacy;
+  `og-predlzenie-mihalnic-alexa-lashes.jpg` → about, gallery; `og-training-alexa-lashes.jpg` →
+  training, training/basic.
+- X/Twitter: `__root.tsx` sets `twitter:card` once. Don't add `twitter:image`, `twitter:title`,
+  `twitter:description` or `twitter:image:alt`, because X falls back to the `og:*` tags. Also skip
+  `og:image:secure_url`, because the URLs are already https.
 - All URLs in meta/links/JSON-LD are absolute on `https://alexalashes.sk`. `og:image` points to a file
-  that exists in `apps/marketing/public/`.
+  that exists in `apps/marketing/public/`. To replace a share image, use a new filename (see the 7-day
+  cache above) and re-scrape in the Facebook Sharing Debugger after deploy.
 - URLs: `sk` has no prefix, `en`/`ru` are `/en/...`/`/ru/...` (see `urlPatterns` in `vite.config.ts`).
   Use one trailing-slash style across hreflang, canonical and `sitemap[.]xml.ts`. Non-home pages
   currently use a trailing slash in hreflang.

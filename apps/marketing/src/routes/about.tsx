@@ -7,7 +7,7 @@ import { LashMaster } from '@/components/LashMaster';
 import PreviewGallery from '@/components/PreviewGallery';
 import { m } from '@/paraglide/messages';
 import type { Gallery } from '@/types';
-import { pageLinks, pageUrl } from '@/utils';
+import { ogImage, pageLinks, pageUrl } from '@/utils';
 import { cdnSrc, cdnSrcSet } from '@/utils/image';
 import { personSchema, salonRef } from '@/utils/schema';
 
@@ -48,7 +48,7 @@ const RouteComponent = () => {
       <div className="mb-18 grid gap-8 sm:grid-cols-2 md:mb-25 md:gap-12">
         <div className="text-center sm:text-left">
           <div className="space-y-5">
-            <h2 className="text-balance font-bold text-xl md:text-3xl">{m.about_title()}</h2>
+            <h2 className="text-balance font-bold text-3xl md:text-4xl">{m.about_title()}</h2>
             <p className="leading-6">{m.about_desc_1()}</p>
             <p className="leading-6">
               <ParaglideMessage
@@ -59,7 +59,7 @@ const RouteComponent = () => {
                 }}
               />
             </p>
-            <p className="rounded-xl bg-primary-light p-5 font-bold text-primary-strong italic">
+            <p className="pt-2 font-display font-semibold text-2xl leading-snug md:text-3xl">
               {m.about_desc_label()}
             </p>
           </div>
@@ -77,7 +77,7 @@ const RouteComponent = () => {
         </div>
       </div>
       <div className="mb-18 md:mb-25">
-        <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
+        <h2 className="mb-6 text-balance font-bold text-3xl md:mb-8 md:text-4xl">
           {m.about_gallery_title()}
         </h2>
         <PreviewGallery gallery={gallery()} />
@@ -110,7 +110,7 @@ export const Route = createFileRoute('/about')({
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: m.meta_about_title() },
       { property: 'og:description', content: m.meta_about_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/salon-2.webp' },
+      ...ogImage('og-predlzenie-mihalnic-alexa-lashes.jpg', m.og_image_alt_work()),
       { property: 'og:url', content: pageUrl('/about/') },
     ],
     links: pageLinks('/about/'),

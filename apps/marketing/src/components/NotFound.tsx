@@ -14,7 +14,7 @@ const NotFound = () => {
       >
         404
       </p>
-      <h1 className="mb-4 text-balance font-bold text-2xl md:text-4xl">{m.notFound_title()}</h1>
+      <h1 className="mb-4 text-balance font-bold text-4xl md:text-5xl">{m.notFound_title()}</h1>
       <p className="mx-auto mb-8 max-w-130 text-pretty leading-6 md:mb-10">{m.notFound_desc()}</p>
       <div className="flex flex-wrap justify-center gap-3">
         <Link to="/" className={buttonVariants()}>

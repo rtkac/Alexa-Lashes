@@ -3,8 +3,8 @@ import { m } from '@/paraglide/messages';
 import {
   email,
   geoCoordinates,
+  googleBusinessUrl,
   instagramUrl,
-  mapsUrl,
   telephoneNumber,
   tiktokUrl,
   youtubeUrl,
@@ -88,7 +88,7 @@ export const salonSchema = (rating: Rating) => ({
   telephone: telephoneNumber,
   email,
   image: [
-    `${siteUrl}/banner-main-desktop.webp`,
+    `${siteUrl}/og-umele-mihalnice-bratislava.jpg`,
     `${siteUrl}/salon-alexa.webp`,
     `${siteUrl}/reception.webp`,
     `${siteUrl}/salon-2.webp`,
@@ -115,7 +115,7 @@ export const salonSchema = (rating: Rating) => ({
     latitude: geoCoordinates.lat,
     longitude: geoCoordinates.lng,
   },
-  hasMap: mapsUrl,
+  hasMap: googleBusinessUrl,
   areaServed,
   knowsLanguage: languages,
   currenciesAccepted: 'EUR',
@@ -137,5 +137,5 @@ export const salonSchema = (rating: Rating) => ({
       reviewCount: rating.count,
     },
   }),
-  sameAs: [instagramUrl, tiktokUrl, youtubeUrl],
+  sameAs: [instagramUrl, tiktokUrl, youtubeUrl, googleBusinessUrl],
 });

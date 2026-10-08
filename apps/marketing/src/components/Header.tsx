@@ -2,6 +2,7 @@ import logo from '/logo_primary.svg';
 import { MenuToggle } from '@alexa-lashes/ui/components';
 import {
   Button,
+  buttonVariants,
   Drawer,
   DrawerClose,
   DrawerContent,
@@ -15,6 +16,7 @@ import { useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 
 import { m } from '@/paraglide/messages';
+import { whatsAppNumber } from '@/types';
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -33,23 +35,13 @@ export const Header = () => {
   return (
     <header className="z-2 w-full border-primary-line border-b">
       <nav>
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4">
-          <Link to="/" className="z-10 flex items-center space-x-3">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 p-4 sm:gap-4">
+          <Link to="/" className="z-10 flex shrink-0 items-center gap-2.5 sm:gap-3">
             <img src={logo} alt="Alexa Lashes Logo" width={42} height={36} />
-            <span className="self-center whitespace-nowrap font-semibold text-foreground text-xl">
+            <span className="self-center whitespace-nowrap font-semibold text-foreground text-lg max-[23rem]:hidden sm:text-xl">
               Alexa Lashes
             </span>
           </Link>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
-            aria-label={open ? m.menu_close() : m.menu_open()}
-            aria-expanded={open}
-            onClick={() => setOpen((prev) => !prev)}
-          >
-            <MenuToggle open={open} />
-          </Button>
           <div className="hidden lg:flex lg:items-center lg:gap-4">
             <ul className="flex flex-row items-center gap-1 font-medium">
               {links.map((link) => (
@@ -65,15 +57,33 @@ export const Header = () => {
             </ul>
             <LanguageSwitcher />
           </div>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <a href={whatsAppNumber} className={buttonVariants({ size: 'sm' })}>
+              {m.header_book()}
+              <span className="sr-only"> {m.link_whatsapp()}</span>
+            </a>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="-mr-3 lg:hidden"
+              aria-label={open ? m.menu_close() : m.menu_open()}
+              aria-expanded={open}
+              onClick={() => setOpen((prev) => !prev)}
+            >
+              <MenuToggle open={open} />
+            </Button>
+          </div>
         </div>
       </nav>
 
       <Drawer open={open} onOpenChange={setOpen} swipeDirection="right">
         <DrawerContent className="w-full max-w-xs">
           <DrawerHeader className="flex-row items-center justify-between border-primary-line border-b">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center gap-2.5">
               <img src={logo} alt="" width={42} height={36} />
-              <DrawerTitle className="text-lg">Alexa Lashes</DrawerTitle>
+              <DrawerTitle className="font-semibold [font-family:inherit] text-foreground text-lg tracking-normal">
+                Alexa Lashes
+              </DrawerTitle>
             </div>
             <DrawerClose render={<Button variant="ghost" size="icon" />}>
               <XIcon className="size-5" />

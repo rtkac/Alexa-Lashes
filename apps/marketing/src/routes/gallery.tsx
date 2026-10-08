@@ -3,23 +3,19 @@ import { createFileRoute } from '@tanstack/react-router';
 import Cta from '@/components/Cta';
 import Gallery from '@/components/Gallery';
 import { m } from '@/paraglide/messages';
-import { pageLinks, pageUrl } from '@/utils';
+import { ogImage, pageLinks, pageUrl } from '@/utils';
 
 const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-14 max-w-180 text-center">
-        <h1 className="mb-3 text-balance font-bold text-2xl md:text-4xl">{m.gallery_title()}</h1>
-        <p className="leading-6">{m.gallery_desc()}</p>
+        <h1 className="mb-4 text-balance font-bold text-4xl md:text-5xl">{m.gallery_title()}</h1>
+        <p className="text-pretty text-lg text-neutral-600">{m.gallery_desc()}</p>
       </div>
       <div className="mb-18 md:mb-25">
         <Gallery />
       </div>
-      <Cta
-        title={m.cta_gallery_title()}
-        description={m.cta_gallery_desc()}
-        buttonLabel={m.cta_gallery_button()}
-      />
+      <Cta title={m.cta_gallery_title()} buttonLabel={m.cta_gallery_button()} />
     </div>
   );
 };
@@ -32,7 +28,7 @@ export const Route = createFileRoute('/gallery')({
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: m.meta_gallery_title() },
       { property: 'og:description', content: m.meta_gallery_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/salon-2.webp' },
+      ...ogImage('og-predlzenie-mihalnic-alexa-lashes.jpg', m.og_image_alt_work()),
       { property: 'og:url', content: pageUrl('/gallery/') },
     ],
     links: pageLinks('/gallery/'),

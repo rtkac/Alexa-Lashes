@@ -1,3 +1,4 @@
+import { buttonVariants } from '@alexa-lashes/ui/shadcn';
 import { CatchBoundary, createFileRoute } from '@tanstack/react-router';
 import { MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
 
@@ -6,16 +7,16 @@ import ContactForm from '@/components/ContactForm';
 import QrCode from '@/components/QrCode';
 import Socials from '@/components/Socials';
 import { m } from '@/paraglide/messages';
-import { address, email, mapsUrl, telephoneNumber } from '@/types';
-import { pageLinks, pageUrl } from '@/utils';
+import { address, email, mapsUrl, telephoneNumber, whatsAppNumber } from '@/types';
+import { ogImage, pageLinks, pageUrl } from '@/utils';
 import { salonRef } from '@/utils/schema';
 
 const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-14 max-w-180 text-center">
-        <h1 className="mb-3 text-balance font-bold text-2xl md:text-4xl">{m.contact_title()}</h1>
-        <p className="leading-6">{m.contact_desc()}</p>
+        <h1 className="mb-4 text-balance font-bold text-4xl md:text-5xl">{m.contact_title()}</h1>
+        <p className="text-pretty text-neutral-600 text-lg">{m.contact_desc()}</p>
       </div>
       <div className="mb-5 grid gap-5 md:mb-15 md:grid-cols-7 md:gap-15">
         <div className="card divide-y divide-primary-line self-start md:col-span-3">
@@ -23,14 +24,19 @@ const RouteComponent = () => {
             <h2 className="mb-4 font-bold text-lg">{m.contact_info()}</h2>
             <ul className="space-y-3.5">
               <li>
+                <a href={whatsAppNumber} className={buttonVariants({ className: 'mb-2 w-full' })}>
+                  {m.contact_whatsapp()}
+                </a>
+              </li>
+              <li>
                 <a
                   href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 font-medium no-underline decoration-primary underline-offset-4 hover:text-primary-strong hover:underline"
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary-strong">
-                    <MapPinIcon aria-hidden="true" size="16" />
+                  <span className="flex size-5 shrink-0 items-center justify-center text-neutral-500">
+                    <MapPinIcon aria-hidden="true" size="18" />
                   </span>
                   {address}
                   <span className="sr-only"> {m.link_new_tab()}</span>
@@ -41,8 +47,8 @@ const RouteComponent = () => {
                   href={`tel:${telephoneNumber}`}
                   className="flex items-center gap-3 font-medium no-underline decoration-primary underline-offset-4 hover:text-primary-strong hover:underline"
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary-strong">
-                    <PhoneIcon aria-hidden="true" size="16" />
+                  <span className="flex size-5 shrink-0 items-center justify-center text-neutral-500">
+                    <PhoneIcon aria-hidden="true" size="18" />
                   </span>
                   {telephoneNumber}
                 </a>
@@ -52,8 +58,8 @@ const RouteComponent = () => {
                   href={`mailto:${email}`}
                   className="flex items-center gap-3 font-medium no-underline decoration-primary underline-offset-4 hover:text-primary-strong hover:underline break-all"
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary-strong">
-                    <MailIcon aria-hidden="true" size="16" />
+                  <span className="flex size-5 shrink-0 items-center justify-center text-neutral-500">
+                    <MailIcon aria-hidden="true" size="18" />
                   </span>
                   {email}
                 </a>
@@ -110,7 +116,7 @@ export const Route = createFileRoute('/contact')({
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: m.meta_contact_title() },
       { property: 'og:description', content: m.meta_contact_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/salon-2.webp' },
+      ...ogImage('og-umele-mihalnice-bratislava.jpg', m.og_image_alt_home()),
       { property: 'og:url', content: pageUrl('/contact/') },
     ],
     links: pageLinks('/contact/'),

@@ -1,21 +1,17 @@
 import { Review } from '@alexa-lashes/contracts/reviews';
 import { baseLocale, type Locale } from '@alexa-lashes/types/locales';
-import { cn } from '@alexa-lashes/ui/lib/utils';
-import { buttonVariants } from '@alexa-lashes/ui/shadcn';
-import { ParaglideMessage } from '@inlang/paraglide-js-react';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { AwardIcon, HeartIcon, ShieldCheckIcon } from 'lucide-react';
 
 import { AboutUs } from '@/components/AboutUs';
-import Banner from '@/components/Banner';
-import Benefits from '@/components/Benefits';
 import Cta from '@/components/Cta';
+import HomeHero from '@/components/HomeHero';
 import PreviewGallery from '@/components/PreviewGallery';
 import Reviews from '@/components/Reviews';
 import reviewsJson from '@/data/reviews.json';
 import { m } from '@/paraglide/messages';
 import { getLocale } from '@/paraglide/runtime';
-import type { Benefit, Gallery } from '@/types';
+import type { Gallery } from '@/types';
+import { ogImage } from '@/utils';
 import { personSchema, salonSchema, websiteSchema } from '@/utils/schema';
 
 const reviewsByLocale = reviewsJson as Record<Locale, Review[]>;
@@ -31,43 +27,31 @@ const canonicalUrls: Record<Locale, string> = {
   ru: 'https://alexalashes.sk/ru',
 };
 
-const benefits = (): Benefit[] => [
-  {
-    icon: <AwardIcon className="size-5 text-primary-strong" />,
-    title: m.benefits_1_title(),
-    description: m.benefits_1_desc(),
-  },
-  {
-    icon: <ShieldCheckIcon className="size-5 text-primary-strong" />,
-    title: m.benefits_2_title(),
-    description: m.benefits_2_desc(),
-  },
-  {
-    icon: <HeartIcon className="size-5 text-primary-strong" />,
-    title: m.benefits_3_title(),
-    description: m.benefits_3_desc(),
-  },
+const facts = () => [
+  { title: m.home_fact_1_title(), description: m.home_fact_1_desc() },
+  { title: m.home_fact_2_title(), description: m.home_fact_2_desc() },
+  { title: m.home_fact_3_title(), description: m.home_fact_3_desc() },
 ];
 
 const gallery = (): Gallery[] => [
   {
-    src: '/1.webp',
+    src: '/14.webp',
     name: m.home_gallery_1_alt(),
   },
   {
-    src: '/2.webp',
+    src: '/12.webp',
     name: m.home_gallery_2_alt(),
   },
   {
-    src: '/3.webp',
+    src: '/7.webp',
     name: m.home_gallery_3_alt(),
   },
   {
-    src: '/4.webp',
+    src: '/2.webp',
     name: m.home_gallery_4_alt(),
   },
   {
-    src: '/5.webp',
+    src: '/6.webp',
     name: m.home_gallery_5_alt(),
   },
 ];
@@ -78,77 +62,35 @@ const RouteComponent = () => {
   const filteredReviews = reviews.filter((review) => review.enabled);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <Banner
-        title={m.banner_title()}
-        description={m.banner_desc()}
-        hideDescriptionOnMobile
-        image={{
-          src: '/banner-main-desktop.webp',
-          width: 1120,
-          height: 1086,
-          mobile: {
-            src: '/banner-main-mobile.webp',
-            width: 1120,
-            height: 1400,
-            sizes: 'max(100vw, 560px)',
-          },
-          className: cn(
-            'inset-auto top-[calc(344px-max(62svw,347px))] left-1/2 h-auto w-[max(100svw,560px)] max-w-none -translate-x-1/2',
-            'md:inset-0 md:size-full md:max-w-full md:translate-x-0 md:object-[center_30%] lg:object-center',
-          ),
-        }}
-        buttons={
-          <>
-            <Link to="/prices/" className={buttonVariants()}>
-              {m.banner_link_services()}
-            </Link>
-            <Link to="/contact/" className={buttonVariants({ variant: 'secondary' })}>
-              {m.banner_link_contact()}
-            </Link>
-          </>
-        }
-      />
-      <div className="mx-auto mb-10 max-w-180 text-center">
-        <h2 className="mb-3 text-balance font-bold text-xl md:text-3xl">
-          {m.home_welcome_title()}
-        </h2>
-        <p className="leading-6">
-          <ParaglideMessage
-            message={m.home_welcome_desc}
-            markup={{
-              b: ({ children }) => <b>{children}</b>,
-            }}
-          />
-        </p>
-      </div>
-      <div className="mb-18 md:mb-25">
-        <Benefits data={benefits()} />
-      </div>
-      <div className="mb-18 md:mb-25">
-        <AboutUs />
-      </div>
-      <div className="mb-18 md:mb-25">
-        <div className="mb-6">
-          <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
-            {m.home_gallery_title()}
-          </h2>
-          <PreviewGallery gallery={gallery()} />
-        </div>
-        <div className="flex justify-center">
-          <Link to="/gallery/" className={buttonVariants()}>
+    <div className="mx-auto max-w-6xl px-4 py-10 md:py-16">
+      <HomeHero />
+      <dl className="mb-20 grid gap-6 border-primary-line border-y py-8 sm:grid-cols-3 sm:gap-10 md:mb-28">
+        {facts().map((fact) => (
+          <div key={fact.title}>
+            <dt className="mb-1.5 font-bold">{fact.title}</dt>
+            <dd className="text-pretty text-neutral-600 text-sm leading-relaxed">
+              {fact.description}
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <section className="mb-20 md:mb-28">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 md:mb-8">
+          <h2 className="text-balance font-bold text-3xl md:text-4xl">{m.home_gallery_title()}</h2>
+          <Link to="/gallery/" className="font-medium">
             {m.home_gallery_link()}
           </Link>
         </div>
-      </div>
+        <PreviewGallery gallery={gallery()} />
+      </section>
       {filteredReviews.length > 0 && (
-        <div className="mb-18 md:mb-25">
-          <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
-            {m.home_reviews_title()}
-          </h2>
-          <Reviews reviews={filteredReviews} />
+        <div className="mb-20 md:mb-28">
+          <Reviews reviews={filteredReviews} title={m.home_reviews_title()} />
         </div>
       )}
+      <div className="mb-20 md:mb-28">
+        <AboutUs />
+      </div>
       <Cta />
     </div>
   );
@@ -162,9 +104,8 @@ export const Route = createFileRoute('/')({
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: m.meta_index_title() },
       { property: 'og:description', content: m.meta_index_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/banner-main-desktop.webp' },
+      ...ogImage('og-umele-mihalnice-bratislava.jpg', m.og_image_alt_home()),
       { property: 'og:url', content: canonicalUrls[getLocale()] },
-      { name: 'twitter:image', content: 'https://alexalashes.sk/banner-main-desktop.webp' },
     ],
     links: [
       { rel: 'canonical', href: canonicalUrls[getLocale()] },

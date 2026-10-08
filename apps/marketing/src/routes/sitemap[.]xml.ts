@@ -28,6 +28,7 @@ const localizedUrls = (path: string): Record<Locale, string> =>
 const urlEntry = (loc: string, urls: Record<Locale, string>) => `
   <url>
     <loc>${loc}</loc>
+    <lastmod>${__BUILD_DATE__}</lastmod>
 ${locales.map((locale) => `    <xhtml:link rel="alternate" hreflang="${locale}" href="${urls[locale]}" />`).join('\n')}
     <xhtml:link rel="alternate" hreflang="x-default" href="${urls.sk}" />
   </url>`;

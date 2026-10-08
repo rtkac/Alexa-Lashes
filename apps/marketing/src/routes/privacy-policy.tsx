@@ -1,12 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router';
 
 import { m } from '@/paraglide/messages';
-import { pageLinks, pageUrl } from '@/utils';
+import { ogImage, pageLinks, pageUrl } from '@/utils';
 
 const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl space-y-2 px-4 py-10">
-      <h1 className="mb-2.5 font-bold text-2xl md:text-4xl">{m.privacy_policy_title()}</h1>
+      <h1 className="mb-4 text-balance font-bold text-4xl md:text-5xl">
+        {m.privacy_policy_title()}
+      </h1>
       <h2 className="mt-6 mb-2.5 font-bold text-xl">{m.privacy_policy_1_title()}</h2>
       <p>{m.privacy_policy_1_desc()}</p>
       <h2 className="mt-6 mb-2.5 font-bold text-xl">{m.privacy_policy_2_title()}</h2>
@@ -54,10 +56,10 @@ export const Route = createFileRoute('/privacy-policy')({
     meta: [
       { title: m.meta_privacy_policy_title() },
       { name: 'description', content: m.meta_privacy_policy_desc() },
-      { property: 'og:type', content: 'article' },
+      { property: 'og:type', content: 'website' },
       { property: 'og:title', content: m.meta_privacy_policy_title() },
       { property: 'og:description', content: m.meta_privacy_policy_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/banner-main-desktop.webp' },
+      ...ogImage('og-umele-mihalnice-bratislava.jpg', m.og_image_alt_home()),
       { property: 'og:url', content: pageUrl('/privacy-policy/') },
     ],
     links: pageLinks('/privacy-policy/'),

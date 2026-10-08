@@ -6,6 +6,10 @@ import viteReact from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 const config = defineConfig({
+  define: {
+    // Sitemap `lastmod`: every deploy is a fresh build, so the build date is when the content last changed.
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString().slice(0, 10)),
+  },
   plugins: [
     paraglideVitePlugin({
       project: './project.inlang',

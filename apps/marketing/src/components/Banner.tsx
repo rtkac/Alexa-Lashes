@@ -34,7 +34,7 @@ const Banner = ({
   hideDescriptionOnMobile,
 }: BannerProps) => {
   return (
-    <div className="relative isolate mb-13 overflow-hidden rounded-xl bg-[#4a413a] text-center text-white">
+    <div className="relative isolate mb-13 overflow-hidden rounded-xl bg-tertiary text-center text-white">
       <picture>
         {image.mobile && (
           <source

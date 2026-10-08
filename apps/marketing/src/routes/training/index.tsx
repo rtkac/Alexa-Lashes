@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from '@alexa-lashes/ui/shadcn';
+import { Button } from '@alexa-lashes/ui/shadcn';
 import { createFileRoute, Link } from '@tanstack/react-router';
 
 import Cta from '@/components/Cta';
@@ -7,7 +7,7 @@ import { TrainingFormModal } from '@/components/TrainingFormModal';
 import Trainings from '@/components/Trainings';
 import { m } from '@/paraglide/messages';
 import type { Gallery } from '@/types';
-import { pageLinks, pageUrl } from '@/utils';
+import { ogImage, pageLinks, pageUrl } from '@/utils';
 import { advancedCourseSchema, basicCourseSchema } from '@/utils/training-schema';
 
 const gallery = (): Gallery[] => [
@@ -20,11 +20,11 @@ const gallery = (): Gallery[] => [
     name: m.training_gallery_2_alt(),
   },
   {
-    src: '/course-3.webp',
+    src: '/course-15.webp',
     name: m.training_gallery_3_alt(),
   },
   {
-    src: '/course-4.webp',
+    src: '/course-25.webp',
     name: m.training_gallery_4_alt(),
   },
   {
@@ -37,27 +37,25 @@ const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-14 max-w-180 text-center">
-        <h1 className="mb-3 text-balance font-bold text-2xl md:text-4xl">{m.training_title()}</h1>
-        <p className="leading-6">{m.training_desc()}</p>
+        <h1 className="mb-4 text-balance font-bold text-4xl md:text-5xl">{m.training_title()}</h1>
+        <p className="text-pretty text-lg text-neutral-600">{m.training_desc()}</p>
       </div>
 
       <div className="mb-18">
         <Trainings />
       </div>
 
-      <div className="mb-18">
-        <h2 className="mb-6 text-balance text-center font-bold text-xl md:text-3xl">
-          {m.training_gallery_title()}
-        </h2>
-        <div className="mb-6">
-          <PreviewGallery gallery={gallery()} />
-        </div>
-        <div className="flex justify-center">
-          <Link to="/gallery/" className={buttonVariants({ variant: 'outline' })}>
+      <section className="mb-18">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 md:mb-8">
+          <h2 className="text-balance font-bold text-3xl md:text-4xl">
+            {m.training_gallery_title()}
+          </h2>
+          <Link to="/gallery/" className="font-medium">
             {m.training_gallery_link()}
           </Link>
         </div>
-      </div>
+        <PreviewGallery gallery={gallery()} />
+      </section>
 
       <Cta
         title={m.cta_training_title()}
@@ -76,10 +74,7 @@ export const Route = createFileRoute('/training/')({
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: m.meta_training_title() },
       { property: 'og:description', content: m.meta_training_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/basic-training-banner.webp' },
-      { property: 'og:image:width', content: '1119' },
-      { property: 'og:image:height', content: '649' },
-      { property: 'og:image:alt', content: m.training_basic_image_alt() },
+      ...ogImage('og-training-alexa-lashes.jpg', m.og_image_alt_training()),
       { property: 'og:url', content: pageUrl('/training/') },
     ],
     links: pageLinks('/training/'),

@@ -5,7 +5,7 @@ import LashPriceCard from '@/components/LashPriceCard';
 import Services from '@/components/Services';
 import { m } from '@/paraglide/messages';
 import type { LashPrice } from '@/types';
-import { pageLinks, pageUrl } from '@/utils';
+import { ogImage, pageLinks, pageUrl } from '@/utils';
 import { areaServed, salonRef } from '@/utils/schema';
 
 const lashesClassic = (): LashPrice[] => [
@@ -118,8 +118,8 @@ const RouteComponent = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="mx-auto mb-12 max-w-180 text-center">
-        <h1 className="mb-3 text-balance font-bold text-2xl md:text-4xl">{m.prices_title()}</h1>
-        <p className="leading-6">{m.prices_desc()}</p>
+        <h1 className="mb-4 text-balance font-bold text-4xl md:text-5xl">{m.prices_title()}</h1>
+        <p className="text-pretty text-lg text-neutral-600">{m.prices_desc()}</p>
       </div>
       <div className="mb-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <LashPriceCard title={m.prices_classic_lashes_title()} data={lashesClassic()} />
@@ -150,7 +150,7 @@ export const Route = createFileRoute('/prices')({
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: m.meta_prices_title() },
       { property: 'og:description', content: m.meta_prices_desc() },
-      { property: 'og:image', content: 'https://alexalashes.sk/salon-2.webp' },
+      ...ogImage('og-umele-mihalnice-bratislava.jpg', m.og_image_alt_home()),
       { property: 'og:url', content: pageUrl('/prices/') },
     ],
     links: pageLinks('/prices/'),
