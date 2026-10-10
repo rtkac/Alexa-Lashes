@@ -28,14 +28,15 @@ const ReviewContent = ({ review }: ReviewContentProps) => (
         {review.description}
       </p>
     </div>
-    <div
-      className="flex items-baseline justify-between gap-3"
+    <span
       itemProp="itemReviewed"
       itemScope
       itemType="https://schema.org/BeautySalon"
       itemID="https://alexalashes.sk/#salon"
     >
       <meta itemProp="name" content="Alexa Lashes" />
+    </span>
+    <div className="flex items-baseline justify-between gap-3">
       <p
         className="font-bold text-foreground text-sm"
         itemProp="author"

@@ -24,21 +24,6 @@ export const personId = `${siteUrl}/#oleksandra`;
 /** Languages spoken in the salon and used in training. */
 const languages = ['sk', 'ru', 'uk'];
 
-/** Minimal salon reference for `provider`/`publisher`/`worksFor`. */
-export const salonRef = {
-  '@type': 'BeautySalon',
-  '@id': salonId,
-  name: 'Alexa Lashes',
-  url: siteUrl,
-};
-
-/** Minimal lash master reference for `founder`/`instructor`. */
-export const personRef = {
-  '@type': 'Person',
-  '@id': personId,
-  name: 'Oleksandra Afanasieva',
-};
-
 export const postalAddress = {
   '@type': 'PostalAddress',
   streetAddress: 'Pajštúnska 1',
@@ -46,6 +31,28 @@ export const postalAddress = {
   addressRegion: 'Bratislava',
   postalCode: '85101',
   addressCountry: 'SK',
+};
+
+/**
+ * Salon reference for `provider`/`about`/`mainEntity`. Google validates every `BeautySalon` node as
+ * a local business on its own (it doesn't merge `@id`s across pages), so this carries the core fields.
+ */
+export const salonRef = {
+  '@type': 'BeautySalon',
+  '@id': salonId,
+  name: 'Alexa Lashes',
+  url: siteUrl,
+  image: `${siteUrl}/salon-alexa.webp`,
+  telephone: telephoneNumber,
+  address: postalAddress,
+  priceRange: '€€',
+};
+
+/** Minimal lash master reference for `founder`/`instructor`. */
+export const personRef = {
+  '@type': 'Person',
+  '@id': personId,
+  name: 'Oleksandra Afanasieva',
 };
 
 const bratislava = {
@@ -85,7 +92,6 @@ type Rating = {
 export const salonSchema = (rating: Rating) => ({
   ...salonRef,
   description: m.meta_index_desc(),
-  telephone: telephoneNumber,
   email,
   image: [
     `${siteUrl}/og-umele-mihalnice-bratislava.jpg`,
@@ -101,7 +107,6 @@ export const salonSchema = (rating: Rating) => ({
     url: `${siteUrl}/logo.png`,
   },
   founder: { '@id': personId },
-  address: postalAddress,
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -119,7 +124,6 @@ export const salonSchema = (rating: Rating) => ({
   areaServed,
   knowsLanguage: languages,
   currenciesAccepted: 'EUR',
-  priceRange: '€€',
   hasOfferCatalog: { '@id': `${siteUrl}/prices/#offers` },
   contactPoint: {
     '@type': 'ContactPoint',
