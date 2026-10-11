@@ -38,7 +38,14 @@ const config = defineConfig({
       ],
     }),
     tailwindcss(),
-    tanstackStart(),
+    tanstackStart({
+      server: { entry: 'server' },
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+        failOnError: true,
+      },
+    }),
     netlify(),
     viteReact(),
   ],
