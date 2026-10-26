@@ -69,8 +69,8 @@ export const Program = () => {
   return (
     <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
       {days().map((day) => (
-        <div className="card p-8 md:p-10" key={day.number}>
-          <h3 className="mb-10 flex items-center font-bold text-lg uppercase">
+        <div className="card p-6 md:p-8" key={day.number}>
+          <h3 className="mb-6 flex items-center border-primary-line border-b pb-6 font-bold text-xl">
             <span
               className="mr-3 flex size-10 shrink-0 items-center justify-center rounded-md bg-primary p-1 text-primary-ink tabular-nums"
               aria-hidden="true"
@@ -79,10 +79,10 @@ export const Program = () => {
             </span>
             {day.title}
           </h3>
-          <ol className="flex flex-col gap-7">
+          <ol className="flex flex-col gap-6">
             {day.events.map((event) => (
-              <li className="flex gap-6 sm:gap-14" key={event.time}>
-                <time className="w-11 shrink-0 font-bold text-foreground tabular-nums">
+              <li className="flex gap-5 sm:gap-8" key={event.time}>
+                <time className="w-12 shrink-0 font-bold text-primary-strong tabular-nums">
                   {event.time}
                 </time>
                 <div className="flex flex-col gap-2">
@@ -91,10 +91,10 @@ export const Program = () => {
                     <p className="font-semibold text-neutral-700 text-sm">{event.lead}</p>
                   )}
                   {event.description && (
-                    <p className="text-neutral-500 text-sm">{event.description}</p>
+                    <p className="text-neutral-600 text-sm">{event.description}</p>
                   )}
                   {event.items && (
-                    <ul className="ml-4 list-disc text-neutral-500 text-sm">
+                    <ul className="ml-4 list-disc space-y-1 text-neutral-600 text-sm marker:text-primary">
                       {event.items.map((item) => (
                         <li key={item}>{item}</li>
                       ))}

@@ -44,38 +44,44 @@ const RouteComponent = () => {
         isDark
         buttons={<TrainingFormModal trigger={<Button>{m.cta_training_button()}</Button>} />}
       />
-      <div className="mx-auto mb-20 max-w-3xl *:[p]:text-pretty">
-        <h2 className="mb-6 text-balance font-bold text-3xl md:text-4xl">
-          {m.training_basic_welcome_title()}
-        </h2>
-        <p className="mb-4">{m.training_basic_welcome_desc_1()}</p>
-        <p className="mb-4">{m.training_basic_welcome_desc_2()}</p>
-        <p className="mb-4">{m.training_basic_welcome_desc_3()}</p>
-        <p className="mb-4">{m.training_basic_welcome_desc_4()}</p>
-        <p className="mb-4">{m.training_basic_welcome_desc_5()}</p>
-        <p className="mb-4 font-bold">{m.training_basic_welcome_desc_6()}</p>
-      </div>
-      <div className="mb-18">
-        <h2 className="mb-10 text-balance text-center font-bold text-3xl md:text-4xl">
+      <section className="mb-18 md:mb-25">
+        <div className="mx-auto max-w-3xl space-y-5 *:[p]:text-pretty *:[p]:leading-6">
+          <h2 className="text-balance font-bold text-3xl md:text-4xl">
+            {m.training_basic_welcome_title()}
+          </h2>
+          <p>{m.training_basic_welcome_desc_1()}</p>
+          <p>{m.training_basic_welcome_desc_2()}</p>
+          <p>{m.training_basic_welcome_desc_3()}</p>
+          <p>{m.training_basic_welcome_desc_4()}</p>
+          <p>{m.training_basic_welcome_desc_5()}</p>
+          <p className="pt-2 font-display font-semibold text-2xl leading-snug! md:text-3xl">
+            {m.training_basic_welcome_desc_6()}
+          </p>
+        </div>
+      </section>
+      <section className="mb-18 md:mb-25">
+        <h2 className="mb-6 text-balance font-bold text-3xl md:mb-8 md:text-4xl">
           {m.training_basic_why_title()}
         </h2>
         <Includes data={benefits()} />
-        <p className="text-center text-neutral-500 text-sm">{m.training_basic_why_desc()}</p>
-      </div>
-      <div className="mb-18">
-        <h2 className="mb-10 text-balance text-center font-bold text-3xl md:text-4xl">
+        <p className="mt-4 text-pretty text-neutral-600 text-sm">{m.training_basic_why_desc()}</p>
+      </section>
+      <section className="mb-18 md:mb-25">
+        <h2 className="mb-6 text-balance font-bold text-3xl md:mb-8 md:text-4xl">
           {m.training_basic_program_title()}
         </h2>
         <Program />
-      </div>
-      <div className="mb-18">
-        <h2 className="mb-5 text-balance text-center font-bold text-3xl md:text-4xl">
+      </section>
+      <section className="mb-18 md:mb-25">
+        <h2 className="mb-3 text-balance font-bold text-3xl md:text-4xl">
           {m.training_basic_includes_title()}
         </h2>
-        <p className="mb-5 text-center">{m.training_basic_includes_desc()}</p>
+        <p className="mb-6 max-w-[65ch] text-pretty text-neutral-600 md:mb-8">
+          {m.training_basic_includes_desc()}
+        </p>
         <Includes data={includes()} />
-      </div>
-      <div className="mb-18">
+      </section>
+      <div className="mb-18 md:mb-25">
         <TrainingPrice duration={m.training_basic_duration()} price={basicTrainingPrice} />
       </div>
       <div className="mb-8">
