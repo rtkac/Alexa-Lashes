@@ -6,16 +6,20 @@ type IncludesProps = {
 
 const Includes = ({ data }: IncludesProps) => {
   return (
-    <div className="mx-auto mb-4 max-w-3xl">
-      <ul className="card divide-y divide-primary-line px-8 py-4 md:px-10 md:py-6">
-        {data.map((include) => (
-          <li key={include} className="flex items-center py-4">
-            <CircleCheckIcon className="mr-3 w-5 shrink-0 fill-primary-strong stroke-white" />
-            <p className="text-sm">{include}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="card grid px-6 py-2 md:grid-cols-2 md:gap-x-12">
+      {data.map((include) => (
+        <li
+          key={include}
+          className="flex items-start gap-3 border-primary-line py-4 not-first:border-t md:nth-2:border-t-0"
+        >
+          <CircleCheckIcon
+            className="mt-0.5 size-5 shrink-0 fill-primary-strong stroke-white"
+            aria-hidden="true"
+          />
+          <p className="text-pretty">{include}</p>
+        </li>
+      ))}
+    </ul>
   );
 };
 
